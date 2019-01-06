@@ -73,8 +73,7 @@ ADD_SUBDIRECTORY(src)
 
 
 # These files should only be installed when creating packages.
-INSTALL(FILES 
-	LICENSE
+INSTALL(FILES
 	README.md
 	DESTINATION share/doc/nvtt)
 
@@ -95,7 +94,6 @@ SET(CPACK_PACKAGE_CONTACT "Ignacio Castaño <castano@gmail.com>")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Texture processing tools with support for Direct3D 10 and 11 formats.")
 
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${NV_SOURCE_DIR}/README.md")
-SET(CPACK_RESOURCE_FILE_LICENSE "${NV_SOURCE_DIR}/LICENSE")
 
 # NSIS options:
 IF(WIN32)

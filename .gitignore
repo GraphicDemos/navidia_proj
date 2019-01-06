@@ -3,6 +3,8 @@ CMakeFiles/
 CMakeCache.txt
 
 ##visual stuido
+*.vcxproj
+*.vcxproj.filters
 */**/*.vcproj
 */**/*.vcxproj
 */**/*.vcxproj.filters

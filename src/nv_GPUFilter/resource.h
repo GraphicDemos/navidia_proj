@@ -1,0 +1,40 @@
+/*********************************************************************NVMH3****
+File:  $Id: //sw/devtools/SDK/9.5/SDK/DEMOS/OpenGL/src/GPUFilter/resource.h#1 $
+
+Copyright NVIDIA Corporation 2005
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Comments:
+
+******************************************************************************/
+
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by GPUFilter.rc
+//
+#define IDD_DIALOG1                     101
+#define IDD_GUI                         102
+#define IDC_RENDER_HERE                 1002
+#define IDC_RADIUS_SLIDER               1003
+#define IDC_RADIUS_EDIT                 1004
+#define IDC_CUSTOM2                     1007
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NO_MFC                     1
+#define _APS_NEXT_RESOURCE_VALUE        104
+#define _APS_NEXT_COMMAND_VALUE         40001
+#define _APS_NEXT_CONTROL_VALUE         1008
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif

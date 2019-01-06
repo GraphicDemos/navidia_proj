@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			FlickrSearch.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	Derived the foundation of the code from the Adobe Flex
+					tutorial on "Creating a Simple RIA." The file sets up a
+					text input, a search button, and a tile list to display
+					the results of the user's input picture tags through
+					Flickr. The panel also gives the user to change the
+					color of the background of itself.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.*;
+			import mx.collections.*;
+			import com.adobe.csxs.core.CSXSInterface;
+			import com.adobe.csxs.events.*;
+			import com.adobe.csxs.types.*;
+			
+			private var defaultColor:String;
+			private var offline:Boolean;
+			
+			[Bindable]
+			private var photoFeed:ArrayCollection;
+			
+			/**
+				Function:		init
+				Description:	Initializes the size of the panel to a set size. Set an event listener
+								to the searchText text input component to detect a keyboard ENTER. The
+								function also retrieves the Adobe Photoshop's host environment
+								properties including the background color, font family, and font size
+								to copy for the panel itself. It also determines whether or not the
+								user has allowed the panel to connect to the internet and honor that
+								request of the user. The function also sets up the fly out
+								menu allowing the user to choose and change the color of the panel.
+			*/			
+			private function init():void{
+				searchText.addEventListener(FlexEvent.ENTER, requestPhotos);
+				
+				var windowSize:WindowGeometry = new WindowGeometry(100,100,350,350);
+				CSXSInterface.getInstance().requestStateChange(StateChangeEvent.WINDOW_RESIZE, windowSize);
+				
+				var result:SyncRequestResult = CSXSInterface.instance.getHostEnvironment();
+				var hostData:HostEnvironment = result.data;
+				var skinInfo:AppSkinInfo = hostData.appSkinInfo;
+				offline = hostData.isAppOffline;
+				defaultColor = skinInfo.panelBackgroundColor.color.rgb;
+				this.setStyle("backgroundGradientColors", [defaultColor, defaultColor]);
+				this.setStyle("fontFamily", skinInfo.baseFontFamily);
+				this.setStyle("fontSize", skinInfo.baseFontSize);
+				
+				var xmlMenu:XML = <Menu>
+					<MenuItem Label="Photoshop Color Background"/>
+					<MenuItem Label="---"/>
+					<MenuItem Label="White Background"/>
+					<MenuItem Label="Red Background"/>
+					<MenuItem Label="Green Background"/>
+					<MenuItem Label="Blue Background"/>
+					</Menu>;
+				CSXSInterface.getInstance().setPanelMenu(xmlMenu);
+				CSXSInterface.getInstance().addEventListener(MenuClickEvent.FLYOUT_MENU_CLICK, onMenuHandler);
+			}
+
+			/**
+				Function:		onMenuHandler
+				Description:	The function determines which menu items was selected and properly
+								execute the correct statements to change the color of the panel's
+								background.
+				@param	inEvent A MenuClickEvent variable that determines which of the fly out
+								menu items was selected.
+			*/	
+			private function onMenuHandler(inEvent:MenuClickEvent):void {
+				if ("Photoshop Color Background" == inEvent.menuName) {
+					this.setStyle("backgroundGradientColors", [defaultColor, defaultColor]);
+				} else if ("White Background" == inEvent.menuName) {
+					this.setStyle("backgroundGradientColors", [0xffffff, 0xffffff]);
+				} else if ("Blue Background" == inEvent.menuName) {
+					this.setStyle("backgroundGradientColors", [0x005a8c, 0x005a8c]);
+				} else if ("Red Background" == inEvent.menuName) {
+					this.setStyle("backgroundGradientColors", [0x8c0000, 0x8c0000]);
+				} else if ("Green Background" == inEvent.menuName) {
+					this.setStyle("backgroundGradientColors", [0x008c00, 0x008c00]);
+				} else {
+					Alert.show("Unknown selection: " + inEvent.menuName);
+				}
+			}
+
+			/**
+				Function:		requestPhotos
+				Description:	Determining whether or not the user has allowed the panel to connect
+								online, it will retrieve the results from Flickr and return the
+								results if it is allowed by sending the user's input photo tags.
+				@param event An Event variable (not used).
+			*/
+			private function requestPhotos(event:Event):void{
+				if(!offline){
+					flickrService.cancel();
+					var params:Object = new Object();
+					params.format = "rss_200_enc";
+					params.tags = searchText.text;
+					flickrService.send(params);
+				} else {
+					Alert.show("Make sure 'Allow Extensions to Connect to the Internet' is enabled "+
+						"located in Preferences under Plug-Ins", "Disabled Internet Connection");
+				}
+			}
+
+			/**
+				Function:		photoHandler
+				Description:	Take the results from Flickr and save as an ArrayCollection.
+				@param event A ResultEvent variable (not used).
+			*/
+			private function photoHandler(event:ResultEvent):void{
+				photoFeed = event.result.rss.channel.item as ArrayCollection;
+			}
+
+			/**
+				Function:		faultHandler
+				Description:	Inform the user that the panel was unable to connect to Flickr
+								properly due problems on the Flickr server.
+				@param event A ResultEvent variable (not used)
+			*/
+			private function faultHandler(event:FaultEvent):void{
+				Alert.show("Not able to load photos from services","Error");
+			}
+		]]>
+	</mx:Script>
+	<!-- Set up the HTTPService to connect to the Flickr API and its server to retrieve images -->
+	<mx:HTTPService id="flickrService" showBusyCursor="true"
+		url="http://api.flickr.com/services/feeds/photos_public.gne"
+		result="photoHandler(event)" fault="faultHandler(event)"/>
+	<mx:HBox width="100%">
+		<mx:TextInput id="searchText"/>
+		<mx:Button label="Search" click="requestPhotos(event)"/>
+	</mx:HBox>
+	<mx:TileList width="100%" height="100%" dataProvider="{photoFeed}" itemRenderer="FlickrThumbnail">
+	</mx:TileList>
+</mx:Application>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			FlickrThumbnail.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	Derived the foundation of the code from the Adobe Flex
+					tutorial on "Creating a Simple RIA." The file sets up what
+					each element inside the TileList tag in FlickrSearch.mxml
+					will contain - an image and a small description.
+-->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="125" height="125">
+	<mx:Image width="75" height="75" source="{data.thumbnail.url}"/>
+	<mx:Text width="100" text="{data.credit}"/>
+</mx:VBox>

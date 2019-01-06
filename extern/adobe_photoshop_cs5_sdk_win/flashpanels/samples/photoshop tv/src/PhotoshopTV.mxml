@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			PhotoshopTV.mxml
+	Author:			Kaori Mikawa
+					Photoshop Software Quality Engineering Developer
+					Adobe Systems Incorporated
+	Revised by:		John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	Used the code from FlashUISample found under Sample Scripts
+					in the Scripting folder of Adobe Photoshop CS4.
+					Displays a video clip from the Photoshop Guys from
+					photoshoptv.com. Has the widgets to play, pause, and stop
+					along with a link to photoshoptv.com.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" height="100%">
+	<mx:Script>
+		<![CDATA[
+			/**
+			 * The URL of www.photoshoptv.com for the link button to click to.
+			 */
+			public var psTV:URLRequest = new URLRequest("http://www.photoshoptv.com");   
+		]]>
+	</mx:Script>
+	<mx:LinkButton label="Photoshop TV" click="navigateToURL(psTV)"/>
+    <mx:VideoDisplay autoPlay="false" id="myVid" cornerRadius="3" width="100%" height="100%" backgroundColor="#ffffff" x="0" y="0">
+    	<mx:source>http://www.photoshopguys.com/episodes/current.flv</mx:source>
+    </mx:VideoDisplay>
+    <mx:HBox width="100%" horizontalAlign="center" x="24" y="600">
+        <mx:Button label="Play" click="myVid.play();"/>
+        <mx:Button label="Pause" click="myVid.pause();"/>
+        <mx:Button label="Stop" click="myVid.stop();"/>
+    </mx:HBox>
+    <mx:HTTPService id="feedRequestPhotoshopTV" url="http://feeds.feedburner.com/photoshoptv" useProxy="false" />
+</mx:Application>

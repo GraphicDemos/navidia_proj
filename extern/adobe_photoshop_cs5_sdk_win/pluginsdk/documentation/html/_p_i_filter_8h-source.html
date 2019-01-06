@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: PIFilter.h Source File</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1>PIFilter.h</h1><a href="_p_i_filter_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// ADOBE SYSTEMS INCORPORATED</span>
+<a name="l00002"></a>00002 <span class="comment">// Copyright  1993 - 2005 Adobe Systems Incorporated</span>
+<a name="l00003"></a>00003 <span class="comment">// All Rights Reserved</span>
+<a name="l00004"></a>00004 <span class="comment">//</span>
+<a name="l00005"></a>00005 <span class="comment">// NOTICE:  Adobe permits you to use, modify, and distribute this </span>
+<a name="l00006"></a>00006 <span class="comment">// file in accordance with the terms of the Adobe license agreement</span>
+<a name="l00007"></a>00007 <span class="comment">// accompanying it.  If you have received this file from a source</span>
+<a name="l00008"></a>00008 <span class="comment">// other than Adobe, then your use, modification, or distribution</span>
+<a name="l00009"></a>00009 <span class="comment">// of it requires the prior written permission of Adobe.</span>
+<a name="l00010"></a>00010 <span class="comment">//-------------------------------------------------------------------</span>
+<a name="l00031"></a>00031 <span class="comment"></span><span class="preprocessor">#ifndef __PIFilter__</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span><span class="preprocessor">#define __PIFilter__</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00034"></a>00034 <span class="preprocessor">#if PRAGMA_ONCE</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#pragma once</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include "<a class="code" href="_p_i_actions_8h.html">PIActions.h</a>"</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include "<a class="code" href="_p_i_general_8h.html">PIGeneral.h</a>"</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="preprocessor">#include "SPBasic.h"</span>
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">/* Operation selectors */</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 
+<a name="l00059"></a><a class="code" href="group___filter_module.html#g4e2a6ac8333c7ed896a57ebe6970469b">00059</a> <span class="preprocessor">#define filterSelectorAbout      0</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span>
+<a name="l00068"></a><a class="code" href="group___filter_module.html#g4310c969331951a95a9c3c14d33530a0">00068</a> <span class="preprocessor">#define filterSelectorParameters 1</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>
+<a name="l00086"></a><a class="code" href="group___filter_module.html#gf2b3bbab31f41acb1a8691d81337c688">00086</a> <span class="preprocessor">#define filterSelectorPrepare    2</span>
+<a name="l00087"></a>00087 <span class="preprocessor"></span>
+<a name="l00100"></a><a class="code" href="group___filter_module.html#g07a1429deca3735ee0ff260123914213">00100</a> <span class="preprocessor">#define filterSelectorStart      3</span>
+<a name="l00101"></a>00101 <span class="preprocessor"></span>
+<a name="l00115"></a><a class="code" href="group___filter_module.html#g1666a089a02ce2da7747b1ec0ca8c583">00115</a> <span class="preprocessor">#define filterSelectorContinue   4</span>
+<a name="l00116"></a>00116 <span class="preprocessor"></span>
+<a name="l00125"></a><a class="code" href="group___filter_module.html#g99e89c62c7486834314c0d1e5df5af47">00125</a> <span class="preprocessor">#define filterSelectorFinish     5</span>
+<a name="l00126"></a>00126 <span class="preprocessor"></span>  <span class="comment">// end ingroup</span>
+<a name="l00130"></a>00130 
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 <span class="comment">/********************************************************************************/</span>
+<a name="l00134"></a>00134 
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 
+<a name="l00147"></a><a class="code" href="group___filter_case_identifiers.html#g05fe895e9260e892312f2f112f1f1774">00147</a> <span class="preprocessor">#define filterCaseUnsupported                              -1    </span>
+<a name="l00148"></a><a class="code" href="group___filter_case_identifiers.html#gd70b81a19bedeb248466ad8c14b89c2d">00148</a> <span class="preprocessor">#define filterCaseFlatImageNoSelection                      1    </span>
+<a name="l00149"></a><a class="code" href="group___filter_case_identifiers.html#ga2b07f661429494a889d686c36f8db20">00149</a> <span class="preprocessor">#define filterCaseFlatImageWithSelection                    2    </span>
+<a name="l00150"></a><a class="code" href="group___filter_case_identifiers.html#gf17a0e57eed9822103b641bb3ac199a0">00150</a> <span class="preprocessor">#define filterCaseFloatingSelection                         3    </span>
+<a name="l00151"></a><a class="code" href="group___filter_case_identifiers.html#g7fd6175909b94d2e212a486eb1dbf8b5">00151</a> <span class="preprocessor">#define filterCaseEditableTransparencyNoSelection           4    </span>
+<a name="l00156"></a><a class="code" href="group___filter_case_identifiers.html#g49c2fc7bf4081feeae2e3013b01b0ed9">00156</a> <span class="preprocessor">#define filterCaseEditableTransparencyWithSelection         5    </span>
+<a name="l00161"></a><a class="code" href="group___filter_case_identifiers.html#gbc871689c1f84ec11a46b032e73767f1">00161</a> <span class="preprocessor">#define filterCaseProtectedTransparencyNoSelection          6    </span>
+<a name="l00166"></a><a class="code" href="group___filter_case_identifiers.html#ga11766592049705dd3ab6b1a9caec4da">00166</a> <span class="preprocessor">#define filterCaseProtectedTransparencyWithSelection        7    </span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span><span class="comment">/* @} */</span>
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 <span class="comment">/********************************************************************************/</span>
+<a name="l00174"></a>00174 
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 
+<a name="l00187"></a><a class="code" href="group___filter_case_info_handling_modes.html#g22443ae3df8b11083107e03546a4d7bb">00187</a> <span class="preprocessor">#define filterDataHandlingCantFilter         0      </span>
+<a name="l00189"></a><a class="code" href="group___filter_case_info_handling_modes.html#ga30288db07b598aa11ef09ead8ba8303">00189</a> <span class="preprocessor">#define filterDataHandlingNone               1      </span>
+<a name="l00191"></a><a class="code" href="group___filter_case_info_handling_modes.html#g23b52e224cd47d2510d317e8b057cda8">00191</a> <span class="preprocessor">#define filterDataHandlingBlackMat           2      </span>
+<a name="l00194"></a><a class="code" href="group___filter_case_info_handling_modes.html#gaa572379d4fb38d4b50b203dd7d9745e">00194</a> <span class="preprocessor">#define filterDataHandlingGrayMat            3      </span>
+<a name="l00197"></a><a class="code" href="group___filter_case_info_handling_modes.html#gadfb94521f7c31f473efcaaea5c02491">00197</a> <span class="preprocessor">#define filterDataHandlingWhiteMat           4      </span>
+<a name="l00201"></a>00201 <span class="preprocessor"></span><span class="comment">/* The following modes are only useful for input. */</span>
+<a name="l00202"></a>00202 
+<a name="l00203"></a><a class="code" href="group___filter_case_info_handling_modes.html#g8684630d8f366ab1e3739d7eb5435ddb">00203</a> <span class="preprocessor">#define filterDataHandlingDefringe           5      </span>
+<a name="l00206"></a><a class="code" href="group___filter_case_info_handling_modes.html#g9b1edd017399b66a5a47b565233af5d5">00206</a> <span class="preprocessor">#define filterDataHandlingBlackZap           6      </span>
+<a name="l00208"></a><a class="code" href="group___filter_case_info_handling_modes.html#g7d1588daeebaee1cdcacca2e843be437">00208</a> <span class="preprocessor">#define filterDataHandlingGrayZap            7      </span>
+<a name="l00210"></a><a class="code" href="group___filter_case_info_handling_modes.html#g9e3a8a9bbb025a754c4f06c50e3bc9a3">00210</a> <span class="preprocessor">#define filterDataHandlingWhiteZap           8      </span>
+<a name="l00213"></a>00213 <span class="preprocessor"></span><span class="comment">/* The following mode is only useful for output. */</span>
+<a name="l00214"></a>00214                                                     
+<a name="l00215"></a><a class="code" href="group___filter_case_info_handling_modes.html#gf79b38dba5071c9139abd8c3cb02c22b">00215</a> <span class="preprocessor">#define filterDataHandlingFillMask           9     </span>
+<a name="l00222"></a>00222 <span class="preprocessor"></span><span class="comment">/* More modes for input... */</span>
+<a name="l00223"></a>00223 
+<a name="l00224"></a><a class="code" href="group___filter_case_info_handling_modes.html#gfe4c0110faa50c661daccca77acedac6">00224</a> <span class="preprocessor">#define filterDataHandlingBackgroundZap     10      </span>
+<a name="l00226"></a><a class="code" href="group___filter_case_info_handling_modes.html#g555ee8b5dd7c1b263011f7033a26c107">00226</a> <span class="preprocessor">#define filterDataHandlingForegroundZap     11      </span>
+<a name="l00229"></a>00229 <span class="preprocessor"></span><span class="comment">/* @} */</span>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <span class="comment">/********************************************************************************/</span>
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233 <span class="comment">/* For FilterCaseInfo (defined below) used with PIFilterCaseInfoProperty */</span>
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235 <span class="comment">/* Here are the bits in flag1. */</span>
+<a name="l00236"></a>00236 
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 
+<a name="l00253"></a><a class="code" href="group___filter_case_info_flag1_bits.html#g8e67c6c018ef40c66cb7cb3f25e28810">00253</a> <span class="preprocessor">#define PIFilterDontCopyToDestinationBit    0</span>
+<a name="l00254"></a>00254 <span class="preprocessor"></span>    
+<a name="l00264"></a><a class="code" href="group___filter_case_info_flag1_bits.html#ga2c13869826709c72392e4e641ea37d9">00264</a> <span class="preprocessor">#define PIFilterWorksWithBlankDataBit   1</span>
+<a name="l00265"></a>00265 <span class="preprocessor"></span>    
+<a name="l00279"></a><a class="code" href="group___filter_case_info_flag1_bits.html#gba11bf71bee03b5babf8acaac0b1c687">00279</a> <span class="preprocessor">#define PIFilterFiltersLayerMaskBit     2</span>
+<a name="l00280"></a>00280 <span class="preprocessor"></span>    
+<a name="l00288"></a><a class="code" href="group___filter_case_info_flag1_bits.html#gb33662f35b69d896aae4593edc92f7f0">00288</a> <span class="preprocessor">#define PIFilterWritesOutsideSelectionBit 3</span>
+<a name="l00289"></a>00289 <span class="preprocessor"></span><span class="comment">/* @} */</span>
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292 <span class="comment">/********************************************************************************/</span>
+<a name="l00293"></a>00293 
+<a name="l00295"></a>00295 
+<a name="l00313"></a><a class="code" href="group___pi_p_l_filter_keys.html#gffdba3aa760d1f56ecd6fc44ff7d445e">00313</a> <span class="preprocessor">#define PIFilterCaseInfoProperty 0x66696369L</span>
+<a name="l00314"></a>00314 <span class="preprocessor"></span>    
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 <span class="comment">/********************************************************************************/</span>
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 <span class="comment">/* Error return values. The plug-in module may also return standard Macintosh</span>
+<a name="l00319"></a>00319 <span class="comment">   operating system error codes, or report its own errors, in which case it</span>
+<a name="l00320"></a>00320 <span class="comment">   can return any positive integer. */</span>
+<a name="l00322"></a>00322 
+<a name="l00323"></a>00323 
+<a name="l00326"></a><a class="code" href="group___filter_module.html#gdc1e0411201a079b6e382aa3a65c76f8">00326</a> <span class="preprocessor">#define filterBadParameters -30100  </span>
+<a name="l00327"></a><a class="code" href="group___filter_module.html#g55cafc1fb5c48428e26a25aa1ff9fe74">00327</a> <span class="preprocessor">#define filterBadMode       -30101  </span>
+<a name="l00328"></a>00328 <span class="preprocessor"></span><span class="comment">/* @} */</span>
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331 <span class="preprocessor">#ifndef RC_INVOKED</span>
+<a name="l00332"></a>00332 <span class="preprocessor"></span>
+<a name="l00333"></a>00333 <span class="comment">/********************************************************************************/</span>
+<a name="l00334"></a>00334 <span class="comment">/* Pragma to byte align structures; only for Borland C                          */</span>
+<a name="l00335"></a>00335 <span class="preprocessor">#if defined(__BORLANDC__)</span>
+<a name="l00336"></a>00336 <span class="preprocessor"></span><span class="preprocessor">#pragma option -a-</span>
+<a name="l00337"></a>00337 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00338"></a>00338 <span class="preprocessor"></span><span class="comment">/********************************************************************************/</span>
+<a name="l00339"></a>00339 <span class="comment">/* Packing for Microsoft compiler */</span>
+<a name="l00340"></a>00340 <span class="preprocessor">#if WIN32</span>
+<a name="l00341"></a>00341 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(push,1)</span>
+<a name="l00342"></a>00342 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00343"></a>00343 <span class="preprocessor"></span>
+<a name="l00344"></a>00344 <span class="comment">/********************************************************************************/</span>
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00347"></a>00347 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l00348"></a>00348 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00349"></a>00349 <span class="preprocessor"></span>
+<a name="l00350"></a>00350 <span class="comment">/********************************************************************************/</span>
+<a name="l00351"></a>00351 
+<a name="l00353"></a><a class="code" href="struct_filter_case_info.html">00353</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_filter_case_info.html">FilterCaseInfo</a>
+<a name="l00354"></a>00354     {
+<a name="l00355"></a><a class="code" href="struct_filter_case_info.html#e682189dfb01f22aa4386b60fa7220a5">00355</a>     <span class="keywordtype">char</span> <a class="code" href="struct_filter_case_info.html#e682189dfb01f22aa4386b60fa7220a5">inputHandling</a>;     
+<a name="l00356"></a><a class="code" href="struct_filter_case_info.html#2dbeb73b33e1f205eec9c9132e3b6996">00356</a>     <span class="keywordtype">char</span> <a class="code" href="struct_filter_case_info.html#2dbeb73b33e1f205eec9c9132e3b6996">outputHandling</a>;    
+<a name="l00357"></a><a class="code" href="struct_filter_case_info.html#345ac8b0b38f743010889bf5254ac69b">00357</a>     <span class="keywordtype">char</span> <a class="code" href="struct_filter_case_info.html#345ac8b0b38f743010889bf5254ac69b">flags1</a>;            
+<a name="l00359"></a><a class="code" href="struct_filter_case_info.html#7fc65427bba5e993b81d23adafd34a14">00359</a>     <span class="keywordtype">char</span> <a class="code" href="struct_filter_case_info.html#7fc65427bba5e993b81d23adafd34a14">flags2</a>;            
+<a name="l00360"></a>00360     }
+<a name="l00361"></a>00361 <a class="code" href="struct_filter_case_info.html">FilterCaseInfo</a>;
+<a name="l00362"></a>00362 
+<a name="l00363"></a>00363 <span class="preprocessor">#if WIN32</span>
+<a name="l00364"></a>00364 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(pop)</span>
+<a name="l00365"></a>00365 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00366"></a>00366 <span class="preprocessor"></span>
+<a name="l00367"></a>00367 <span class="comment">/*********************************************************************************/</span>
+<a name="l00368"></a>00368 <span class="comment">/* turn off the byte align pragma back to its original state; only for Borland C */</span>
+<a name="l00369"></a>00369 <span class="preprocessor">#if defined(__BORLANDC__)</span>
+<a name="l00370"></a>00370 <span class="preprocessor"></span><span class="preprocessor">#pragma option -a.</span>
+<a name="l00371"></a>00371 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00372"></a>00372 <span class="preprocessor"></span><span class="comment">/*********************************************************************************/</span>
+<a name="l00373"></a>00373 
+<a name="l00375"></a><a class="code" href="_p_i_filter_8h.html#ee92ab82a4631cde1151f19d70c96746">00375</a> <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="_p_i_filter_8h.html#ee92ab82a4631cde1151f19d70c96746">FilterColor</a> [4];
+<a name="l00376"></a>00376 
+<a name="l00377"></a>00377 <span class="preprocessor">#if WIN32</span>
+<a name="l00378"></a>00378 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(push,4)</span>
+<a name="l00379"></a>00379 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00380"></a>00380 <span class="preprocessor"></span>
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382 <span class="comment">/********************************************************************************/</span>
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384 
+<a name="l00391"></a><a class="code" href="struct_big_document_struct.html">00391</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_big_document_struct.html">BigDocumentStruct</a> 
+<a name="l00392"></a>00392     {
+<a name="l00393"></a>00393     
+<a name="l00394"></a><a class="code" href="struct_big_document_struct.html#dabb0a0d47532087bc3883d67f08e974">00394</a>     int32       <a class="code" href="struct_big_document_struct.html#dabb0a0d47532087bc3883d67f08e974">PluginUsing32BitCoordinates</a>;    
+<a name="l00397"></a><a class="code" href="struct_big_document_struct.html#f36c8e10c3e7a243305aa8cfa823c9eb">00397</a>     <a class="code" href="struct_v_point.html">VPoint</a>      <a class="code" href="struct_big_document_struct.html#f36c8e10c3e7a243305aa8cfa823c9eb">imageSize32</a>;                    
+<a name="l00400"></a><a class="code" href="struct_big_document_struct.html#f82e386c5785d167dbf2780576e3a18b">00400</a>     <a class="code" href="struct_v_rect.html">VRect</a>       <a class="code" href="struct_big_document_struct.html#f82e386c5785d167dbf2780576e3a18b">filterRect32</a>;                   
+<a name="l00403"></a><a class="code" href="struct_big_document_struct.html#6fadb6a3693c460838af659f9833699f">00403</a>     <a class="code" href="struct_v_rect.html">VRect</a>       <a class="code" href="struct_big_document_struct.html#6fadb6a3693c460838af659f9833699f">inRect32</a>;                       
+<a name="l00406"></a><a class="code" href="struct_big_document_struct.html#64e497bbe7835e0baf6b3ec58d800b9b">00406</a>     <a class="code" href="struct_v_rect.html">VRect</a>       <a class="code" href="struct_big_document_struct.html#64e497bbe7835e0baf6b3ec58d800b9b">outRect32</a>;                      
+<a name="l00409"></a><a class="code" href="struct_big_document_struct.html#7ac2661856ce5d0ada380f79cf68baf7">00409</a>     <a class="code" href="struct_v_rect.html">VRect</a>       <a class="code" href="struct_big_document_struct.html#7ac2661856ce5d0ada380f79cf68baf7">maskRect32</a>;                     
+<a name="l00412"></a><a class="code" href="struct_big_document_struct.html#51128f853b88287af252845cc6cd8b89">00412</a>     <a class="code" href="struct_v_point.html">VPoint</a>      <a class="code" href="struct_big_document_struct.html#51128f853b88287af252845cc6cd8b89">floatCoord32</a>;                   
+<a name="l00415"></a><a class="code" href="struct_big_document_struct.html#6e6e31b290586ec8c507fd71e07cf577">00415</a>     <a class="code" href="struct_v_point.html">VPoint</a>      <a class="code" href="struct_big_document_struct.html#6e6e31b290586ec8c507fd71e07cf577">wholeSize32</a>;                    
+<a name="l00418"></a>00418     } <a class="code" href="struct_big_document_struct.html">BigDocumentStruct</a>;
+<a name="l00419"></a>00419 
+<a name="l00420"></a>00420 <span class="comment">/********************************************************************************/</span>
+<a name="l00421"></a>00421 
+<a name="l00428"></a><a class="code" href="struct_filter_record.html">00428</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_filter_record.html">FilterRecord</a> 
+<a name="l00429"></a>00429     {
+<a name="l00430"></a>00430 
+<a name="l00431"></a><a class="code" href="struct_filter_record.html#a192713629ff36080628d4684a711cbe">00431</a>     int32       <a class="code" href="struct_filter_record.html#a192713629ff36080628d4684a711cbe">serialNumber</a>;       
+<a name="l00437"></a><a class="code" href="struct_filter_record.html#e3a99f63c4d93c1ecf673461dfe7a821">00437</a>     <a class="code" href="group___direct_callbacks.html#gdbe639c3cac9253725c492c97797202f">TestAbortProc</a>   <a class="code" href="struct_filter_record.html#e3a99f63c4d93c1ecf673461dfe7a821">abortProc</a>;      
+<a name="l00439"></a><a class="code" href="struct_filter_record.html#87f0294ffadbfda3886a22a25e1005a6">00439</a>     <a class="code" href="group___direct_callbacks.html#gfbb21f458fb686a290fd40d91f1e5f34">ProgressProc</a>    <a class="code" href="struct_filter_record.html#87f0294ffadbfda3886a22a25e1005a6">progressProc</a>;   
+<a name="l00441"></a><a class="code" href="struct_filter_record.html#ae0b505f12ec18bbbee3c8f0a862d9eb">00441</a>     Handle      <a class="code" href="struct_filter_record.html#ae0b505f12ec18bbbee3c8f0a862d9eb">parameters</a>;         
+<a name="l00448"></a><a class="code" href="struct_filter_record.html#6aafb470809ecd04f466a9182ea727cb">00448</a>     Point       <a class="code" href="struct_filter_record.html#6aafb470809ecd04f466a9182ea727cb">imageSize</a>;          
+<a name="l00451"></a><a class="code" href="struct_filter_record.html#186bbe43ffb89ed14e877a3cde92f3a7">00451</a>     int16       <a class="code" href="struct_filter_record.html#186bbe43ffb89ed14e877a3cde92f3a7">planes</a>;             
+<a name="l00459"></a><a class="code" href="struct_filter_record.html#cf767b3ad252939e43537d1cfd64c32f">00459</a>     Rect        <a class="code" href="struct_filter_record.html#cf767b3ad252939e43537d1cfd64c32f">filterRect</a>;         
+<a name="l00467"></a><a class="code" href="struct_filter_record.html#b89c81e112387f84557bb151ab04e611">00467</a>     RGBColor    <a class="code" href="struct_filter_record.html#b89c81e112387f84557bb151ab04e611">background</a>;         
+<a name="l00468"></a><a class="code" href="struct_filter_record.html#e84139dc5a0a74af00e9abf7af79fb23">00468</a>     RGBColor    <a class="code" href="struct_filter_record.html#e84139dc5a0a74af00e9abf7af79fb23">foreground</a>;         
+<a name="l00469"></a><a class="code" href="struct_filter_record.html#f050fae8b9981d601488010bedd22ca4">00469</a>     int32       <a class="code" href="struct_filter_record.html#f050fae8b9981d601488010bedd22ca4">maxSpace</a>;           
+<a name="l00473"></a><a class="code" href="struct_filter_record.html#8c7ae3d978bd37380a9806c99941d15f">00473</a>     int32       <a class="code" href="struct_filter_record.html#8c7ae3d978bd37380a9806c99941d15f">bufferSpace</a>;        
+<a name="l00481"></a><a class="code" href="struct_filter_record.html#600c1c79f276f22728c9da7a4ca9823b">00481</a>     Rect        <a class="code" href="struct_filter_record.html#600c1c79f276f22728c9da7a4ca9823b">inRect</a>;             
+<a name="l00489"></a><a class="code" href="struct_filter_record.html#24409f7911297912bddd3bb586a5bfa3">00489</a>     int16       <a class="code" href="struct_filter_record.html#24409f7911297912bddd3bb586a5bfa3">inLoPlane</a>;          
+<a name="l00491"></a><a class="code" href="struct_filter_record.html#c6a551cdd21b0f9ff63f3d56e1b21a78">00491</a>     int16       <a class="code" href="struct_filter_record.html#c6a551cdd21b0f9ff63f3d56e1b21a78">inHiPlane</a>;          
+<a name="l00493"></a><a class="code" href="struct_filter_record.html#08f843e8ae0dd40e4f504b79d5d67c9f">00493</a>     Rect        <a class="code" href="struct_filter_record.html#08f843e8ae0dd40e4f504b79d5d67c9f">outRect</a>;            
+<a name="l00500"></a><a class="code" href="struct_filter_record.html#3d69991d2ef9773c3c220b959de01c8d">00500</a>     int16       <a class="code" href="struct_filter_record.html#3d69991d2ef9773c3c220b959de01c8d">outLoPlane</a>;         
+<a name="l00502"></a><a class="code" href="struct_filter_record.html#7220202201df86a08788ffa50e0fe38e">00502</a>     int16       <a class="code" href="struct_filter_record.html#7220202201df86a08788ffa50e0fe38e">outHiPlane</a>;         
+<a name="l00505"></a><a class="code" href="struct_filter_record.html#0fb62185074a7f22099ef3da54552c2e">00505</a>     <span class="keywordtype">void</span> *      <a class="code" href="struct_filter_record.html#0fb62185074a7f22099ef3da54552c2e">inData</a>;             
+<a name="l00508"></a><a class="code" href="struct_filter_record.html#c0d2fd5144560a14bc81d38ec33817ff">00508</a>     int32       <a class="code" href="struct_filter_record.html#c0d2fd5144560a14bc81d38ec33817ff">inRowBytes</a>;         
+<a name="l00510"></a><a class="code" href="struct_filter_record.html#3b525d3d2eb35ed8130e62c606b591e0">00510</a>     <span class="keywordtype">void</span> *      <a class="code" href="struct_filter_record.html#3b525d3d2eb35ed8130e62c606b591e0">outData</a>;            
+<a name="l00513"></a><a class="code" href="struct_filter_record.html#a87581aa51e5787fb90d457242999f28">00513</a>     int32       <a class="code" href="struct_filter_record.html#a87581aa51e5787fb90d457242999f28">outRowBytes</a>;        
+<a name="l00516"></a><a class="code" href="struct_filter_record.html#13f7d1033fda09db89c68b772da06ad0">00516</a>     Boolean     <a class="code" href="struct_filter_record.html#13f7d1033fda09db89c68b772da06ad0">isFloating</a>;         
+<a name="l00518"></a><a class="code" href="struct_filter_record.html#452b048357f18f9495ab4cfa7311b1a2">00518</a>     Boolean     <a class="code" href="struct_filter_record.html#452b048357f18f9495ab4cfa7311b1a2">haveMask</a>;           
+<a name="l00520"></a><a class="code" href="struct_filter_record.html#b0f3ae24dfa655ff22867bd30fb546ce">00520</a>     Boolean     <a class="code" href="struct_filter_record.html#b0f3ae24dfa655ff22867bd30fb546ce">autoMask</a>;           
+<a name="l00529"></a><a class="code" href="struct_filter_record.html#a7c6617b73a68965f8033770a807c7a3">00529</a>     Rect        <a class="code" href="struct_filter_record.html#a7c6617b73a68965f8033770a807c7a3">maskRect</a>;           
+<a name="l00537"></a><a class="code" href="struct_filter_record.html#b4d3d5b981d83c65c3d0a31dec84eaab">00537</a>     <span class="keywordtype">void</span> *      <a class="code" href="struct_filter_record.html#b4d3d5b981d83c65c3d0a31dec84eaab">maskData</a>;           
+<a name="l00543"></a><a class="code" href="struct_filter_record.html#a91407b83199bd50635cf9e7ded4aace">00543</a>     int32       <a class="code" href="struct_filter_record.html#a91407b83199bd50635cf9e7ded4aace">maskRowBytes</a>;       
+<a name="l00545"></a><a class="code" href="struct_filter_record.html#bcb21fe1e98eb6fb25499758709f7427">00545</a>     <a class="code" href="_p_i_filter_8h.html#ee92ab82a4631cde1151f19d70c96746">FilterColor</a> <a class="code" href="struct_filter_record.html#bcb21fe1e98eb6fb25499758709f7427">backColor</a>;          
+<a name="l00547"></a><a class="code" href="struct_filter_record.html#376d2f359ec9be580efaff6a1753c859">00547</a>     <a class="code" href="_p_i_filter_8h.html#ee92ab82a4631cde1151f19d70c96746">FilterColor</a> <a class="code" href="struct_filter_record.html#376d2f359ec9be580efaff6a1753c859">foreColor</a>;          
+<a name="l00549"></a><a class="code" href="struct_filter_record.html#77ca848315ab52efd1e0b2deb1f277de">00549</a>     OSType      <a class="code" href="struct_filter_record.html#77ca848315ab52efd1e0b2deb1f277de">hostSig</a>;            
+<a name="l00551"></a><a class="code" href="struct_filter_record.html#462fdb8432ca6735bcc90a2539ebd11f">00551</a>     <a class="code" href="group___direct_callbacks.html#g60f1a2427ba981ad2855e18112ba1c28">HostProc</a>    <a class="code" href="struct_filter_record.html#462fdb8432ca6735bcc90a2539ebd11f">hostProc</a>;           
+<a name="l00553"></a><a class="code" href="struct_filter_record.html#9af73052e5364a049deebb51da5b120c">00553</a>     int16       <a class="code" href="struct_filter_record.html#9af73052e5364a049deebb51da5b120c">imageMode</a>;          
+<a name="l00557"></a><a class="code" href="struct_filter_record.html#e555b43fb8d4858cf1b509bc346dae9f">00557</a>     Fixed       <a class="code" href="struct_filter_record.html#e555b43fb8d4858cf1b509bc346dae9f">imageHRes</a>;          
+<a name="l00559"></a><a class="code" href="struct_filter_record.html#8a75abad253ee1da28ef27f4b440670b">00559</a>     Fixed       <a class="code" href="struct_filter_record.html#8a75abad253ee1da28ef27f4b440670b">imageVRes</a>;          
+<a name="l00561"></a><a class="code" href="struct_filter_record.html#12bc69af078b052b6832557480835403">00561</a>     Point       <a class="code" href="struct_filter_record.html#12bc69af078b052b6832557480835403">floatCoord</a>;         
+<a name="l00564"></a><a class="code" href="struct_filter_record.html#8f088382a446d8122eefb0e4be574241">00564</a>     Point       <a class="code" href="struct_filter_record.html#8f088382a446d8122eefb0e4be574241">wholeSize</a>;          
+<a name="l00567"></a><a class="code" href="struct_filter_record.html#29f911bf2af45717a8c50aef47930ba9">00567</a>     <a class="code" href="struct_plug_in_monitor.html">PlugInMonitor</a>   <a class="code" href="struct_filter_record.html#29f911bf2af45717a8c50aef47930ba9">monitor</a>;        
+<a name="l00569"></a><a class="code" href="struct_filter_record.html#c4aeb0e059a0343b58248488c83c6776">00569</a>     <span class="keywordtype">void</span>        *<a class="code" href="struct_filter_record.html#c4aeb0e059a0343b58248488c83c6776">platformData</a>;      
+<a name="l00571"></a><a class="code" href="struct_filter_record.html#d33abdd51093ca59420d94000687972e">00571</a>     <a class="code" href="struct_buffer_procs.html">BufferProcs</a> *<a class="code" href="struct_filter_record.html#d33abdd51093ca59420d94000687972e">bufferProcs</a>;       
+<a name="l00574"></a><a class="code" href="struct_filter_record.html#6dd28999090336aa582a5216197bccd0">00574</a>     <a class="code" href="struct_resource_procs.html">ResourceProcs</a> *<a class="code" href="struct_filter_record.html#6dd28999090336aa582a5216197bccd0">resourceProcs</a>;   
+<a name="l00577"></a><a class="code" href="struct_filter_record.html#a1b67f5eb76a39b1095af65a7c50ec7b">00577</a>     <a class="code" href="group___direct_callbacks.html#g29cb409ce50fa0c4b66e7eb86f82d076">ProcessEventProc</a> <a class="code" href="struct_filter_record.html#a1b67f5eb76a39b1095af65a7c50ec7b">processEvent</a>;  
+<a name="l00579"></a><a class="code" href="struct_filter_record.html#aa55da98f13437b3e81aa1976eaec375">00579</a>     <a class="code" href="group___direct_callbacks.html#gc01f77cb0a32ab05bf57449eb31cdf19">DisplayPixelsProc</a> <a class="code" href="struct_filter_record.html#aa55da98f13437b3e81aa1976eaec375">displayPixels</a>;
+<a name="l00581"></a><a class="code" href="struct_filter_record.html#68c9333a74a17d18290da64c520b1ef8">00581</a>     <a class="code" href="struct_handle_procs.html">HandleProcs</a> *<a class="code" href="struct_filter_record.html#68c9333a74a17d18290da64c520b1ef8">handleProcs</a>;       
+<a name="l00585"></a>00585 
+<a name="l00586"></a>00586 
+<a name="l00587"></a><a class="code" href="struct_filter_record.html#02e73db58fe65f6a575f9d8a24c17654">00587</a>     Boolean     <a class="code" href="struct_filter_record.html#02e73db58fe65f6a575f9d8a24c17654">supportsDummyChannels</a>;  
+<a name="l00592"></a><a class="code" href="struct_filter_record.html#98df64a7e78ac2f344fcaf2a689fde98">00592</a>     Boolean     <a class="code" href="struct_filter_record.html#98df64a7e78ac2f344fcaf2a689fde98">supportsAlternateLayouts</a>;   
+<a name="l00596"></a><a class="code" href="struct_filter_record.html#1ff9d2be57325abd94a68cfddce7125b">00596</a>     int16       <a class="code" href="struct_filter_record.html#1ff9d2be57325abd94a68cfddce7125b">wantLayout</a>;         
+<a name="l00600"></a><a class="code" href="struct_filter_record.html#a850f8701bc73009d4305cd2a5e0af34">00600</a>     int16       <a class="code" href="struct_filter_record.html#a850f8701bc73009d4305cd2a5e0af34">filterCase</a>;         
+<a name="l00605"></a><a class="code" href="struct_filter_record.html#3069130256035171b7fa1f817072f7c1">00605</a>     int16       <a class="code" href="struct_filter_record.html#3069130256035171b7fa1f817072f7c1">dummyPlaneValue</a>;    
+<a name="l00609"></a><a class="code" href="struct_filter_record.html#c9e0ae461d2e1676370aac656eff26ae">00609</a>     <span class="keywordtype">void</span> *      <a class="code" href="struct_filter_record.html#c9e0ae461d2e1676370aac656eff26ae">premiereHook</a>;       
+<a name="l00611"></a><a class="code" href="struct_filter_record.html#30fa262ea938dcdf4cb6c84e65ce07dc">00611</a>     <a class="code" href="group___direct_callbacks.html#gb8d137fdb4f514b132dd1bef202cba6f">AdvanceStateProc</a> <a class="code" href="struct_filter_record.html#30fa262ea938dcdf4cb6c84e65ce07dc">advanceState</a>;  
+<a name="l00613"></a><a class="code" href="struct_filter_record.html#a3c47540b36b74a378152e9db22305e6">00613</a>     Boolean     <a class="code" href="struct_filter_record.html#a3c47540b36b74a378152e9db22305e6">supportsAbsolute</a>;   
+<a name="l00619"></a><a class="code" href="struct_filter_record.html#85c39b110d5b3187168b65f446518749">00619</a>     Boolean     <a class="code" href="struct_filter_record.html#85c39b110d5b3187168b65f446518749">wantsAbsolute</a>;      
+<a name="l00622"></a><a class="code" href="struct_filter_record.html#b0de0449396df19e99906d9ac5c79857">00622</a>     <a class="code" href="group___property_suite.html#gdb86a78a3a2909322292a111dd39e0b7">GetPropertyProc</a> <a class="code" href="struct_filter_record.html#b0de0449396df19e99906d9ac5c79857">getPropertyObsolete</a>;    
+<a name="l00626"></a><a class="code" href="struct_filter_record.html#f76932552bdb5d6b512047a9ea14adf7">00626</a>     Boolean     <a class="code" href="struct_filter_record.html#f76932552bdb5d6b512047a9ea14adf7">cannotUndo</a>;         
+<a name="l00631"></a><a class="code" href="struct_filter_record.html#0b5ac6ef08e21cb4babb72704badd3de">00631</a>     Boolean     <a class="code" href="struct_filter_record.html#0b5ac6ef08e21cb4babb72704badd3de">supportsPadding</a>;    
+<a name="l00634"></a><a class="code" href="struct_filter_record.html#8c9b94395145c53632457ab6a44aee61">00634</a>     int16       <a class="code" href="struct_filter_record.html#8c9b94395145c53632457ab6a44aee61">inputPadding</a>;       
+<a name="l00643"></a><a class="code" href="struct_filter_record.html#33f423ecd047968b33785e87365a8b19">00643</a>     int16       <a class="code" href="struct_filter_record.html#33f423ecd047968b33785e87365a8b19">outputPadding</a>;      
+<a name="l00652"></a><a class="code" href="struct_filter_record.html#711df84b648b093f8d8704de640b4495">00652</a>     int16       <a class="code" href="struct_filter_record.html#711df84b648b093f8d8704de640b4495">maskPadding</a>;        
+<a name="l00661"></a><a class="code" href="struct_filter_record.html#63ef803a90e15e0bedd7cf94031bd09d">00661</a>     <span class="keywordtype">char</span>        <a class="code" href="struct_filter_record.html#63ef803a90e15e0bedd7cf94031bd09d">samplingSupport</a>;    
+<a name="l00667"></a><a class="code" href="struct_filter_record.html#6718ff0b8b8b310ab9e320cfa4463573">00667</a>     <span class="keywordtype">char</span>        <a class="code" href="struct_filter_record.html#6718ff0b8b8b310ab9e320cfa4463573">reservedByte</a>;       
+<a name="l00669"></a><a class="code" href="struct_filter_record.html#51ef4338104aa53608be3a8e2b36ef21">00669</a>     Fixed       <a class="code" href="struct_filter_record.html#51ef4338104aa53608be3a8e2b36ef21">inputRate</a>;          
+<a name="l00679"></a><a class="code" href="struct_filter_record.html#3ceba8ab308a887ead8821622b2a3456">00679</a>     Fixed       <a class="code" href="struct_filter_record.html#3ceba8ab308a887ead8821622b2a3456">maskRate</a>;           
+<a name="l00681"></a><a class="code" href="struct_filter_record.html#8d311effb281524530448f0f94252943">00681</a>     <a class="code" href="group___direct_callbacks.html#ga71f03768487010f118f02f66c89d701">ColorServicesProc</a> <a class="code" href="struct_filter_record.html#8d311effb281524530448f0f94252943">colorServices</a>; 
+<a name="l00683"></a>00683     <span class="comment">/* Photoshop structures its data as follows for plug-ins when processing</span>
+<a name="l00684"></a>00684 <span class="comment">       layer data:</span>
+<a name="l00685"></a>00685 <span class="comment">            target layer channels</span>
+<a name="l00686"></a>00686 <span class="comment">            transparency mask for target layer</span>
+<a name="l00687"></a>00687 <span class="comment">            layer mask channels for target layer</span>
+<a name="l00688"></a>00688 <span class="comment">            inverted layer mask channels for target layer</span>
+<a name="l00689"></a>00689 <span class="comment">            non-layer channels</span>
+<a name="l00690"></a>00690 <span class="comment">        When processing non-layer data (including running a filter on the</span>
+<a name="l00691"></a>00691 <span class="comment">        layer mask alone), Photoshop structures the data as consisting only</span>
+<a name="l00692"></a>00692 <span class="comment">        of non-layer channels.  It indicates this structure through a series</span>
+<a name="l00693"></a>00693 <span class="comment">        of short counts.  The transparency count must be either 0 or 1. */</span>
+<a name="l00694"></a>00694         
+<a name="l00695"></a><a class="code" href="struct_filter_record.html#d2c7ccfc89425b8cce1fcf30599823ae">00695</a>     int16       <a class="code" href="struct_filter_record.html#d2c7ccfc89425b8cce1fcf30599823ae">inLayerPlanes</a>;        
+<a name="l00718"></a><a class="code" href="struct_filter_record.html#2fa4cb5d1bbe1d4116c0ff25d5a6319b">00718</a>     int16       <a class="code" href="struct_filter_record.html#2fa4cb5d1bbe1d4116c0ff25d5a6319b">inTransparencyMask</a>;   
+<a name="l00721"></a><a class="code" href="struct_filter_record.html#b6374e6314910ae8b1add8368e898d38">00721</a>     int16       <a class="code" href="struct_filter_record.html#b6374e6314910ae8b1add8368e898d38">inLayerMasks</a>;         
+<a name="l00724"></a><a class="code" href="struct_filter_record.html#843be819c6de6a9475fbe0c92aaef6f6">00724</a>     int16       <a class="code" href="struct_filter_record.html#843be819c6de6a9475fbe0c92aaef6f6">inInvertedLayerMasks</a>; 
+<a name="l00729"></a><a class="code" href="struct_filter_record.html#05102fa64cf09d0a5e6939808f225f90">00729</a>     int16       <a class="code" href="struct_filter_record.html#05102fa64cf09d0a5e6939808f225f90">inNonLayerPlanes</a>;     
+<a name="l00732"></a><a class="code" href="struct_filter_record.html#f108f6832690fc8344eb35d955040519">00732</a>     int16       <a class="code" href="struct_filter_record.html#f108f6832690fc8344eb35d955040519">outLayerPlanes</a>;       
+<a name="l00735"></a><a class="code" href="struct_filter_record.html#da4ba8e655642b6106663e84a8056b45">00735</a>     int16       <a class="code" href="struct_filter_record.html#da4ba8e655642b6106663e84a8056b45">outTransparencyMask</a>;  
+<a name="l00738"></a><a class="code" href="struct_filter_record.html#72e00e63666ac1da7d5fc921f94318b6">00738</a>     int16       <a class="code" href="struct_filter_record.html#72e00e63666ac1da7d5fc921f94318b6">outLayerMasks</a>;        
+<a name="l00741"></a><a class="code" href="struct_filter_record.html#20759f51d81f9251cc534e80e6b58b45">00741</a>     int16       <a class="code" href="struct_filter_record.html#20759f51d81f9251cc534e80e6b58b45">outInvertedLayerMasks</a>; 
+<a name="l00744"></a><a class="code" href="struct_filter_record.html#605b28c92860cfaaff2a9dfe4098c770">00744</a>     int16       <a class="code" href="struct_filter_record.html#605b28c92860cfaaff2a9dfe4098c770">outNonLayerPlanes</a>;     
+<a name="l00748"></a><a class="code" href="struct_filter_record.html#8c985fb8cef6c1801aa13a7ddd635a5a">00748</a>     int16       <a class="code" href="struct_filter_record.html#8c985fb8cef6c1801aa13a7ddd635a5a">absLayerPlanes</a>;       
+<a name="l00753"></a><a class="code" href="struct_filter_record.html#6c05fb39110f6c88d7a8c99ecacf813f">00753</a>     int16       <a class="code" href="struct_filter_record.html#6c05fb39110f6c88d7a8c99ecacf813f">absTransparencyMask</a>;  
+<a name="l00758"></a><a class="code" href="struct_filter_record.html#3f074f394d978c459a521fc068c9fbe5">00758</a>     int16       <a class="code" href="struct_filter_record.html#3f074f394d978c459a521fc068c9fbe5">absLayerMasks</a>;       
+<a name="l00763"></a><a class="code" href="struct_filter_record.html#7703ba1295d3a713154cf8d8eb33506c">00763</a>     int16       <a class="code" href="struct_filter_record.html#7703ba1295d3a713154cf8d8eb33506c">absInvertedLayerMasks</a>; 
+<a name="l00768"></a><a class="code" href="struct_filter_record.html#9f9d09e85a693992dbd66c8a8a4b71f7">00768</a>     int16       <a class="code" href="struct_filter_record.html#9f9d09e85a693992dbd66c8a8a4b71f7">absNonLayerPlanes</a>;   
+<a name="l00774"></a>00774     <span class="comment">/* We allow for extra planes in the input and the output.  These planes</span>
+<a name="l00775"></a>00775 <span class="comment">       will be filled with dummyPlaneValue at those times when we build the</span>
+<a name="l00776"></a>00776 <span class="comment">       buffers.  These features will only be available if supportsDummyPlanes</span>
+<a name="l00777"></a>00777 <span class="comment">       is TRUE. */</span>
+<a name="l00778"></a>00778     
+<a name="l00779"></a><a class="code" href="struct_filter_record.html#af0898033ac539a94d313082ff960a5d">00779</a>     int16       <a class="code" href="struct_filter_record.html#af0898033ac539a94d313082ff960a5d">inPreDummyPlanes</a>;   
+<a name="l00783"></a><a class="code" href="struct_filter_record.html#2e63f8f80786abbbb7c7c8b64992f35b">00783</a>     int16       <a class="code" href="struct_filter_record.html#2e63f8f80786abbbb7c7c8b64992f35b">inPostDummyPlanes</a>;  
+<a name="l00788"></a><a class="code" href="struct_filter_record.html#70b1ac01f9bf8bfc5d91ea483ea32b0f">00788</a>     int16       <a class="code" href="struct_filter_record.html#70b1ac01f9bf8bfc5d91ea483ea32b0f">outPreDummyPlanes</a>;  
+<a name="l00791"></a><a class="code" href="struct_filter_record.html#5fdf8a0e2de5bca295402a47528be462">00791</a>     int16       <a class="code" href="struct_filter_record.html#5fdf8a0e2de5bca295402a47528be462">outPostDummyPlanes</a>; 
+<a name="l00795"></a>00795     <span class="comment">/* If the plug-in makes use of the layout options, then the following</span>
+<a name="l00796"></a>00796 <span class="comment">       fields should be obeyed for identifying the steps between components.</span>
+<a name="l00797"></a>00797 <span class="comment">       The last component in the list will always have a step of one. */</span>
+<a name="l00798"></a>00798     
+<a name="l00799"></a><a class="code" href="struct_filter_record.html#a1ea3f9ddf576b59cfb05f3240516c34">00799</a>     int32       <a class="code" href="struct_filter_record.html#a1ea3f9ddf576b59cfb05f3240516c34">inColumnBytes</a>;      
+<a name="l00803"></a><a class="code" href="struct_filter_record.html#6688e62fcd22af463a313930c03c6760">00803</a>     int32       <a class="code" href="struct_filter_record.html#6688e62fcd22af463a313930c03c6760">inPlaneBytes</a>;       
+<a name="l00807"></a><a class="code" href="struct_filter_record.html#e9214f147916071d82797c6efd775e9a">00807</a>     int32       <a class="code" href="struct_filter_record.html#e9214f147916071d82797c6efd775e9a">outColumnBytes</a>;     
+<a name="l00808"></a><a class="code" href="struct_filter_record.html#43213be288f433c8ea821b132c7907b1">00808</a>     int32       <a class="code" href="struct_filter_record.html#43213be288f433c8ea821b132c7907b1">outPlaneBytes</a>;      
+<a name="l00810"></a>00810 
+<a name="l00811"></a>00811 
+<a name="l00812"></a>00812     <a class="code" href="struct_image_services_procs.html">ImageServicesProcs</a> *<a class="code" href="struct_filter_record.html#fdc9aab946ca18c18658799e2ee0cd75">imageServicesProcs</a>;
+<a name="l00815"></a><a class="code" href="struct_filter_record.html#008c2ab2655b837d371bcd48e38103b4">00815</a>     <a class="code" href="struct_property_procs.html">PropertyProcs</a>   *<a class="code" href="struct_filter_record.html#008c2ab2655b837d371bcd48e38103b4">propertyProcs</a>; 
+<a name="l00820"></a><a class="code" href="struct_filter_record.html#693af97b3fcdb4f988f9890df2f7a193">00820</a>     int16       <a class="code" href="struct_filter_record.html#693af97b3fcdb4f988f9890df2f7a193">inTileHeight</a>;       
+<a name="l00822"></a><a class="code" href="struct_filter_record.html#2df1aa90bd058ff82ff396609a309127">00822</a>     int16       <a class="code" href="struct_filter_record.html#2df1aa90bd058ff82ff396609a309127">inTileWidth</a>;        
+<a name="l00824"></a><a class="code" href="struct_filter_record.html#fd941e731fe8dcc7a36082910c355bbc">00824</a>     Point       <a class="code" href="struct_filter_record.html#fd941e731fe8dcc7a36082910c355bbc">inTileOrigin</a>;       
+<a name="l00826"></a><a class="code" href="struct_filter_record.html#b751f01b34c42b22a05b2c2dbb7755a9">00826</a>     int16       <a class="code" href="struct_filter_record.html#b751f01b34c42b22a05b2c2dbb7755a9">absTileHeight</a>;      
+<a name="l00828"></a><a class="code" href="struct_filter_record.html#86eb4335f3d0e89575be467a24ddac34">00828</a>     int16       <a class="code" href="struct_filter_record.html#86eb4335f3d0e89575be467a24ddac34">absTileWidth</a>;       
+<a name="l00830"></a><a class="code" href="struct_filter_record.html#ef5aaa61eb36d1c0d2c202decae12f62">00830</a>     Point       <a class="code" href="struct_filter_record.html#ef5aaa61eb36d1c0d2c202decae12f62">absTileOrigin</a>;      
+<a name="l00832"></a><a class="code" href="struct_filter_record.html#00eba251109df92b67d809bdfd613ad9">00832</a>     int16       <a class="code" href="struct_filter_record.html#00eba251109df92b67d809bdfd613ad9">outTileHeight</a>;      
+<a name="l00834"></a><a class="code" href="struct_filter_record.html#02bb2cebd3c937f83515e9cf4edd8d9f">00834</a>     int16       <a class="code" href="struct_filter_record.html#02bb2cebd3c937f83515e9cf4edd8d9f">outTileWidth</a>;       
+<a name="l00836"></a><a class="code" href="struct_filter_record.html#da5c4440ee77fac23278b92eea826f51">00836</a>     Point       <a class="code" href="struct_filter_record.html#da5c4440ee77fac23278b92eea826f51">outTileOrigin</a>;      
+<a name="l00838"></a><a class="code" href="struct_filter_record.html#6dba3fdb3d07193743e14b8e506c7b76">00838</a>     int16       <a class="code" href="struct_filter_record.html#6dba3fdb3d07193743e14b8e506c7b76">maskTileHeight</a>;     
+<a name="l00840"></a><a class="code" href="struct_filter_record.html#f4904176bd79c41c89a63aca6ad68110">00840</a>     int16       <a class="code" href="struct_filter_record.html#f4904176bd79c41c89a63aca6ad68110">maskTileWidth</a>;      
+<a name="l00842"></a><a class="code" href="struct_filter_record.html#701f1698eca5459afd7070c99a12319d">00842</a>     Point       <a class="code" href="struct_filter_record.html#701f1698eca5459afd7070c99a12319d">maskTileOrigin</a>;     
+<a name="l00844"></a>00844 
+<a name="l00845"></a>00845 
+<a name="l00846"></a><a class="code" href="struct_filter_record.html#4e40d0d142551147808011efa2432cc3">00846</a>     <a class="code" href="struct_p_i_descriptor_parameters.html">PIDescriptorParameters</a>  *<a class="code" href="struct_filter_record.html#4e40d0d142551147808011efa2432cc3">descriptorParameters</a>;  
+<a name="l00847"></a><a class="code" href="struct_filter_record.html#ea289c8a9bcf5debc87469a81ef11de5">00847</a>     Str255                  *<a class="code" href="struct_filter_record.html#ea289c8a9bcf5debc87469a81ef11de5">errorString</a>;   
+<a name="l00852"></a>00852     <a class="code" href="struct_channel_port_procs.html">ChannelPortProcs</a> *<a class="code" href="struct_filter_record.html#d2ca49dc3cf8b2fb264a4b65b95b9008">channelPortProcs</a>;
+<a name="l00855"></a><a class="code" href="struct_filter_record.html#5cf11d5b493ad189bc5daf37c360bdcf">00855</a>     <a class="code" href="struct_read_image_document_desc.html">ReadImageDocumentDesc</a> *<a class="code" href="struct_filter_record.html#5cf11d5b493ad189bc5daf37c360bdcf">documentInfo</a>;    
+<a name="l00858"></a>00858 
+<a name="l00859"></a>00859 
+<a name="l00860"></a><a class="code" href="struct_filter_record.html#f431ee89538ec02fa50496a543821b31">00860</a>     SPBasicSuite    *<a class="code" href="struct_filter_record.html#f431ee89538ec02fa50496a543821b31">sSPBasic</a>;      
+<a name="l00861"></a><a class="code" href="struct_filter_record.html#a23355067b46d123566f2038cd5c2001">00861</a>     <span class="keywordtype">void</span>            *<a class="code" href="struct_filter_record.html#a23355067b46d123566f2038cd5c2001">plugInRef</a>;     
+<a name="l00863"></a><a class="code" href="struct_filter_record.html#edc06777aed0f4c1d00d00bf61d88d6f">00863</a>     int32           <a class="code" href="struct_filter_record.html#edc06777aed0f4c1d00d00bf61d88d6f">depth</a>;          
+<a name="l00865"></a>00865 
+<a name="l00866"></a>00866 
+<a name="l00867"></a><a class="code" href="struct_filter_record.html#35f8a034721b63df63e96916a3f63961">00867</a>     Handle          <a class="code" href="struct_filter_record.html#35f8a034721b63df63e96916a3f63961">iCCprofileData</a>; 
+<a name="l00873"></a><a class="code" href="struct_filter_record.html#5b824a59045eadc0d41649714575ac6e">00873</a>     int32           <a class="code" href="struct_filter_record.html#5b824a59045eadc0d41649714575ac6e">iCCprofileSize</a>;     
+<a name="l00875"></a><a class="code" href="struct_filter_record.html#811f74a2e5606f9acee45d44b99cd45c">00875</a>     int32           <a class="code" href="struct_filter_record.html#811f74a2e5606f9acee45d44b99cd45c">canUseICCProfiles</a>;  
+<a name="l00881"></a>00881 
+<a name="l00882"></a>00882 
+<a name="l00883"></a><a class="code" href="struct_filter_record.html#e630efddbe391e57d3f02c7f6fabd250">00883</a>     int32           <a class="code" href="struct_filter_record.html#e630efddbe391e57d3f02c7f6fabd250">hasImageScrap</a>;      
+<a name="l00893"></a>00893 
+<a name="l00894"></a>00894 
+<a name="l00895"></a><a class="code" href="struct_filter_record.html#3759152b159b3013befe34a243965bd1">00895</a>     <a class="code" href="struct_big_document_struct.html">BigDocumentStruct</a>   *<a class="code" href="struct_filter_record.html#3759152b159b3013befe34a243965bd1">bigDocumentData</a>;   
+<a name="l00900"></a>00900 
+<a name="l00901"></a>00901 
+<a name="l00902"></a><a class="code" href="struct_filter_record.html#8fd855595b6bad5b8f9a335ba6aacaf2">00902</a>     <a class="code" href="struct_p_i_descriptor_parameters.html">PIDescriptorParameters</a>  *<a class="code" href="struct_filter_record.html#8fd855595b6bad5b8f9a335ba6aacaf2">input3DScene</a>;  
+<a name="l00904"></a><a class="code" href="struct_filter_record.html#e676a525a31f1b41a0392a119935bb5c">00904</a>     <a class="code" href="struct_p_i_descriptor_parameters.html">PIDescriptorParameters</a>  *<a class="code" href="struct_filter_record.html#e676a525a31f1b41a0392a119935bb5c">output3DScene</a>; 
+<a name="l00906"></a><a class="code" href="struct_filter_record.html#8a2a704c804a04c8971c0dd13e58d2cf">00906</a>     Boolean                 <a class="code" href="struct_filter_record.html#8a2a704c804a04c8971c0dd13e58d2cf">createNewLayer</a>; 
+<a name="l00909"></a>00909 
+<a name="l00910"></a>00910 
+<a name="l00911"></a><a class="code" href="struct_filter_record.html#8d808acec90a4c70e3b6b2ed1a6d7147">00911</a>     <span class="keywordtype">char</span>        <a class="code" href="struct_filter_record.html#8d808acec90a4c70e3b6b2ed1a6d7147">reserved</a> [37];  
+<a name="l00913"></a>00913 
+<a name="l00914"></a>00914     }
+<a name="l00915"></a>00915 <a class="code" href="struct_filter_record.html">FilterRecord</a>, *<a class="code" href="struct_filter_record.html">FilterRecordPtr</a>;
+<a name="l00916"></a>00916 
+<a name="l00917"></a>00917 <span class="preprocessor">#if WIN32</span>
+<a name="l00918"></a>00918 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(pop)</span>
+<a name="l00919"></a>00919 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00920"></a>00920 <span class="preprocessor"></span>
+<a name="l00921"></a>00921 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00922"></a>00922 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l00923"></a>00923 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00924"></a>00924 <span class="preprocessor"></span>
+<a name="l00925"></a>00925 <span class="comment">/*********************************************************************************/</span>
+<a name="l00926"></a>00926 
+<a name="l00927"></a>00927 <span class="comment">// ifdef RC_INVOKED</span>
+<a name="l00928"></a>00928 <span class="preprocessor">#endif</span>
+<a name="l00929"></a>00929 <span class="preprocessor"></span>
+<a name="l00930"></a>00930 <span class="preprocessor">#endif  // __PIFilter_h__</span>
+</pre></div>
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

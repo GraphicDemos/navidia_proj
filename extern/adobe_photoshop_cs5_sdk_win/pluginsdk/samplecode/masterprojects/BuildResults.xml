@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="BuildResults.xsl"?>
+<build>
+ <errors>1</errors>
+ <warnings>283</warnings>
+ <project>
+  <title>3DFormat Debug</title>
+  <errors>0</errors>
+  <warnings>13</warnings>
+ </project>
+ <project>
+  <title>3dheightfield Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>3DSimpleModeler Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>3DSimpleRender Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>AutomationFilter Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>ColorMunger Debug</title>
+  <errors>0</errors>
+  <warnings>14</warnings>
+ </project>
+ <project>
+  <title>Dissolve Debug_i386</title>
+  <errors>0</errors>
+  <warnings>100</warnings>
+ </project>
+ <project>
+  <title>Dissolve Debug_x86_64</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Dissolve Release_i386</title>
+  <errors>0</errors>
+  <warnings>2</warnings>
+ </project>
+ <project>
+  <title>Dissolve Release_x86_64</title>
+  <errors>0</errors>
+  <warnings>2</warnings>
+ </project>
+ <project>
+  <title>Dissolve Debug_Universal</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Dissolve Release_Universal</title>
+  <errors>0</errors>
+  <warnings>4</warnings>
+ </project>
+ <project>
+  <title>Getter Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>GradientImport Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Hidden Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>History Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Listener Debug</title>
+  <errors>0</errors>
+  <warnings>13</warnings>
+ </project>
+ <project>
+  <title>MeasurementSample Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>NearestBase Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Outbound Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Outbound Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>PoorMansTypeTool Debug</title>
+  <errors>0</errors>
+  <warnings>13</warnings>
+ </project>
+ <project>
+  <title>Propetizer Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>Propetizer Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>SimpleFormat Debug</title>
+  <errors>0</errors>
+  <warnings>109</warnings>
+ </project>
+ <project>
+  <title>Statistics Debug</title>
+  <errors>0</errors>
+  <warnings>13</warnings>
+ </project>
+ <project>
+  <title>TextAuto Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>TextFormat Debug</title>
+  <errors>0</errors>
+  <warnings>0</warnings>
+ </project>
+ <project>
+  <title>3DSimulator Debug</title>
+  <errors>18</errors>
+  <warnings>0</warnings>
+ </project>
+</build>

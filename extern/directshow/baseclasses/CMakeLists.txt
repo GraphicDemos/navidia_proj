@@ -1,0 +1,25 @@
+PROJECT(directshow_baseclass)
+
+file(GLOB DIRECTSHOW_SRCS
+    "*.h"
+	"*.cpp"
+)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+
+# targets
+ADD_DEFINITIONS(-DDIRECT_SHOW_BASE_CLASS_EXPOORT)
+ADD_DEFINITIONS(-DDIRECT_SHOW_BASE_CLASS_DLL=1)
+ADD_DEFINITIONS(-DUNICODE -D_UNICODE)
+ADD_LIBRARY(directshow_baseclass SHARED ${DIRECTSHOW_SRCS})
+
+target_compile_definitions(directshow_baseclass PRIVATE FILTER_DLL)
+
+TARGET_LINK_LIBRARIES(directshow_baseclass ${LIBS} strmiids WinMM)
+
+INSTALL(TARGETS directshow_baseclass
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static)
+
+	
+	

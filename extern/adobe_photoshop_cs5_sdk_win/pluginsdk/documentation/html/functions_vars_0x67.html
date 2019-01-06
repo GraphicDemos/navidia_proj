@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Data Fields - Variables</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="functions.html"><span>All</span></a></li>
+    <li><a href="functions_func.html"><span>Functions</span></a></li>
+    <li id="current"><a href="functions_vars.html"><span>Variables</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="functions_vars.html#index_a"><span>a</span></a></li>
+    <li><a href="functions_vars_0x62.html#index_b"><span>b</span></a></li>
+    <li><a href="functions_vars_0x63.html#index_c"><span>c</span></a></li>
+    <li><a href="functions_vars_0x64.html#index_d"><span>d</span></a></li>
+    <li><a href="functions_vars_0x65.html#index_e"><span>e</span></a></li>
+    <li><a href="functions_vars_0x66.html#index_f"><span>f</span></a></li>
+    <li id="current"><a href="functions_vars_0x67.html#index_g"><span>g</span></a></li>
+    <li><a href="functions_vars_0x68.html#index_h"><span>h</span></a></li>
+    <li><a href="functions_vars_0x69.html#index_i"><span>i</span></a></li>
+    <li><a href="functions_vars_0x6b.html#index_k"><span>k</span></a></li>
+    <li><a href="functions_vars_0x6c.html#index_l"><span>l</span></a></li>
+    <li><a href="functions_vars_0x6d.html#index_m"><span>m</span></a></li>
+    <li><a href="functions_vars_0x6e.html#index_n"><span>n</span></a></li>
+    <li><a href="functions_vars_0x6f.html#index_o"><span>o</span></a></li>
+    <li><a href="functions_vars_0x70.html#index_p"><span>p</span></a></li>
+    <li><a href="functions_vars_0x72.html#index_r"><span>r</span></a></li>
+    <li><a href="functions_vars_0x73.html#index_s"><span>s</span></a></li>
+    <li><a href="functions_vars_0x74.html#index_t"><span>t</span></a></li>
+    <li><a href="functions_vars_0x75.html#index_u"><span>u</span></a></li>
+    <li><a href="functions_vars_0x76.html#index_v"><span>v</span></a></li>
+    <li><a href="functions_vars_0x77.html#index_w"><span>w</span></a></li>
+    <li><a href="functions_vars_0x78.html#index_x"><span>x</span></a></li>
+    <li><a href="functions_vars_0x79.html#index_y"><span>y</span></a></li>
+    <li><a href="functions_vars_0x7a.html#index_z"><span>z</span></a></li>
+  </ul>
+</div>
+
+<p>
+&nbsp;
+<p>
+<h3><a class="anchor" name="index_g">- g -</a></h3><ul>
+<li>G
+: <a class="el" href="struct_r_g_b_look_up_table.html#5f6f3753fbc840a5bbaf1908f3850307">RGBLookUpTable</a><li>g
+: <a class="el" href="struct_r_g_b16tuple.html#aee84f67c4168c6f1ec868d4f8f82345">RGB16tuple</a>, <a class="el" href="struct_r_g_btuple.html#6f3612e69bbc2d812dc623692586d294">RGBtuple</a>, <a class="el" href="struct_p_s_pixel_overlay.html#99219c2bf3af4972eb623f51139c7ec8">PSPixelOverlay</a><li>gamma
+: <a class="el" href="struct_plug_in_monitor.html#2bcbb30465a5f173cf95dc0664eaede1">PlugInMonitor</a><li>generalInfoSize
+: <a class="el" href="struct_plug_in_info.html#9a5356517c8f7d60b011f6fa044f4c9a">PlugInInfo</a><li>Get
+: <a class="el" href="struct_p_s_descriptor_registry_procs.html#0cd9d050c92bf3730b2ba80ed29c35d4">PSDescriptorRegistryProcs</a>, <a class="el" href="struct_p_s_basic_action_control_procs.html#3daec567d3615c922d851e819d8a98d9">PSBasicActionControlProcs</a>, <a class="el" href="struct_p_s_action_control_procs.html#8153372247a78943f4b2cbc0edaac42c">PSActionControlProcs</a><li>GetAlias
+: <a class="el" href="struct_p_s_action_list_procs.html#8dc8d927f1a44f97f0d0b2f73df48a1c">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#acdcff177dc7b5c5006e75879b094ffa">PSActionDescriptorProcs</a><li>getAliasProc
+: <a class="el" href="struct_read_descriptor_procs.html#47f3f9b76833a06c004e232df1d6232f">ReadDescriptorProcs</a><li>GetBoolean
+: <a class="el" href="struct_p_s_action_list_procs.html#c03cad38597a6bac1264873d5f1e9be3">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#3faf1216ed1d8e00b2d1e800e9c2938c">PSActionDescriptorProcs</a><li>getBooleanProc
+: <a class="el" href="struct_read_descriptor_procs.html#99e8e420d586546a91f8587918c2df2d">ReadDescriptorProcs</a><li>GetBrowserFileSpec
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#e51e782df62feb870e79df2af8f7c014">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#1780c1e42322ecb704eadd0a42e1a231">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#3ce15a51d789ed986aec3991f75d3bd3">PSGetFileListSuite4</a>, <a class="el" href="struct_p_s_get_file_list_suite3.html#f3cbaab5d9b8b5bc12a1aaa0e90db091">PSGetFileListSuite3</a>, <a class="el" href="struct_p_s_get_file_list_suite2.html#40beb9ad270baaa63afea21eae846450">PSGetFileListSuite2</a>, <a class="el" href="struct_p_s_get_file_list_suite1.html#e5fdaceeceaa9d323d8de5dae8429d3f">PSGetFileListSuite1</a><li>GetBrowserNameList
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#a08654cebce6ce1baf225dfd79a5cabd">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#18e1fafc18aebf144a78a63730e0843b">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#3a6bffe55f31601c6603cc3fc735b5ae">PSGetFileListSuite4</a>, <a class="el" href="struct_p_s_get_file_list_suite3.html#349e31e7e6370f0d8a367bca813ff626">PSGetFileListSuite3</a>, <a class="el" href="struct_p_s_get_file_list_suite2.html#649994132202723efc8b6f4ba01c9392">PSGetFileListSuite2</a>, <a class="el" href="struct_p_s_get_file_list_suite1.html#b79772bf8a9d345179179ab1ef461a15">PSGetFileListSuite1</a><li>GetChewableFolderSpec
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#f5fca7a6b1e5b29cff4450d6e7c7c593">PSGetFileListSuite6</a><li>GetChewableFreeSpace
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#40877d42d48c8f6aeece73ce4e554c75">PSGetFileListSuite6</a><li>GetClass
+: <a class="el" href="struct_p_s_action_list_procs.html#3b92dd3bbfc8b7958a334d395555c88f">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#28ce2163bdeec175fb535bf679042596">PSActionDescriptorProcs</a><li>getClassProc
+: <a class="el" href="struct_read_descriptor_procs.html#210e546a0f0bd91afd0e74a6bce7b9e3">ReadDescriptorProcs</a><li>GetContainer
+: <a class="el" href="struct_p_s_action_reference_procs.html#d8a7cfec80a226fb4b196be092ea9ee5">PSActionReferenceProcs</a><li>GetCount
+: <a class="el" href="struct_p_s_action_list_procs.html#04779ff40f6a5a7291520f3f510dfcfc">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#cdf4c6fbc58407915f63c816f8c7e563">PSActionDescriptorProcs</a><li>getCountProc
+: <a class="el" href="struct_read_descriptor_procs.html#b1ebfbe768428078a5fc3590c023fc89">ReadDescriptorProcs</a><li>GetData
+: <a class="el" href="struct_p_s_action_list_procs.html#3d2d4e9f8d7377cae9df4b7777ffaa9d">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#2904fc50deb2bb90d1042c81d78bd078">PSActionDescriptorProcs</a><li>GetDataBounds
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#8c59ec11ad199dab11e9e9a20755b824">PSChannelPortsSuite1</a><li>GetDataLength
+: <a class="el" href="struct_p_s_action_list_procs.html#34077b8e0162ffe6cc1f5ecab7fd93a8">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#e4220f0a479d48bffcca642b6071f2f1">PSActionDescriptorProcs</a><li>GetDefaultSystemScript
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#baa0f7a87a37ad6b6bf73bb16211594e">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#a36d62ca91fd8464897b2f62ec67de53">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#dd62e021dd4ce53952fbf0d5aebf06d5">PSGetFileListSuite4</a>, <a class="el" href="struct_p_s_get_file_list_suite3.html#3cfd2fbdea858b0cfe09a9d5af2bf334">PSGetFileListSuite3</a>, <a class="el" href="struct_p_s_get_file_list_suite2.html#e16606963f78579d90f863f9436a98e0">PSGetFileListSuite2</a><li>GetDependentRect
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#ab47ec066e6c007b7c3487c347e37896">PSChannelPortsSuite1</a><li>GetDepth
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#76391d8f9d248932f3e6502547d93283">PSChannelPortsSuite1</a><li>GetDesiredClass
+: <a class="el" href="struct_p_s_action_reference_procs.html#dc12b54ad8586d797cf93951c4d83a26">PSActionReferenceProcs</a><li>GetEnumerated
+: <a class="el" href="struct_p_s_action_reference_procs.html#b7d4945074ba2619dcf105aed3be9627">PSActionReferenceProcs</a>, <a class="el" href="struct_p_s_action_list_procs.html#5c4fd30fb98ffeaeaf375363eadbd339">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#1eafae6adb1acfc8cae8d69e0921032b">PSActionDescriptorProcs</a><li>getEnumeratedProc
+: <a class="el" href="struct_read_descriptor_procs.html#52165a91173cba3bb880d5380de5e903">ReadDescriptorProcs</a><li>GetFileHandleList
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#d8f4cf464524edd460a209ebbf950d6a">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#f6ee539f697cb9a5cc0b12c900a6055a">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#9439531a1916ef186e908ec6c13b3d02">PSGetFileListSuite4</a>, <a class="el" href="struct_p_s_get_file_list_suite3.html#47746251b26d8b997f273c2da482cd89">PSGetFileListSuite3</a>, <a class="el" href="struct_p_s_get_file_list_suite2.html#95627f59538cae2e63214c933b7abcba">PSGetFileListSuite2</a>, <a class="el" href="struct_p_s_get_file_list_suite1.html#e6063c99627858869c8804857ca585c8">PSGetFileListSuite1</a><li>GetFloat
+: <a class="el" href="struct_p_s_action_list_procs.html#479bbd13e3def42014cdfb91569cf6b3">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#ec8b808cd1bcab359d4e9eaeb75e195d">PSActionDescriptorProcs</a><li>getFloatProc
+: <a class="el" href="struct_read_descriptor_procs.html#8617a428b9319d08743f01ba558335fa">ReadDescriptorProcs</a><li>GetForm
+: <a class="el" href="struct_p_s_action_reference_procs.html#88cee43314d00b6843491001014484e8">PSActionReferenceProcs</a><li>GetGlobalClass
+: <a class="el" href="struct_p_s_action_list_procs.html#4ffaea7d4444d653c47dea23cbd7bacc">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#3cdd54b4f13dd35ece89f530110b814f">PSActionDescriptorProcs</a><li>GetGlobalObject
+: <a class="el" href="struct_p_s_action_list_procs.html#f000dda2fe2b62925ef8d7fe8e3d51ea">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#f678a0ad9f74993a1017a812dfb7a117">PSActionDescriptorProcs</a><li>GetIdentifier
+: <a class="el" href="struct_p_s_action_reference_procs.html#8edab2aa256d9259ecee7ab98d499ebd">PSActionReferenceProcs</a><li>GetIncludePath
+: <a class="el" href="struct_j_s_scripting_suite1.html#128d76d769ae6e081712aa7a299549b9">JSScriptingSuite1</a>, <a class="el" href="struct_j_s_scripting_suite2.html#7bd0aab078afa4e2bf06461a5f923952">JSScriptingSuite2</a><li>GetIndex
+: <a class="el" href="struct_p_s_action_reference_procs.html#a5469244ed0256cd487da028de6f36c3">PSActionReferenceProcs</a><li>GetInteger
+: <a class="el" href="struct_p_s_action_list_procs.html#e159ed075de54bed2a3bac254c59b170">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#b9379963a7504be12c6742b57c3a359a">PSActionDescriptorProcs</a><li>GetInteger64
+: <a class="el" href="struct_p_s_action_list_procs.html#ec52ca94b82805271f837ac63504f13f">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#ba7e584f05acbadea811c26de2dc13fa">PSActionDescriptorProcs</a><li>getIntegerProc
+: <a class="el" href="struct_read_descriptor_procs.html#e32592624f40b28c48f6d3f11e7ee2bd">ReadDescriptorProcs</a><li>GetIntegers
+: <a class="el" href="struct_p_s_action_list_procs.html#7d8d2794b6b057adcd147ca10604de4a">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#e2c8be9bfc5ff825f23aff33b9dea5bb">PSActionDescriptorProcs</a><li>GetKey
+: <a class="el" href="struct_p_s_action_descriptor_procs.html#f6e9dedaeb05070c0ac69e4a8a1ac631">PSActionDescriptorProcs</a><li>getKeyProc
+: <a class="el" href="struct_read_descriptor_procs.html#222fe60e80fec71fa4abf46bcf5cec5c">ReadDescriptorProcs</a><li>GetList
+: <a class="el" href="struct_p_s_action_list_procs.html#d05673336043247014a54fd8a3778c91">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#8d951e91a9fbb57e2d9f82680e320254">PSActionDescriptorProcs</a><li>GetLocalizedFileName
+: <a class="el" href="struct_p_s_u_i_hooks_suite3.html#b2cc1876236e533fa030209e7786a1f1">PSUIHooksSuite3</a><li>GetMacFileTypes
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#89d1dfa3a2521d7453def559f8009c29">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#60922687161dc77e0278d0764118046c">PSGetFileListSuite5</a><li>GetName
+: <a class="el" href="struct_p_s_action_reference_procs.html#18fd00ca315814bd8685b6270f5b0bfc">PSActionReferenceProcs</a><li>GetNameLength
+: <a class="el" href="struct_p_s_action_reference_procs.html#499dbeb221f5bd740e5a1039f32bdd8d">PSActionReferenceProcs</a><li>GetNameZString
+: <a class="el" href="struct_p_s_action_reference_procs.html#60f9b458b821c268c8222271bffc3b90">PSActionReferenceProcs</a><li>GetNativeSpace
+: <a class="el" href="struct_p_s_color_space_suite1.html#e254d896898264ee98bea91e650d36f0">PSColorSpaceSuite1</a><li>GetObject
+: <a class="el" href="struct_p_s_action_list_procs.html#959092708bb31c95df1dc2cc782c2c16">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#b8d9a2730e9a692ea493adbd11e0aeca">PSActionDescriptorProcs</a><li>getObjectProc
+: <a class="el" href="struct_read_descriptor_procs.html#a39e274ea11d33082e0a9199934a1305">ReadDescriptorProcs</a><li>GetOffset
+: <a class="el" href="struct_p_s_action_reference_procs.html#c32e815274add1c0f5c1cbab32df92c1">PSActionReferenceProcs</a><li>GetPathName
+: <a class="el" href="struct_p_s_get_path_suite1.html#10283d3756dcf0e29385147ee31a04e7">PSGetPathSuite1</a><li>GetPatternCount
+: <a class="el" href="struct_p_s_patterns_suite1.html#ae46417f1689b3f18716ada66e4fe7f5">PSPatternsSuite1</a><li>GetPatternID
+: <a class="el" href="struct_p_s_patterns_suite1.html#b5cafefacb06f34e2fe53d0cbe947e4c">PSPatternsSuite1</a><li>GetPatternName
+: <a class="el" href="struct_p_s_patterns_suite1.html#7a1cbb0aa1b8ccd8fd174b6e27155d37">PSPatternsSuite1</a><li>getPinnedFloatProc
+: <a class="el" href="struct_read_descriptor_procs.html#74099c5bb3b2630f190c1097dd27f2ff">ReadDescriptorProcs</a><li>getPinnedIntegerProc
+: <a class="el" href="struct_read_descriptor_procs.html#5028dab12f9c393145173229fe929b07">ReadDescriptorProcs</a><li>getPinnedUnitFloatProc
+: <a class="el" href="struct_read_descriptor_procs.html#241478de04c0cb4a667b894dd5d516b5">ReadDescriptorProcs</a><li>GetPluginName
+: <a class="el" href="struct_p_s_u_i_hooks_suite3.html#e5a47b4f40aa810d105bcee88c3966aa">PSUIHooksSuite3</a>, <a class="el" href="struct_p_s_u_i_hooks_suite2.html#95d695782011f99282fb7de1aa9ef49d">PSUIHooksSuite2</a>, <a class="el" href="struct_p_s_u_i_hooks_suite1.html#d5d91f3cbdc2fe63b15d5c3975c3fc59">PSUIHooksSuite1</a><li>GetPresetsFolderSpec
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#964484f233a66ff6bc9fa38a9627614f">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#ead9895717bb83d4998ae4b30c02aaa6">PSGetFileListSuite5</a><li>getProc
+: <a class="el" href="struct_resource_procs.html#a99d9804d6ae278d35a3f0ea86b61378">ResourceProcs</a><li>GetProperty
+: <a class="el" href="struct_p_s_action_reference_procs.html#a6b9572ae8ae03140a6ea97dac59d196">PSActionReferenceProcs</a><li>getPropertyObsolete
+: <a class="el" href="struct_filter_record.html#b0de0449396df19e99906d9ac5c79857">FilterRecord</a>, <a class="el" href="struct_export_record.html#e07c1cf410284da6bd860bbc8245d5c8">ExportRecord</a><li>getPropertyProc
+: <a class="el" href="struct_property_procs.html#0b761447a48db6a8e33de1cfa98ea812">PropertyProcs</a><li>GetReference
+: <a class="el" href="struct_p_s_action_list_procs.html#672f6a23d1d94d20c95f77ecbbcba5c6">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#8cbbdd93f2adb03be45a4e4fb4beacdd">PSActionDescriptorProcs</a><li>getSimpleReferenceProc
+: <a class="el" href="struct_read_descriptor_procs.html#89df14a9ee2a3dac97b1b93097a0319e">ReadDescriptorProcs</a><li>GetSize
+: <a class="el" href="struct_p_s_handle_suite2.html#ce5952cd64480e090c77dc24e1b0ab2c">PSHandleSuite2</a>, <a class="el" href="struct_p_s_handle_suite1.html#2c97c5aca33332526736778f87b6893f">PSHandleSuite1</a>, <a class="el" href="struct_p_s_buffer_suite1.html#9543dc53db1ced9debd972afd904f6d7">PSBufferSuite1</a><li>getSizeProc
+: <a class="el" href="struct_handle_procs.html#6e53ecc7d41bbb054ee114109ce1785b">HandleProcs</a><li>GetSpace
+: <a class="el" href="struct_p_s_buffer_suite1.html#53aa4596efd46372e6a7a464ea65133d">PSBufferSuite1</a><li>GetString
+: <a class="el" href="struct_p_s_action_list_procs.html#6e5aa072e754cade39f14b4e191c49d5">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#b18e932f48941055ad9d63c8cdec72cb">PSActionDescriptorProcs</a><li>GetStringLength
+: <a class="el" href="struct_p_s_action_list_procs.html#ccd326f1565ce5a6aecef89c892581a7">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#9a88d32ec906b9f536a5612a12f9bdec">PSActionDescriptorProcs</a><li>getStringProc
+: <a class="el" href="struct_read_descriptor_procs.html#0381dc8da29cf7312434c3486dae4f89">ReadDescriptorProcs</a><li>GetSupportRect
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#4f071d68dc7b36908af4c8e80adee487">PSChannelPortsSuite1</a><li>getTextProc
+: <a class="el" href="struct_read_descriptor_procs.html#eeb4507f79c0ee060da0ffe2bf1f2ed6">ReadDescriptorProcs</a><li>GetTilingGrid
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#8f6080d2425a78828a100ea6f4ce4442">PSChannelPortsSuite1</a><li>GetType
+: <a class="el" href="struct_p_s_action_list_procs.html#a64d9ef6bdf268bd74be051dec68fa0c">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#762aebb3dba8b8ff31576ccb993c9794">PSActionDescriptorProcs</a><li>GetUnitFloat
+: <a class="el" href="struct_p_s_action_list_procs.html#536aa1a013e5ffe4e4050f2ced126472">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#56f62861b52587af43ddb651f173b965">PSActionDescriptorProcs</a><li>getUnitFloatProc
+: <a class="el" href="struct_read_descriptor_procs.html#b6bb57105d937cf2fe5c78c010c80052">ReadDescriptorProcs</a><li>GetWebTemplateFolderSpec
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#658b8f6cc241bb168a49e56c792178bd">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#4cfd7c258b6fca911ef367156181490a">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#16f2408612ad0383d35258b1e9312b5f">PSGetFileListSuite4</a><li>GetWebTemplateList
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#a5d599ac673e028695f15a592206bcb7">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#6b5e9bac8ca6b3ffe8ef85547dbf5b3c">PSGetFileListSuite5</a>, <a class="el" href="struct_p_s_get_file_list_suite4.html#29d7e123883402ebf29f7f7cf25ee30c">PSGetFileListSuite4</a><li>GetWindowsFileTypes
+: <a class="el" href="struct_p_s_get_file_list_suite6.html#f4c41219d1af6104b66153fe9f5405b4">PSGetFileListSuite6</a>, <a class="el" href="struct_p_s_get_file_list_suite5.html#5326bb5d56289c432b67a4620b566b29">PSGetFileListSuite5</a><li>GetWriteLimit
+: <a class="el" href="struct_p_s_channel_ports_suite1.html#d3e94d1df452fa96c0e24e3385766a0d">PSChannelPortsSuite1</a><li>GetZString
+: <a class="el" href="struct_p_s_action_list_procs.html#5817d4d3aee1d8446e6cad845fe64c7e">PSActionListProcs</a>, <a class="el" href="struct_p_s_action_descriptor_procs.html#d78ebf82608857d72557c2c503053e60">PSActionDescriptorProcs</a><li>globalSamplePoint
+: <a class="el" href="struct_color_services_info.html#b01aaf681053761cfb562b2851a525dd">ColorServicesInfo</a><li>greenLUT
+: <a class="el" href="struct_read_image_document_desc.html#fafef7bd824a6781ff24903d3da51730">ReadImageDocumentDesc</a>, <a class="el" href="struct_format_record.html#a1dd89c05599eb8cef433e532477c5c6">FormatRecord</a>, <a class="el" href="struct_export_record.html#d64631ef34b67e518801dd30f6eeb03d">ExportRecord</a>, <a class="el" href="struct_acquire_record.html#9372a0f3395e4f407f92e2ecdb5b8f72">AcquireRecord</a><li>greenX
+: <a class="el" href="struct_plug_in_monitor.html#afd76aeec67ee09c560d13dd4f0cf7cc">PlugInMonitor</a><li>greenY
+: <a class="el" href="struct_plug_in_monitor.html#f7d39edfe841bed2c188048902cfe4fb">PlugInMonitor</a></ul>
+
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

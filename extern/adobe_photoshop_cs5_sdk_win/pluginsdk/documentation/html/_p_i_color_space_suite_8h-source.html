@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: PIColorSpaceSuite.h Source File</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1>PIColorSpaceSuite.h</h1><a href="_p_i_color_space_suite_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// ADOBE SYSTEMS INCORPORATED</span>
+<a name="l00002"></a>00002 <span class="comment">// Copyright  1993 - 2005 Adobe Systems Incorporated</span>
+<a name="l00003"></a>00003 <span class="comment">// All Rights Reserved</span>
+<a name="l00004"></a>00004 <span class="comment">//</span>
+<a name="l00005"></a>00005 <span class="comment">// NOTICE:  Adobe permits you to use, modify, and distribute this </span>
+<a name="l00006"></a>00006 <span class="comment">// file in accordance with the terms of the Adobe license agreement</span>
+<a name="l00007"></a>00007 <span class="comment">// accompanying it.  If you have received this file from a source</span>
+<a name="l00008"></a>00008 <span class="comment">// other than Adobe, then your use, modification, or distribution</span>
+<a name="l00009"></a>00009 <span class="comment">// of it requires the prior written permission of Adobe.</span>
+<a name="l00010"></a>00010 <span class="comment">//-------------------------------------------------------------------</span>
+<a name="l00047"></a>00047 <span class="comment"></span><span class="preprocessor">#ifndef __PIColorSpaceSuite__</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span><span class="preprocessor">#define __PIColorSpaceSuite__</span>
+<a name="l00049"></a>00049 <span class="preprocessor"></span>
+<a name="l00050"></a>00050 <span class="preprocessor">#if PRAGMA_ONCE</span>
+<a name="l00051"></a>00051 <span class="preprocessor"></span><span class="preprocessor">#pragma once</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>
+<a name="l00054"></a>00054 <span class="preprocessor">#include "<a class="code" href="_p_i_general_8h.html">PIGeneral.h</a>"</span>
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00057"></a>00057 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+<a name="l00058"></a>00058 <span class="preprocessor">#endif</span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>
+<a name="l00060"></a>00060 <span class="comment">/******************************************************************************/</span>
+<a name="l00061"></a>00061 
+<a name="l00063"></a><a class="code" href="group___pica_color_space_suite.html#g6fa2aaba3d9b06e594cc4b95be1f2d56">00063</a> <span class="preprocessor">#define kPSColorSpaceSuite          "Photoshop ColorSpace Suite for Plug-ins"</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>
+<a name="l00065"></a>00065 <span class="comment">//-------------------------------------------------------------------------</span>
+<a name="l00066"></a>00066 <span class="comment">//  ColorSpace suite typedefs </span>
+<a name="l00067"></a>00067 <span class="comment">//-------------------------------------------------------------------------</span>
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="comment">// These are defined in PIGeneral.h</span>
+<a name="l00070"></a>00070 <span class="comment">/*</span>
+<a name="l00071"></a>00071 <span class="comment">    Constants for colorSpace fields</span>
+<a name="l00072"></a>00072 <span class="comment">    </span>
+<a name="l00073"></a>00073 <span class="comment">#define plugIncolorServicesRGBSpace     0</span>
+<a name="l00074"></a>00074 <span class="comment">#define plugIncolorServicesHSBSpace     1</span>
+<a name="l00075"></a>00075 <span class="comment">#define plugIncolorServicesCMYKSpace    2</span>
+<a name="l00076"></a>00076 <span class="comment">#define plugIncolorServicesLabSpace     3</span>
+<a name="l00077"></a>00077 <span class="comment">#define plugIncolorServicesGraySpace    4</span>
+<a name="l00078"></a>00078 <span class="comment">#define plugIncolorServicesHSLSpace     5</span>
+<a name="l00079"></a>00079 <span class="comment">#define plugIncolorServicesXYZSpace     6</span>
+<a name="l00080"></a>00080 <span class="comment">*/</span>
+<a name="l00081"></a>00081 
+<a name="l00082"></a><a class="code" href="group___pica_color_space_suite.html#gcb69a0f7c1e6f6d4a6e77e282e8c4647">00082</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>Color_T *<a class="code" href="group___pica_color_space_suite.html#gcb69a0f7c1e6f6d4a6e77e282e8c4647">ColorID</a>; 
+<a name="l00084"></a>00084 <span class="comment">// formatted as 0RGB, CMYK, 0LAB, 0XYZ, 0HSB, 0HSL, 000Gray</span>
+<a name="l00089"></a>00089 <span class="comment"></span><span class="keyword">typedef</span> uint8   <a class="code" href="group___pica_color_space_suite.html#gd8f40f3069e87fc82d94bafd4ae78750">Color8</a>[4];   
+<a name="l00090"></a>00090 
+<a name="l00096"></a>00096 <span class="keyword">typedef</span> uint16  <a class="code" href="group___pica_color_space_suite.html#gb184876e37f40e1e3a828fc9b4958f95">Color16</a>[4];  
+<a name="l00101"></a><a class="code" href="group___pica_color_space_suite.html#g1585e8e9e9b93ea74994f9a40394c021">00101</a> <span class="keyword">typedef</span> real32          <a class="code" href="group___pica_color_space_suite.html#g1585e8e9e9b93ea74994f9a40394c021">Color32</a>[4];  
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 
+<a name="l00105"></a><a class="code" href="struct_c_s___x_y_z_color.html">00105</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
+<a name="l00106"></a>00106 <span class="keyword"></span>{
+<a name="l00107"></a><a class="code" href="struct_c_s___x_y_z_color.html#92b89db2919b00471d5e087f9087d498">00107</a>     uint16 x;    
+<a name="l00108"></a><a class="code" href="struct_c_s___x_y_z_color.html#d3882cec36da521fdb399658b548a601">00108</a>     uint16 y;    
+<a name="l00109"></a><a class="code" href="struct_c_s___x_y_z_color.html#06f92be20a8c9677a0f0250e42828e2b">00109</a>     uint16 z;    
+<a name="l00110"></a>00110 } <a class="code" href="struct_c_s___x_y_z_color.html">CS_XYZColor</a>;
+<a name="l00111"></a>00111 
+<a name="l00117"></a><a class="code" href="group___pica_color_space_suite.html#ga290f82a4a9432ed97f148da228bafad">00117</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#ga290f82a4a9432ed97f148da228bafad">ColorSpace_Make</a>) (ColorID *id);
+<a name="l00118"></a>00118 
+<a name="l00124"></a><a class="code" href="group___pica_color_space_suite.html#g2c70e1e353964b831bdbad4c66f29428">00124</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g2c70e1e353964b831bdbad4c66f29428">ColorSpace_Delete</a>) (ColorID *id);
+<a name="l00125"></a>00125 
+<a name="l00137"></a><a class="code" href="group___pica_color_space_suite.html#g4b6afe2b3b7e4432a1cbf5dcec063f81">00137</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g4b6afe2b3b7e4432a1cbf5dcec063f81">ColorSpace_StuffComponents</a>) (ColorID id, int16 colorSpace, 
+<a name="l00138"></a>00138                     uint8 component0, uint8 component1, 
+<a name="l00139"></a>00139                     uint8 component2, uint8 component3);
+<a name="l00140"></a>00140 
+<a name="l00155"></a><a class="code" href="group___pica_color_space_suite.html#g186ea43e11a660a395b69936f09fbe28">00155</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g186ea43e11a660a395b69936f09fbe28">ColorSpace_ExtractComponents</a>) (ColorID id, int16 colorSpace,
+<a name="l00156"></a>00156                     uint8 *component0, uint8 *component1, 
+<a name="l00157"></a>00157                     uint8 *component2, uint8 *component3, Boolean *gamutFlag);
+<a name="l00158"></a>00158                     
+<a name="l00165"></a><a class="code" href="group___pica_color_space_suite.html#g0c9651fe0aac213e5ea2305f3cea272a">00165</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g0c9651fe0aac213e5ea2305f3cea272a">ColorSpace_StuffXYZ</a>) (ColorID id, <a class="code" href="struct_c_s___x_y_z_color.html">CS_XYZColor</a> xyz);
+<a name="l00166"></a>00166 
+<a name="l00173"></a><a class="code" href="group___pica_color_space_suite.html#gf273c2f7e672dc4cbe853855c1dbe80a">00173</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#gf273c2f7e672dc4cbe853855c1dbe80a">ColorSpace_ExtractXYZ</a>) (ColorID id, <a class="code" href="struct_c_s___x_y_z_color.html">CS_XYZColor</a> *xyz);
+<a name="l00174"></a>00174 
+<a name="l00181"></a><a class="code" href="group___pica_color_space_suite.html#g72cb6cea4ca5d04fd3f0e96767f6f118">00181</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g72cb6cea4ca5d04fd3f0e96767f6f118">ColorSpace_GetNativeSpace</a>) (ColorID id, int16 *colorSpace);
+<a name="l00182"></a>00182 
+<a name="l00192"></a><a class="code" href="group___pica_color_space_suite.html#g22acd835506caa77ac48ba89ffd48036">00192</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g22acd835506caa77ac48ba89ffd48036">ColorSpace_Convert8</a>) (int16 inputCSpace, int16 outputCSpace,
+<a name="l00193"></a>00193                                             Color8 *colorArray, int16 count);
+<a name="l00194"></a>00194 
+<a name="l00204"></a><a class="code" href="group___pica_color_space_suite.html#gaad2a70b95eba2768c3c7e54ef6590a5">00204</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#gaad2a70b95eba2768c3c7e54ef6590a5">ColorSpace_Convert16</a>) (int16 inputCSpace, int16 outputCSpace,
+<a name="l00205"></a>00205                                             Color16 *colorArray, int16 count);
+<a name="l00206"></a>00206 
+<a name="l00213"></a><a class="code" href="group___pica_color_space_suite.html#gc63fa2c8fb29e701a7977e58bf0e7179">00213</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#gc63fa2c8fb29e701a7977e58bf0e7179">ColorSpace_IsBookColor</a>) (ColorID id, Boolean *isBookColor);
+<a name="l00214"></a>00214 
+<a name="l00221"></a><a class="code" href="group___pica_color_space_suite.html#g13fecaeb8b029af5dbcf2bd434d989b4">00221</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g13fecaeb8b029af5dbcf2bd434d989b4">ColorSpace_ExtractColorName</a>) (ColorID id, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> *colorName);
+<a name="l00222"></a>00222 
+<a name="l00229"></a><a class="code" href="group___pica_color_space_suite.html#gb15f0696e18d2721937c609e54dcc357">00229</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#gb15f0696e18d2721937c609e54dcc357">ColorSpace_PickColor</a>) (ColorID *id, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> promptString);
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 <span class="comment">// these use the Photoshop internal 16 bit range of [0..32768]</span>
+<a name="l00233"></a>00233 <span class="comment">// data can be single or multiple channels, as long as the count includes all of it</span>
+<a name="l00234"></a>00234 
+<a name="l00244"></a><a class="code" href="group___pica_color_space_suite.html#g86efad6665276fc62e513005cca31da6">00244</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g86efad6665276fc62e513005cca31da6">ColorSpace_Convert8to16</a>)( uint8 *input_data,
+<a name="l00245"></a>00245                                                 uint16 *output_data,
+<a name="l00246"></a>00246                                                 int16 count );
+<a name="l00247"></a>00247 
+<a name="l00256"></a><a class="code" href="group___pica_color_space_suite.html#g78573986a1dde7e13db547fa8cb26c8d">00256</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g78573986a1dde7e13db547fa8cb26c8d">ColorSpace_Convert16to8</a>)( uint16 *input_data,
+<a name="l00257"></a>00257                                                 uint8 *output_data,
+<a name="l00258"></a>00258                                                 int16 count );
+<a name="l00259"></a>00259 
+<a name="l00269"></a><a class="code" href="group___pica_color_space_suite.html#g3768ca6f0280f13234112ede93398193">00269</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g3768ca6f0280f13234112ede93398193">ColorSpace_ConvertToMonitorRGB</a>)(int16 inputCSpace,
+<a name="l00270"></a>00270                                             Color8 *input_data,
+<a name="l00271"></a>00271                                             Color8 *output_data,
+<a name="l00272"></a>00272                                             int16 count);
+<a name="l00273"></a>00273 
+<a name="l00282"></a><a class="code" href="group___pica_color_space_suite.html#g719d2f237eeef798bd7f9120adb8a848">00282</a> <span class="keyword">typedef</span> SPAPI SPErr (*<a class="code" href="group___pica_color_space_suite.html#g719d2f237eeef798bd7f9120adb8a848">ColorSpace_Convert32to8</a>)( real32 *input_data,
+<a name="l00283"></a>00283                                                 uint8 *output_data,
+<a name="l00284"></a>00284                                                 int16 count );
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 <span class="comment">//-------------------------------------------------------------------------</span>
+<a name="l00288"></a>00288 <span class="comment">//  ColorSpace suite version 1</span>
+<a name="l00289"></a>00289 <span class="comment">//-------------------------------------------------------------------------</span>
+<a name="l00290"></a>00290 
+<a name="l00292"></a><a class="code" href="group___pica_color_space_suite.html#g968bbcb0d112d55d8414fe70990fbf06">00292</a> <span class="preprocessor">#define kPSColorSpaceSuiteVersion1      1</span>
+<a name="l00293"></a>00293 <span class="preprocessor"></span>
+<a name="l00295"></a><a class="code" href="struct_p_s_color_space_suite1.html">00295</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>
+<a name="l00296"></a>00296 <span class="keyword"></span>{
+<a name="l00297"></a><a class="code" href="struct_p_s_color_space_suite1.html#78cac17e97460f95a6ff55e5421d1146">00297</a>     <a class="code" href="group___pica_color_space_suite.html#ga290f82a4a9432ed97f148da228bafad">ColorSpace_Make</a>                 Make;                
+<a name="l00298"></a><a class="code" href="struct_p_s_color_space_suite1.html#da1e6df5d02b371bd2e3cdc2df792cb9">00298</a>     <a class="code" href="group___pica_color_space_suite.html#g2c70e1e353964b831bdbad4c66f29428">ColorSpace_Delete</a>               Delete;              
+<a name="l00299"></a><a class="code" href="struct_p_s_color_space_suite1.html#d2630229b02bd1e780953d53def489b5">00299</a>     <a class="code" href="group___pica_color_space_suite.html#g4b6afe2b3b7e4432a1cbf5dcec063f81">ColorSpace_StuffComponents</a>      StuffComponents;     
+<a name="l00300"></a><a class="code" href="struct_p_s_color_space_suite1.html#19e0b8b6219b6681ab9a6f1fef055e45">00300</a>     <a class="code" href="group___pica_color_space_suite.html#g186ea43e11a660a395b69936f09fbe28">ColorSpace_ExtractComponents</a>    ExtractComponents;   
+<a name="l00301"></a><a class="code" href="struct_p_s_color_space_suite1.html#979ce344d0956b7b7434b86c7ec46411">00301</a>     <a class="code" href="group___pica_color_space_suite.html#g0c9651fe0aac213e5ea2305f3cea272a">ColorSpace_StuffXYZ</a>             StuffXYZ;            
+<a name="l00302"></a><a class="code" href="struct_p_s_color_space_suite1.html#1de56c798259678f61bde901acb93b58">00302</a>     <a class="code" href="group___pica_color_space_suite.html#gf273c2f7e672dc4cbe853855c1dbe80a">ColorSpace_ExtractXYZ</a>           ExtractXYZ;          
+<a name="l00303"></a><a class="code" href="struct_p_s_color_space_suite1.html#3bfc541009797a418d6fa125878216ee">00303</a>     <a class="code" href="group___pica_color_space_suite.html#g22acd835506caa77ac48ba89ffd48036">ColorSpace_Convert8</a>             Convert8;            
+<a name="l00304"></a><a class="code" href="struct_p_s_color_space_suite1.html#21a94351ab6565d564cdb7528fc42467">00304</a>     <a class="code" href="group___pica_color_space_suite.html#gaad2a70b95eba2768c3c7e54ef6590a5">ColorSpace_Convert16</a>            Convert16;           
+<a name="l00305"></a><a class="code" href="struct_p_s_color_space_suite1.html#e254d896898264ee98bea91e650d36f0">00305</a>     <a class="code" href="group___pica_color_space_suite.html#g72cb6cea4ca5d04fd3f0e96767f6f118">ColorSpace_GetNativeSpace</a>       GetNativeSpace;      
+<a name="l00306"></a><a class="code" href="struct_p_s_color_space_suite1.html#1b03a0375d8df91e5693102da844bfb3">00306</a>     <a class="code" href="group___pica_color_space_suite.html#gc63fa2c8fb29e701a7977e58bf0e7179">ColorSpace_IsBookColor</a>          IsBookColor;         
+<a name="l00307"></a><a class="code" href="struct_p_s_color_space_suite1.html#1bf240793aa46c43ee99a6d27e89187d">00307</a>     <a class="code" href="group___pica_color_space_suite.html#g13fecaeb8b029af5dbcf2bd434d989b4">ColorSpace_ExtractColorName</a>     ExtractColorName;    
+<a name="l00308"></a><a class="code" href="struct_p_s_color_space_suite1.html#f24321513cf0d656ace98801e330dddf">00308</a>     <a class="code" href="group___pica_color_space_suite.html#gb15f0696e18d2721937c609e54dcc357">ColorSpace_PickColor</a>            PickColor;           
+<a name="l00309"></a><a class="code" href="struct_p_s_color_space_suite1.html#f9c3e118a32002032f2d771f39194c1f">00309</a>     <a class="code" href="group___pica_color_space_suite.html#g86efad6665276fc62e513005cca31da6">ColorSpace_Convert8to16</a>         Convert8to16;        
+<a name="l00310"></a><a class="code" href="struct_p_s_color_space_suite1.html#a2075ddb7b2b46715461f8b803284dd6">00310</a>     <a class="code" href="group___pica_color_space_suite.html#g78573986a1dde7e13db547fa8cb26c8d">ColorSpace_Convert16to8</a>         Convert16to8;        
+<a name="l00311"></a><a class="code" href="struct_p_s_color_space_suite1.html#48703b8da20006b149a17a5e36112458">00311</a>     <a class="code" href="group___pica_color_space_suite.html#g3768ca6f0280f13234112ede93398193">ColorSpace_ConvertToMonitorRGB</a>  ConvertToMonitorRGB; 
+<a name="l00312"></a><a class="code" href="struct_p_s_color_space_suite1.html#92856e0dd4c193cd79596bffc5b9c0a4">00312</a>     <a class="code" href="group___pica_color_space_suite.html#g719d2f237eeef798bd7f9120adb8a848">ColorSpace_Convert32to8</a>         Convert32to8;        
+<a name="l00314"></a>00314 } <a class="code" href="struct_p_s_color_space_suite1.html">PSColorSpaceSuite1</a>;
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 <span class="comment">/******************************************************************************/</span>
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00319"></a>00319 <span class="preprocessor"></span>}
+<a name="l00320"></a>00320 <span class="preprocessor">#endif</span>
+<a name="l00321"></a>00321 <span class="preprocessor"></span>
+<a name="l00323"></a>00323 <span class="preprocessor">#endif  // PIColorSpaceSuite</span>
+</pre></div>
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

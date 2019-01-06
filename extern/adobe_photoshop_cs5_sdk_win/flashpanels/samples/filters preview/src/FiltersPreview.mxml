@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			FiltersPreview.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	The mxml file contains a script that communicates with
+					the FiltersPreview.jsx file, and also sets up an
+					accordian panel to choose between a Gaussian Blur filter,
+					an Unsharp Mask filter, or the Zig Zag filter to apply to
+					an image in a non-destructive way. The panel also contain
+					utility function to check if it is a proper integer or
+					floating value before sending to the FiltersPreview.jsx file.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()" width="160" height="300" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import com.adobe.csxs.core.CSXSInterface;
+			import com.adobe.csxs.events.*;
+			import com.adobe.csxs.types.*;
+			
+			/** Gaussian Blur Variables */
+			public var gaussianRadiusMax:Number = 250.0;
+			public var gaussianRadiusMin:Number = 0.1;
+			public var gaussianRadiusStep:Number = 0.1;
+
+			/** Unsharp Mask Variables */
+			public var unsharpAmtMax:Number = 500;
+			public var unsharpAmtMin:Number = 1;
+			public var unsharpAmtStep:Number = 1;
+			public var unsharpRadiusMax:Number = 250;
+			public var unsharpRadiusMin:Number = 0.1;
+			public var unsharpRadiusStep:Number = 0.1;
+			public var unsharpThresholdMax:Number = 255;
+			public var unsharpThresholdMin:Number = 0;
+			public var unsharpThresholdStep:Number = 1;
+
+			/** Zig Zag Filter */
+			public var zigZagAmtMax:Number = 100;
+			public var zigZagAmtMin:Number = -100;
+			public var zigZagAmtStep:Number = 1;
+			public var zigZagRidgeMax:Number = 20;
+			public var zigZagRidgeMin:Number = 0;
+			public var zigZagRidgeStep:Number = 1;
+			
+			/**
+				Function:		init
+				Description:	Initializes the size of the panel to a set size. The
+								function also retrieves the Adobe Photoshop's host environment
+								properties including the background color, font family, and font size
+								to copy for the panel itself.
+			*/
+			public function init():void{				
+				var windowSize:WindowGeometry = new WindowGeometry(100,100,160,300);
+				CSXSInterface.getInstance().requestStateChange(StateChangeEvent.WINDOW_RESIZE, windowSize);
+
+				var result:SyncRequestResult = CSXSInterface.instance.getHostEnvironment();
+				var hostData:HostEnvironment = result.data;
+				var skinInfo:AppSkinInfo = hostData.appSkinInfo;
+				var defaultColor:String = skinInfo.panelBackgroundColor.color.rgb;
+				this.setStyle("backgroundGradientColors", [defaultColor, defaultColor]);
+				this.setStyle("fontFamily", skinInfo.baseFontFamily);
+				this.setStyle("fontSize", skinInfo.baseFontSize);
+			}
+
+			/**
+				GAUSSIAN BLUR FILTER
+			*/
+			/**
+				Function:		initGaussian
+				Description:	Initializes the parameters of Gaussian Blur to the variables assigned.
+								Add an event listener to the text input.
+			*/
+			public function initGaussian():void{
+				gaussianRadiusSlider.maximum = gaussianRadiusMax;
+				gaussianRadiusSlider.minimum = gaussianRadiusMin;
+				gaussianRadiusSlider.value = gaussianRadiusMin;
+				gaussianRadiusSlider.snapInterval = gaussianRadiusStep;
+				gaussianRadiusInput.text = gaussianRadiusSlider.value.toString();
+				
+				gaussianRadiusInput.addEventListener(FlexEvent.ENTER, checkGaussianRadius);
+			}
+
+			/**
+				Function:		runGaussianBlurFilter
+				Description:	Place the text input components to the current values of the slider components.
+								Call the function "changeGaussianFilter" in the FiltersPreview.jsx and
+								pass the value of the slider component.
+			*/
+			public function runGaussianBlurFilter():void{
+				gaussianRadiusInput.text = gaussianRadiusSlider.value.toString();
+				CSXSInterface.instance.evalScript("changeGaussianFilter", gaussianRadiusSlider.value.toString());
+				CSXSInterface.getInstance().requestStateChange(StateChangeEvent.WINDOW_LOSE_FOCUS, null);
+			}
+
+			/**
+				Function:		checkGaussianRadius
+				Description:	Checks the user's text input for the Gaussian Blur radius
+								to make sure it stays in range.
+								Calls the "runGaussianBlurFilter" after checking the value.
+				@param event An Event variable (not used)
+			*/
+			public function checkGaussianRadius(event:Event):void{
+				var input:Number = checkFloatInput(gaussianRadiusInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > gaussianRadiusMax) gaussianRadiusSlider.value = gaussianRadiusMax;
+					else if(input < gaussianRadiusMin) gaussianRadiusSlider.value = gaussianRadiusMin;
+					else gaussianRadiusSlider.value = input;
+					runGaussianBlurFilter();
+				}
+			}
+			
+			/**
+				UNSHARP MASK FILTER
+			*/
+			/**
+				Function:		initUnsharp
+				Description:	Initializes the parameters of Unsharp Mask to the variables assigned.
+								Add an event listener to the text input.
+			*/
+			public function initUnsharp():void{
+				unsharpAmtSlider.maximum = unsharpAmtMax;
+				unsharpAmtSlider.minimum = unsharpAmtMin;
+				unsharpAmtSlider.value = unsharpAmtMin;
+				unsharpAmtSlider.snapInterval = unsharpAmtStep;
+				unsharpAmtInput.text = unsharpAmtSlider.value.toString();
+				
+				unsharpRadiusSlider.maximum = unsharpRadiusMax;
+				unsharpRadiusSlider.minimum = unsharpRadiusMin;
+				unsharpRadiusSlider.value = unsharpRadiusMin;
+				unsharpRadiusSlider.snapInterval = unsharpRadiusStep;
+				unsharpRadiusInput.text = unsharpRadiusSlider.value.toString();
+				
+				unsharpThresholdSlider.maximum = unsharpThresholdMax;
+				unsharpThresholdSlider.minimum = unsharpThresholdMin;
+				unsharpThresholdSlider.value = unsharpThresholdMin;
+				unsharpThresholdSlider.snapInterval = unsharpThresholdStep;
+				unsharpThresholdInput.text = unsharpThresholdSlider.value.toString();
+				
+				unsharpAmtInput.addEventListener(FlexEvent.ENTER, checkUnsharpAmt);
+				unsharpRadiusInput.addEventListener(FlexEvent.ENTER, checkUnsharpRadius);
+				unsharpThresholdInput.addEventListener(FlexEvent.ENTER, checkUnsharpThreshold);
+			}
+
+			/**
+				Function:		runUnsharpMaskFilter
+				Description:	Place the text input components to the current values of the slider components.
+								Call the function "changeUnsharpFilter" in the FiltersPreview.jsx and
+								pass the values of the slider components.
+			*/
+			public function runUnsharpMaskFilter():void{
+				unsharpAmtInput.text = unsharpAmtSlider.value.toString();
+				unsharpRadiusInput.text = unsharpRadiusSlider.value.toString();
+				unsharpThresholdInput.text = unsharpThresholdSlider.value.toString();
+				CSXSInterface.instance.evalScript("changeUnsharpFilter",
+					unsharpAmtSlider.value + "," + unsharpRadiusSlider.value + "," + unsharpThresholdSlider.value);
+				CSXSInterface.getInstance().requestStateChange(StateChangeEvent.WINDOW_LOSE_FOCUS, null);
+			}
+
+			/**
+				Function:		checkUnsharpAmt
+				Description:	Checks the user's text input for the Unsharp Mask amount
+								to make sure it stays in range.
+								Calls the "runUnsharpMaskFilter" after checking the value.
+				@param event An Event variable (not used)
+			*/
+			public function checkUnsharpAmt(event:Event):void{
+				var input:Number = checkIntegerInput(unsharpAmtInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > unsharpAmtMax) unsharpAmtSlider.value = unsharpAmtMax;
+					else if(input < unsharpAmtMin) unsharpAmtSlider.value = unsharpAmtMin;
+					else unsharpAmtSlider.value = input;
+					runUnsharpMaskFilter();
+				}
+			}
+
+			/**
+				Function:		checkUnsharpRadius
+				Description:	Checks the user's text input for the Unsharp Mask radius
+								to make sure it stays in range.
+								Calls the "runUnsharpMaskFilter" after checking the value.
+				@param event An Event variable (not used)
+			*/
+			public function checkUnsharpRadius(event:Event):void{
+				var input:Number = checkFloatInput(unsharpRadiusInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > unsharpRadiusMax) unsharpRadiusSlider.value = unsharpRadiusMax;
+					else if(input < unsharpRadiusMin) unsharpRadiusSlider.value = unsharpRadiusMin;
+					else unsharpRadiusSlider.value = input;
+					runUnsharpMaskFilter();
+				}
+			}
+
+			/**
+				Function:		checkUnsharpThreshold
+				Description:	Checks the user's text input for the Unsharp Mask Threshold
+								to make sure it stays in range.
+								Calls the "runUnsharpMaskFilter" after checking the value.
+				@param event An Event variable (not used)
+			*/
+			public function checkUnsharpThreshold(event:Event):void{
+				var input:Number = checkIntegerInput(unsharpThresholdInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > unsharpThresholdMax) unsharpThresholdSlider.value = unsharpThresholdMax;
+					else if(input < unsharpThresholdMin) unsharpThresholdSlider.value = unsharpThresholdMin;
+					else unsharpThresholdSlider.value = input;
+					runUnsharpMaskFilter();
+				}
+			}
+			
+			/**
+				ZIG ZAG FILTER
+			*/
+			/**
+				Function:		initZigZag
+				Description:	Initializes the parameters of Zig Zag filter to the variables assigned.
+								Add an event listener to the text input.
+			*/
+			public function initZigZag():void{
+				zigZagAmtSlider.maximum = zigZagAmtMax;
+				zigZagAmtSlider.minimum = zigZagAmtMin;
+				zigZagAmtSlider.value =  zigZagAmtMin;
+				zigZagAmtSlider.snapInterval = zigZagAmtStep;
+				zigZagAmtInput.text = zigZagAmtSlider.value.toString();
+				
+				zigZagRidgeSlider.maximum = zigZagRidgeMax;
+				zigZagRidgeSlider.minimum = zigZagRidgeMin;
+				zigZagRidgeSlider.value = zigZagRidgeMin;
+				zigZagRidgeSlider.snapInterval = zigZagRidgeStep;
+				zigZagRidgeInput.text = zigZagRidgeSlider.value.toString();
+				
+				zigZagAmtInput.addEventListener(FlexEvent.ENTER, checkZigZagAmt);
+				zigZagRidgeInput.addEventListener(FlexEvent.ENTER, checkZigZagRidge);
+			}
+
+			/**
+				Function:		runZigZagFilter
+				Description:	Place the text input components to the current values of the slider components.
+								Call the function "changeZigZagFilter" in the FiltersPreview.jsx and
+								pass the values of the slider components and the pull down menu.
+			*/
+			public function runZigZagFilter():void{
+				zigZagAmtInput.text = zigZagAmtSlider.value.toString();
+				zigZagRidgeInput.text = zigZagRidgeSlider.value.toString();
+				CSXSInterface.instance.evalScript("changeZigZagFilter",
+					zigZagAmtSlider.value + "," + zigZagRidgeSlider.value + "," + zigZagStyle.selectedIndex.toString());
+				CSXSInterface.getInstance().requestStateChange(StateChangeEvent.WINDOW_LOSE_FOCUS, null);
+			}
+
+			/**
+				Function:		checkZigZagAmt
+				Description:	Checks the user's text input for the Zig Zag amount
+								to make sure it stays in range.
+								Calls the "runZigZagFilter" after checking the value.
+				@param event An Event variable (not used)
+			*/
+			public function checkZigZagAmt(event:Event):void{
+				var input:Number = checkIntegerInput(zigZagAmtInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > zigZagAmtMax) zigZagAmtSlider.value = zigZagAmtMax;
+					else if(input < zigZagAmtMin) zigZagAmtSlider.value = zigZagAmtMin;
+					else zigZagAmtSlider.value = input;
+					runZigZagFilter();
+				}
+			}
+
+			/**
+				Function:		checkZigZagRidge
+				Description:	Checks the user's text input for the Zig Zag ridge
+								to make sure it stays in range.
+								Calls the "runZigZagFilter" after checking the value.
+				@param event An Event variable (not used)
+ 			*/
+			public function checkZigZagRidge(event:Event):void{
+				var input:Number = checkIntegerInput(zigZagRidgeInput.text);
+				
+				if(input.toString() != "NaN") {
+					if(input > zigZagRidgeMax) zigZagRidgeSlider.value = zigZagRidgeMax;
+					else if(input < zigZagRidgeMin) zigZagRidgeSlider.value = zigZagRidgeMin;
+					else zigZagRidgeSlider.value = input;
+					runZigZagFilter();
+				}
+			}
+
+			/**
+				UTILITY FUNCTIONS
+			*/
+			/**
+				Function:		checkFloatInput
+				Description:	Converts the input to a floating value. If it failed,
+								it will show an error. The function returns the converted value.
+				@param input An String variable of the value passed
+				@return A Number value after it has been checked if is valid.
+			*/
+			public function checkFloatInput(input:String):Number{
+				var value:Number = parseFloat(input);
+				if(input == "" || value.toString() == "NaN") Alert.show("Invalid Input");
+				return value;
+			}
+
+			/**
+				Function:		checkIntegerInput
+				Description:	Converts the input to an integer value. If it failed,
+								it will show an error. The function returns the converted value.
+				@param input An String variable of the value passed
+				@return A Number value after it has been checked if is valid.
+			*/
+			public function checkIntegerInput(input:String):Number{
+				var value:Number = parseInt(input);
+				if(input == "" || value.toString() == "NaN") Alert.show("Invalid Input");
+				return value;
+			}
+		]]>
+	</mx:Script>
+	<mx:Accordion width="160" height="300" x="0" y="0">
+		<!-- Informational Menu -->
+		<mx:VBox label="Help" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+			<mx:TextArea text="To apply a non-destructive filter, first select one of the filters below and change one of its parameters.&#xd;"
+				width="100%" editable="false" textAlign="center" borderThickness="0" height="100"/>
+		</mx:VBox>
+		<!-- Gaussian Blur Menu -->
+		<mx:VBox label="Gaussian Blur" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" initialize="initGaussian()">
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Radius"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="0-9." id="gaussianRadiusInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="gaussianRadiusSlider"
+					change="runGaussianBlurFilter(); gaussianRadiusInput.text = gaussianRadiusSlider.value.toString();"/>
+			</mx:Canvas>
+		</mx:VBox>
+		<!-- Unsharp Mask Menu -->
+		<mx:VBox label="Unsharp Mask" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" initialize="initUnsharp()">
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Amount"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="0-9" id="unsharpAmtInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="unsharpAmtSlider"
+					change="runUnsharpMaskFilter(); unsharpAmtInput.text = unsharpAmtSlider.value.toString();"/>
+			</mx:Canvas>
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Radius"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="0-9." id="unsharpRadiusInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="unsharpRadiusSlider"
+					change="runUnsharpMaskFilter(); unsharpRadiusInput.text = unsharpRadiusSlider.value.toString();"/>
+			</mx:Canvas>
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Threshold"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="0-9" id="unsharpThresholdInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="unsharpThresholdSlider"
+					change="runUnsharpMaskFilter(); unsharpThresholdInput.text = unsharpThresholdSlider.value.toString();"/>
+			</mx:Canvas>
+		</mx:VBox>
+		<!-- Zig Zag Menu -->
+		<mx:VBox label="Zig Zag" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" initialize="initZigZag()">
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Amount"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="-0-9" id="zigZagAmtInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="zigZagAmtSlider"
+					change="runZigZagFilter(); zigZagAmtInput.text = zigZagAmtSlider.value.toString();"/>
+			</mx:Canvas>
+			<mx:Canvas width="150" height="65">
+				<mx:Label x="10" y="10" text="Ridges"/>
+				<mx:TextInput x="90" y="10" width="50" height="20" restrict="0-9" id="zigZagRidgeInput"/>
+				<mx:HSlider x="10" y="40" width="130" id="zigZagRidgeSlider"
+					change="runZigZagFilter(); zigZagRidgeInput.text = zigZagRidgeSlider.value.toString();"/>
+			</mx:Canvas>
+			<mx:ComboBox x="50" y="10" width="150" selectedIndex="3" id="zigZagStyle" change="runZigZagFilter();">
+				<mx:ArrayCollection>
+					<mx:String>Around Center</mx:String>
+					<mx:String>Out From Center</mx:String>
+					<mx:String>Pond Ripples</mx:String>
+				</mx:ArrayCollection>
+			</mx:ComboBox>
+		</mx:VBox>
+	</mx:Accordion>
+</mx:Application>

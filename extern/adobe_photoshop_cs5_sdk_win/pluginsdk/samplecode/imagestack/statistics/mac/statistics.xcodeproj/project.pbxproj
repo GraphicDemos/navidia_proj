@@ -1,0 +1,1318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64FC827C1118E69700F6232D /* PIUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6C750AED2E2B006C09F7 /* PIUtilities.cpp */; };
+		64FC827D1118E69900F6232D /* DialogUtilitiesMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6C760AED2E2B006C09F7 /* DialogUtilitiesMac.cpp */; };
+		6BEA6C780AED2E2B006C09F7 /* PIUtilities.r in Rez */ = {isa = PBXBuildFile; fileRef = 6BEA6C700AED2E2B006C09F7 /* PIUtilities.r */; };
+		6BEA6C7A0AED2E2B006C09F7 /* PIUSuites.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6C740AED2E2B006C09F7 /* PIUSuites.cpp */; };
+		6BEA6EC90AED2E98006C09F7 /* StatisticsUIMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6EC80AED2E98006C09F7 /* StatisticsUIMac.cpp */; };
+		6BEA6ED20AED2EA9006C09F7 /* Statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6ECD0AED2EA9006C09F7 /* Statistics.cpp */; };
+		6BEA6ED30AED2EA9006C09F7 /* Statistics.r in Rez */ = {isa = PBXBuildFile; fileRef = 6BEA6ECF0AED2EA9006C09F7 /* Statistics.r */; };
+		6BEA6ED40AED2EA9006C09F7 /* StatisticsScripting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA6ED10AED2EA9006C09F7 /* StatisticsScripting.cpp */; };
+		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		9673A42B0A002C9F009159A2 /* vecLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9673A42A0A002C9F009159A2 /* vecLib.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		969D530509B6834200BD3566 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.plc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Info.plist",
+			);
+			script = "/usr/bin/python \"../../build/build system files/xcode/PList.py\"";
+		};
+		96D963C109C0BE6800A5716C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.rc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${PRODUCT_NAME}.rsrc\"",
+			);
+			script = "/usr/bin/perl -w \"../../build/build system files/xcode/RCIncluder.pl\" -macverbose -o \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${PRODUCT_NAME}.rsrc\" \"${INPUT_FILE_PATH}\"";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		647B633011138D490067F135 /* PSIntTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSIntTypes.h; sourceTree = "<group>"; };
+		64CC2E4B111CCA5800423B46 /* JSScriptingSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JSScriptingSuite.h; sourceTree = "<group>"; };
+		6BEA6C680AED2E2B006C09F7 /* FilterBigDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = FilterBigDocument.h; sourceTree = "<group>"; };
+		6BEA6C690AED2E2B006C09F7 /* PIDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIDefines.h; sourceTree = "<group>"; };
+		6BEA6C6B0AED2E2B006C09F7 /* PIUSuites.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUSuites.h; sourceTree = "<group>"; };
+		6BEA6C6C0AED2E2B006C09F7 /* PIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUtilities.h; sourceTree = "<group>"; };
+		6BEA6C6D0AED2E2B006C09F7 /* DialogUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DialogUtilities.h; sourceTree = "<group>"; };
+		6BEA6C700AED2E2B006C09F7 /* PIUtilities.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIUtilities.r; sourceTree = "<group>"; };
+		6BEA6C740AED2E2B006C09F7 /* PIUSuites.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIUSuites.cpp; sourceTree = "<group>"; };
+		6BEA6C750AED2E2B006C09F7 /* PIUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIUtilities.cpp; sourceTree = "<group>"; };
+		6BEA6C760AED2E2B006C09F7 /* DialogUtilitiesMac.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = DialogUtilitiesMac.cpp; sourceTree = "<group>"; };
+		6BEA6C7E0AED2E39006C09F7 /* ADSP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ADSP.h; path = /Developer/Headers/FlatCarbon/ADSP.h; sourceTree = "<absolute>"; };
+		6BEA6C7F0AED2E39006C09F7 /* AEDataModel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEDataModel.h; path = /Developer/Headers/FlatCarbon/AEDataModel.h; sourceTree = "<absolute>"; };
+		6BEA6C800AED2E39006C09F7 /* AEDataModel.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEDataModel.r; path = /Developer/Headers/FlatCarbon/AEDataModel.r; sourceTree = "<absolute>"; };
+		6BEA6C810AED2E39006C09F7 /* AEHelpers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEHelpers.h; path = /Developer/Headers/FlatCarbon/AEHelpers.h; sourceTree = "<absolute>"; };
+		6BEA6C820AED2E39006C09F7 /* AEInteraction.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEInteraction.h; path = /Developer/Headers/FlatCarbon/AEInteraction.h; sourceTree = "<absolute>"; };
+		6BEA6C830AED2E39006C09F7 /* AEMach.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEMach.h; path = /Developer/Headers/FlatCarbon/AEMach.h; sourceTree = "<absolute>"; };
+		6BEA6C840AED2E39006C09F7 /* AEObjects.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEObjects.h; path = /Developer/Headers/FlatCarbon/AEObjects.h; sourceTree = "<absolute>"; };
+		6BEA6C850AED2E39006C09F7 /* AEObjects.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEObjects.r; path = /Developer/Headers/FlatCarbon/AEObjects.r; sourceTree = "<absolute>"; };
+		6BEA6C860AED2E39006C09F7 /* AEPackObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEPackObject.h; path = /Developer/Headers/FlatCarbon/AEPackObject.h; sourceTree = "<absolute>"; };
+		6BEA6C870AED2E39006C09F7 /* AERegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AERegistry.h; path = /Developer/Headers/FlatCarbon/AERegistry.h; sourceTree = "<absolute>"; };
+		6BEA6C880AED2E39006C09F7 /* AERegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AERegistry.r; path = /Developer/Headers/FlatCarbon/AERegistry.r; sourceTree = "<absolute>"; };
+		6BEA6C890AED2E39006C09F7 /* AEUserTermTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEUserTermTypes.h; path = /Developer/Headers/FlatCarbon/AEUserTermTypes.h; sourceTree = "<absolute>"; };
+		6BEA6C8A0AED2E39006C09F7 /* AEUserTermTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEUserTermTypes.r; path = /Developer/Headers/FlatCarbon/AEUserTermTypes.r; sourceTree = "<absolute>"; };
+		6BEA6C8B0AED2E39006C09F7 /* AEWideUserTermTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEWideUserTermTypes.r; path = /Developer/Headers/FlatCarbon/AEWideUserTermTypes.r; sourceTree = "<absolute>"; };
+		6BEA6C8C0AED2E39006C09F7 /* AIFF.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AIFF.h; path = /Developer/Headers/FlatCarbon/AIFF.h; sourceTree = "<absolute>"; };
+		6BEA6C8D0AED2E39006C09F7 /* Aliases.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Aliases.h; path = /Developer/Headers/FlatCarbon/Aliases.h; sourceTree = "<absolute>"; };
+		6BEA6C8E0AED2E39006C09F7 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Appearance.h; path = /Developer/Headers/FlatCarbon/Appearance.h; sourceTree = "<absolute>"; };
+		6BEA6C8F0AED2E39006C09F7 /* Appearance.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Appearance.r; path = /Developer/Headers/FlatCarbon/Appearance.r; sourceTree = "<absolute>"; };
+		6BEA6C900AED2E39006C09F7 /* AppleDiskPartitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleDiskPartitions.h; path = /Developer/Headers/FlatCarbon/AppleDiskPartitions.h; sourceTree = "<absolute>"; };
+		6BEA6C910AED2E39006C09F7 /* AppleEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleEvents.h; path = /Developer/Headers/FlatCarbon/AppleEvents.h; sourceTree = "<absolute>"; };
+		6BEA6C920AED2E39006C09F7 /* AppleEvents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AppleEvents.r; path = /Developer/Headers/FlatCarbon/AppleEvents.r; sourceTree = "<absolute>"; };
+		6BEA6C930AED2E39006C09F7 /* AppleGuide.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleGuide.h; path = /Developer/Headers/FlatCarbon/AppleGuide.h; sourceTree = "<absolute>"; };
+		6BEA6C940AED2E39006C09F7 /* AppleHelp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleHelp.h; path = /Developer/Headers/FlatCarbon/AppleHelp.h; sourceTree = "<absolute>"; };
+		6BEA6C950AED2E39006C09F7 /* AppleScript.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleScript.h; path = /Developer/Headers/FlatCarbon/AppleScript.h; sourceTree = "<absolute>"; };
+		6BEA6C960AED2E39006C09F7 /* AppleTalk.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleTalk.h; path = /Developer/Headers/FlatCarbon/AppleTalk.h; sourceTree = "<absolute>"; };
+		6BEA6C970AED2E39006C09F7 /* ApplicationServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ApplicationServices.h; path = /Developer/Headers/FlatCarbon/ApplicationServices.h; sourceTree = "<absolute>"; };
+		6BEA6C980AED2E39006C09F7 /* ApplicationServices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ApplicationServices.r; path = /Developer/Headers/FlatCarbon/ApplicationServices.r; sourceTree = "<absolute>"; };
+		6BEA6C990AED2E39006C09F7 /* ASDebugging.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ASDebugging.h; path = /Developer/Headers/FlatCarbon/ASDebugging.h; sourceTree = "<absolute>"; };
+		6BEA6C9A0AED2E39006C09F7 /* ASRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ASRegistry.h; path = /Developer/Headers/FlatCarbon/ASRegistry.h; sourceTree = "<absolute>"; };
+		6BEA6C9B0AED2E39006C09F7 /* ASRegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ASRegistry.r; path = /Developer/Headers/FlatCarbon/ASRegistry.r; sourceTree = "<absolute>"; };
+		6BEA6C9C0AED2E39006C09F7 /* ATA.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATA.h; path = /Developer/Headers/FlatCarbon/ATA.h; sourceTree = "<absolute>"; };
+		6BEA6C9D0AED2E39006C09F7 /* ATSFont.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSFont.h; path = /Developer/Headers/FlatCarbon/ATSFont.h; sourceTree = "<absolute>"; };
+		6BEA6C9E0AED2E39006C09F7 /* ATSLayoutTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSLayoutTypes.h; path = /Developer/Headers/FlatCarbon/ATSLayoutTypes.h; sourceTree = "<absolute>"; };
+		6BEA6C9F0AED2E39006C09F7 /* ATSTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSTypes.h; path = /Developer/Headers/FlatCarbon/ATSTypes.h; sourceTree = "<absolute>"; };
+		6BEA6CA00AED2E39006C09F7 /* ATSUnicode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSUnicode.h; path = /Developer/Headers/FlatCarbon/ATSUnicode.h; sourceTree = "<absolute>"; };
+		6BEA6CA10AED2E39006C09F7 /* AVComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVComponents.h; path = /Developer/Headers/FlatCarbon/AVComponents.h; sourceTree = "<absolute>"; };
+		6BEA6CA20AED2E39006C09F7 /* AVComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVComponents.k.h; path = /Developer/Headers/FlatCarbon/AVComponents.k.h; sourceTree = "<absolute>"; };
+		6BEA6CA30AED2E39006C09F7 /* AVComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AVComponents.r; path = /Developer/Headers/FlatCarbon/AVComponents.r; sourceTree = "<absolute>"; };
+		6BEA6CA40AED2E39006C09F7 /* AVLTree.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVLTree.h; path = /Developer/Headers/FlatCarbon/AVLTree.h; sourceTree = "<absolute>"; };
+		6BEA6CA50AED2E39006C09F7 /* Balloons.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Balloons.h; path = /Developer/Headers/FlatCarbon/Balloons.h; sourceTree = "<absolute>"; };
+		6BEA6CA60AED2E39006C09F7 /* Balloons.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Balloons.r; path = /Developer/Headers/FlatCarbon/Balloons.r; sourceTree = "<absolute>"; };
+		6BEA6CA70AED2E39006C09F7 /* BalloonTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = BalloonTypes.r; path = /Developer/Headers/FlatCarbon/BalloonTypes.r; sourceTree = "<absolute>"; };
+		6BEA6CA80AED2E39006C09F7 /* Carbon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Carbon.h; path = /Developer/Headers/FlatCarbon/Carbon.h; sourceTree = "<absolute>"; };
+		6BEA6CA90AED2E39006C09F7 /* Carbon.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Carbon.r; path = /Developer/Headers/FlatCarbon/Carbon.r; sourceTree = "<absolute>"; };
+		6BEA6CAA0AED2E39006C09F7 /* CarbonEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CarbonEvents.h; path = /Developer/Headers/FlatCarbon/CarbonEvents.h; sourceTree = "<absolute>"; };
+		6BEA6CAB0AED2E39006C09F7 /* CarbonEvents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CarbonEvents.r; path = /Developer/Headers/FlatCarbon/CarbonEvents.r; sourceTree = "<absolute>"; };
+		6BEA6CAC0AED2E39006C09F7 /* CardServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CardServices.h; path = /Developer/Headers/FlatCarbon/CardServices.h; sourceTree = "<absolute>"; };
+		6BEA6CAD0AED2E39006C09F7 /* CFArray.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFArray.h; path = /Developer/Headers/FlatCarbon/CFArray.h; sourceTree = "<absolute>"; };
+		6BEA6CAE0AED2E39006C09F7 /* CFBag.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBag.h; path = /Developer/Headers/FlatCarbon/CFBag.h; sourceTree = "<absolute>"; };
+		6BEA6CAF0AED2E39006C09F7 /* CFBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBase.h; path = /Developer/Headers/FlatCarbon/CFBase.h; sourceTree = "<absolute>"; };
+		6BEA6CB00AED2E39006C09F7 /* CFBundle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBundle.h; path = /Developer/Headers/FlatCarbon/CFBundle.h; sourceTree = "<absolute>"; };
+		6BEA6CB10AED2E39006C09F7 /* CFCharacterSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFCharacterSet.h; path = /Developer/Headers/FlatCarbon/CFCharacterSet.h; sourceTree = "<absolute>"; };
+		6BEA6CB20AED2E39006C09F7 /* CFData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFData.h; path = /Developer/Headers/FlatCarbon/CFData.h; sourceTree = "<absolute>"; };
+		6BEA6CB30AED2E39006C09F7 /* CFDate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFDate.h; path = /Developer/Headers/FlatCarbon/CFDate.h; sourceTree = "<absolute>"; };
+		6BEA6CB40AED2E39006C09F7 /* CFDictionary.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFDictionary.h; path = /Developer/Headers/FlatCarbon/CFDictionary.h; sourceTree = "<absolute>"; };
+		6BEA6CB50AED2E39006C09F7 /* CFNumber.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFNumber.h; path = /Developer/Headers/FlatCarbon/CFNumber.h; sourceTree = "<absolute>"; };
+		6BEA6CB60AED2E39006C09F7 /* CFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPlugIn.h; path = /Developer/Headers/FlatCarbon/CFPlugIn.h; sourceTree = "<absolute>"; };
+		6BEA6CB70AED2E39006C09F7 /* CFPlugInCOM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPlugInCOM.h; path = /Developer/Headers/FlatCarbon/CFPlugInCOM.h; sourceTree = "<absolute>"; };
+		6BEA6CB80AED2E39006C09F7 /* CFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPreferences.h; path = /Developer/Headers/FlatCarbon/CFPreferences.h; sourceTree = "<absolute>"; };
+		6BEA6CB90AED2E39006C09F7 /* CFPropertyList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPropertyList.h; path = /Developer/Headers/FlatCarbon/CFPropertyList.h; sourceTree = "<absolute>"; };
+		6BEA6CBA0AED2E39006C09F7 /* CFSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFSet.h; path = /Developer/Headers/FlatCarbon/CFSet.h; sourceTree = "<absolute>"; };
+		6BEA6CBB0AED2E39006C09F7 /* CFString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFString.h; path = /Developer/Headers/FlatCarbon/CFString.h; sourceTree = "<absolute>"; };
+		6BEA6CBC0AED2E39006C09F7 /* CFStringEncodingExt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFStringEncodingExt.h; path = /Developer/Headers/FlatCarbon/CFStringEncodingExt.h; sourceTree = "<absolute>"; };
+		6BEA6CBD0AED2E39006C09F7 /* CFTimeZone.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFTimeZone.h; path = /Developer/Headers/FlatCarbon/CFTimeZone.h; sourceTree = "<absolute>"; };
+		6BEA6CBE0AED2E39006C09F7 /* CFTree.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFTree.h; path = /Developer/Headers/FlatCarbon/CFTree.h; sourceTree = "<absolute>"; };
+		6BEA6CBF0AED2E39006C09F7 /* CFURL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFURL.h; path = /Developer/Headers/FlatCarbon/CFURL.h; sourceTree = "<absolute>"; };
+		6BEA6CC00AED2E39006C09F7 /* CFURLAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFURLAccess.h; path = /Developer/Headers/FlatCarbon/CFURLAccess.h; sourceTree = "<absolute>"; };
+		6BEA6CC10AED2E39006C09F7 /* CFUUID.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFUUID.h; path = /Developer/Headers/FlatCarbon/CFUUID.h; sourceTree = "<absolute>"; };
+		6BEA6CC20AED2E39006C09F7 /* CFXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFXMLNode.h; path = /Developer/Headers/FlatCarbon/CFXMLNode.h; sourceTree = "<absolute>"; };
+		6BEA6CC30AED2E39006C09F7 /* CFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFXMLParser.h; path = /Developer/Headers/FlatCarbon/CFXMLParser.h; sourceTree = "<absolute>"; };
+		6BEA6CC40AED2E39006C09F7 /* CGAffineTransform.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGAffineTransform.h; path = /Developer/Headers/FlatCarbon/CGAffineTransform.h; sourceTree = "<absolute>"; };
+		6BEA6CC50AED2E39006C09F7 /* CGBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGBase.h; path = /Developer/Headers/FlatCarbon/CGBase.h; sourceTree = "<absolute>"; };
+		6BEA6CC60AED2E39006C09F7 /* CGBitmapContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGBitmapContext.h; path = /Developer/Headers/FlatCarbon/CGBitmapContext.h; sourceTree = "<absolute>"; };
+		6BEA6CC70AED2E39006C09F7 /* CGColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGColorSpace.h; path = /Developer/Headers/FlatCarbon/CGColorSpace.h; sourceTree = "<absolute>"; };
+		6BEA6CC80AED2E39006C09F7 /* CGContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGContext.h; path = /Developer/Headers/FlatCarbon/CGContext.h; sourceTree = "<absolute>"; };
+		6BEA6CC90AED2E39006C09F7 /* CGDataConsumer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDataConsumer.h; path = /Developer/Headers/FlatCarbon/CGDataConsumer.h; sourceTree = "<absolute>"; };
+		6BEA6CCA0AED2E39006C09F7 /* CGDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDataProvider.h; path = /Developer/Headers/FlatCarbon/CGDataProvider.h; sourceTree = "<absolute>"; };
+		6BEA6CCB0AED2E39006C09F7 /* CGDirectDisplay.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDirectDisplay.h; path = /Developer/Headers/FlatCarbon/CGDirectDisplay.h; sourceTree = "<absolute>"; };
+		6BEA6CCC0AED2E39006C09F7 /* CGDirectPalette.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDirectPalette.h; path = /Developer/Headers/FlatCarbon/CGDirectPalette.h; sourceTree = "<absolute>"; };
+		6BEA6CCD0AED2E39006C09F7 /* CGError.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGError.h; path = /Developer/Headers/FlatCarbon/CGError.h; sourceTree = "<absolute>"; };
+		6BEA6CCE0AED2E39006C09F7 /* CGFont.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGFont.h; path = /Developer/Headers/FlatCarbon/CGFont.h; sourceTree = "<absolute>"; };
+		6BEA6CCF0AED2E39006C09F7 /* CGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGGeometry.h; path = /Developer/Headers/FlatCarbon/CGGeometry.h; sourceTree = "<absolute>"; };
+		6BEA6CD00AED2E39006C09F7 /* CGImage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGImage.h; path = /Developer/Headers/FlatCarbon/CGImage.h; sourceTree = "<absolute>"; };
+		6BEA6CD10AED2E39006C09F7 /* CGPattern.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPattern.h; path = /Developer/Headers/FlatCarbon/CGPattern.h; sourceTree = "<absolute>"; };
+		6BEA6CD20AED2E39006C09F7 /* CGPDFContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPDFContext.h; path = /Developer/Headers/FlatCarbon/CGPDFContext.h; sourceTree = "<absolute>"; };
+		6BEA6CD30AED2E39006C09F7 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPDFDocument.h; path = /Developer/Headers/FlatCarbon/CGPDFDocument.h; sourceTree = "<absolute>"; };
+		6BEA6CD40AED2E39006C09F7 /* CGRemoteOperation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGRemoteOperation.h; path = /Developer/Headers/FlatCarbon/CGRemoteOperation.h; sourceTree = "<absolute>"; };
+		6BEA6CD50AED2E39006C09F7 /* CGWindowLevel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGWindowLevel.h; path = /Developer/Headers/FlatCarbon/CGWindowLevel.h; sourceTree = "<absolute>"; };
+		6BEA6CD60AED2E39006C09F7 /* CMAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMAcceleration.h; path = /Developer/Headers/FlatCarbon/CMAcceleration.h; sourceTree = "<absolute>"; };
+		6BEA6CD70AED2E39006C09F7 /* CMApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMApplication.h; path = /Developer/Headers/FlatCarbon/CMApplication.h; sourceTree = "<absolute>"; };
+		6BEA6CD80AED2E39006C09F7 /* CMCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMCalibrator.h; path = /Developer/Headers/FlatCarbon/CMCalibrator.h; sourceTree = "<absolute>"; };
+		6BEA6CD90AED2E39006C09F7 /* CMComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMComponent.h; path = /Developer/Headers/FlatCarbon/CMComponent.h; sourceTree = "<absolute>"; };
+		6BEA6CDA0AED2E39006C09F7 /* CMConversions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMConversions.h; path = /Developer/Headers/FlatCarbon/CMConversions.h; sourceTree = "<absolute>"; };
+		6BEA6CDB0AED2E39006C09F7 /* CMDeviceIntegration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMDeviceIntegration.h; path = /Developer/Headers/FlatCarbon/CMDeviceIntegration.h; sourceTree = "<absolute>"; };
+		6BEA6CDC0AED2E39006C09F7 /* CMICCProfile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMICCProfile.h; path = /Developer/Headers/FlatCarbon/CMICCProfile.h; sourceTree = "<absolute>"; };
+		6BEA6CDD0AED2E39006C09F7 /* CMMComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMMComponent.h; path = /Developer/Headers/FlatCarbon/CMMComponent.h; sourceTree = "<absolute>"; };
+		6BEA6CDE0AED2E39006C09F7 /* CMPRComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMPRComponent.h; path = /Developer/Headers/FlatCarbon/CMPRComponent.h; sourceTree = "<absolute>"; };
+		6BEA6CDF0AED2E39006C09F7 /* CMScriptingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMScriptingPlugin.h; path = /Developer/Headers/FlatCarbon/CMScriptingPlugin.h; sourceTree = "<absolute>"; };
+		6BEA6CE00AED2E39006C09F7 /* CMTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMTypes.h; path = /Developer/Headers/FlatCarbon/CMTypes.h; sourceTree = "<absolute>"; };
+		6BEA6CE10AED2E39006C09F7 /* CodeFragments.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CodeFragments.h; path = /Developer/Headers/FlatCarbon/CodeFragments.h; sourceTree = "<absolute>"; };
+		6BEA6CE20AED2E39006C09F7 /* CodeFragments.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CodeFragments.r; path = /Developer/Headers/FlatCarbon/CodeFragments.r; sourceTree = "<absolute>"; };
+		6BEA6CE30AED2E39006C09F7 /* CodeFragmentTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CodeFragmentTypes.r; path = /Developer/Headers/FlatCarbon/CodeFragmentTypes.r; sourceTree = "<absolute>"; };
+		6BEA6CE40AED2E39006C09F7 /* Collections.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Collections.h; path = /Developer/Headers/FlatCarbon/Collections.h; sourceTree = "<absolute>"; };
+		6BEA6CE50AED2E39006C09F7 /* Collections.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Collections.r; path = /Developer/Headers/FlatCarbon/Collections.r; sourceTree = "<absolute>"; };
+		6BEA6CE60AED2E39006C09F7 /* ColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ColorPicker.h; path = /Developer/Headers/FlatCarbon/ColorPicker.h; sourceTree = "<absolute>"; };
+		6BEA6CE70AED2E39006C09F7 /* ColorPickerComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ColorPickerComponents.h; path = /Developer/Headers/FlatCarbon/ColorPickerComponents.h; sourceTree = "<absolute>"; };
+		6BEA6CE80AED2E39006C09F7 /* CommResources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CommResources.h; path = /Developer/Headers/FlatCarbon/CommResources.h; sourceTree = "<absolute>"; };
+		6BEA6CE90AED2E39006C09F7 /* CommResources.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CommResources.r; path = /Developer/Headers/FlatCarbon/CommResources.r; sourceTree = "<absolute>"; };
+		6BEA6CEA0AED2E39006C09F7 /* Components.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Components.h; path = /Developer/Headers/FlatCarbon/Components.h; sourceTree = "<absolute>"; };
+		6BEA6CEB0AED2E39006C09F7 /* Components.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Components.k.h; path = /Developer/Headers/FlatCarbon/Components.k.h; sourceTree = "<absolute>"; };
+		6BEA6CEC0AED2E39006C09F7 /* Components.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Components.r; path = /Developer/Headers/FlatCarbon/Components.r; sourceTree = "<absolute>"; };
+		6BEA6CED0AED2E39006C09F7 /* ConditionalMacros.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ConditionalMacros.h; path = /Developer/Headers/FlatCarbon/ConditionalMacros.h; sourceTree = "<absolute>"; };
+		6BEA6CEE0AED2E39006C09F7 /* ConditionalMacros.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ConditionalMacros.r; path = /Developer/Headers/FlatCarbon/ConditionalMacros.r; sourceTree = "<absolute>"; };
+		6BEA6CEF0AED2E39006C09F7 /* Connections.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Connections.h; path = /Developer/Headers/FlatCarbon/Connections.h; sourceTree = "<absolute>"; };
+		6BEA6CF00AED2E39006C09F7 /* ConnectionTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ConnectionTools.h; path = /Developer/Headers/FlatCarbon/ConnectionTools.h; sourceTree = "<absolute>"; };
+		6BEA6CF10AED2E39006C09F7 /* ControlDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ControlDefinitions.h; path = /Developer/Headers/FlatCarbon/ControlDefinitions.h; sourceTree = "<absolute>"; };
+		6BEA6CF20AED2E39006C09F7 /* ControlDefinitions.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ControlDefinitions.r; path = /Developer/Headers/FlatCarbon/ControlDefinitions.r; sourceTree = "<absolute>"; };
+		6BEA6CF30AED2E39006C09F7 /* Controls.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Controls.h; path = /Developer/Headers/FlatCarbon/Controls.h; sourceTree = "<absolute>"; };
+		6BEA6CF40AED2E39006C09F7 /* Controls.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Controls.r; path = /Developer/Headers/FlatCarbon/Controls.r; sourceTree = "<absolute>"; };
+		6BEA6CF50AED2E39006C09F7 /* ControlStrip.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ControlStrip.h; path = /Developer/Headers/FlatCarbon/ControlStrip.h; sourceTree = "<absolute>"; };
+		6BEA6CF60AED2E39006C09F7 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CoreServices.h; path = /Developer/Headers/FlatCarbon/CoreServices.h; sourceTree = "<absolute>"; };
+		6BEA6CF70AED2E39006C09F7 /* CoreServices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CoreServices.r; path = /Developer/Headers/FlatCarbon/CoreServices.r; sourceTree = "<absolute>"; };
+		6BEA6CF80AED2E39006C09F7 /* CRMSerialDevices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CRMSerialDevices.h; path = /Developer/Headers/FlatCarbon/CRMSerialDevices.h; sourceTree = "<absolute>"; };
+		6BEA6CF90AED2E39006C09F7 /* CryptoMessageSyntax.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CryptoMessageSyntax.h; path = /Developer/Headers/FlatCarbon/CryptoMessageSyntax.h; sourceTree = "<absolute>"; };
+		6BEA6CFA0AED2E39006C09F7 /* CTBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CTBUtilities.h; path = /Developer/Headers/FlatCarbon/CTBUtilities.h; sourceTree = "<absolute>"; };
+		6BEA6CFB0AED2E39006C09F7 /* CursorDevices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CursorDevices.h; path = /Developer/Headers/FlatCarbon/CursorDevices.h; sourceTree = "<absolute>"; };
+		6BEA6CFC0AED2E39006C09F7 /* DatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DatabaseAccess.h; path = /Developer/Headers/FlatCarbon/DatabaseAccess.h; sourceTree = "<absolute>"; };
+		6BEA6CFD0AED2E39006C09F7 /* DatabaseAccess.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = DatabaseAccess.r; path = /Developer/Headers/FlatCarbon/DatabaseAccess.r; sourceTree = "<absolute>"; };
+		6BEA6CFE0AED2E39006C09F7 /* DateTimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DateTimeUtils.h; path = /Developer/Headers/FlatCarbon/DateTimeUtils.h; sourceTree = "<absolute>"; };
+		6BEA6CFF0AED2E39006C09F7 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Debugging.h; path = /Developer/Headers/FlatCarbon/Debugging.h; sourceTree = "<absolute>"; };
+		6BEA6D000AED2E39006C09F7 /* DeskBus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeskBus.h; path = /Developer/Headers/FlatCarbon/DeskBus.h; sourceTree = "<absolute>"; };
+		6BEA6D010AED2E39006C09F7 /* DesktopPrinting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DesktopPrinting.h; path = /Developer/Headers/FlatCarbon/DesktopPrinting.h; sourceTree = "<absolute>"; };
+		6BEA6D020AED2E39006C09F7 /* DesktopPrinting.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = DesktopPrinting.r; path = /Developer/Headers/FlatCarbon/DesktopPrinting.r; sourceTree = "<absolute>"; };
+		6BEA6D030AED2E39006C09F7 /* DeviceControl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeviceControl.h; path = /Developer/Headers/FlatCarbon/DeviceControl.h; sourceTree = "<absolute>"; };
+		6BEA6D040AED2E39006C09F7 /* DeviceControl.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeviceControl.k.h; path = /Developer/Headers/FlatCarbon/DeviceControl.k.h; sourceTree = "<absolute>"; };
+		6BEA6D050AED2E39006C09F7 /* Devices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Devices.h; path = /Developer/Headers/FlatCarbon/Devices.h; sourceTree = "<absolute>"; };
+		6BEA6D060AED2E39006C09F7 /* Devices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Devices.r; path = /Developer/Headers/FlatCarbon/Devices.r; sourceTree = "<absolute>"; };
+		6BEA6D070AED2E39006C09F7 /* Dialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Dialogs.h; path = /Developer/Headers/FlatCarbon/Dialogs.h; sourceTree = "<absolute>"; };
+		6BEA6D080AED2E39006C09F7 /* Dialogs.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Dialogs.r; path = /Developer/Headers/FlatCarbon/Dialogs.r; sourceTree = "<absolute>"; };
+		6BEA6D090AED2E39006C09F7 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Dictionary.h; path = /Developer/Headers/FlatCarbon/Dictionary.h; sourceTree = "<absolute>"; };
+		6BEA6D0A0AED2E39006C09F7 /* DiskInit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DiskInit.h; path = /Developer/Headers/FlatCarbon/DiskInit.h; sourceTree = "<absolute>"; };
+		6BEA6D0B0AED2E39006C09F7 /* Disks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Disks.h; path = /Developer/Headers/FlatCarbon/Disks.h; sourceTree = "<absolute>"; };
+		6BEA6D0C0AED2E39006C09F7 /* Displays.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Displays.h; path = /Developer/Headers/FlatCarbon/Displays.h; sourceTree = "<absolute>"; };
+		6BEA6D0D0AED2E39006C09F7 /* Displays.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Displays.r; path = /Developer/Headers/FlatCarbon/Displays.r; sourceTree = "<absolute>"; };
+		6BEA6D0E0AED2E39006C09F7 /* Drag.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Drag.h; path = /Developer/Headers/FlatCarbon/Drag.h; sourceTree = "<absolute>"; };
+		6BEA6D0F0AED2E39006C09F7 /* DrawSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DrawSprocket.h; path = /Developer/Headers/FlatCarbon/DrawSprocket.h; sourceTree = "<absolute>"; };
+		6BEA6D100AED2E39006C09F7 /* DriverFamilyMatching.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverFamilyMatching.h; path = /Developer/Headers/FlatCarbon/DriverFamilyMatching.h; sourceTree = "<absolute>"; };
+		6BEA6D110AED2E39006C09F7 /* DriverGestalt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverGestalt.h; path = /Developer/Headers/FlatCarbon/DriverGestalt.h; sourceTree = "<absolute>"; };
+		6BEA6D120AED2E39006C09F7 /* DriverServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverServices.h; path = /Developer/Headers/FlatCarbon/DriverServices.h; sourceTree = "<absolute>"; };
+		6BEA6D130AED2E39006C09F7 /* DriverSupport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverSupport.h; path = /Developer/Headers/FlatCarbon/DriverSupport.h; sourceTree = "<absolute>"; };
+		6BEA6D140AED2E39006C09F7 /* DriverSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverSynchronization.h; path = /Developer/Headers/FlatCarbon/DriverSynchronization.h; sourceTree = "<absolute>"; };
+		6BEA6D150AED2E39006C09F7 /* Editions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Editions.h; path = /Developer/Headers/FlatCarbon/Editions.h; sourceTree = "<absolute>"; };
+		6BEA6D160AED2E39006C09F7 /* Endian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Endian.h; path = /Developer/Headers/FlatCarbon/Endian.h; sourceTree = "<absolute>"; };
+		6BEA6D170AED2E39006C09F7 /* ENET.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ENET.h; path = /Developer/Headers/FlatCarbon/ENET.h; sourceTree = "<absolute>"; };
+		6BEA6D180AED2E39006C09F7 /* EPPC.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = EPPC.h; path = /Developer/Headers/FlatCarbon/EPPC.h; sourceTree = "<absolute>"; };
+		6BEA6D190AED2E39006C09F7 /* EPPC.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = EPPC.r; path = /Developer/Headers/FlatCarbon/EPPC.r; sourceTree = "<absolute>"; };
+		6BEA6D1A0AED2E39006C09F7 /* Errors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Errors.h; path = /Developer/Headers/FlatCarbon/Errors.h; sourceTree = "<absolute>"; };
+		6BEA6D1B0AED2E39006C09F7 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Events.h; path = /Developer/Headers/FlatCarbon/Events.h; sourceTree = "<absolute>"; };
+		6BEA6D1C0AED2E39006C09F7 /* Files.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Files.h; path = /Developer/Headers/FlatCarbon/Files.h; sourceTree = "<absolute>"; };
+		6BEA6D1D0AED2E39006C09F7 /* FileSigning.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileSigning.h; path = /Developer/Headers/FlatCarbon/FileSigning.h; sourceTree = "<absolute>"; };
+		6BEA6D1E0AED2E39006C09F7 /* FileTransfers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTransfers.h; path = /Developer/Headers/FlatCarbon/FileTransfers.h; sourceTree = "<absolute>"; };
+		6BEA6D1F0AED2E39006C09F7 /* FileTransferTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTransferTools.h; path = /Developer/Headers/FlatCarbon/FileTransferTools.h; sourceTree = "<absolute>"; };
+		6BEA6D200AED2E39006C09F7 /* FileTypesAndCreators.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTypesAndCreators.h; path = /Developer/Headers/FlatCarbon/FileTypesAndCreators.h; sourceTree = "<absolute>"; };
+		6BEA6D210AED2E39006C09F7 /* FileTypesAndCreators.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = FileTypesAndCreators.r; path = /Developer/Headers/FlatCarbon/FileTypesAndCreators.r; sourceTree = "<absolute>"; };
+		6BEA6D220AED2E39006C09F7 /* FindByContent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FindByContent.h; path = /Developer/Headers/FlatCarbon/FindByContent.h; sourceTree = "<absolute>"; };
+		6BEA6D230AED2E39006C09F7 /* Finder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Finder.h; path = /Developer/Headers/FlatCarbon/Finder.h; sourceTree = "<absolute>"; };
+		6BEA6D240AED2E39006C09F7 /* Finder.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Finder.r; path = /Developer/Headers/FlatCarbon/Finder.r; sourceTree = "<absolute>"; };
+		6BEA6D250AED2E39006C09F7 /* FinderRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FinderRegistry.h; path = /Developer/Headers/FlatCarbon/FinderRegistry.h; sourceTree = "<absolute>"; };
+		6BEA6D260AED2E39006C09F7 /* FinderRegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = FinderRegistry.r; path = /Developer/Headers/FlatCarbon/FinderRegistry.r; sourceTree = "<absolute>"; };
+		6BEA6D270AED2E39006C09F7 /* FixMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FixMath.h; path = /Developer/Headers/FlatCarbon/FixMath.h; sourceTree = "<absolute>"; };
+		6BEA6D280AED2E39006C09F7 /* Folders.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Folders.h; path = /Developer/Headers/FlatCarbon/Folders.h; sourceTree = "<absolute>"; };
+		6BEA6D290AED2E39006C09F7 /* Folders.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Folders.r; path = /Developer/Headers/FlatCarbon/Folders.r; sourceTree = "<absolute>"; };
+		6BEA6D2A0AED2E39006C09F7 /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Fonts.h; path = /Developer/Headers/FlatCarbon/Fonts.h; sourceTree = "<absolute>"; };
+		6BEA6D2B0AED2E39006C09F7 /* Fonts.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Fonts.r; path = /Developer/Headers/FlatCarbon/Fonts.r; sourceTree = "<absolute>"; };
+		6BEA6D2C0AED2E39006C09F7 /* FontSync.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FontSync.h; path = /Developer/Headers/FlatCarbon/FontSync.h; sourceTree = "<absolute>"; };
+		6BEA6D2D0AED2E39006C09F7 /* fp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = fp.h; path = /Developer/Headers/FlatCarbon/fp.h; sourceTree = "<absolute>"; };
+		6BEA6D2E0AED2E39006C09F7 /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FSM.h; path = /Developer/Headers/FlatCarbon/FSM.h; sourceTree = "<absolute>"; };
+		6BEA6D2F0AED2E39006C09F7 /* Gestalt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Gestalt.h; path = /Developer/Headers/FlatCarbon/Gestalt.h; sourceTree = "<absolute>"; };
+		6BEA6D300AED2E39006C09F7 /* Gestalt.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Gestalt.r; path = /Developer/Headers/FlatCarbon/Gestalt.r; sourceTree = "<absolute>"; };
+		6BEA6D310AED2E39006C09F7 /* GoggleSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GoggleSprocket.h; path = /Developer/Headers/FlatCarbon/GoggleSprocket.h; sourceTree = "<absolute>"; };
+		6BEA6D320AED2E39006C09F7 /* GXEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXEnvironment.h; path = /Developer/Headers/FlatCarbon/GXEnvironment.h; sourceTree = "<absolute>"; };
+		6BEA6D330AED2E39006C09F7 /* GXErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXErrors.h; path = /Developer/Headers/FlatCarbon/GXErrors.h; sourceTree = "<absolute>"; };
+		6BEA6D340AED2E39006C09F7 /* GXFonts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXFonts.h; path = /Developer/Headers/FlatCarbon/GXFonts.h; sourceTree = "<absolute>"; };
+		6BEA6D350AED2E39006C09F7 /* GXGraphics.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXGraphics.h; path = /Developer/Headers/FlatCarbon/GXGraphics.h; sourceTree = "<absolute>"; };
+		6BEA6D360AED2E39006C09F7 /* GXLayout.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXLayout.h; path = /Developer/Headers/FlatCarbon/GXLayout.h; sourceTree = "<absolute>"; };
+		6BEA6D370AED2E39006C09F7 /* GXMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXMath.h; path = /Developer/Headers/FlatCarbon/GXMath.h; sourceTree = "<absolute>"; };
+		6BEA6D380AED2E39006C09F7 /* GXMessages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXMessages.h; path = /Developer/Headers/FlatCarbon/GXMessages.h; sourceTree = "<absolute>"; };
+		6BEA6D390AED2E39006C09F7 /* GXPrinterDrivers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXPrinterDrivers.h; path = /Developer/Headers/FlatCarbon/GXPrinterDrivers.h; sourceTree = "<absolute>"; };
+		6BEA6D3A0AED2E39006C09F7 /* GXPrinting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXPrinting.h; path = /Developer/Headers/FlatCarbon/GXPrinting.h; sourceTree = "<absolute>"; };
+		6BEA6D3B0AED2E39006C09F7 /* GXTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXTypes.h; path = /Developer/Headers/FlatCarbon/GXTypes.h; sourceTree = "<absolute>"; };
+		6BEA6D3C0AED2E39006C09F7 /* HFSVolumes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HFSVolumes.h; path = /Developer/Headers/FlatCarbon/HFSVolumes.h; sourceTree = "<absolute>"; };
+		6BEA6D3D0AED2E39006C09F7 /* HID.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HID.h; path = /Developer/Headers/FlatCarbon/HID.h; sourceTree = "<absolute>"; };
+		6BEA6D3E0AED2E39006C09F7 /* HTMLRendering.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HTMLRendering.h; path = /Developer/Headers/FlatCarbon/HTMLRendering.h; sourceTree = "<absolute>"; };
+		6BEA6D3F0AED2E39006C09F7 /* HyperXCmd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HyperXCmd.h; path = /Developer/Headers/FlatCarbon/HyperXCmd.h; sourceTree = "<absolute>"; };
+		6BEA6D400AED2E39006C09F7 /* IAExtractor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IAExtractor.h; path = /Developer/Headers/FlatCarbon/IAExtractor.h; sourceTree = "<absolute>"; };
+		6BEA6D410AED2E39006C09F7 /* IAExtractor.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IAExtractor.r; path = /Developer/Headers/FlatCarbon/IAExtractor.r; sourceTree = "<absolute>"; };
+		6BEA6D420AED2E39006C09F7 /* IBCarbonRuntime.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IBCarbonRuntime.h; path = /Developer/Headers/FlatCarbon/IBCarbonRuntime.h; sourceTree = "<absolute>"; };
+		6BEA6D430AED2E39006C09F7 /* ICAApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICAApplication.h; path = /Developer/Headers/FlatCarbon/ICAApplication.h; sourceTree = "<absolute>"; };
+		6BEA6D440AED2E39006C09F7 /* ICACamera.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICACamera.h; path = /Developer/Headers/FlatCarbon/ICACamera.h; sourceTree = "<absolute>"; };
+		6BEA6D450AED2E39006C09F7 /* ICADevice.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICADevice.h; path = /Developer/Headers/FlatCarbon/ICADevice.h; sourceTree = "<absolute>"; };
+		6BEA6D460AED2E39006C09F7 /* Icons.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Icons.h; path = /Developer/Headers/FlatCarbon/Icons.h; sourceTree = "<absolute>"; };
+		6BEA6D470AED2E39006C09F7 /* Icons.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Icons.r; path = /Developer/Headers/FlatCarbon/Icons.r; sourceTree = "<absolute>"; };
+		6BEA6D480AED2E39006C09F7 /* ImageCodec.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCodec.h; path = /Developer/Headers/FlatCarbon/ImageCodec.h; sourceTree = "<absolute>"; };
+		6BEA6D490AED2E39006C09F7 /* ImageCodec.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCodec.k.h; path = /Developer/Headers/FlatCarbon/ImageCodec.k.h; sourceTree = "<absolute>"; };
+		6BEA6D4A0AED2E39006C09F7 /* ImageCodec.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ImageCodec.r; path = /Developer/Headers/FlatCarbon/ImageCodec.r; sourceTree = "<absolute>"; };
+		6BEA6D4B0AED2E39006C09F7 /* ImageCompression.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCompression.h; path = /Developer/Headers/FlatCarbon/ImageCompression.h; sourceTree = "<absolute>"; };
+		6BEA6D4C0AED2E39006C09F7 /* ImageCompression.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCompression.k.h; path = /Developer/Headers/FlatCarbon/ImageCompression.k.h; sourceTree = "<absolute>"; };
+		6BEA6D4D0AED2E39006C09F7 /* ImageCompression.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ImageCompression.r; path = /Developer/Headers/FlatCarbon/ImageCompression.r; sourceTree = "<absolute>"; };
+		6BEA6D4E0AED2E39006C09F7 /* InputSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = InputSprocket.h; path = /Developer/Headers/FlatCarbon/InputSprocket.h; sourceTree = "<absolute>"; };
+		6BEA6D4F0AED2E39006C09F7 /* InputSprocket.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = InputSprocket.r; path = /Developer/Headers/FlatCarbon/InputSprocket.r; sourceTree = "<absolute>"; };
+		6BEA6D500AED2E39006C09F7 /* InternetConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = InternetConfig.h; path = /Developer/Headers/FlatCarbon/InternetConfig.h; sourceTree = "<absolute>"; };
+		6BEA6D510AED2E39006C09F7 /* Interrupts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Interrupts.h; path = /Developer/Headers/FlatCarbon/Interrupts.h; sourceTree = "<absolute>"; };
+		6BEA6D520AED2E39006C09F7 /* IntlResources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IntlResources.h; path = /Developer/Headers/FlatCarbon/IntlResources.h; sourceTree = "<absolute>"; };
+		6BEA6D530AED2E39006C09F7 /* IntlResources.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IntlResources.r; path = /Developer/Headers/FlatCarbon/IntlResources.r; sourceTree = "<absolute>"; };
+		6BEA6D540AED2E39006C09F7 /* IsochronousDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IsochronousDataHandler.h; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.h; sourceTree = "<absolute>"; };
+		6BEA6D550AED2E39006C09F7 /* IsochronousDataHandler.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IsochronousDataHandler.k.h; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.k.h; sourceTree = "<absolute>"; };
+		6BEA6D560AED2E39006C09F7 /* IsochronousDataHandler.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IsochronousDataHandler.r; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.r; sourceTree = "<absolute>"; };
+		6BEA6D570AED2E39006C09F7 /* JManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = JManager.h; path = /Developer/Headers/FlatCarbon/JManager.h; sourceTree = "<absolute>"; };
+		6BEA6D580AED2E39006C09F7 /* Kernel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Kernel.h; path = /Developer/Headers/FlatCarbon/Kernel.h; sourceTree = "<absolute>"; };
+		6BEA6D590AED2E39006C09F7 /* Keyboards.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Keyboards.h; path = /Developer/Headers/FlatCarbon/Keyboards.h; sourceTree = "<absolute>"; };
+		6BEA6D5A0AED2E39006C09F7 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Keychain.h; path = /Developer/Headers/FlatCarbon/Keychain.h; sourceTree = "<absolute>"; };
+		6BEA6D5B0AED2E39006C09F7 /* KeychainCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = KeychainCore.h; path = /Developer/Headers/FlatCarbon/KeychainCore.h; sourceTree = "<absolute>"; };
+		6BEA6D5C0AED2E39006C09F7 /* KeychainHI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = KeychainHI.h; path = /Developer/Headers/FlatCarbon/KeychainHI.h; sourceTree = "<absolute>"; };
+		6BEA6D5D0AED2E39006C09F7 /* LanguageAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LanguageAnalysis.h; path = /Developer/Headers/FlatCarbon/LanguageAnalysis.h; sourceTree = "<absolute>"; };
+		6BEA6D5E0AED2E39006C09F7 /* LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LaunchServices.h; path = /Developer/Headers/FlatCarbon/LaunchServices.h; sourceTree = "<absolute>"; };
+		6BEA6D5F0AED2E39006C09F7 /* Lists.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Lists.h; path = /Developer/Headers/FlatCarbon/Lists.h; sourceTree = "<absolute>"; };
+		6BEA6D600AED2E39006C09F7 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = /Developer/Headers/FlatCarbon/LocationManager.h; sourceTree = "<absolute>"; };
+		6BEA6D610AED2E39006C09F7 /* LocationManager.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LocationManager.k.h; path = /Developer/Headers/FlatCarbon/LocationManager.k.h; sourceTree = "<absolute>"; };
+		6BEA6D620AED2E39006C09F7 /* LocationManager.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = LocationManager.r; path = /Developer/Headers/FlatCarbon/LocationManager.r; sourceTree = "<absolute>"; };
+		6BEA6D630AED2E39006C09F7 /* LowMem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LowMem.h; path = /Developer/Headers/FlatCarbon/LowMem.h; sourceTree = "<absolute>"; };
+		6BEA6D640AED2E39006C09F7 /* MacApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacApplication.h; path = /Developer/Headers/FlatCarbon/MacApplication.h; sourceTree = "<absolute>"; };
+		6BEA6D650AED2E39006C09F7 /* MacErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacErrors.h; path = /Developer/Headers/FlatCarbon/MacErrors.h; sourceTree = "<absolute>"; };
+		6BEA6D660AED2E39006C09F7 /* MacHelp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacHelp.h; path = /Developer/Headers/FlatCarbon/MacHelp.h; sourceTree = "<absolute>"; };
+		6BEA6D670AED2E39006C09F7 /* MachineExceptions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MachineExceptions.h; path = /Developer/Headers/FlatCarbon/MachineExceptions.h; sourceTree = "<absolute>"; };
+		6BEA6D680AED2E39006C09F7 /* MacLocales.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacLocales.h; path = /Developer/Headers/FlatCarbon/MacLocales.h; sourceTree = "<absolute>"; };
+		6BEA6D690AED2E39006C09F7 /* MacMemory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacMemory.h; path = /Developer/Headers/FlatCarbon/MacMemory.h; sourceTree = "<absolute>"; };
+		6BEA6D6A0AED2E39006C09F7 /* MacTCP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTCP.h; path = /Developer/Headers/FlatCarbon/MacTCP.h; sourceTree = "<absolute>"; };
+		6BEA6D6B0AED2E39006C09F7 /* MacTextEditor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTextEditor.h; path = /Developer/Headers/FlatCarbon/MacTextEditor.h; sourceTree = "<absolute>"; };
+		6BEA6D6C0AED2E39006C09F7 /* MacTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTypes.h; path = /Developer/Headers/FlatCarbon/MacTypes.h; sourceTree = "<absolute>"; };
+		6BEA6D6D0AED2E39006C09F7 /* MacTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MacTypes.r; path = /Developer/Headers/FlatCarbon/MacTypes.r; sourceTree = "<absolute>"; };
+		6BEA6D6E0AED2E39006C09F7 /* MacWindows.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacWindows.h; path = /Developer/Headers/FlatCarbon/MacWindows.h; sourceTree = "<absolute>"; };
+		6BEA6D6F0AED2E39006C09F7 /* MacWindows.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MacWindows.r; path = /Developer/Headers/FlatCarbon/MacWindows.r; sourceTree = "<absolute>"; };
+		6BEA6D700AED2E39006C09F7 /* Math64.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Math64.h; path = /Developer/Headers/FlatCarbon/Math64.h; sourceTree = "<absolute>"; };
+		6BEA6D710AED2E39006C09F7 /* MediaHandlers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MediaHandlers.h; path = /Developer/Headers/FlatCarbon/MediaHandlers.h; sourceTree = "<absolute>"; };
+		6BEA6D720AED2E39006C09F7 /* MediaHandlers.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MediaHandlers.k.h; path = /Developer/Headers/FlatCarbon/MediaHandlers.k.h; sourceTree = "<absolute>"; };
+		6BEA6D730AED2E39006C09F7 /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Memory.h; path = /Developer/Headers/FlatCarbon/Memory.h; sourceTree = "<absolute>"; };
+		6BEA6D740AED2E39006C09F7 /* Menus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Menus.h; path = /Developer/Headers/FlatCarbon/Menus.h; sourceTree = "<absolute>"; };
+		6BEA6D750AED2E39006C09F7 /* Menus.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Menus.r; path = /Developer/Headers/FlatCarbon/Menus.r; sourceTree = "<absolute>"; };
+		6BEA6D760AED2E39006C09F7 /* MIDI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MIDI.h; path = /Developer/Headers/FlatCarbon/MIDI.h; sourceTree = "<absolute>"; };
+		6BEA6D770AED2E39006C09F7 /* MixedMode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MixedMode.h; path = /Developer/Headers/FlatCarbon/MixedMode.h; sourceTree = "<absolute>"; };
+		6BEA6D780AED2E39006C09F7 /* MixedMode.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MixedMode.r; path = /Developer/Headers/FlatCarbon/MixedMode.r; sourceTree = "<absolute>"; };
+		6BEA6D790AED2E39006C09F7 /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Movies.h; path = /Developer/Headers/FlatCarbon/Movies.h; sourceTree = "<absolute>"; };
+		6BEA6D7A0AED2E39006C09F7 /* Movies.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Movies.k.h; path = /Developer/Headers/FlatCarbon/Movies.k.h; sourceTree = "<absolute>"; };
+		6BEA6D7B0AED2E39006C09F7 /* MoviesFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MoviesFormat.h; path = /Developer/Headers/FlatCarbon/MoviesFormat.h; sourceTree = "<absolute>"; };
+		6BEA6D7C0AED2E39006C09F7 /* Multiprocessing.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Multiprocessing.h; path = /Developer/Headers/FlatCarbon/Multiprocessing.h; sourceTree = "<absolute>"; };
+		6BEA6D7D0AED2E39006C09F7 /* MultiprocessingInfo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MultiprocessingInfo.h; path = /Developer/Headers/FlatCarbon/MultiprocessingInfo.h; sourceTree = "<absolute>"; };
+		6BEA6D7E0AED2E39006C09F7 /* NameRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NameRegistry.h; path = /Developer/Headers/FlatCarbon/NameRegistry.h; sourceTree = "<absolute>"; };
+		6BEA6D7F0AED2E39006C09F7 /* Navigation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Navigation.h; path = /Developer/Headers/FlatCarbon/Navigation.h; sourceTree = "<absolute>"; };
+		6BEA6D800AED2E39006C09F7 /* NetSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NetSprocket.h; path = /Developer/Headers/FlatCarbon/NetSprocket.h; sourceTree = "<absolute>"; };
+		6BEA6D810AED2E39006C09F7 /* NetworkSetup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NetworkSetup.h; path = /Developer/Headers/FlatCarbon/NetworkSetup.h; sourceTree = "<absolute>"; };
+		6BEA6D820AED2E39006C09F7 /* NetworkSetup.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = NetworkSetup.r; path = /Developer/Headers/FlatCarbon/NetworkSetup.r; sourceTree = "<absolute>"; };
+		6BEA6D830AED2E39006C09F7 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Notification.h; path = /Developer/Headers/FlatCarbon/Notification.h; sourceTree = "<absolute>"; };
+		6BEA6D840AED2E39006C09F7 /* NSL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NSL.h; path = /Developer/Headers/FlatCarbon/NSL.h; sourceTree = "<absolute>"; };
+		6BEA6D850AED2E39006C09F7 /* NSLCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NSLCore.h; path = /Developer/Headers/FlatCarbon/NSLCore.h; sourceTree = "<absolute>"; };
+		6BEA6D860AED2E39006C09F7 /* NumberFormatting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NumberFormatting.h; path = /Developer/Headers/FlatCarbon/NumberFormatting.h; sourceTree = "<absolute>"; };
+		6BEA6D870AED2E39006C09F7 /* OpenTptAppleTalk.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptAppleTalk.h; path = /Developer/Headers/FlatCarbon/OpenTptAppleTalk.h; sourceTree = "<absolute>"; };
+		6BEA6D880AED2E39006C09F7 /* OpenTptClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptClient.h; path = /Developer/Headers/FlatCarbon/OpenTptClient.h; sourceTree = "<absolute>"; };
+		6BEA6D890AED2E39006C09F7 /* OpenTptCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptCommon.h; path = /Developer/Headers/FlatCarbon/OpenTptCommon.h; sourceTree = "<absolute>"; };
+		6BEA6D8A0AED2E39006C09F7 /* OpenTptConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptConfig.h; path = /Developer/Headers/FlatCarbon/OpenTptConfig.h; sourceTree = "<absolute>"; };
+		6BEA6D8B0AED2E39006C09F7 /* OpenTptDevLinks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptDevLinks.h; path = /Developer/Headers/FlatCarbon/OpenTptDevLinks.h; sourceTree = "<absolute>"; };
+		6BEA6D8C0AED2E39006C09F7 /* OpenTptGlobalNew.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptGlobalNew.h; path = /Developer/Headers/FlatCarbon/OpenTptGlobalNew.h; sourceTree = "<absolute>"; };
+		6BEA6D8D0AED2E39006C09F7 /* OpenTptInternet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptInternet.h; path = /Developer/Headers/FlatCarbon/OpenTptInternet.h; sourceTree = "<absolute>"; };
+		6BEA6D8E0AED2E39006C09F7 /* OpenTptISDN.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptISDN.h; path = /Developer/Headers/FlatCarbon/OpenTptISDN.h; sourceTree = "<absolute>"; };
+		6BEA6D8F0AED2E39006C09F7 /* OpenTptLinks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptLinks.h; path = /Developer/Headers/FlatCarbon/OpenTptLinks.h; sourceTree = "<absolute>"; };
+		6BEA6D900AED2E39006C09F7 /* OpenTptModule.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptModule.h; path = /Developer/Headers/FlatCarbon/OpenTptModule.h; sourceTree = "<absolute>"; };
+		6BEA6D910AED2E39006C09F7 /* OpenTptPCISupport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptPCISupport.h; path = /Developer/Headers/FlatCarbon/OpenTptPCISupport.h; sourceTree = "<absolute>"; };
+		6BEA6D920AED2E39006C09F7 /* OpenTptSerial.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptSerial.h; path = /Developer/Headers/FlatCarbon/OpenTptSerial.h; sourceTree = "<absolute>"; };
+		6BEA6D930AED2E39006C09F7 /* OpenTptXTI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptXTI.h; path = /Developer/Headers/FlatCarbon/OpenTptXTI.h; sourceTree = "<absolute>"; };
+		6BEA6D940AED2E39006C09F7 /* OpenTransport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransport.h; path = /Developer/Headers/FlatCarbon/OpenTransport.h; sourceTree = "<absolute>"; };
+		6BEA6D950AED2E39006C09F7 /* OpenTransport.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransport.r; path = /Developer/Headers/FlatCarbon/OpenTransport.r; sourceTree = "<absolute>"; };
+		6BEA6D960AED2E39006C09F7 /* OpenTransportKernel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportKernel.h; path = /Developer/Headers/FlatCarbon/OpenTransportKernel.h; sourceTree = "<absolute>"; };
+		6BEA6D970AED2E39006C09F7 /* OpenTransportKernel.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportKernel.r; path = /Developer/Headers/FlatCarbon/OpenTransportKernel.r; sourceTree = "<absolute>"; };
+		6BEA6D980AED2E39006C09F7 /* OpenTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportProtocol.h; path = /Developer/Headers/FlatCarbon/OpenTransportProtocol.h; sourceTree = "<absolute>"; };
+		6BEA6D990AED2E39006C09F7 /* OpenTransportProtocol.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportProtocol.r; path = /Developer/Headers/FlatCarbon/OpenTransportProtocol.r; sourceTree = "<absolute>"; };
+		6BEA6D9A0AED2E39006C09F7 /* OpenTransportProviders.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportProviders.h; path = /Developer/Headers/FlatCarbon/OpenTransportProviders.h; sourceTree = "<absolute>"; };
+		6BEA6D9B0AED2E39006C09F7 /* OpenTransportProviders.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportProviders.r; path = /Developer/Headers/FlatCarbon/OpenTransportProviders.r; sourceTree = "<absolute>"; };
+		6BEA6D9C0AED2E39006C09F7 /* OpenTransportUNIX.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportUNIX.h; path = /Developer/Headers/FlatCarbon/OpenTransportUNIX.h; sourceTree = "<absolute>"; };
+		6BEA6D9D0AED2E39006C09F7 /* OSA.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSA.h; path = /Developer/Headers/FlatCarbon/OSA.h; sourceTree = "<absolute>"; };
+		6BEA6D9E0AED2E39006C09F7 /* OSA.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSA.k.h; path = /Developer/Headers/FlatCarbon/OSA.k.h; sourceTree = "<absolute>"; };
+		6BEA6D9F0AED2E39006C09F7 /* OSAComp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSAComp.h; path = /Developer/Headers/FlatCarbon/OSAComp.h; sourceTree = "<absolute>"; };
+		6BEA6DA00AED2E39006C09F7 /* OSAGeneric.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSAGeneric.h; path = /Developer/Headers/FlatCarbon/OSAGeneric.h; sourceTree = "<absolute>"; };
+		6BEA6DA10AED2E39006C09F7 /* OSUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSUtils.h; path = /Developer/Headers/FlatCarbon/OSUtils.h; sourceTree = "<absolute>"; };
+		6BEA6DA20AED2E39006C09F7 /* OSUtils.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OSUtils.r; path = /Developer/Headers/FlatCarbon/OSUtils.r; sourceTree = "<absolute>"; };
+		6BEA6DA30AED2E39006C09F7 /* OTConfig.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OTConfig.r; path = /Developer/Headers/FlatCarbon/OTConfig.r; sourceTree = "<absolute>"; };
+		6BEA6DA40AED2E39006C09F7 /* Packages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Packages.h; path = /Developer/Headers/FlatCarbon/Packages.h; sourceTree = "<absolute>"; };
+		6BEA6DA50AED2E39006C09F7 /* Palettes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Palettes.h; path = /Developer/Headers/FlatCarbon/Palettes.h; sourceTree = "<absolute>"; };
+		6BEA6DA60AED2E39006C09F7 /* Palettes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Palettes.r; path = /Developer/Headers/FlatCarbon/Palettes.r; sourceTree = "<absolute>"; };
+		6BEA6DA70AED2E39006C09F7 /* Patches.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Patches.h; path = /Developer/Headers/FlatCarbon/Patches.h; sourceTree = "<absolute>"; };
+		6BEA6DA80AED2E39006C09F7 /* PCCard.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCard.h; path = /Developer/Headers/FlatCarbon/PCCard.h; sourceTree = "<absolute>"; };
+		6BEA6DA90AED2E39006C09F7 /* PCCardAdapterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardAdapterPlugin.h; path = /Developer/Headers/FlatCarbon/PCCardAdapterPlugin.h; sourceTree = "<absolute>"; };
+		6BEA6DAA0AED2E39006C09F7 /* PCCardEnablerPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardEnablerPlugin.h; path = /Developer/Headers/FlatCarbon/PCCardEnablerPlugin.h; sourceTree = "<absolute>"; };
+		6BEA6DAB0AED2E39006C09F7 /* PCCardEnablerPlugin.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PCCardEnablerPlugin.r; path = /Developer/Headers/FlatCarbon/PCCardEnablerPlugin.r; sourceTree = "<absolute>"; };
+		6BEA6DAC0AED2E39006C09F7 /* PCCardTuples.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardTuples.h; path = /Developer/Headers/FlatCarbon/PCCardTuples.h; sourceTree = "<absolute>"; };
+		6BEA6DAD0AED2E39006C09F7 /* PCI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCI.h; path = /Developer/Headers/FlatCarbon/PCI.h; sourceTree = "<absolute>"; };
+		6BEA6DAE0AED2E39006C09F7 /* PEFBinaryFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PEFBinaryFormat.h; path = /Developer/Headers/FlatCarbon/PEFBinaryFormat.h; sourceTree = "<absolute>"; };
+		6BEA6DAF0AED2E39006C09F7 /* Pict.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Pict.r; path = /Developer/Headers/FlatCarbon/Pict.r; sourceTree = "<absolute>"; };
+		6BEA6DB00AED2E39006C09F7 /* PictUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PictUtils.h; path = /Developer/Headers/FlatCarbon/PictUtils.h; sourceTree = "<absolute>"; };
+		6BEA6DB10AED2E39006C09F7 /* PictUtils.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PictUtils.r; path = /Developer/Headers/FlatCarbon/PictUtils.r; sourceTree = "<absolute>"; };
+		6BEA6DB20AED2E39006C09F7 /* PLStringFuncs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PLStringFuncs.h; path = /Developer/Headers/FlatCarbon/PLStringFuncs.h; sourceTree = "<absolute>"; };
+		6BEA6DB30AED2E39006C09F7 /* PMApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMApplication.h; path = /Developer/Headers/FlatCarbon/PMApplication.h; sourceTree = "<absolute>"; };
+		6BEA6DB40AED2E39006C09F7 /* PMCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMCore.h; path = /Developer/Headers/FlatCarbon/PMCore.h; sourceTree = "<absolute>"; };
+		6BEA6DB50AED2E39006C09F7 /* PMDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMDefinitions.h; path = /Developer/Headers/FlatCarbon/PMDefinitions.h; sourceTree = "<absolute>"; };
+		6BEA6DB60AED2E39006C09F7 /* Power.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Power.h; path = /Developer/Headers/FlatCarbon/Power.h; sourceTree = "<absolute>"; };
+		6BEA6DB70AED2E39006C09F7 /* PPCToolbox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PPCToolbox.h; path = /Developer/Headers/FlatCarbon/PPCToolbox.h; sourceTree = "<absolute>"; };
+		6BEA6DB80AED2E39006C09F7 /* PPCToolbox.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PPCToolbox.r; path = /Developer/Headers/FlatCarbon/PPCToolbox.r; sourceTree = "<absolute>"; };
+		6BEA6DB90AED2E39006C09F7 /* Printing.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Printing.h; path = /Developer/Headers/FlatCarbon/Printing.h; sourceTree = "<absolute>"; };
+		6BEA6DBA0AED2E39006C09F7 /* Processes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Processes.h; path = /Developer/Headers/FlatCarbon/Processes.h; sourceTree = "<absolute>"; };
+		6BEA6DBB0AED2E39006C09F7 /* Processes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Processes.r; path = /Developer/Headers/FlatCarbon/Processes.r; sourceTree = "<absolute>"; };
+		6BEA6DBC0AED2E39006C09F7 /* QD3D.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3D.h; path = /Developer/Headers/FlatCarbon/QD3D.h; sourceTree = "<absolute>"; };
+		6BEA6DBD0AED2E39006C09F7 /* QD3DAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DAcceleration.h; path = /Developer/Headers/FlatCarbon/QD3DAcceleration.h; sourceTree = "<absolute>"; };
+		6BEA6DBE0AED2E39006C09F7 /* QD3DCamera.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DCamera.h; path = /Developer/Headers/FlatCarbon/QD3DCamera.h; sourceTree = "<absolute>"; };
+		6BEA6DBF0AED2E39006C09F7 /* QD3DController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DController.h; path = /Developer/Headers/FlatCarbon/QD3DController.h; sourceTree = "<absolute>"; };
+		6BEA6DC00AED2E39006C09F7 /* QD3DCustomElements.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DCustomElements.h; path = /Developer/Headers/FlatCarbon/QD3DCustomElements.h; sourceTree = "<absolute>"; };
+		6BEA6DC10AED2E39006C09F7 /* QD3DDrawContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DDrawContext.h; path = /Developer/Headers/FlatCarbon/QD3DDrawContext.h; sourceTree = "<absolute>"; };
+		6BEA6DC20AED2E39006C09F7 /* QD3DErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DErrors.h; path = /Developer/Headers/FlatCarbon/QD3DErrors.h; sourceTree = "<absolute>"; };
+		6BEA6DC30AED2E39006C09F7 /* QD3DExtension.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DExtension.h; path = /Developer/Headers/FlatCarbon/QD3DExtension.h; sourceTree = "<absolute>"; };
+		6BEA6DC40AED2E39006C09F7 /* QD3DGeometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DGeometry.h; path = /Developer/Headers/FlatCarbon/QD3DGeometry.h; sourceTree = "<absolute>"; };
+		6BEA6DC50AED2E39006C09F7 /* QD3DGroup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DGroup.h; path = /Developer/Headers/FlatCarbon/QD3DGroup.h; sourceTree = "<absolute>"; };
+		6BEA6DC60AED2E39006C09F7 /* QD3DIO.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DIO.h; path = /Developer/Headers/FlatCarbon/QD3DIO.h; sourceTree = "<absolute>"; };
+		6BEA6DC70AED2E39006C09F7 /* QD3DLight.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DLight.h; path = /Developer/Headers/FlatCarbon/QD3DLight.h; sourceTree = "<absolute>"; };
+		6BEA6DC80AED2E39006C09F7 /* QD3DMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DMath.h; path = /Developer/Headers/FlatCarbon/QD3DMath.h; sourceTree = "<absolute>"; };
+		6BEA6DC90AED2E39006C09F7 /* QD3DPick.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DPick.h; path = /Developer/Headers/FlatCarbon/QD3DPick.h; sourceTree = "<absolute>"; };
+		6BEA6DCA0AED2E39006C09F7 /* QD3DRenderer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DRenderer.h; path = /Developer/Headers/FlatCarbon/QD3DRenderer.h; sourceTree = "<absolute>"; };
+		6BEA6DCB0AED2E39006C09F7 /* QD3DSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DSet.h; path = /Developer/Headers/FlatCarbon/QD3DSet.h; sourceTree = "<absolute>"; };
+		6BEA6DCC0AED2E39006C09F7 /* QD3DShader.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DShader.h; path = /Developer/Headers/FlatCarbon/QD3DShader.h; sourceTree = "<absolute>"; };
+		6BEA6DCD0AED2E39006C09F7 /* QD3DStorage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DStorage.h; path = /Developer/Headers/FlatCarbon/QD3DStorage.h; sourceTree = "<absolute>"; };
+		6BEA6DCE0AED2E39006C09F7 /* QD3DString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DString.h; path = /Developer/Headers/FlatCarbon/QD3DString.h; sourceTree = "<absolute>"; };
+		6BEA6DCF0AED2E39006C09F7 /* QD3DStyle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DStyle.h; path = /Developer/Headers/FlatCarbon/QD3DStyle.h; sourceTree = "<absolute>"; };
+		6BEA6DD00AED2E39006C09F7 /* QD3DTransform.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DTransform.h; path = /Developer/Headers/FlatCarbon/QD3DTransform.h; sourceTree = "<absolute>"; };
+		6BEA6DD10AED2E39006C09F7 /* QD3DView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DView.h; path = /Developer/Headers/FlatCarbon/QD3DView.h; sourceTree = "<absolute>"; };
+		6BEA6DD20AED2E39006C09F7 /* QD3DViewer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DViewer.h; path = /Developer/Headers/FlatCarbon/QD3DViewer.h; sourceTree = "<absolute>"; };
+		6BEA6DD30AED2E39006C09F7 /* QD3DWinViewer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DWinViewer.h; path = /Developer/Headers/FlatCarbon/QD3DWinViewer.h; sourceTree = "<absolute>"; };
+		6BEA6DD40AED2E39006C09F7 /* QDOffscreen.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QDOffscreen.h; path = /Developer/Headers/FlatCarbon/QDOffscreen.h; sourceTree = "<absolute>"; };
+		6BEA6DD50AED2E39006C09F7 /* QTML.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTML.h; path = /Developer/Headers/FlatCarbon/QTML.h; sourceTree = "<absolute>"; };
+		6BEA6DD60AED2E39006C09F7 /* QTSMovie.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTSMovie.h; path = /Developer/Headers/FlatCarbon/QTSMovie.h; sourceTree = "<absolute>"; };
+		6BEA6DD70AED2E39006C09F7 /* QTSMovie.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTSMovie.k.h; path = /Developer/Headers/FlatCarbon/QTSMovie.k.h; sourceTree = "<absolute>"; };
+		6BEA6DD80AED2E39006C09F7 /* QTSMovie.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QTSMovie.r; path = /Developer/Headers/FlatCarbon/QTSMovie.r; sourceTree = "<absolute>"; };
+		6BEA6DD90AED2E39006C09F7 /* QTStreamingComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTStreamingComponents.h; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.h; sourceTree = "<absolute>"; };
+		6BEA6DDA0AED2E39006C09F7 /* QTStreamingComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTStreamingComponents.k.h; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.k.h; sourceTree = "<absolute>"; };
+		6BEA6DDB0AED2E39006C09F7 /* QTStreamingComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QTStreamingComponents.r; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.r; sourceTree = "<absolute>"; };
+		6BEA6DDC0AED2E39006C09F7 /* Quickdraw.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Quickdraw.h; path = /Developer/Headers/FlatCarbon/Quickdraw.h; sourceTree = "<absolute>"; };
+		6BEA6DDD0AED2E39006C09F7 /* Quickdraw.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Quickdraw.r; path = /Developer/Headers/FlatCarbon/Quickdraw.r; sourceTree = "<absolute>"; };
+		6BEA6DDE0AED2E39006C09F7 /* QuickdrawText.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickdrawText.h; path = /Developer/Headers/FlatCarbon/QuickdrawText.h; sourceTree = "<absolute>"; };
+		6BEA6DDF0AED2E39006C09F7 /* QuickTime.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTime.h; path = /Developer/Headers/FlatCarbon/QuickTime.h; sourceTree = "<absolute>"; };
+		6BEA6DE00AED2E39006C09F7 /* QuickTime.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QuickTime.r; path = /Developer/Headers/FlatCarbon/QuickTime.r; sourceTree = "<absolute>"; };
+		6BEA6DE10AED2E39006C09F7 /* QuickTimeComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeComponents.h; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.h; sourceTree = "<absolute>"; };
+		6BEA6DE20AED2E39006C09F7 /* QuickTimeComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeComponents.k.h; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.k.h; sourceTree = "<absolute>"; };
+		6BEA6DE30AED2E39006C09F7 /* QuickTimeComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QuickTimeComponents.r; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.r; sourceTree = "<absolute>"; };
+		6BEA6DE40AED2E39006C09F7 /* QuickTimeMusic.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeMusic.h; path = /Developer/Headers/FlatCarbon/QuickTimeMusic.h; sourceTree = "<absolute>"; };
+		6BEA6DE50AED2E39006C09F7 /* QuickTimeMusic.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeMusic.k.h; path = /Developer/Headers/FlatCarbon/QuickTimeMusic.k.h; sourceTree = "<absolute>"; };
+		6BEA6DE60AED2E39006C09F7 /* QuickTimeStreaming.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeStreaming.h; path = /Developer/Headers/FlatCarbon/QuickTimeStreaming.h; sourceTree = "<absolute>"; };
+		6BEA6DE70AED2E39006C09F7 /* QuickTimeVR.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeVR.h; path = /Developer/Headers/FlatCarbon/QuickTimeVR.h; sourceTree = "<absolute>"; };
+		6BEA6DE80AED2E39006C09F7 /* QuickTimeVRFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeVRFormat.h; path = /Developer/Headers/FlatCarbon/QuickTimeVRFormat.h; sourceTree = "<absolute>"; };
+		6BEA6DE90AED2E39006C09F7 /* RAVE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = RAVE.h; path = /Developer/Headers/FlatCarbon/RAVE.h; sourceTree = "<absolute>"; };
+		6BEA6DEA0AED2E39006C09F7 /* RAVESystem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = RAVESystem.h; path = /Developer/Headers/FlatCarbon/RAVESystem.h; sourceTree = "<absolute>"; };
+		6BEA6DEB0AED2E39006C09F7 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = /Developer/Headers/FlatCarbon/Resources.h; sourceTree = "<absolute>"; };
+		6BEA6DEC0AED2E39006C09F7 /* Retrace.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Retrace.h; path = /Developer/Headers/FlatCarbon/Retrace.h; sourceTree = "<absolute>"; };
+		6BEA6DED0AED2E39006C09F7 /* ROMDefs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ROMDefs.h; path = /Developer/Headers/FlatCarbon/ROMDefs.h; sourceTree = "<absolute>"; };
+		6BEA6DEE0AED2E39006C09F7 /* ScalerStreamTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ScalerStreamTypes.h; path = /Developer/Headers/FlatCarbon/ScalerStreamTypes.h; sourceTree = "<absolute>"; };
+		6BEA6DEF0AED2E39006C09F7 /* ScalerTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ScalerTypes.h; path = /Developer/Headers/FlatCarbon/ScalerTypes.h; sourceTree = "<absolute>"; };
+		6BEA6DF00AED2E39006C09F7 /* Scrap.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Scrap.h; path = /Developer/Headers/FlatCarbon/Scrap.h; sourceTree = "<absolute>"; };
+		6BEA6DF10AED2E39006C09F7 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Script.h; path = /Developer/Headers/FlatCarbon/Script.h; sourceTree = "<absolute>"; };
+		6BEA6DF20AED2E39006C09F7 /* Script.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Script.r; path = /Developer/Headers/FlatCarbon/Script.r; sourceTree = "<absolute>"; };
+		6BEA6DF30AED2E39006C09F7 /* SCSI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SCSI.h; path = /Developer/Headers/FlatCarbon/SCSI.h; sourceTree = "<absolute>"; };
+		6BEA6DF40AED2E39006C09F7 /* SegLoad.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SegLoad.h; path = /Developer/Headers/FlatCarbon/SegLoad.h; sourceTree = "<absolute>"; };
+		6BEA6DF50AED2E39006C09F7 /* Serial.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Serial.h; path = /Developer/Headers/FlatCarbon/Serial.h; sourceTree = "<absolute>"; };
+		6BEA6DF60AED2E39006C09F7 /* SFNTLayoutTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SFNTLayoutTypes.h; path = /Developer/Headers/FlatCarbon/SFNTLayoutTypes.h; sourceTree = "<absolute>"; };
+		6BEA6DF70AED2E39006C09F7 /* SFNTTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SFNTTypes.h; path = /Developer/Headers/FlatCarbon/SFNTTypes.h; sourceTree = "<absolute>"; };
+		6BEA6DF80AED2E39006C09F7 /* ShutDown.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ShutDown.h; path = /Developer/Headers/FlatCarbon/ShutDown.h; sourceTree = "<absolute>"; };
+		6BEA6DF90AED2E39006C09F7 /* Slots.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Slots.h; path = /Developer/Headers/FlatCarbon/Slots.h; sourceTree = "<absolute>"; };
+		6BEA6DFA0AED2E39006C09F7 /* Slots.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Slots.r; path = /Developer/Headers/FlatCarbon/Slots.r; sourceTree = "<absolute>"; };
+		6BEA6DFB0AED2E39006C09F7 /* SocketServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SocketServices.h; path = /Developer/Headers/FlatCarbon/SocketServices.h; sourceTree = "<absolute>"; };
+		6BEA6DFC0AED2E39006C09F7 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = /Developer/Headers/FlatCarbon/Sound.h; sourceTree = "<absolute>"; };
+		6BEA6DFD0AED2E39006C09F7 /* Sound.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Sound.k.h; path = /Developer/Headers/FlatCarbon/Sound.k.h; sourceTree = "<absolute>"; };
+		6BEA6DFE0AED2E39006C09F7 /* Sound.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Sound.r; path = /Developer/Headers/FlatCarbon/Sound.r; sourceTree = "<absolute>"; };
+		6BEA6DFF0AED2E39006C09F7 /* SoundComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundComponents.h; path = /Developer/Headers/FlatCarbon/SoundComponents.h; sourceTree = "<absolute>"; };
+		6BEA6E000AED2E39006C09F7 /* SoundComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SoundComponents.r; path = /Developer/Headers/FlatCarbon/SoundComponents.r; sourceTree = "<absolute>"; };
+		6BEA6E010AED2E39006C09F7 /* SoundInput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundInput.h; path = /Developer/Headers/FlatCarbon/SoundInput.h; sourceTree = "<absolute>"; };
+		6BEA6E020AED2E39006C09F7 /* SoundInput.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SoundInput.r; path = /Developer/Headers/FlatCarbon/SoundInput.r; sourceTree = "<absolute>"; };
+		6BEA6E030AED2E39006C09F7 /* SoundSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundSprocket.h; path = /Developer/Headers/FlatCarbon/SoundSprocket.h; sourceTree = "<absolute>"; };
+		6BEA6E040AED2E39006C09F7 /* Speech.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Speech.h; path = /Developer/Headers/FlatCarbon/Speech.h; sourceTree = "<absolute>"; };
+		6BEA6E050AED2E39006C09F7 /* SpeechRecognition.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SpeechRecognition.h; path = /Developer/Headers/FlatCarbon/SpeechRecognition.h; sourceTree = "<absolute>"; };
+		6BEA6E060AED2E39006C09F7 /* SpeechSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SpeechSynthesis.h; path = /Developer/Headers/FlatCarbon/SpeechSynthesis.h; sourceTree = "<absolute>"; };
+		6BEA6E070AED2E39006C09F7 /* StandardFile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = StandardFile.h; path = /Developer/Headers/FlatCarbon/StandardFile.h; sourceTree = "<absolute>"; };
+		6BEA6E080AED2E39006C09F7 /* Start.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Start.h; path = /Developer/Headers/FlatCarbon/Start.h; sourceTree = "<absolute>"; };
+		6BEA6E090AED2E39006C09F7 /* StringCompare.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = StringCompare.h; path = /Developer/Headers/FlatCarbon/StringCompare.h; sourceTree = "<absolute>"; };
+		6BEA6E0A0AED2E39006C09F7 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = /Developer/Headers/FlatCarbon/Strings.h; sourceTree = "<absolute>"; };
+		6BEA6E0B0AED2E39006C09F7 /* SysTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SysTypes.r; path = /Developer/Headers/FlatCarbon/SysTypes.r; sourceTree = "<absolute>"; };
+		6BEA6E0C0AED2E39006C09F7 /* Telephones.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Telephones.h; path = /Developer/Headers/FlatCarbon/Telephones.h; sourceTree = "<absolute>"; };
+		6BEA6E0D0AED2E39006C09F7 /* Terminals.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Terminals.h; path = /Developer/Headers/FlatCarbon/Terminals.h; sourceTree = "<absolute>"; };
+		6BEA6E0E0AED2E39006C09F7 /* TerminalTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TerminalTools.h; path = /Developer/Headers/FlatCarbon/TerminalTools.h; sourceTree = "<absolute>"; };
+		6BEA6E0F0AED2E39006C09F7 /* TextCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextCommon.h; path = /Developer/Headers/FlatCarbon/TextCommon.h; sourceTree = "<absolute>"; };
+		6BEA6E100AED2E39006C09F7 /* TextCommon.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = TextCommon.r; path = /Developer/Headers/FlatCarbon/TextCommon.r; sourceTree = "<absolute>"; };
+		6BEA6E110AED2E39006C09F7 /* TextEdit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEdit.h; path = /Developer/Headers/FlatCarbon/TextEdit.h; sourceTree = "<absolute>"; };
+		6BEA6E120AED2E39006C09F7 /* TextEncodingConverter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEncodingConverter.h; path = /Developer/Headers/FlatCarbon/TextEncodingConverter.h; sourceTree = "<absolute>"; };
+		6BEA6E130AED2E39006C09F7 /* TextEncodingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEncodingPlugin.h; path = /Developer/Headers/FlatCarbon/TextEncodingPlugin.h; sourceTree = "<absolute>"; };
+		6BEA6E140AED2E39006C09F7 /* TextServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextServices.h; path = /Developer/Headers/FlatCarbon/TextServices.h; sourceTree = "<absolute>"; };
+		6BEA6E150AED2E39006C09F7 /* TextUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextUtils.h; path = /Developer/Headers/FlatCarbon/TextUtils.h; sourceTree = "<absolute>"; };
+		6BEA6E160AED2E39006C09F7 /* Threads.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Threads.h; path = /Developer/Headers/FlatCarbon/Threads.h; sourceTree = "<absolute>"; };
+		6BEA6E170AED2E39006C09F7 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = /Developer/Headers/FlatCarbon/Timer.h; sourceTree = "<absolute>"; };
+		6BEA6E180AED2E39006C09F7 /* ToolUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ToolUtils.h; path = /Developer/Headers/FlatCarbon/ToolUtils.h; sourceTree = "<absolute>"; };
+		6BEA6E190AED2E39006C09F7 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Translation.h; path = /Developer/Headers/FlatCarbon/Translation.h; sourceTree = "<absolute>"; };
+		6BEA6E1A0AED2E39006C09F7 /* TranslationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TranslationExtensions.h; path = /Developer/Headers/FlatCarbon/TranslationExtensions.h; sourceTree = "<absolute>"; };
+		6BEA6E1B0AED2E39006C09F7 /* TranslationExtensions.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = TranslationExtensions.r; path = /Developer/Headers/FlatCarbon/TranslationExtensions.r; sourceTree = "<absolute>"; };
+		6BEA6E1C0AED2E39006C09F7 /* Traps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Traps.h; path = /Developer/Headers/FlatCarbon/Traps.h; sourceTree = "<absolute>"; };
+		6BEA6E1D0AED2E39006C09F7 /* TSMTE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSMTE.h; path = /Developer/Headers/FlatCarbon/TSMTE.h; sourceTree = "<absolute>"; };
+		6BEA6E1E0AED2E39006C09F7 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Types.h; path = /Developer/Headers/FlatCarbon/Types.h; sourceTree = "<absolute>"; };
+		6BEA6E1F0AED2E39006C09F7 /* Types.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Types.r; path = /Developer/Headers/FlatCarbon/Types.r; sourceTree = "<absolute>"; };
+		6BEA6E200AED2E39006C09F7 /* TypeSelect.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TypeSelect.h; path = /Developer/Headers/FlatCarbon/TypeSelect.h; sourceTree = "<absolute>"; };
+		6BEA6E210AED2E39006C09F7 /* Unicode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Unicode.h; path = /Developer/Headers/FlatCarbon/Unicode.h; sourceTree = "<absolute>"; };
+		6BEA6E220AED2E39006C09F7 /* UnicodeConverter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UnicodeConverter.h; path = /Developer/Headers/FlatCarbon/UnicodeConverter.h; sourceTree = "<absolute>"; };
+		6BEA6E230AED2E39006C09F7 /* UnicodeConverter.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = UnicodeConverter.r; path = /Developer/Headers/FlatCarbon/UnicodeConverter.r; sourceTree = "<absolute>"; };
+		6BEA6E240AED2E39006C09F7 /* UnicodeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UnicodeUtilities.h; path = /Developer/Headers/FlatCarbon/UnicodeUtilities.h; sourceTree = "<absolute>"; };
+		6BEA6E250AED2E39006C09F7 /* UnicodeUtilities.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = UnicodeUtilities.r; path = /Developer/Headers/FlatCarbon/UnicodeUtilities.r; sourceTree = "<absolute>"; };
+		6BEA6E260AED2E39006C09F7 /* URLAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = URLAccess.h; path = /Developer/Headers/FlatCarbon/URLAccess.h; sourceTree = "<absolute>"; };
+		6BEA6E270AED2E39006C09F7 /* USB.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = USB.h; path = /Developer/Headers/FlatCarbon/USB.h; sourceTree = "<absolute>"; };
+		6BEA6E280AED2E39006C09F7 /* UTCUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UTCUtils.h; path = /Developer/Headers/FlatCarbon/UTCUtils.h; sourceTree = "<absolute>"; };
+		6BEA6E290AED2E39006C09F7 /* vBasicOps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBasicOps.h; path = /Developer/Headers/FlatCarbon/vBasicOps.h; sourceTree = "<absolute>"; };
+		6BEA6E2A0AED2E39006C09F7 /* vBigNum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBigNum.h; path = /Developer/Headers/FlatCarbon/vBigNum.h; sourceTree = "<absolute>"; };
+		6BEA6E2B0AED2E39006C09F7 /* vBLAS.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBLAS.h; path = /Developer/Headers/FlatCarbon/vBLAS.h; sourceTree = "<absolute>"; };
+		6BEA6E2C0AED2E39006C09F7 /* vDSP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vDSP.h; path = /Developer/Headers/FlatCarbon/vDSP.h; sourceTree = "<absolute>"; };
+		6BEA6E2D0AED2E39006C09F7 /* vectorOps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vectorOps.h; path = /Developer/Headers/FlatCarbon/vectorOps.h; sourceTree = "<absolute>"; };
+		6BEA6E2E0AED2E39006C09F7 /* vfp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vfp.h; path = /Developer/Headers/FlatCarbon/vfp.h; sourceTree = "<absolute>"; };
+		6BEA6E2F0AED2E39006C09F7 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Video.h; path = /Developer/Headers/FlatCarbon/Video.h; sourceTree = "<absolute>"; };
+		6BEA6E300AED2E39006C09F7 /* Video.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Video.r; path = /Developer/Headers/FlatCarbon/Video.r; sourceTree = "<absolute>"; };
+		6BEA6E310AED2E39006C09F7 /* VideoServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = VideoServices.h; path = /Developer/Headers/FlatCarbon/VideoServices.h; sourceTree = "<absolute>"; };
+		6BEA6E320AED2E39006C09F7 /* Windows.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Windows.h; path = /Developer/Headers/FlatCarbon/Windows.h; sourceTree = "<absolute>"; };
+		6BEA6E330AED2E39006C09F7 /* Windows.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Windows.r; path = /Developer/Headers/FlatCarbon/Windows.r; sourceTree = "<absolute>"; };
+		6BEA6E340AED2E39006C09F7 /* WorldScript.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = WorldScript.h; path = /Developer/Headers/FlatCarbon/WorldScript.h; sourceTree = "<absolute>"; };
+		6BEA6E350AED2E39006C09F7 /* ZoomedVideo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZoomedVideo.h; path = /Developer/Headers/FlatCarbon/ZoomedVideo.h; sourceTree = "<absolute>"; };
+		6BEA6E860AED2E42006C09F7 /* ASZStringSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASZStringSuite.h; sourceTree = "<group>"; };
+		6BEA6E870AED2E42006C09F7 /* ASTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASTypes.h; sourceTree = "<group>"; };
+		6BEA6E880AED2E42006C09F7 /* ASPragma.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASPragma.h; sourceTree = "<group>"; };
+		6BEA6E890AED2E42006C09F7 /* ASConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASConfig.h; sourceTree = "<group>"; };
+		6BEA6E8A0AED2E42006C09F7 /* ASPreInclude.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASPreInclude.h; sourceTree = "<group>"; };
+		6BEA6E8B0AED2E42006C09F7 /* PIAbout.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAbout.h; sourceTree = "<group>"; };
+		6BEA6E8C0AED2E42006C09F7 /* PIAcquire.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAcquire.h; sourceTree = "<group>"; };
+		6BEA6E8D0AED2E42006C09F7 /* PIActions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIActions.h; sourceTree = "<group>"; };
+		6BEA6E8E0AED2E42006C09F7 /* PIActionsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIActionsPlugin.h; sourceTree = "<group>"; };
+		6BEA6E8F0AED2E42006C09F7 /* PIAliasSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAliasSuite.h; sourceTree = "<group>"; };
+		6BEA6E900AED2E42006C09F7 /* PIBufferSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIBufferSuite.h; sourceTree = "<group>"; };
+		6BEA6E910AED2E42006C09F7 /* PIChannelPortOperations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIChannelPortOperations.h; sourceTree = "<group>"; };
+		6BEA6E920AED2E42006C09F7 /* PIChannelPortsSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIChannelPortsSuite.h; sourceTree = "<group>"; };
+		6BEA6E930AED2E42006C09F7 /* PIColorSpaceSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIColorSpaceSuite.h; sourceTree = "<group>"; };
+		6BEA6E940AED2E42006C09F7 /* PIErrorSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIErrorSuite.h; sourceTree = "<group>"; };
+		6BEA6E950AED2E42006C09F7 /* PIExport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIExport.h; sourceTree = "<group>"; };
+		6BEA6E960AED2E42006C09F7 /* PIFilter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIFilter.h; sourceTree = "<group>"; };
+		6BEA6E970AED2E42006C09F7 /* PIFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIFormat.h; sourceTree = "<group>"; };
+		6BEA6E980AED2E42006C09F7 /* PIGeneral.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGeneral.h; sourceTree = "<group>"; };
+		6BEA6E990AED2E42006C09F7 /* PIGetFileListSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGetFileListSuite.h; sourceTree = "<group>"; };
+		6BEA6E9A0AED2E42006C09F7 /* PIGetPathSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGetPathSuite.h; sourceTree = "<group>"; };
+		6BEA6E9B0AED2E42006C09F7 /* PIHandleSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIHandleSuite.h; sourceTree = "<group>"; };
+		6BEA6E9C0AED2E42006C09F7 /* PIPicker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIPicker.h; sourceTree = "<group>"; };
+		6BEA6E9D0AED2E42006C09F7 /* PIProgressSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIProgressSuite.h; sourceTree = "<group>"; };
+		6BEA6E9E0AED2E42006C09F7 /* PIProperties.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIProperties.h; sourceTree = "<group>"; };
+		6BEA6E9F0AED2E42006C09F7 /* PIResDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIResDefines.h; sourceTree = "<group>"; };
+		6BEA6EA00AED2E42006C09F7 /* PISelection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PISelection.h; sourceTree = "<group>"; };
+		6BEA6EA10AED2E42006C09F7 /* PIStringTerminology.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIStringTerminology.h; sourceTree = "<group>"; };
+		6BEA6EA20AED2E42006C09F7 /* PITerminology.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PITerminology.h; sourceTree = "<group>"; };
+		6BEA6EA30AED2E42006C09F7 /* PITypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PITypes.h; sourceTree = "<group>"; };
+		6BEA6EA40AED2E42006C09F7 /* PIUIHooksSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUIHooksSuite.h; sourceTree = "<group>"; };
+		6BEA6EA50AED2E42006C09F7 /* PSErrorDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSErrorDefines.h; sourceTree = "<group>"; };
+		6BEA6EA70AED2E42006C09F7 /* SPAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPAccess.h; sourceTree = "<group>"; };
+		6BEA6EA80AED2E42006C09F7 /* SPAdapts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPAdapts.h; sourceTree = "<group>"; };
+		6BEA6EA90AED2E42006C09F7 /* SPBasic.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBasic.h; sourceTree = "<group>"; };
+		6BEA6EAA0AED2E42006C09F7 /* SPBckDbg.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBckDbg.h; sourceTree = "<group>"; };
+		6BEA6EAB0AED2E42006C09F7 /* SPBlocks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBlocks.h; sourceTree = "<group>"; };
+		6BEA6EAC0AED2E42006C09F7 /* SPCaches.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCaches.h; sourceTree = "<group>"; };
+		6BEA6EAD0AED2E42006C09F7 /* SPCOM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCOM.h; sourceTree = "<group>"; };
+		6BEA6EAE0AED2E42006C09F7 /* SPConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPConfig.h; sourceTree = "<group>"; };
+		6BEA6EB00AED2E42006C09F7 /* SPErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPErrorCodes.h; sourceTree = "<group>"; };
+		6BEA6EB10AED2E42006C09F7 /* SPErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPErrors.h; sourceTree = "<group>"; };
+		6BEA6EB20AED2E42006C09F7 /* SPFiles.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPFiles.h; sourceTree = "<group>"; };
+		6BEA6EB30AED2E42006C09F7 /* SPHost.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPHost.h; sourceTree = "<group>"; };
+		6BEA6EB40AED2E42006C09F7 /* SPInterf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPInterf.h; sourceTree = "<group>"; };
+		6BEA6EB50AED2E42006C09F7 /* SPMData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPMData.h; sourceTree = "<group>"; };
+		6BEA6EB60AED2E42006C09F7 /* SPObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPObject.h; sourceTree = "<group>"; };
+		6BEA6EB70AED2E42006C09F7 /* SPPiPL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPPiPL.h; sourceTree = "<group>"; };
+		6BEA6EB80AED2E42006C09F7 /* SPPlugs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPPlugs.h; sourceTree = "<group>"; };
+		6BEA6EB90AED2E42006C09F7 /* SPProps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPProps.h; sourceTree = "<group>"; };
+		6BEA6EBA0AED2E42006C09F7 /* SPRuntme.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPRuntme.h; sourceTree = "<group>"; };
+		6BEA6EBB0AED2E42006C09F7 /* SPStrngs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPStrngs.h; sourceTree = "<group>"; };
+		6BEA6EBC0AED2E42006C09F7 /* SPSTSPrp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPSTSPrp.h; sourceTree = "<group>"; };
+		6BEA6EBD0AED2E42006C09F7 /* SPSuites.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPSuites.h; sourceTree = "<group>"; };
+		6BEA6EBE0AED2E42006C09F7 /* SPTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPTypes.h; sourceTree = "<group>"; };
+		6BEA6EC00AED2E42006C09F7 /* PIGeneral.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIGeneral.r; sourceTree = "<group>"; };
+		6BEA6EC10AED2E42006C09F7 /* PIMI.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIMI.r; sourceTree = "<group>"; };
+		6BEA6EC20AED2E42006C09F7 /* PIPL.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIPL.r; sourceTree = "<group>"; };
+		6BEA6EC80AED2E98006C09F7 /* StatisticsUIMac.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = StatisticsUIMac.cpp; sourceTree = "<group>"; };
+		6BEA6ECD0AED2EA9006C09F7 /* Statistics.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Statistics.cpp; path = ../common/Statistics.cpp; sourceTree = SOURCE_ROOT; };
+		6BEA6ECE0AED2EA9006C09F7 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Statistics.h; path = ../common/Statistics.h; sourceTree = SOURCE_ROOT; };
+		6BEA6ECF0AED2EA9006C09F7 /* Statistics.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Statistics.r; path = ../common/Statistics.r; sourceTree = SOURCE_ROOT; };
+		6BEA6ED00AED2EA9006C09F7 /* StatisticsRes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = StatisticsRes.h; path = ../common/StatisticsRes.h; sourceTree = SOURCE_ROOT; };
+		6BEA6ED10AED2EA9006C09F7 /* StatisticsScripting.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = StatisticsScripting.cpp; path = ../common/StatisticsScripting.cpp; sourceTree = SOURCE_ROOT; };
+		8D01CCD20486CAD60068D4B7 /* Statistics.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Statistics.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		9673A42A0A002C9F009159A2 /* vecLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vecLib.framework; path = /System/Library/Frameworks/vecLib.framework; sourceTree = "<absolute>"; };
+		E2880D4F0B0EEAD3001C1C00 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
+				9673A42B0A002C9F009159A2 /* vecLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* FilterTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6ECE0AED2EA9006C09F7 /* Statistics.h */,
+				6BEA6ED00AED2EA9006C09F7 /* StatisticsRes.h */,
+				6BEA6ECD0AED2EA9006C09F7 /* Statistics.cpp */,
+				6BEA6ED10AED2EA9006C09F7 /* StatisticsScripting.cpp */,
+				6BEA6EC80AED2E98006C09F7 /* StatisticsUIMac.cpp */,
+				6BEA6ECF0AED2EA9006C09F7 /* Statistics.r */,
+				6BEA6C660AED2E2B006C09F7 /* SDK common */,
+				6BEA6E840AED2E42006C09F7 /* Photoshop common */,
+				6BEA6C7D0AED2E39006C09F7 /* Mac OS common */,
+				089C1671FE841209C02AAC07 /* Frameworks */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = FilterTemplate;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+				9673A42A0A002C9F009159A2 /* vecLib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D01CCD20486CAD60068D4B7 /* Statistics.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BEA6C660AED2E2B006C09F7 /* SDK common */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6C670AED2E2B006C09F7 /* includes */,
+				6BEA6C6E0AED2E2B006C09F7 /* resources */,
+				6BEA6C720AED2E2B006C09F7 /* sources */,
+			);
+			name = "SDK common";
+			path = ../../../common;
+			sourceTree = SOURCE_ROOT;
+		};
+		6BEA6C670AED2E2B006C09F7 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6C680AED2E2B006C09F7 /* FilterBigDocument.h */,
+				6BEA6C690AED2E2B006C09F7 /* PIDefines.h */,
+				6BEA6C6B0AED2E2B006C09F7 /* PIUSuites.h */,
+				6BEA6C6C0AED2E2B006C09F7 /* PIUtilities.h */,
+				6BEA6C6D0AED2E2B006C09F7 /* DialogUtilities.h */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		6BEA6C6E0AED2E2B006C09F7 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E2880D4F0B0EEAD3001C1C00 /* Info.plist */,
+				6BEA6C700AED2E2B006C09F7 /* PIUtilities.r */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		6BEA6C720AED2E2B006C09F7 /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6C740AED2E2B006C09F7 /* PIUSuites.cpp */,
+				6BEA6C750AED2E2B006C09F7 /* PIUtilities.cpp */,
+				6BEA6C760AED2E2B006C09F7 /* DialogUtilitiesMac.cpp */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+		6BEA6C7D0AED2E39006C09F7 /* Mac OS common */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6C7E0AED2E39006C09F7 /* ADSP.h */,
+				6BEA6C7F0AED2E39006C09F7 /* AEDataModel.h */,
+				6BEA6C800AED2E39006C09F7 /* AEDataModel.r */,
+				6BEA6C810AED2E39006C09F7 /* AEHelpers.h */,
+				6BEA6C820AED2E39006C09F7 /* AEInteraction.h */,
+				6BEA6C830AED2E39006C09F7 /* AEMach.h */,
+				6BEA6C840AED2E39006C09F7 /* AEObjects.h */,
+				6BEA6C850AED2E39006C09F7 /* AEObjects.r */,
+				6BEA6C860AED2E39006C09F7 /* AEPackObject.h */,
+				6BEA6C870AED2E39006C09F7 /* AERegistry.h */,
+				6BEA6C880AED2E39006C09F7 /* AERegistry.r */,
+				6BEA6C890AED2E39006C09F7 /* AEUserTermTypes.h */,
+				6BEA6C8A0AED2E39006C09F7 /* AEUserTermTypes.r */,
+				6BEA6C8B0AED2E39006C09F7 /* AEWideUserTermTypes.r */,
+				6BEA6C8C0AED2E39006C09F7 /* AIFF.h */,
+				6BEA6C8D0AED2E39006C09F7 /* Aliases.h */,
+				6BEA6C8E0AED2E39006C09F7 /* Appearance.h */,
+				6BEA6C8F0AED2E39006C09F7 /* Appearance.r */,
+				6BEA6C900AED2E39006C09F7 /* AppleDiskPartitions.h */,
+				6BEA6C910AED2E39006C09F7 /* AppleEvents.h */,
+				6BEA6C920AED2E39006C09F7 /* AppleEvents.r */,
+				6BEA6C930AED2E39006C09F7 /* AppleGuide.h */,
+				6BEA6C940AED2E39006C09F7 /* AppleHelp.h */,
+				6BEA6C950AED2E39006C09F7 /* AppleScript.h */,
+				6BEA6C960AED2E39006C09F7 /* AppleTalk.h */,
+				6BEA6C970AED2E39006C09F7 /* ApplicationServices.h */,
+				6BEA6C980AED2E39006C09F7 /* ApplicationServices.r */,
+				6BEA6C990AED2E39006C09F7 /* ASDebugging.h */,
+				6BEA6C9A0AED2E39006C09F7 /* ASRegistry.h */,
+				6BEA6C9B0AED2E39006C09F7 /* ASRegistry.r */,
+				6BEA6C9C0AED2E39006C09F7 /* ATA.h */,
+				6BEA6C9D0AED2E39006C09F7 /* ATSFont.h */,
+				6BEA6C9E0AED2E39006C09F7 /* ATSLayoutTypes.h */,
+				6BEA6C9F0AED2E39006C09F7 /* ATSTypes.h */,
+				6BEA6CA00AED2E39006C09F7 /* ATSUnicode.h */,
+				6BEA6CA10AED2E39006C09F7 /* AVComponents.h */,
+				6BEA6CA20AED2E39006C09F7 /* AVComponents.k.h */,
+				6BEA6CA30AED2E39006C09F7 /* AVComponents.r */,
+				6BEA6CA40AED2E39006C09F7 /* AVLTree.h */,
+				6BEA6CA50AED2E39006C09F7 /* Balloons.h */,
+				6BEA6CA60AED2E39006C09F7 /* Balloons.r */,
+				6BEA6CA70AED2E39006C09F7 /* BalloonTypes.r */,
+				6BEA6CA80AED2E39006C09F7 /* Carbon.h */,
+				6BEA6CA90AED2E39006C09F7 /* Carbon.r */,
+				6BEA6CAA0AED2E39006C09F7 /* CarbonEvents.h */,
+				6BEA6CAB0AED2E39006C09F7 /* CarbonEvents.r */,
+				6BEA6CAC0AED2E39006C09F7 /* CardServices.h */,
+				6BEA6CAD0AED2E39006C09F7 /* CFArray.h */,
+				6BEA6CAE0AED2E39006C09F7 /* CFBag.h */,
+				6BEA6CAF0AED2E39006C09F7 /* CFBase.h */,
+				6BEA6CB00AED2E39006C09F7 /* CFBundle.h */,
+				6BEA6CB10AED2E39006C09F7 /* CFCharacterSet.h */,
+				6BEA6CB20AED2E39006C09F7 /* CFData.h */,
+				6BEA6CB30AED2E39006C09F7 /* CFDate.h */,
+				6BEA6CB40AED2E39006C09F7 /* CFDictionary.h */,
+				6BEA6CB50AED2E39006C09F7 /* CFNumber.h */,
+				6BEA6CB60AED2E39006C09F7 /* CFPlugIn.h */,
+				6BEA6CB70AED2E39006C09F7 /* CFPlugInCOM.h */,
+				6BEA6CB80AED2E39006C09F7 /* CFPreferences.h */,
+				6BEA6CB90AED2E39006C09F7 /* CFPropertyList.h */,
+				6BEA6CBA0AED2E39006C09F7 /* CFSet.h */,
+				6BEA6CBB0AED2E39006C09F7 /* CFString.h */,
+				6BEA6CBC0AED2E39006C09F7 /* CFStringEncodingExt.h */,
+				6BEA6CBD0AED2E39006C09F7 /* CFTimeZone.h */,
+				6BEA6CBE0AED2E39006C09F7 /* CFTree.h */,
+				6BEA6CBF0AED2E39006C09F7 /* CFURL.h */,
+				6BEA6CC00AED2E39006C09F7 /* CFURLAccess.h */,
+				6BEA6CC10AED2E39006C09F7 /* CFUUID.h */,
+				6BEA6CC20AED2E39006C09F7 /* CFXMLNode.h */,
+				6BEA6CC30AED2E39006C09F7 /* CFXMLParser.h */,
+				6BEA6CC40AED2E39006C09F7 /* CGAffineTransform.h */,
+				6BEA6CC50AED2E39006C09F7 /* CGBase.h */,
+				6BEA6CC60AED2E39006C09F7 /* CGBitmapContext.h */,
+				6BEA6CC70AED2E39006C09F7 /* CGColorSpace.h */,
+				6BEA6CC80AED2E39006C09F7 /* CGContext.h */,
+				6BEA6CC90AED2E39006C09F7 /* CGDataConsumer.h */,
+				6BEA6CCA0AED2E39006C09F7 /* CGDataProvider.h */,
+				6BEA6CCB0AED2E39006C09F7 /* CGDirectDisplay.h */,
+				6BEA6CCC0AED2E39006C09F7 /* CGDirectPalette.h */,
+				6BEA6CCD0AED2E39006C09F7 /* CGError.h */,
+				6BEA6CCE0AED2E39006C09F7 /* CGFont.h */,
+				6BEA6CCF0AED2E39006C09F7 /* CGGeometry.h */,
+				6BEA6CD00AED2E39006C09F7 /* CGImage.h */,
+				6BEA6CD10AED2E39006C09F7 /* CGPattern.h */,
+				6BEA6CD20AED2E39006C09F7 /* CGPDFContext.h */,
+				6BEA6CD30AED2E39006C09F7 /* CGPDFDocument.h */,
+				6BEA6CD40AED2E39006C09F7 /* CGRemoteOperation.h */,
+				6BEA6CD50AED2E39006C09F7 /* CGWindowLevel.h */,
+				6BEA6CD60AED2E39006C09F7 /* CMAcceleration.h */,
+				6BEA6CD70AED2E39006C09F7 /* CMApplication.h */,
+				6BEA6CD80AED2E39006C09F7 /* CMCalibrator.h */,
+				6BEA6CD90AED2E39006C09F7 /* CMComponent.h */,
+				6BEA6CDA0AED2E39006C09F7 /* CMConversions.h */,
+				6BEA6CDB0AED2E39006C09F7 /* CMDeviceIntegration.h */,
+				6BEA6CDC0AED2E39006C09F7 /* CMICCProfile.h */,
+				6BEA6CDD0AED2E39006C09F7 /* CMMComponent.h */,
+				6BEA6CDE0AED2E39006C09F7 /* CMPRComponent.h */,
+				6BEA6CDF0AED2E39006C09F7 /* CMScriptingPlugin.h */,
+				6BEA6CE00AED2E39006C09F7 /* CMTypes.h */,
+				6BEA6CE10AED2E39006C09F7 /* CodeFragments.h */,
+				6BEA6CE20AED2E39006C09F7 /* CodeFragments.r */,
+				6BEA6CE30AED2E39006C09F7 /* CodeFragmentTypes.r */,
+				6BEA6CE40AED2E39006C09F7 /* Collections.h */,
+				6BEA6CE50AED2E39006C09F7 /* Collections.r */,
+				6BEA6CE60AED2E39006C09F7 /* ColorPicker.h */,
+				6BEA6CE70AED2E39006C09F7 /* ColorPickerComponents.h */,
+				6BEA6CE80AED2E39006C09F7 /* CommResources.h */,
+				6BEA6CE90AED2E39006C09F7 /* CommResources.r */,
+				6BEA6CEA0AED2E39006C09F7 /* Components.h */,
+				6BEA6CEB0AED2E39006C09F7 /* Components.k.h */,
+				6BEA6CEC0AED2E39006C09F7 /* Components.r */,
+				6BEA6CED0AED2E39006C09F7 /* ConditionalMacros.h */,
+				6BEA6CEE0AED2E39006C09F7 /* ConditionalMacros.r */,
+				6BEA6CEF0AED2E39006C09F7 /* Connections.h */,
+				6BEA6CF00AED2E39006C09F7 /* ConnectionTools.h */,
+				6BEA6CF10AED2E39006C09F7 /* ControlDefinitions.h */,
+				6BEA6CF20AED2E39006C09F7 /* ControlDefinitions.r */,
+				6BEA6CF30AED2E39006C09F7 /* Controls.h */,
+				6BEA6CF40AED2E39006C09F7 /* Controls.r */,
+				6BEA6CF50AED2E39006C09F7 /* ControlStrip.h */,
+				6BEA6CF60AED2E39006C09F7 /* CoreServices.h */,
+				6BEA6CF70AED2E39006C09F7 /* CoreServices.r */,
+				6BEA6CF80AED2E39006C09F7 /* CRMSerialDevices.h */,
+				6BEA6CF90AED2E39006C09F7 /* CryptoMessageSyntax.h */,
+				6BEA6CFA0AED2E39006C09F7 /* CTBUtilities.h */,
+				6BEA6CFB0AED2E39006C09F7 /* CursorDevices.h */,
+				6BEA6CFC0AED2E39006C09F7 /* DatabaseAccess.h */,
+				6BEA6CFD0AED2E39006C09F7 /* DatabaseAccess.r */,
+				6BEA6CFE0AED2E39006C09F7 /* DateTimeUtils.h */,
+				6BEA6CFF0AED2E39006C09F7 /* Debugging.h */,
+				6BEA6D000AED2E39006C09F7 /* DeskBus.h */,
+				6BEA6D010AED2E39006C09F7 /* DesktopPrinting.h */,
+				6BEA6D020AED2E39006C09F7 /* DesktopPrinting.r */,
+				6BEA6D030AED2E39006C09F7 /* DeviceControl.h */,
+				6BEA6D040AED2E39006C09F7 /* DeviceControl.k.h */,
+				6BEA6D050AED2E39006C09F7 /* Devices.h */,
+				6BEA6D060AED2E39006C09F7 /* Devices.r */,
+				6BEA6D070AED2E39006C09F7 /* Dialogs.h */,
+				6BEA6D080AED2E39006C09F7 /* Dialogs.r */,
+				6BEA6D090AED2E39006C09F7 /* Dictionary.h */,
+				6BEA6D0A0AED2E39006C09F7 /* DiskInit.h */,
+				6BEA6D0B0AED2E39006C09F7 /* Disks.h */,
+				6BEA6D0C0AED2E39006C09F7 /* Displays.h */,
+				6BEA6D0D0AED2E39006C09F7 /* Displays.r */,
+				6BEA6D0E0AED2E39006C09F7 /* Drag.h */,
+				6BEA6D0F0AED2E39006C09F7 /* DrawSprocket.h */,
+				6BEA6D100AED2E39006C09F7 /* DriverFamilyMatching.h */,
+				6BEA6D110AED2E39006C09F7 /* DriverGestalt.h */,
+				6BEA6D120AED2E39006C09F7 /* DriverServices.h */,
+				6BEA6D130AED2E39006C09F7 /* DriverSupport.h */,
+				6BEA6D140AED2E39006C09F7 /* DriverSynchronization.h */,
+				6BEA6D150AED2E39006C09F7 /* Editions.h */,
+				6BEA6D160AED2E39006C09F7 /* Endian.h */,
+				6BEA6D170AED2E39006C09F7 /* ENET.h */,
+				6BEA6D180AED2E39006C09F7 /* EPPC.h */,
+				6BEA6D190AED2E39006C09F7 /* EPPC.r */,
+				6BEA6D1A0AED2E39006C09F7 /* Errors.h */,
+				6BEA6D1B0AED2E39006C09F7 /* Events.h */,
+				6BEA6D1C0AED2E39006C09F7 /* Files.h */,
+				6BEA6D1D0AED2E39006C09F7 /* FileSigning.h */,
+				6BEA6D1E0AED2E39006C09F7 /* FileTransfers.h */,
+				6BEA6D1F0AED2E39006C09F7 /* FileTransferTools.h */,
+				6BEA6D200AED2E39006C09F7 /* FileTypesAndCreators.h */,
+				6BEA6D210AED2E39006C09F7 /* FileTypesAndCreators.r */,
+				6BEA6D220AED2E39006C09F7 /* FindByContent.h */,
+				6BEA6D230AED2E39006C09F7 /* Finder.h */,
+				6BEA6D240AED2E39006C09F7 /* Finder.r */,
+				6BEA6D250AED2E39006C09F7 /* FinderRegistry.h */,
+				6BEA6D260AED2E39006C09F7 /* FinderRegistry.r */,
+				6BEA6D270AED2E39006C09F7 /* FixMath.h */,
+				6BEA6D280AED2E39006C09F7 /* Folders.h */,
+				6BEA6D290AED2E39006C09F7 /* Folders.r */,
+				6BEA6D2A0AED2E39006C09F7 /* Fonts.h */,
+				6BEA6D2B0AED2E39006C09F7 /* Fonts.r */,
+				6BEA6D2C0AED2E39006C09F7 /* FontSync.h */,
+				6BEA6D2D0AED2E39006C09F7 /* fp.h */,
+				6BEA6D2E0AED2E39006C09F7 /* FSM.h */,
+				6BEA6D2F0AED2E39006C09F7 /* Gestalt.h */,
+				6BEA6D300AED2E39006C09F7 /* Gestalt.r */,
+				6BEA6D310AED2E39006C09F7 /* GoggleSprocket.h */,
+				6BEA6D320AED2E39006C09F7 /* GXEnvironment.h */,
+				6BEA6D330AED2E39006C09F7 /* GXErrors.h */,
+				6BEA6D340AED2E39006C09F7 /* GXFonts.h */,
+				6BEA6D350AED2E39006C09F7 /* GXGraphics.h */,
+				6BEA6D360AED2E39006C09F7 /* GXLayout.h */,
+				6BEA6D370AED2E39006C09F7 /* GXMath.h */,
+				6BEA6D380AED2E39006C09F7 /* GXMessages.h */,
+				6BEA6D390AED2E39006C09F7 /* GXPrinterDrivers.h */,
+				6BEA6D3A0AED2E39006C09F7 /* GXPrinting.h */,
+				6BEA6D3B0AED2E39006C09F7 /* GXTypes.h */,
+				6BEA6D3C0AED2E39006C09F7 /* HFSVolumes.h */,
+				6BEA6D3D0AED2E39006C09F7 /* HID.h */,
+				6BEA6D3E0AED2E39006C09F7 /* HTMLRendering.h */,
+				6BEA6D3F0AED2E39006C09F7 /* HyperXCmd.h */,
+				6BEA6D400AED2E39006C09F7 /* IAExtractor.h */,
+				6BEA6D410AED2E39006C09F7 /* IAExtractor.r */,
+				6BEA6D420AED2E39006C09F7 /* IBCarbonRuntime.h */,
+				6BEA6D430AED2E39006C09F7 /* ICAApplication.h */,
+				6BEA6D440AED2E39006C09F7 /* ICACamera.h */,
+				6BEA6D450AED2E39006C09F7 /* ICADevice.h */,
+				6BEA6D460AED2E39006C09F7 /* Icons.h */,
+				6BEA6D470AED2E39006C09F7 /* Icons.r */,
+				6BEA6D480AED2E39006C09F7 /* ImageCodec.h */,
+				6BEA6D490AED2E39006C09F7 /* ImageCodec.k.h */,
+				6BEA6D4A0AED2E39006C09F7 /* ImageCodec.r */,
+				6BEA6D4B0AED2E39006C09F7 /* ImageCompression.h */,
+				6BEA6D4C0AED2E39006C09F7 /* ImageCompression.k.h */,
+				6BEA6D4D0AED2E39006C09F7 /* ImageCompression.r */,
+				6BEA6D4E0AED2E39006C09F7 /* InputSprocket.h */,
+				6BEA6D4F0AED2E39006C09F7 /* InputSprocket.r */,
+				6BEA6D500AED2E39006C09F7 /* InternetConfig.h */,
+				6BEA6D510AED2E39006C09F7 /* Interrupts.h */,
+				6BEA6D520AED2E39006C09F7 /* IntlResources.h */,
+				6BEA6D530AED2E39006C09F7 /* IntlResources.r */,
+				6BEA6D540AED2E39006C09F7 /* IsochronousDataHandler.h */,
+				6BEA6D550AED2E39006C09F7 /* IsochronousDataHandler.k.h */,
+				6BEA6D560AED2E39006C09F7 /* IsochronousDataHandler.r */,
+				6BEA6D570AED2E39006C09F7 /* JManager.h */,
+				6BEA6D580AED2E39006C09F7 /* Kernel.h */,
+				6BEA6D590AED2E39006C09F7 /* Keyboards.h */,
+				6BEA6D5A0AED2E39006C09F7 /* Keychain.h */,
+				6BEA6D5B0AED2E39006C09F7 /* KeychainCore.h */,
+				6BEA6D5C0AED2E39006C09F7 /* KeychainHI.h */,
+				6BEA6D5D0AED2E39006C09F7 /* LanguageAnalysis.h */,
+				6BEA6D5E0AED2E39006C09F7 /* LaunchServices.h */,
+				6BEA6D5F0AED2E39006C09F7 /* Lists.h */,
+				6BEA6D600AED2E39006C09F7 /* LocationManager.h */,
+				6BEA6D610AED2E39006C09F7 /* LocationManager.k.h */,
+				6BEA6D620AED2E39006C09F7 /* LocationManager.r */,
+				6BEA6D630AED2E39006C09F7 /* LowMem.h */,
+				6BEA6D640AED2E39006C09F7 /* MacApplication.h */,
+				6BEA6D650AED2E39006C09F7 /* MacErrors.h */,
+				6BEA6D660AED2E39006C09F7 /* MacHelp.h */,
+				6BEA6D670AED2E39006C09F7 /* MachineExceptions.h */,
+				6BEA6D680AED2E39006C09F7 /* MacLocales.h */,
+				6BEA6D690AED2E39006C09F7 /* MacMemory.h */,
+				6BEA6D6A0AED2E39006C09F7 /* MacTCP.h */,
+				6BEA6D6B0AED2E39006C09F7 /* MacTextEditor.h */,
+				6BEA6D6C0AED2E39006C09F7 /* MacTypes.h */,
+				6BEA6D6D0AED2E39006C09F7 /* MacTypes.r */,
+				6BEA6D6E0AED2E39006C09F7 /* MacWindows.h */,
+				6BEA6D6F0AED2E39006C09F7 /* MacWindows.r */,
+				6BEA6D700AED2E39006C09F7 /* Math64.h */,
+				6BEA6D710AED2E39006C09F7 /* MediaHandlers.h */,
+				6BEA6D720AED2E39006C09F7 /* MediaHandlers.k.h */,
+				6BEA6D730AED2E39006C09F7 /* Memory.h */,
+				6BEA6D740AED2E39006C09F7 /* Menus.h */,
+				6BEA6D750AED2E39006C09F7 /* Menus.r */,
+				6BEA6D760AED2E39006C09F7 /* MIDI.h */,
+				6BEA6D770AED2E39006C09F7 /* MixedMode.h */,
+				6BEA6D780AED2E39006C09F7 /* MixedMode.r */,
+				6BEA6D790AED2E39006C09F7 /* Movies.h */,
+				6BEA6D7A0AED2E39006C09F7 /* Movies.k.h */,
+				6BEA6D7B0AED2E39006C09F7 /* MoviesFormat.h */,
+				6BEA6D7C0AED2E39006C09F7 /* Multiprocessing.h */,
+				6BEA6D7D0AED2E39006C09F7 /* MultiprocessingInfo.h */,
+				6BEA6D7E0AED2E39006C09F7 /* NameRegistry.h */,
+				6BEA6D7F0AED2E39006C09F7 /* Navigation.h */,
+				6BEA6D800AED2E39006C09F7 /* NetSprocket.h */,
+				6BEA6D810AED2E39006C09F7 /* NetworkSetup.h */,
+				6BEA6D820AED2E39006C09F7 /* NetworkSetup.r */,
+				6BEA6D830AED2E39006C09F7 /* Notification.h */,
+				6BEA6D840AED2E39006C09F7 /* NSL.h */,
+				6BEA6D850AED2E39006C09F7 /* NSLCore.h */,
+				6BEA6D860AED2E39006C09F7 /* NumberFormatting.h */,
+				6BEA6D870AED2E39006C09F7 /* OpenTptAppleTalk.h */,
+				6BEA6D880AED2E39006C09F7 /* OpenTptClient.h */,
+				6BEA6D890AED2E39006C09F7 /* OpenTptCommon.h */,
+				6BEA6D8A0AED2E39006C09F7 /* OpenTptConfig.h */,
+				6BEA6D8B0AED2E39006C09F7 /* OpenTptDevLinks.h */,
+				6BEA6D8C0AED2E39006C09F7 /* OpenTptGlobalNew.h */,
+				6BEA6D8D0AED2E39006C09F7 /* OpenTptInternet.h */,
+				6BEA6D8E0AED2E39006C09F7 /* OpenTptISDN.h */,
+				6BEA6D8F0AED2E39006C09F7 /* OpenTptLinks.h */,
+				6BEA6D900AED2E39006C09F7 /* OpenTptModule.h */,
+				6BEA6D910AED2E39006C09F7 /* OpenTptPCISupport.h */,
+				6BEA6D920AED2E39006C09F7 /* OpenTptSerial.h */,
+				6BEA6D930AED2E39006C09F7 /* OpenTptXTI.h */,
+				6BEA6D940AED2E39006C09F7 /* OpenTransport.h */,
+				6BEA6D950AED2E39006C09F7 /* OpenTransport.r */,
+				6BEA6D960AED2E39006C09F7 /* OpenTransportKernel.h */,
+				6BEA6D970AED2E39006C09F7 /* OpenTransportKernel.r */,
+				6BEA6D980AED2E39006C09F7 /* OpenTransportProtocol.h */,
+				6BEA6D990AED2E39006C09F7 /* OpenTransportProtocol.r */,
+				6BEA6D9A0AED2E39006C09F7 /* OpenTransportProviders.h */,
+				6BEA6D9B0AED2E39006C09F7 /* OpenTransportProviders.r */,
+				6BEA6D9C0AED2E39006C09F7 /* OpenTransportUNIX.h */,
+				6BEA6D9D0AED2E39006C09F7 /* OSA.h */,
+				6BEA6D9E0AED2E39006C09F7 /* OSA.k.h */,
+				6BEA6D9F0AED2E39006C09F7 /* OSAComp.h */,
+				6BEA6DA00AED2E39006C09F7 /* OSAGeneric.h */,
+				6BEA6DA10AED2E39006C09F7 /* OSUtils.h */,
+				6BEA6DA20AED2E39006C09F7 /* OSUtils.r */,
+				6BEA6DA30AED2E39006C09F7 /* OTConfig.r */,
+				6BEA6DA40AED2E39006C09F7 /* Packages.h */,
+				6BEA6DA50AED2E39006C09F7 /* Palettes.h */,
+				6BEA6DA60AED2E39006C09F7 /* Palettes.r */,
+				6BEA6DA70AED2E39006C09F7 /* Patches.h */,
+				6BEA6DA80AED2E39006C09F7 /* PCCard.h */,
+				6BEA6DA90AED2E39006C09F7 /* PCCardAdapterPlugin.h */,
+				6BEA6DAA0AED2E39006C09F7 /* PCCardEnablerPlugin.h */,
+				6BEA6DAB0AED2E39006C09F7 /* PCCardEnablerPlugin.r */,
+				6BEA6DAC0AED2E39006C09F7 /* PCCardTuples.h */,
+				6BEA6DAD0AED2E39006C09F7 /* PCI.h */,
+				6BEA6DAE0AED2E39006C09F7 /* PEFBinaryFormat.h */,
+				6BEA6DAF0AED2E39006C09F7 /* Pict.r */,
+				6BEA6DB00AED2E39006C09F7 /* PictUtils.h */,
+				6BEA6DB10AED2E39006C09F7 /* PictUtils.r */,
+				6BEA6DB20AED2E39006C09F7 /* PLStringFuncs.h */,
+				6BEA6DB30AED2E39006C09F7 /* PMApplication.h */,
+				6BEA6DB40AED2E39006C09F7 /* PMCore.h */,
+				6BEA6DB50AED2E39006C09F7 /* PMDefinitions.h */,
+				6BEA6DB60AED2E39006C09F7 /* Power.h */,
+				6BEA6DB70AED2E39006C09F7 /* PPCToolbox.h */,
+				6BEA6DB80AED2E39006C09F7 /* PPCToolbox.r */,
+				6BEA6DB90AED2E39006C09F7 /* Printing.h */,
+				6BEA6DBA0AED2E39006C09F7 /* Processes.h */,
+				6BEA6DBB0AED2E39006C09F7 /* Processes.r */,
+				6BEA6DBC0AED2E39006C09F7 /* QD3D.h */,
+				6BEA6DBD0AED2E39006C09F7 /* QD3DAcceleration.h */,
+				6BEA6DBE0AED2E39006C09F7 /* QD3DCamera.h */,
+				6BEA6DBF0AED2E39006C09F7 /* QD3DController.h */,
+				6BEA6DC00AED2E39006C09F7 /* QD3DCustomElements.h */,
+				6BEA6DC10AED2E39006C09F7 /* QD3DDrawContext.h */,
+				6BEA6DC20AED2E39006C09F7 /* QD3DErrors.h */,
+				6BEA6DC30AED2E39006C09F7 /* QD3DExtension.h */,
+				6BEA6DC40AED2E39006C09F7 /* QD3DGeometry.h */,
+				6BEA6DC50AED2E39006C09F7 /* QD3DGroup.h */,
+				6BEA6DC60AED2E39006C09F7 /* QD3DIO.h */,
+				6BEA6DC70AED2E39006C09F7 /* QD3DLight.h */,
+				6BEA6DC80AED2E39006C09F7 /* QD3DMath.h */,
+				6BEA6DC90AED2E39006C09F7 /* QD3DPick.h */,
+				6BEA6DCA0AED2E39006C09F7 /* QD3DRenderer.h */,
+				6BEA6DCB0AED2E39006C09F7 /* QD3DSet.h */,
+				6BEA6DCC0AED2E39006C09F7 /* QD3DShader.h */,
+				6BEA6DCD0AED2E39006C09F7 /* QD3DStorage.h */,
+				6BEA6DCE0AED2E39006C09F7 /* QD3DString.h */,
+				6BEA6DCF0AED2E39006C09F7 /* QD3DStyle.h */,
+				6BEA6DD00AED2E39006C09F7 /* QD3DTransform.h */,
+				6BEA6DD10AED2E39006C09F7 /* QD3DView.h */,
+				6BEA6DD20AED2E39006C09F7 /* QD3DViewer.h */,
+				6BEA6DD30AED2E39006C09F7 /* QD3DWinViewer.h */,
+				6BEA6DD40AED2E39006C09F7 /* QDOffscreen.h */,
+				6BEA6DD50AED2E39006C09F7 /* QTML.h */,
+				6BEA6DD60AED2E39006C09F7 /* QTSMovie.h */,
+				6BEA6DD70AED2E39006C09F7 /* QTSMovie.k.h */,
+				6BEA6DD80AED2E39006C09F7 /* QTSMovie.r */,
+				6BEA6DD90AED2E39006C09F7 /* QTStreamingComponents.h */,
+				6BEA6DDA0AED2E39006C09F7 /* QTStreamingComponents.k.h */,
+				6BEA6DDB0AED2E39006C09F7 /* QTStreamingComponents.r */,
+				6BEA6DDC0AED2E39006C09F7 /* Quickdraw.h */,
+				6BEA6DDD0AED2E39006C09F7 /* Quickdraw.r */,
+				6BEA6DDE0AED2E39006C09F7 /* QuickdrawText.h */,
+				6BEA6DDF0AED2E39006C09F7 /* QuickTime.h */,
+				6BEA6DE00AED2E39006C09F7 /* QuickTime.r */,
+				6BEA6DE10AED2E39006C09F7 /* QuickTimeComponents.h */,
+				6BEA6DE20AED2E39006C09F7 /* QuickTimeComponents.k.h */,
+				6BEA6DE30AED2E39006C09F7 /* QuickTimeComponents.r */,
+				6BEA6DE40AED2E39006C09F7 /* QuickTimeMusic.h */,
+				6BEA6DE50AED2E39006C09F7 /* QuickTimeMusic.k.h */,
+				6BEA6DE60AED2E39006C09F7 /* QuickTimeStreaming.h */,
+				6BEA6DE70AED2E39006C09F7 /* QuickTimeVR.h */,
+				6BEA6DE80AED2E39006C09F7 /* QuickTimeVRFormat.h */,
+				6BEA6DE90AED2E39006C09F7 /* RAVE.h */,
+				6BEA6DEA0AED2E39006C09F7 /* RAVESystem.h */,
+				6BEA6DEB0AED2E39006C09F7 /* Resources.h */,
+				6BEA6DEC0AED2E39006C09F7 /* Retrace.h */,
+				6BEA6DED0AED2E39006C09F7 /* ROMDefs.h */,
+				6BEA6DEE0AED2E39006C09F7 /* ScalerStreamTypes.h */,
+				6BEA6DEF0AED2E39006C09F7 /* ScalerTypes.h */,
+				6BEA6DF00AED2E39006C09F7 /* Scrap.h */,
+				6BEA6DF10AED2E39006C09F7 /* Script.h */,
+				6BEA6DF20AED2E39006C09F7 /* Script.r */,
+				6BEA6DF30AED2E39006C09F7 /* SCSI.h */,
+				6BEA6DF40AED2E39006C09F7 /* SegLoad.h */,
+				6BEA6DF50AED2E39006C09F7 /* Serial.h */,
+				6BEA6DF60AED2E39006C09F7 /* SFNTLayoutTypes.h */,
+				6BEA6DF70AED2E39006C09F7 /* SFNTTypes.h */,
+				6BEA6DF80AED2E39006C09F7 /* ShutDown.h */,
+				6BEA6DF90AED2E39006C09F7 /* Slots.h */,
+				6BEA6DFA0AED2E39006C09F7 /* Slots.r */,
+				6BEA6DFB0AED2E39006C09F7 /* SocketServices.h */,
+				6BEA6DFC0AED2E39006C09F7 /* Sound.h */,
+				6BEA6DFD0AED2E39006C09F7 /* Sound.k.h */,
+				6BEA6DFE0AED2E39006C09F7 /* Sound.r */,
+				6BEA6DFF0AED2E39006C09F7 /* SoundComponents.h */,
+				6BEA6E000AED2E39006C09F7 /* SoundComponents.r */,
+				6BEA6E010AED2E39006C09F7 /* SoundInput.h */,
+				6BEA6E020AED2E39006C09F7 /* SoundInput.r */,
+				6BEA6E030AED2E39006C09F7 /* SoundSprocket.h */,
+				6BEA6E040AED2E39006C09F7 /* Speech.h */,
+				6BEA6E050AED2E39006C09F7 /* SpeechRecognition.h */,
+				6BEA6E060AED2E39006C09F7 /* SpeechSynthesis.h */,
+				6BEA6E070AED2E39006C09F7 /* StandardFile.h */,
+				6BEA6E080AED2E39006C09F7 /* Start.h */,
+				6BEA6E090AED2E39006C09F7 /* StringCompare.h */,
+				6BEA6E0A0AED2E39006C09F7 /* Strings.h */,
+				6BEA6E0B0AED2E39006C09F7 /* SysTypes.r */,
+				6BEA6E0C0AED2E39006C09F7 /* Telephones.h */,
+				6BEA6E0D0AED2E39006C09F7 /* Terminals.h */,
+				6BEA6E0E0AED2E39006C09F7 /* TerminalTools.h */,
+				6BEA6E0F0AED2E39006C09F7 /* TextCommon.h */,
+				6BEA6E100AED2E39006C09F7 /* TextCommon.r */,
+				6BEA6E110AED2E39006C09F7 /* TextEdit.h */,
+				6BEA6E120AED2E39006C09F7 /* TextEncodingConverter.h */,
+				6BEA6E130AED2E39006C09F7 /* TextEncodingPlugin.h */,
+				6BEA6E140AED2E39006C09F7 /* TextServices.h */,
+				6BEA6E150AED2E39006C09F7 /* TextUtils.h */,
+				6BEA6E160AED2E39006C09F7 /* Threads.h */,
+				6BEA6E170AED2E39006C09F7 /* Timer.h */,
+				6BEA6E180AED2E39006C09F7 /* ToolUtils.h */,
+				6BEA6E190AED2E39006C09F7 /* Translation.h */,
+				6BEA6E1A0AED2E39006C09F7 /* TranslationExtensions.h */,
+				6BEA6E1B0AED2E39006C09F7 /* TranslationExtensions.r */,
+				6BEA6E1C0AED2E39006C09F7 /* Traps.h */,
+				6BEA6E1D0AED2E39006C09F7 /* TSMTE.h */,
+				6BEA6E1E0AED2E39006C09F7 /* Types.h */,
+				6BEA6E1F0AED2E39006C09F7 /* Types.r */,
+				6BEA6E200AED2E39006C09F7 /* TypeSelect.h */,
+				6BEA6E210AED2E39006C09F7 /* Unicode.h */,
+				6BEA6E220AED2E39006C09F7 /* UnicodeConverter.h */,
+				6BEA6E230AED2E39006C09F7 /* UnicodeConverter.r */,
+				6BEA6E240AED2E39006C09F7 /* UnicodeUtilities.h */,
+				6BEA6E250AED2E39006C09F7 /* UnicodeUtilities.r */,
+				6BEA6E260AED2E39006C09F7 /* URLAccess.h */,
+				6BEA6E270AED2E39006C09F7 /* USB.h */,
+				6BEA6E280AED2E39006C09F7 /* UTCUtils.h */,
+				6BEA6E290AED2E39006C09F7 /* vBasicOps.h */,
+				6BEA6E2A0AED2E39006C09F7 /* vBigNum.h */,
+				6BEA6E2B0AED2E39006C09F7 /* vBLAS.h */,
+				6BEA6E2C0AED2E39006C09F7 /* vDSP.h */,
+				6BEA6E2D0AED2E39006C09F7 /* vectorOps.h */,
+				6BEA6E2E0AED2E39006C09F7 /* vfp.h */,
+				6BEA6E2F0AED2E39006C09F7 /* Video.h */,
+				6BEA6E300AED2E39006C09F7 /* Video.r */,
+				6BEA6E310AED2E39006C09F7 /* VideoServices.h */,
+				6BEA6E320AED2E39006C09F7 /* Windows.h */,
+				6BEA6E330AED2E39006C09F7 /* Windows.r */,
+				6BEA6E340AED2E39006C09F7 /* WorldScript.h */,
+				6BEA6E350AED2E39006C09F7 /* ZoomedVideo.h */,
+			);
+			name = "Mac OS common";
+			path = /Developer/Headers/FlatCarbon;
+			sourceTree = "<absolute>";
+		};
+		6BEA6E840AED2E42006C09F7 /* Photoshop common */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6E850AED2E42006C09F7 /* photoshop */,
+				6BEA6EA60AED2E42006C09F7 /* pica_sp */,
+				6BEA6EBF0AED2E42006C09F7 /* resources */,
+			);
+			name = "Photoshop common";
+			path = ../../../../photoshopapi;
+			sourceTree = SOURCE_ROOT;
+		};
+		6BEA6E850AED2E42006C09F7 /* photoshop */ = {
+			isa = PBXGroup;
+			children = (
+				64CC2E4B111CCA5800423B46 /* JSScriptingSuite.h */,
+				647B633011138D490067F135 /* PSIntTypes.h */,
+				6BEA6E860AED2E42006C09F7 /* ASZStringSuite.h */,
+				6BEA6E870AED2E42006C09F7 /* ASTypes.h */,
+				6BEA6E880AED2E42006C09F7 /* ASPragma.h */,
+				6BEA6E890AED2E42006C09F7 /* ASConfig.h */,
+				6BEA6E8A0AED2E42006C09F7 /* ASPreInclude.h */,
+				6BEA6E8B0AED2E42006C09F7 /* PIAbout.h */,
+				6BEA6E8C0AED2E42006C09F7 /* PIAcquire.h */,
+				6BEA6E8D0AED2E42006C09F7 /* PIActions.h */,
+				6BEA6E8E0AED2E42006C09F7 /* PIActionsPlugin.h */,
+				6BEA6E8F0AED2E42006C09F7 /* PIAliasSuite.h */,
+				6BEA6E900AED2E42006C09F7 /* PIBufferSuite.h */,
+				6BEA6E910AED2E42006C09F7 /* PIChannelPortOperations.h */,
+				6BEA6E920AED2E42006C09F7 /* PIChannelPortsSuite.h */,
+				6BEA6E930AED2E42006C09F7 /* PIColorSpaceSuite.h */,
+				6BEA6E940AED2E42006C09F7 /* PIErrorSuite.h */,
+				6BEA6E950AED2E42006C09F7 /* PIExport.h */,
+				6BEA6E960AED2E42006C09F7 /* PIFilter.h */,
+				6BEA6E970AED2E42006C09F7 /* PIFormat.h */,
+				6BEA6E980AED2E42006C09F7 /* PIGeneral.h */,
+				6BEA6E990AED2E42006C09F7 /* PIGetFileListSuite.h */,
+				6BEA6E9A0AED2E42006C09F7 /* PIGetPathSuite.h */,
+				6BEA6E9B0AED2E42006C09F7 /* PIHandleSuite.h */,
+				6BEA6E9C0AED2E42006C09F7 /* PIPicker.h */,
+				6BEA6E9D0AED2E42006C09F7 /* PIProgressSuite.h */,
+				6BEA6E9E0AED2E42006C09F7 /* PIProperties.h */,
+				6BEA6E9F0AED2E42006C09F7 /* PIResDefines.h */,
+				6BEA6EA00AED2E42006C09F7 /* PISelection.h */,
+				6BEA6EA10AED2E42006C09F7 /* PIStringTerminology.h */,
+				6BEA6EA20AED2E42006C09F7 /* PITerminology.h */,
+				6BEA6EA30AED2E42006C09F7 /* PITypes.h */,
+				6BEA6EA40AED2E42006C09F7 /* PIUIHooksSuite.h */,
+				6BEA6EA50AED2E42006C09F7 /* PSErrorDefines.h */,
+			);
+			path = photoshop;
+			sourceTree = "<group>";
+		};
+		6BEA6EA60AED2E42006C09F7 /* pica_sp */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6EA70AED2E42006C09F7 /* SPAccess.h */,
+				6BEA6EA80AED2E42006C09F7 /* SPAdapts.h */,
+				6BEA6EA90AED2E42006C09F7 /* SPBasic.h */,
+				6BEA6EAA0AED2E42006C09F7 /* SPBckDbg.h */,
+				6BEA6EAB0AED2E42006C09F7 /* SPBlocks.h */,
+				6BEA6EAC0AED2E42006C09F7 /* SPCaches.h */,
+				6BEA6EAD0AED2E42006C09F7 /* SPCOM.h */,
+				6BEA6EAE0AED2E42006C09F7 /* SPConfig.h */,
+				6BEA6EB00AED2E42006C09F7 /* SPErrorCodes.h */,
+				6BEA6EB10AED2E42006C09F7 /* SPErrors.h */,
+				6BEA6EB20AED2E42006C09F7 /* SPFiles.h */,
+				6BEA6EB30AED2E42006C09F7 /* SPHost.h */,
+				6BEA6EB40AED2E42006C09F7 /* SPInterf.h */,
+				6BEA6EB50AED2E42006C09F7 /* SPMData.h */,
+				6BEA6EB60AED2E42006C09F7 /* SPObject.h */,
+				6BEA6EB70AED2E42006C09F7 /* SPPiPL.h */,
+				6BEA6EB80AED2E42006C09F7 /* SPPlugs.h */,
+				6BEA6EB90AED2E42006C09F7 /* SPProps.h */,
+				6BEA6EBA0AED2E42006C09F7 /* SPRuntme.h */,
+				6BEA6EBB0AED2E42006C09F7 /* SPStrngs.h */,
+				6BEA6EBC0AED2E42006C09F7 /* SPSTSPrp.h */,
+				6BEA6EBD0AED2E42006C09F7 /* SPSuites.h */,
+				6BEA6EBE0AED2E42006C09F7 /* SPTypes.h */,
+			);
+			path = pica_sp;
+			sourceTree = "<group>";
+		};
+		6BEA6EBF0AED2E42006C09F7 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6BEA6EC00AED2E42006C09F7 /* PIGeneral.r */,
+				6BEA6EC10AED2E42006C09F7 /* PIMI.r */,
+				6BEA6EC20AED2E42006C09F7 /* PIPL.r */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D01CCC60486CAD60068D4B7 /* Statistics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 962CD06E08DA18A1008533EB /* Build configuration list for PBXNativeTarget "Statistics" */;
+			buildPhases = (
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+				969D52B109B681C300BD3566 /* Rez */,
+			);
+			buildRules = (
+				969D530509B6834200BD3566 /* PBXBuildRule */,
+				96D963C109C0BE6800A5716C /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = Statistics;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = FilterTemplate;
+			productReference = 8D01CCD20486CAD60068D4B7 /* Statistics.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 962CD07208DA18A1008533EB /* Build configuration list for PBXProject "statistics" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* FilterTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D01CCC60486CAD60068D4B7 /* Statistics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXRezBuildPhase section */
+		969D52B109B681C300BD3566 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BEA6C780AED2E2B006C09F7 /* PIUtilities.r in Rez */,
+				6BEA6ED30AED2EA9006C09F7 /* Statistics.r in Rez */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BEA6C7A0AED2E2B006C09F7 /* PIUSuites.cpp in Sources */,
+				6BEA6EC90AED2E98006C09F7 /* StatisticsUIMac.cpp in Sources */,
+				6BEA6ED20AED2EA9006C09F7 /* Statistics.cpp in Sources */,
+				6BEA6ED40AED2EA9006C09F7 /* StatisticsScripting.cpp in Sources */,
+				64FC827C1118E69700F6232D /* PIUtilities.cpp in Sources */,
+				64FC827D1118E69900F6232D /* DialogUtilitiesMac.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		962CD06F08DA18A1008533EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GENERATE_PKGINFO_FILE = YES;
+				INFOPLIST_FILE = ../../../common/resources/Info.plist;
+				PLUGIN_TYPE = 8BAM;
+				PRODUCT_NAME = Statistics;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = Debug;
+		};
+		962CD07308DA18A1008533EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
+				OBJROOT = "$(SYMROOT)../../Objs";
+				REZ_PREFIX_FILE = ../../../common/includes/MachOMacrezXcode.h;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SYMROOT = ../../../Output/Mac/Debug/;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		962CD06E08DA18A1008533EB /* Build configuration list for PBXNativeTarget "Statistics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				962CD06F08DA18A1008533EB /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		962CD07208DA18A1008533EB /* Build configuration list for PBXProject "statistics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				962CD07308DA18A1008533EB /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

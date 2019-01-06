@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			PerLayerMetadata.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	The mxml file contains a script that communicates to the
+					corresponding PerLayerMetadata.jsx file, contains labels
+					and text area to edit metadata, and buttons to execute
+					actions. The file ensures that all input and output of
+					metadata is executed successfully on each of the layer
+					of a document contained in Adobe Photoshop.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="300" height="300" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.csxs.core.CSXSInterface;
+			import com.adobe.csxs.events.*;
+			import com.adobe.csxs.types.*;
+			
+			/**
+				Function:		setPSLayerMetadata
+				Description:	Call the "setDescMetadata" and the "setCommMetadata" functions in the
+								PerLayerMetadata.jsx file with the current description and comments
+								metadata displayed in the text area of the panel respectively.
+			*/
+			public function setPSLayerMetadata():void{
+				CSXSInterface.instance.evalScript("setDescMetadata", evalStringChecker(description.text));
+				CSXSInterface.instance.evalScript("setCommMetadata", evalStringChecker(comments.text));
+			}
+
+			/**
+				Function:		evalStringChecker
+				Description:	Checks the string about to be passed to the PerLayerMetadata.jsx
+								file for quotes and apostrophe and replace with a backward slash
+								to be converted correctly and read by the eval function.
+				@param inString A String variable of the string to be checked
+				@return A new string that has been fixed for any characters that might cause
+								problems to the eval function.
+ 			*/
+			public function evalStringChecker(inString:String):String{
+				var tokens:Array = inString.split("'");
+				var joined:String = tokens.join("\\'");
+				tokens = joined.split('"');
+				joined = tokens.join('\\"');
+				return(joined);
+			}
+
+			/**
+				Function:		getPSLayerMetadata
+				Description:	Call the "getLayerMetadata" function in the PerLayerMetadata.jsx
+								and retrieve the results through reqResult. The values retrieved
+								include the layer name, the data and time the layer was last changed,
+								the description of the layer, and the comments the user place. The
+								values are placed into the text area of the panel.
+			*/
+			public function getPSLayerMetadata():void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("getLayerMetadata");
+				if(SyncRequestResult.COMPLETE == reqResult.status){
+					layerName.text = reqResult.data.layerName;
+					lastChanged.text = reqResult.data.layerChangedDate;
+					description.text = reqResult.data.description;
+					comments.text = reqResult.data.comments;
+				}
+			}
+
+			/**
+				Function:		init
+				Description:	Initialize the panel by calling the "getPSLayerMetadata" function
+								and have the apply button to be in a false state. In addition,
+								the description and comments text area field have the event
+								listeners to monitor text input to ensure that no new lines,
+								carriage returns, or tab characters are entered. The function
+								also sets up the fly out menu to export raw metadata. Lastly,
+								the function registers the events "Opn ", "setd", "Mk  ", and "slct"
+								to be monitored in Photoshop.
+			*/
+			public function init():void{
+				getPSLayerMetadata();
+				apply.enabled = false;
+				
+				description.addEventListener(TextEvent.TEXT_INPUT, textChecker);
+				comments.addEventListener(TextEvent.TEXT_INPUT, textChecker);
+				
+				var xmlMenu:XML = <Menu><MenuItem Label="Export Raw Data"/></Menu>;
+				CSXSInterface.getInstance().setPanelMenu(xmlMenu);
+				CSXSInterface.getInstance().addEventListener(MenuClickEvent.FLYOUT_MENU_CLICK, menuHandler);
+				
+				var windowGeoData:WindowGeometry = new WindowGeometry(100, 100, 300, 300); 
+				CSXSInterface.instance.requestStateChange(StateChangeEvent.WINDOW_RESIZE, windowGeoData);
+
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("Opn ").toString());
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("setd").toString());
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("Mk  ").toString());
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("slct").toString());
+				ExternalInterface.addCallback("PhotoshopCallback" + CSXSInterface.instance.getExtensionId(), PhotoshopCallback);
+			}
+
+			/**
+				Function:		charToInteger
+				Description:	Converts a four character id key to an integer value
+								understood by PhotoshopRegisterEvent.
+				@param keyword A String variable of the four character id key to
+								to be converted.
+				@return The converted value from the four character id key
+ 			*/
+			public function charToInteger(keyword:String):Number{
+				var value:Number;
+				value  = keyword.charCodeAt(0) * 256 * 256 * 256;
+				value += keyword.charCodeAt(1) * 256 * 256;
+				value += keyword.charCodeAt(2) * 256;
+				value += keyword.charCodeAt(3);
+				return value;
+			}
+
+			/**
+				Function:		PhotoshopCallback
+				Description:	Monitors events in Adobe Photoshop so that when Opn ", "setd", "Mk  ",
+								and "slct" occurs, then it will call the function getPSLayerMetadata
+								and set the apply button back to false.
+				@param eventID A Number variable that's been converted by charToInteger.
+				@param descID A Number variable (not used).
+			*/
+			public function PhotoshopCallback(eventID:Number, descID:Number):void{
+				if(	eventID == charToInteger("Opn ") || eventID == charToInteger("setd") ||
+					eventID == charToInteger("Mk  ") || eventID == charToInteger("slct")) {
+						getPSLayerMetadata();
+						apply.enabled=false;
+					}
+			}
+
+			/**
+				Function:		textChecker
+				Description:	Monitors the new line, carriage return, and tab characters from
+								passing through metadata because of the problems in retrieving
+								special characters in the text area.
+				@param char A TextEvent variable that is a character to be monitored.
+			*/
+			public function textChecker(char:TextEvent):void{
+				if(char.text == "\n" || char.text == "\r" || char.text == "\t"){
+					char.preventDefault();
+				}
+			}
+
+			/**
+				Function:		menuHandler
+				Description:	Process the menu item of exporting raw metadata if selected.
+				@param inEvent A MenuClickEvent to determine which menu item was selected.
+			*/
+			public function menuHandler(inEvent:MenuClickEvent):void{
+				if("Export Raw Data" == inEvent.menuName){
+					CSXSInterface.instance.evalScript("exportLayerMetadata");
+				}
+			}		
+		]]>
+	</mx:Script>
+	<mx:HBox width="100%">
+		<mx:Label text="Name:"/>
+		<mx:TextInput width="100%" height="100%" id="layerName" editable="false"/>
+	</mx:HBox>
+	<mx:HBox width="100%">
+		<mx:Label text="Last Changed:"/>
+		<mx:TextInput width="100%" height="100%" id="lastChanged" editable="false"/>
+		<mx:Button label="Update" id="update" click="getPSLayerMetadata()"/>
+	</mx:HBox>
+	<mx:HBox width="100%" height="100%">
+		<mx:Label text="Description:"/>
+		<mx:TextArea width="100%" height="100%" id="description" change="apply.enabled=true"/>
+	</mx:HBox>
+	<mx:HBox width="100%" height="100%">
+		<mx:Label text="Comments:"/>
+		<mx:TextArea width="100%" height="100%" id="comments" change="apply.enabled=true"/>
+	</mx:HBox>
+	<mx:HBox width="100%" horizontalAlign="right">
+		<mx:Button label="Apply Changes" id="apply" click="apply.enabled=false; setPSLayerMetadata();"/>
+	</mx:HBox>
+</mx:Application>

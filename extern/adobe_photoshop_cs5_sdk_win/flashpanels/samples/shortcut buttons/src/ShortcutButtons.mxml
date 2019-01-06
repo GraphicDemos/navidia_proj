@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			ShortcutButtons.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	The mxml contains a script that communicates with the
+					corresponding ShortcutButtons.jsx file, contains two
+					buttons, two checkboxes, and CSXS Library tags to
+					communicate to the CSXS Library Debugger. The user is able
+					to run the actions on a timer and be able to have it run
+					in the background through Photoshop Persistent. Lastly,
+					the CSXS Library AIR Debugger is able to interact with
+					this panel given the function tags placed in this file.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()"
+	xmlns:csxslogtargets="com.adobe.csxs.logging.targets.*">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.csxs.core.CSXSInterface;
+			import mx.logging.*;
+			
+			// tpr private static var logConnection:LocalConnectionTarget = null;
+			
+			public var newDocTimer:Timer = new Timer(10000);
+			public var closeDocTimer:Timer = new Timer(12000);
+			
+			/**
+				Function:		callAddDocument
+				Description:	Call the "addDocument" function in ShortcutButtons.jsx
+			*/
+			public function callAddDocument():void{
+				CSXSInterface.instance.evalScript("addDocument");
+			}
+			
+			/**
+				Function:		callCloseDocument
+				Description:	Call the "closeDocument" function in ShortcutButtons.jsx
+			*/
+			public function callCloseDocument():void{
+				CSXSInterface.instance.evalScript("closeDocument");
+			}
+			
+			/**
+				Function:		init
+				Description:	Initializes PhotoshopPersistent to continue executing
+								actions even after the user closes the panel. Adds
+								Event Listeners to the newDocTimer and closeDocTimer
+								functions. Initializes the time for the newDocTimer
+								and closeDocTimer functions.
+			*/
+			public function init():void{
+				CSXSInterface.instance.evalScript("PhotoshopPersistent");
+				newDocTimer.addEventListener(TimerEvent.TIMER,newDocTimeHandler);
+				closeDocTimer.addEventListener(TimerEvent.TIMER,closeDocTimeHandler);
+				newDocTimer.start();
+				closeDocTimer.start();
+			}
+
+			/**
+				Function:		newDocTimeHandler
+				Description:	Checks if actNewDoc check box is selected and if so,
+								calls the callAddDocument function.
+				@param event A TimerEvent variable (not used).
+			*/
+			public function newDocTimeHandler(event:TimerEvent):void{
+				if(actNewDoc.selected) callAddDocument();
+			}
+
+			/**
+				Function:		closeDocTimeHandler
+				Description:	Checks if actCloseDoc check box is selected and if so,
+								calls the callCloseDocument function.
+				@param event A TimerEvent variable (not used).
+			*/
+			public function closeDocTimeHandler(event:TimerEvent):void{
+				if(actCloseDoc.selected) callCloseDocument();
+			}
+
+			/**
+				Function:		logger
+				Description:	Sets up the parameter for logConnection to be used
+								in the CSXS Library AIR Debugger.
+				@param event A TimerEvent variable (not used)
+				@return ILogger variable type with the properties on what to
+								log and display in the CSXS Library AIR Debugger.
+			*/			
+			public static function logger():ILogger{
+				/* // tpr remove this
+				if(!logConnection){
+					logConnection = new LocalConnectionTarget("_test");
+					logConnection.filters = ["*"];
+					logConnection.level = LogEventLevel.ALL;
+					logConnection.includeDate = true;
+					logConnection.includeTime = true;
+					logConnection.includeCategory = true;
+					logConnection.includeLevel = true;
+				}
+				*/
+				return Log.getLogger("ConnectNow");
+			}
+		]]>
+	</mx:Script>
+	<mx:Button x="10" y="10" label="New Document" click="callAddDocument();"/>
+	<mx:Button x="10" y="40" label="Close Document" click="callCloseDocument();"/>
+	<mx:CheckBox x="135" y="10" label="Activate every 10 seconds" id="actNewDoc"/>
+	<mx:CheckBox x="135" y="40" label="Activate every 12 seconds" id="actCloseDoc"/>
+	
+	<!--
+		The tags: csxslogtargets:LocalConnectionTarget, csxslogtargets:SocketTarget
+		and TraceTarget are used for the logging mechanism for the CSXS Library
+		AIR Debugger explained in the tutorial.
+	-->
+	<mx:TraceTarget level="0" includeDate="true"
+			includeTime="true" includeCategory="true" includeLevel="true">
+		<mx:filters>
+			<mx:Array><mx:String>com.adobe.csxs.*</mx:String></mx:Array>
+		</mx:filters>
+	</mx:TraceTarget>
+</mx:Application>

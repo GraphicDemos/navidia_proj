@@ -1,0 +1,1167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: PIActions.h Source File</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1>PIActions.h</h1><a href="_p_i_actions_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// ADOBE SYSTEMS INCORPORATED</span>
+<a name="l00002"></a>00002 <span class="comment">// (c) Copyright  1993 - 2005, 2009 Adobe Systems Incorporated</span>
+<a name="l00003"></a>00003 <span class="comment">// All Rights Reserved</span>
+<a name="l00004"></a>00004 <span class="comment">//</span>
+<a name="l00005"></a>00005 <span class="comment">// NOTICE:  Adobe permits you to use, modify, and distribute this </span>
+<a name="l00006"></a>00006 <span class="comment">// file in accordance with the terms of the Adobe license agreement</span>
+<a name="l00007"></a>00007 <span class="comment">// accompanying it.  If you have received this file from a source</span>
+<a name="l00008"></a>00008 <span class="comment">// other than Adobe, then your use, modification, or distribution</span>
+<a name="l00009"></a>00009 <span class="comment">// of it requires the prior written permission of Adobe.</span>
+<a name="l00010"></a>00010 <span class="comment">//-------------------------------------------------------------------</span>
+<a name="l00026"></a>00026 <span class="comment"></span><span class="preprocessor">#ifndef __PIActions__ // Already defined?</span>
+<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define __PIActions__</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span>
+<a name="l00029"></a>00029 <span class="preprocessor">#if PRAGMA_ONCE</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#pragma once</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>
+<a name="l00033"></a>00033 <span class="preprocessor">#ifndef MSWindows</span>
+<a name="l00034"></a><a class="code" href="_p_i_actions_8h.html#7de778ec476431261ddd080702272e51">00034</a> <span class="preprocessor"></span><span class="preprocessor">#define MSWindows (MSDOS || WIN32)</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span>
+<a name="l00037"></a>00037 <span class="preprocessor">#ifndef INSIDE_PHOTOSHOP</span>
+<a name="l00038"></a><a class="code" href="_p_i_actions_8h.html#afe7603205d8d83da3cbe5abd903229d">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define INSIDE_PHOTOSHOP 0</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span>
+<a name="l00041"></a>00041 <span class="preprocessor">#ifdef Rez</span>
+<a name="l00042"></a>00042 <span class="preprocessor"></span>
+<a name="l00043"></a>00043 <span class="preprocessor">#if !MSWindows</span>
+<a name="l00044"></a>00044 <span class="preprocessor"></span><span class="preprocessor">#include &lt;Carbon/Carbon.r&gt;</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
+<a name="l00046"></a>00046 <span class="preprocessor"></span>
+<a name="l00047"></a>00047 <span class="preprocessor">#else</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span>
+<a name="l00049"></a>00049 <span class="preprocessor">#if !MSWindows</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span><span class="preprocessor">#include &lt;Carbon/Carbon.h&gt;</span>
+<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span>
+<a name="l00053"></a>00053 <span class="preprocessor">#include "<a class="code" href="_p_i_types_8h.html">PITypes.h</a>"</span>
+<a name="l00054"></a>00054 <span class="preprocessor">#include "SPTypes.h"</span>
+<a name="l00055"></a>00055 <span class="preprocessor">#include "SPPlugs.h"</span>
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 <span class="preprocessor">#endif // Rez</span>
+<a name="l00058"></a>00058 <span class="preprocessor"></span>
+<a name="l00059"></a>00059 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00060"></a>00060 <span class="comment">//  Flags for dictionary parameters.</span>
+<a name="l00061"></a>00061 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00062"></a>00062 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00072"></a><a class="code" href="_p_i_actions_8h.html#c219304f69f4a95c376e338432cc6f2b">00072</a> <span class="preprocessor">#define flagsSingleParameter                    \</span>
+<a name="l00073"></a>00073 <span class="preprocessor">    required,           singleItem,     notEnumerated,  reserved,   \</span>
+<a name="l00074"></a>00074 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00075"></a>00075 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00076"></a>00076 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>
+<a name="l00079"></a><a class="code" href="_p_i_actions_8h.html#e09c122800379e13362c7e53d960adff">00079</a> <span class="preprocessor">#define flagsListParameter                      \</span>
+<a name="l00080"></a>00080 <span class="preprocessor">    required,           listOfItems,    notEnumerated,  reserved,   \</span>
+<a name="l00081"></a>00081 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00082"></a>00082 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00083"></a>00083 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span>
+<a name="l00086"></a><a class="code" href="_p_i_actions_8h.html#e9c4f3a57c292540a80fd7c906e51e52">00086</a> <span class="preprocessor">#define flagsEnumeratedParameter                \</span>
+<a name="l00087"></a>00087 <span class="preprocessor">    required,           singleItem,     enumerated,     reserved,   \</span>
+<a name="l00088"></a>00088 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00089"></a>00089 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00090"></a>00090 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00091"></a>00091 <span class="preprocessor"></span>
+<a name="l00094"></a><a class="code" href="_p_i_actions_8h.html#3be3285a16c983169028741145747dca">00094</a> <span class="preprocessor">#define flagsEnumeratedListParameter            \</span>
+<a name="l00095"></a>00095 <span class="preprocessor">    required,           listOfItems,    enumerated,     reserved,   \</span>
+<a name="l00096"></a>00096 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00097"></a>00097 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00098"></a>00098 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00099"></a>00099 <span class="preprocessor"></span>
+<a name="l00101"></a><a class="code" href="_p_i_actions_8h.html#4381cbe2a4c664d04e8f94e0f012fea7">00101</a> <span class="preprocessor">#define flagsOptionalSingleParameter            \</span>
+<a name="l00102"></a>00102 <span class="preprocessor">    optional,           singleItem,     notEnumerated,  reserved,   \</span>
+<a name="l00103"></a>00103 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00104"></a>00104 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00105"></a>00105 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00106"></a>00106 <span class="preprocessor"></span>
+<a name="l00108"></a><a class="code" href="_p_i_actions_8h.html#7eff82f378e9d67e61cd420e56919e22">00108</a> <span class="preprocessor">#define flagsOptionalListParameter              \</span>
+<a name="l00109"></a>00109 <span class="preprocessor">    optional,           listOfItems,    notEnumerated,  reserved,   \</span>
+<a name="l00110"></a>00110 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00111"></a>00111 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00112"></a>00112 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00113"></a>00113 <span class="preprocessor"></span>
+<a name="l00115"></a><a class="code" href="_p_i_actions_8h.html#0903a0197c43a75627a1826fdeb8caf5">00115</a> <span class="preprocessor">#define flagsOptionalEnumeratedParameter        \</span>
+<a name="l00116"></a>00116 <span class="preprocessor">    optional,           singleItem,     enumerated,     reserved,   \</span>
+<a name="l00117"></a>00117 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00118"></a>00118 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00119"></a>00119 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00120"></a>00120 <span class="preprocessor"></span>
+<a name="l00123"></a><a class="code" href="_p_i_actions_8h.html#cdab40533002370718e73bd4e692dd68">00123</a> <span class="preprocessor">#define flagsOptionalEnumeratedListParameter    \</span>
+<a name="l00124"></a>00124 <span class="preprocessor">    optional,           listOfItems,    enumerated,     reserved,   \</span>
+<a name="l00125"></a>00125 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00126"></a>00126 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00127"></a>00127 <span class="preprocessor">    prepositionParam,   notFeminine,    notMasculine,   singular</span>
+<a name="l00128"></a>00128 <span class="preprocessor"></span>
+<a name="l00129"></a>00129 <span class="comment">// Flags for object properties:</span>
+<a name="l00132"></a>00132 <span class="comment"></span>
+<a name="l00134"></a><a class="code" href="_p_i_actions_8h.html#3ee7406320fa79b320da6947997228c4">00134</a> <span class="preprocessor">#define flagsSingleProperty                     \</span>
+<a name="l00135"></a>00135 <span class="preprocessor">    reserved,           singleItem,     notEnumerated,  readWrite,  \</span>
+<a name="l00136"></a>00136 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00137"></a>00137 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00138"></a>00138 <span class="preprocessor">    noApostrophe,       notFeminine,    notMasculine,   singular</span>
+<a name="l00139"></a>00139 <span class="preprocessor"></span>
+<a name="l00141"></a><a class="code" href="_p_i_actions_8h.html#dc385f4b4008f75f4ee14d2778130e3d">00141</a> <span class="preprocessor">#define flagsListProperty                       \</span>
+<a name="l00142"></a>00142 <span class="preprocessor">    reserved,           listOfItems,    notEnumerated,  readWrite,  \</span>
+<a name="l00143"></a>00143 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00144"></a>00144 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00145"></a>00145 <span class="preprocessor">    noApostrophe,       notFeminine,    notMasculine,   singular</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>
+<a name="l00148"></a><a class="code" href="_p_i_actions_8h.html#8c41c43fac61f35a41fb9f43f3d519af">00148</a> <span class="preprocessor">#define flagsEnumeratedProperty                 \</span>
+<a name="l00149"></a>00149 <span class="preprocessor">    reserved,           singleItem,     enumerated,     readWrite,  \</span>
+<a name="l00150"></a>00150 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00151"></a>00151 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00152"></a>00152 <span class="preprocessor">    noApostrophe,       notFeminine,    notMasculine,   singular</span>
+<a name="l00153"></a>00153 <span class="preprocessor"></span>
+<a name="l00156"></a><a class="code" href="_p_i_actions_8h.html#2e66e7e7a126fc3497d7f7bee8ac47bc">00156</a> <span class="preprocessor">#define flagsEnumeratedListProperty             \</span>
+<a name="l00157"></a>00157 <span class="preprocessor">    reserved,           listOfItems,    enumerated,     readWrite,  \</span>
+<a name="l00158"></a>00158 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00159"></a>00159 <span class="preprocessor">    reserved,           reserved,       reserved,       reserved,   \</span>
+<a name="l00160"></a>00160 <span class="preprocessor">    noApostrophe,       notFeminine,    notMasculine,   singular</span>
+<a name="l00161"></a>00161 <span class="preprocessor"></span>
+<a name="l00162"></a>00162 <span class="comment">// Flags for direct dictionary parameters:</span>
+<a name="l00163"></a>00163 
+<a name="l00165"></a>00165 
+<a name="l00168"></a><a class="code" href="_p_i_actions_8h.html#cb22cb828cad3e533ce8afc3eec78f4a">00168</a> <span class="preprocessor">#define flagsOptionalEnumeratedChangesDirect    \</span>
+<a name="l00169"></a>00169 <span class="preprocessor">    directParamOptional,    singleItem, enumerated, changesState,   \</span>
+<a name="l00170"></a>00170 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,       \</span>
+<a name="l00171"></a>00171 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,       \</span>
+<a name="l00172"></a>00172 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span>
+<a name="l00176"></a><a class="code" href="_p_i_actions_8h.html#7e7331febc06c07b64dad3128d71507c">00176</a> <span class="preprocessor">#define flagsEnumeratedChangesDirect    \</span>
+<a name="l00177"></a>00177 <span class="preprocessor">    directParamRequired,    singleItem, enumerated, changesState,   \</span>
+<a name="l00178"></a>00178 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,       \</span>
+<a name="l00179"></a>00179 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,       \</span>
+<a name="l00180"></a>00180 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved</span>
+<a name="l00181"></a>00181 <span class="preprocessor"></span>
+<a name="l00184"></a><a class="code" href="_p_i_actions_8h.html#9ba5debdc388cd788212491a273bafc5">00184</a> <span class="preprocessor">#define flagsEnumeratedDirect   \</span>
+<a name="l00185"></a>00185 <span class="preprocessor">    directParamRequired,    singleItem, enumerated, doesntChangeState,  \</span>
+<a name="l00186"></a>00186 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,           \</span>
+<a name="l00187"></a>00187 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved,           \</span>
+<a name="l00188"></a>00188 <span class="preprocessor">    reserved,               reserved,   reserved,   reserved</span>
+<a name="l00189"></a>00189 <span class="preprocessor"></span>
+<a name="l00192"></a><a class="code" href="_p_i_actions_8h.html#b43376459d81bed48435522fe125576f">00192</a> <span class="preprocessor">#define flagsChangesDirect  \</span>
+<a name="l00193"></a>00193 <span class="preprocessor">    directParamRequired,    singleItem, notEnumerated,  changesState,   \</span>
+<a name="l00194"></a>00194 <span class="preprocessor">    reserved,               reserved,   reserved,       reserved,       \</span>
+<a name="l00195"></a>00195 <span class="preprocessor">    reserved,               reserved,   reserved,       reserved,       \</span>
+<a name="l00196"></a>00196 <span class="preprocessor">    reserved,               reserved,   reserved,       reserved</span>
+<a name="l00197"></a>00197 <span class="preprocessor"></span>
+<a name="l00200"></a><a class="code" href="_p_i_actions_8h.html#4a0042737e0b3286c799b4165e893f4c">00200</a> <span class="preprocessor">#define flagsListChangesDirect  \</span>
+<a name="l00201"></a>00201 <span class="preprocessor">    directParamRequired,    listOfItems,    notEnumerated,  changesState,   \</span>
+<a name="l00202"></a>00202 <span class="preprocessor">    reserved,               reserved,       reserved,       reserved,       \</span>
+<a name="l00203"></a>00203 <span class="preprocessor">    reserved,               reserved,       reserved,       reserved,       \</span>
+<a name="l00204"></a>00204 <span class="preprocessor">    reserved,               reserved,       reserved,       reserved</span>
+<a name="l00205"></a>00205 <span class="preprocessor"></span>
+<a name="l00206"></a>00206 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00207"></a>00207 <span class="comment">//  Handy short cuts.</span>
+<a name="l00208"></a>00208 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00209"></a>00209 
+<a name="l00211"></a>00211 
+<a name="l00216"></a><a class="code" href="_p_i_actions_8h.html#939bb1a618a2aee2a104aa5807fa5928">00216</a> <span class="preprocessor">#define NO_REPLY        \</span>
+<a name="l00217"></a>00217 <span class="preprocessor">    noReply,            \</span>
+<a name="l00218"></a>00218 <span class="preprocessor">    "",                 \</span>
+<a name="l00219"></a>00219 <span class="preprocessor">    replyRequired,  singleItem, notEnumerated,  notTightBindingFunction,    \</span>
+<a name="l00220"></a>00220 <span class="preprocessor">    reserved,       reserved,   reserved,       reserved,                   \</span>
+<a name="l00221"></a>00221 <span class="preprocessor">    reserved,       reserved,   reserved,       reserved,                   \</span>
+<a name="l00222"></a>00222 <span class="preprocessor">    verbEvent,      reserved,   reserved,       reserved</span>
+<a name="l00223"></a>00223 <span class="preprocessor"></span>
+<a name="l00227"></a><a class="code" href="_p_i_actions_8h.html#f65790b6475647104099bc6e4608c8de">00227</a> <span class="preprocessor">#define IMAGE_DIRECT_PARAMETER  \</span>
+<a name="l00228"></a>00228 <span class="preprocessor">    typeImageReference,         \</span>
+<a name="l00229"></a>00229 <span class="preprocessor">    "",                         \</span>
+<a name="l00230"></a>00230 <span class="preprocessor">    flagsOptionalEnumeratedChangesDirect</span>
+<a name="l00231"></a>00231 <span class="preprocessor"></span>
+<a name="l00233"></a>00233     <span class="comment">// end defgroup</span>
+<a name="l00235"></a>00235 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237 <span class="comment">// NOTE: 1/21/98 (Ace) I'm going to leave these conditional defines in this</span>
+<a name="l00238"></a>00238 <span class="comment">// file to keep PITerminology devoid of conditionals:</span>
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240 <span class="comment">/* Normalize the AppleScript terminology */</span>
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242 <span class="preprocessor">#if MSWindows   // These items come from AppleScript</span>
+<a name="l00243"></a>00243 <span class="preprocessor"></span>
+<a name="l00244"></a>00244 <span class="preprocessor">#ifndef AE_DESC_ENUMS</span>
+<a name="l00245"></a>00245 <span class="preprocessor"></span><span class="preprocessor">#define AE_DESC_ENUMS</span>
+<a name="l00246"></a>00246 <span class="preprocessor"></span>
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248 <span class="preprocessor">#define  typeBoolean                   'bool'</span>
+<a name="l00249"></a>00249 <span class="preprocessor"></span><span class="preprocessor">#define  typeChar                      'TEXT'</span>
+<a name="l00250"></a>00250 <span class="preprocessor"></span>
+<a name="l00251"></a>00251 <span class="comment">/* Preferred numeric Apple event descriptor types */</span>
+<a name="l00252"></a>00252 <span class="preprocessor">#define  typeSInt16                    'shor'</span>
+<a name="l00253"></a>00253 <span class="preprocessor"></span><span class="preprocessor">#define  typeSInt32                    'long'</span>
+<a name="l00254"></a>00254 <span class="preprocessor"></span><span class="preprocessor">#define  typeUInt32                    'magn'</span>
+<a name="l00255"></a>00255 <span class="preprocessor"></span><span class="preprocessor">#define  typeSInt64                    'comp'</span>
+<a name="l00256"></a>00256 <span class="preprocessor"></span><span class="preprocessor">#define  typeIEEE32BitFloatingPoint    'sing'</span>
+<a name="l00257"></a>00257 <span class="preprocessor"></span><span class="preprocessor">#define  typeIEEE64BitFloatingPoint    'doub'</span>
+<a name="l00258"></a>00258 <span class="preprocessor"></span><span class="preprocessor">#define  type128BitFloatingPoint       'ldbl'</span>
+<a name="l00259"></a>00259 <span class="preprocessor"></span><span class="preprocessor">#define  typeDecimalStruct             'decm'</span>
+<a name="l00260"></a>00260 <span class="preprocessor"></span>
+<a name="l00261"></a>00261 <span class="comment">/* Non-preferred Apple event descriptor types */</span>
+<a name="l00262"></a>00262 <span class="preprocessor">#define  typeSMInt                     typeSInt16</span>
+<a name="l00263"></a>00263 <span class="preprocessor"></span><span class="preprocessor">#define  typeShortInteger              typeSInt16</span>
+<a name="l00264"></a>00264 <span class="preprocessor"></span><span class="preprocessor">#define  typeInteger                   typeSInt32</span>
+<a name="l00265"></a>00265 <span class="preprocessor"></span><span class="preprocessor">#define  typeLongInteger               typeSInt32</span>
+<a name="l00266"></a>00266 <span class="preprocessor"></span><span class="preprocessor">#define  typeMagnitude                 typeUInt32</span>
+<a name="l00267"></a>00267 <span class="preprocessor"></span><span class="preprocessor">#define  typeComp                      typeSInt64</span>
+<a name="l00268"></a>00268 <span class="preprocessor"></span><span class="preprocessor">#define  typeSMFloat                   typeIEEE32BitFloatingPoint</span>
+<a name="l00269"></a>00269 <span class="preprocessor"></span><span class="preprocessor">#define  typeShortFloat                typeIEEE32BitFloatingPoint</span>
+<a name="l00270"></a>00270 <span class="preprocessor"></span><span class="preprocessor">#define  typeFloat                     typeIEEE64BitFloatingPoint</span>
+<a name="l00271"></a>00271 <span class="preprocessor"></span><span class="preprocessor">#define  typeLongFloat                 typeIEEE64BitFloatingPoint</span>
+<a name="l00272"></a>00272 <span class="preprocessor"></span><span class="preprocessor">#define  typeExtended                  'exte'</span>
+<a name="l00273"></a>00273 <span class="preprocessor"></span>
+<a name="l00274"></a>00274 <span class="comment">/* More Apple event descriptor types */</span>
+<a name="l00275"></a>00275 <span class="preprocessor">#define  typeAEList                    'list'</span>
+<a name="l00276"></a>00276 <span class="preprocessor"></span><span class="preprocessor">#define  typeAERecord                  'reco'</span>
+<a name="l00277"></a>00277 <span class="preprocessor"></span><span class="preprocessor">#define  typeAppleEvent                'aevt'</span>
+<a name="l00278"></a>00278 <span class="preprocessor"></span><span class="preprocessor">#define  typeEventRecord               'evrc'</span>
+<a name="l00279"></a>00279 <span class="preprocessor"></span><span class="preprocessor">#define  typeTrue                      'true'</span>
+<a name="l00280"></a>00280 <span class="preprocessor"></span><span class="preprocessor">#define  typeFalse                     'fals'</span>
+<a name="l00281"></a>00281 <span class="preprocessor"></span><span class="preprocessor">#define  typeAlias                     'alis'</span>
+<a name="l00282"></a>00282 <span class="preprocessor"></span><span class="preprocessor">#define  typeEnumerated                'enum'</span>
+<a name="l00283"></a>00283 <span class="preprocessor"></span><span class="preprocessor">#define  typeType                      'type'</span>
+<a name="l00284"></a>00284 <span class="preprocessor"></span><span class="preprocessor">#define  typeAppParameters             'appa'</span>
+<a name="l00285"></a>00285 <span class="preprocessor"></span><span class="preprocessor">#define  typeProperty                  'prop'</span>
+<a name="l00286"></a>00286 <span class="preprocessor"></span><span class="preprocessor">#define  typeFSS                       'fss '</span>
+<a name="l00287"></a>00287 <span class="preprocessor"></span><span class="preprocessor">#define  typeFSRef                     'fsrf'</span>
+<a name="l00288"></a>00288 <span class="preprocessor"></span><span class="preprocessor">#define  typeKeyword                   'keyw'</span>
+<a name="l00289"></a>00289 <span class="preprocessor"></span><span class="preprocessor">#define  typeSectionH                  'sect'</span>
+<a name="l00290"></a>00290 <span class="preprocessor"></span><span class="preprocessor">#define  typeWildCard                  '****'</span>
+<a name="l00291"></a>00291 <span class="preprocessor"></span><span class="preprocessor">#define  typeApplSignature             'sign'</span>
+<a name="l00292"></a>00292 <span class="preprocessor"></span><span class="preprocessor">#define  typeQDRectangle               'qdrt'</span>
+<a name="l00293"></a>00293 <span class="preprocessor"></span><span class="preprocessor">#define  typeFixed                     'fixd'</span>
+<a name="l00294"></a>00294 <span class="preprocessor"></span><span class="preprocessor">#define  typeProcessSerialNumber       'psn '</span>
+<a name="l00295"></a>00295 <span class="preprocessor"></span><span class="preprocessor">#define  typeApplicationURL            'aprl'</span>
+<a name="l00296"></a>00296 <span class="preprocessor"></span><span class="preprocessor">#define  typeNull                      'null'</span>
+<a name="l00297"></a>00297 <span class="preprocessor"></span>
+<a name="l00298"></a>00298 <span class="preprocessor">#endif // AE_DESC_ENUMS</span>
+<a name="l00299"></a>00299 <span class="preprocessor"></span>
+<a name="l00301"></a>00301 <span class="preprocessor">#define roman                   0        </span>
+<a name="l00302"></a>00302 <span class="preprocessor">#define english                 0        </span>
+<a name="l00303"></a>00303 <span class="preprocessor">#define japanese                11       </span>
+<a name="l00305"></a>00305 <span class="preprocessor">#ifndef noReply                         </span>
+<a name="l00306"></a>00306 <span class="preprocessor"></span><span class="preprocessor">#define noReply                 'null'</span>
+<a name="l00307"></a>00307 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00308"></a>00308 <span class="preprocessor"></span>
+<a name="l00309"></a>00309 <span class="preprocessor">#ifndef __APPLEEVENTS__</span>
+<a name="l00310"></a>00310 <span class="preprocessor"></span>
+<a name="l00311"></a>00311 <span class="preprocessor">#define typeObjectSpecifier     'obj '   </span>
+<a name="l00314"></a>00314 <span class="preprocessor">#endif </span><span class="comment">/* __APPLEEVENTS __ */</span>
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 <span class="preprocessor">#if !INSIDE_PHOTOSHOP</span>
+<a name="l00317"></a>00317 <span class="preprocessor"></span>
+<a name="l00318"></a>00318 <span class="comment">// The plug-ins need this stuff, but don't use the Universal Headers, so</span>
+<a name="l00319"></a>00319 <span class="comment">// we must provide it for them.</span>
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321 <span class="preprocessor">#define formName                'name'</span>
+<a name="l00322"></a>00322 <span class="preprocessor"></span>
+<a name="l00323"></a>00323 <span class="preprocessor">#ifndef __AEOBJECTS__</span>
+<a name="l00324"></a>00324 <span class="preprocessor"></span><span class="preprocessor">#define formAbsolutePosition    'indx'</span>
+<a name="l00325"></a>00325 <span class="preprocessor"></span><span class="preprocessor">#define formPropertyID          'prop'</span>
+<a name="l00326"></a>00326 <span class="preprocessor"></span><span class="preprocessor">#define formRelativePosition    'rele'</span>
+<a name="l00327"></a>00327 <span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* __AEOBJECTS__ */</span>
+<a name="l00328"></a>00328 
+<a name="l00329"></a>00329 <span class="preprocessor">#endif  // !INSIDE_PHOTOSHOP</span>
+<a name="l00330"></a>00330 <span class="preprocessor"></span>
+<a name="l00331"></a>00331 <span class="preprocessor">#endif </span><span class="comment">/* MSWindows */</span>
+<a name="l00332"></a>00332 
+<a name="l00333"></a>00333 <span class="preprocessor">#if INSIDE_PHOTOSHOP || !defined(keySelection)</span>
+<a name="l00334"></a><a class="code" href="_p_i_actions_8h.html#6cb52565feee57ae8034c4d8b43bbe6c">00334</a> <span class="preprocessor"></span><span class="preprocessor">#define keySelection            'fsel'  </span>
+<a name="l00335"></a>00335 <span class="preprocessor">#endif</span>
+<a name="l00336"></a>00336 <span class="preprocessor"></span>
+<a name="l00337"></a><a class="code" href="_p_i_actions_8h.html#4962abaaabcab9a7201694fdf2b8d5d6">00337</a> <span class="preprocessor">#define typePath                'Pth '  </span>
+<a name="l00339"></a>00339 <span class="preprocessor">#if MSWindows</span>
+<a name="l00340"></a>00340 <span class="preprocessor"></span><span class="preprocessor">#define typePlatformFilePath    typePath</span>
+<a name="l00341"></a>00341 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00342"></a><a class="code" href="_p_i_actions_8h.html#7a5019561a353bdea01f8aeea88e572a">00342</a> <span class="preprocessor"></span><span class="preprocessor">#define typePlatformFilePath    typeAlias</span>
+<a name="l00343"></a>00343 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00344"></a>00344 <span class="preprocessor"></span>
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00347"></a>00347 
+<a name="l00348"></a>00348 <span class="preprocessor">#ifndef Rez</span>
+<a name="l00349"></a>00349 <span class="preprocessor"></span>
+<a name="l00350"></a>00350 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00351"></a>00351 
+<a name="l00356"></a>00356 
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358 
+<a name="l00373"></a><a class="code" href="group___pi_p_l_scripting_keys.html#g6f289d7b4b8c1e25cfa96f6fe27cff74">00373</a> <span class="preprocessor">#define PIHasTerminologyProperty    0x6873746DL </span><span class="comment">/* 'hstm' &lt;PITerminology&gt; Has &lt;aete, 0&gt; resource:</span>
+<a name="l00374"></a>00374 <span class="comment">                                                        version number</span>
+<a name="l00375"></a>00375 <span class="comment">                                                        classID:        Object or event class</span>
+<a name="l00376"></a>00376 <span class="comment">                                                        eventID:        For events (typeNull otherwise)</span>
+<a name="l00377"></a>00377 <span class="comment">                                                        terminologyID:  'aete' resource ID (ignored if PITerminologyProperty)</span>
+<a name="l00378"></a>00378 <span class="comment">                                                        scopeString:    Unique string present if</span>
+<a name="l00379"></a>00379 <span class="comment">                                                                        AppleScript not supported</span>
+<a name="l00380"></a>00380 <span class="comment">                                                */</span>
+<a name="l00381"></a>00381 
+<a name="l00386"></a><a class="code" href="group___pi_p_l_scripting_keys.html#gf142c8f82098b06ad23cda4ff9d77d1a">00386</a> <span class="preprocessor">#define PITerminologyProperty       0x74726D6EL </span><span class="comment">/* 'trmn' &lt;aete&gt; Used internally as terminology cache.</span>
+<a name="l00387"></a>00387 <span class="comment">                                                    If present it is used instead of an aete resource.</span>
+<a name="l00388"></a>00388 <span class="comment">                                                */</span>
+<a name="l00389"></a>00389 
+<a name="l00393"></a>00393 
+<a name="l00395"></a>00395 
+<a name="l00398"></a>00398 
+<a name="l00400"></a><a class="code" href="group___record_play_info_flags.html#g4819b6777d85776ad571523d5ed07233">00400</a> <span class="keyword">typedef</span> int32 <a class="code" href="group___record_play_info_flags.html#g4819b6777d85776ad571523d5ed07233">PIDialogRecordOptions</a>;
+<a name="l00401"></a>00401 
+<a name="l00405"></a>00405 <span class="keyword">enum</span>
+<a name="l00406"></a>00406     {
+<a name="l00407"></a>00407     <a class="code" href="_p_i_actions_8h.html#g06fc87d81c62e9abb8790b6e5713c55bc4e76c3c86f091bbe2eab7c15ab068f7">plugInDialogOptional</a>,       
+<a name="l00408"></a>00408     <a class="code" href="_p_i_actions_8h.html#g06fc87d81c62e9abb8790b6e5713c55bb7acd9750e10f60edca7153befba9aa0">plugInDialogRequired</a>,       
+<a name="l00409"></a><a class="code" href="_p_i_actions_8h.html#g06fc87d81c62e9abb8790b6e5713c55b0a3a304dddd4eed1a1f8c40a40350a21">00409</a>     <a class="code" href="_p_i_actions_8h.html#g06fc87d81c62e9abb8790b6e5713c55b0a3a304dddd4eed1a1f8c40a40350a21">plugInDialogNone</a>            
+<a name="l00410"></a>00410     };
+<a name="l00411"></a>00411 
+<a name="l00413"></a><a class="code" href="group___record_play_info_flags.html#gb9a28de950cbacff02666517246c1fea">00413</a> <span class="keyword">typedef</span> int32 <a class="code" href="group___record_play_info_flags.html#gb9a28de950cbacff02666517246c1fea">PIDialogPlayOptions</a>;
+<a name="l00414"></a>00414 
+<a name="l00418"></a>00418 <span class="keyword">enum</span>
+<a name="l00419"></a>00419     {
+<a name="l00420"></a>00420     <a class="code" href="_p_i_actions_8h.html#gdf764cbdea00d65edcd07bb9953ad2b7860f95d2b70fdfc93b5ee66d6a8916c4">plugInDialogDontDisplay</a>,    
+<a name="l00421"></a>00421     <a class="code" href="_p_i_actions_8h.html#gdf764cbdea00d65edcd07bb9953ad2b76859ab871e037a587387056efcf7666a">plugInDialogDisplay</a>,        
+<a name="l00422"></a><a class="code" href="_p_i_actions_8h.html#gdf764cbdea00d65edcd07bb9953ad2b7e9124c5a29ac557e3066f4222fe21479">00422</a>     <a class="code" href="_p_i_actions_8h.html#gdf764cbdea00d65edcd07bb9953ad2b7e9124c5a29ac557e3066f4222fe21479">plugInDialogSilent</a>          
+<a name="l00425"></a>00425     };
+<a name="l00427"></a>00427 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00428"></a>00428 <span class="comment">//  Flags returned by GetKey. Low order word corresponds to AppleEvent flags.</span>
+<a name="l00429"></a>00429 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00430"></a>00430 
+<a name="l00435"></a>00435 
+<a name="l00436"></a>00436 
+<a name="l00437"></a>00437 
+<a name="l00441"></a><a class="code" href="group___get_key_flags.html#g57ea1aa5f2a1758023e399d7ef89ac27">00441</a> <span class="preprocessor">#define actionSimpleParameter       0x00000000L</span>
+<a name="l00442"></a><a class="code" href="group___get_key_flags.html#gb6164f6a3dd2eb3602fb01b40b176e8b">00442</a> <span class="preprocessor"></span><span class="preprocessor">#define actionEnumeratedParameter   0x00002000L</span>
+<a name="l00443"></a><a class="code" href="group___get_key_flags.html#g89da2766989022b5148f596d1f4c20ae">00443</a> <span class="preprocessor"></span><span class="preprocessor">#define actionListParameter         0x00004000L</span>
+<a name="l00444"></a><a class="code" href="group___get_key_flags.html#gbe0fb225ff128d6237a96251463c6a81">00444</a> <span class="preprocessor"></span><span class="preprocessor">#define actionOptionalParameter     0x00008000L</span>
+<a name="l00445"></a>00445 <span class="preprocessor"></span>
+<a name="l00446"></a><a class="code" href="group___get_key_flags.html#g7ee6135174b9090edec61fecad65de52">00446</a> <span class="preprocessor">#define actionObjectParameter       0x80000000L</span>
+<a name="l00447"></a><a class="code" href="group___get_key_flags.html#gff9a5a771044667cfe20299f52a1c5e7">00447</a> <span class="preprocessor"></span><span class="preprocessor">#define actionScopedParameter       0x40000000L</span>
+<a name="l00448"></a><a class="code" href="group___get_key_flags.html#g0472e187c5f1023780cdb987dfeb4eff">00448</a> <span class="preprocessor"></span><span class="preprocessor">#define actionStringIDParameter     0x20000000L</span>
+<a name="l00449"></a>00449 <span class="preprocessor"></span>
+<a name="l00453"></a>00453 
+<a name="l00454"></a>00454 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00455"></a>00455 
+<a name="l00456"></a><a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">00456</a> <span class="keyword">typedef</span> Handle <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>;    
+<a name="l00458"></a><a class="code" href="_p_i_actions_8h.html#2ec600143c55f29f5331e84389871342">00458</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>PIOpaqueWriteDescriptor* <a class="code" href="_p_i_actions_8h.html#2ec600143c55f29f5331e84389871342">PIWriteDescriptor</a>;  
+<a name="l00459"></a><a class="code" href="_p_i_actions_8h.html#e1d49be81836010e646976a1aaf86155">00459</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>PIOpaqueReadDescriptor*  <a class="code" href="_p_i_actions_8h.html#e1d49be81836010e646976a1aaf86155">PIReadDescriptor</a>;   
+<a name="l00461"></a><a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">00461</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">DescriptorEventID</a>;   
+<a name="l00462"></a><a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">00462</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>;   
+<a name="l00464"></a><a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">00464</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a>;    
+<a name="l00465"></a><a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">00465</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>;   
+<a name="l00466"></a><a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">00466</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a>;   
+<a name="l00467"></a><a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">00467</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>;   
+<a name="l00469"></a><a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">00469</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a>; 
+<a name="l00472"></a><a class="code" href="_p_i_actions_8h.html#98f45d7f8d9e9ecefbab69522d44cb39">00472</a> <span class="keyword">typedef</span> uint32  <a class="code" href="_p_i_actions_8h.html#98f45d7f8d9e9ecefbab69522d44cb39">DescriptorFormID</a>;   
+<a name="l00474"></a><a class="code" href="_p_i_actions_8h.html#0fa23183ff2689dd6659563aad13aab7">00474</a> <span class="keyword">typedef</span> <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> <a class="code" href="_p_i_actions_8h.html#0fa23183ff2689dd6659563aad13aab7">DescriptorKeyIDArray</a>[]; 
+<a name="l00479"></a>00479 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00480"></a>00480 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l00481"></a>00481 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00482"></a>00482 <span class="preprocessor"></span>
+<a name="l00483"></a>00483 <span class="preprocessor">#if MSWindows</span>
+<a name="l00484"></a>00484 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(push,1)</span>
+<a name="l00485"></a>00485 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00486"></a>00486 <span class="preprocessor"></span>
+<a name="l00505"></a><a class="code" href="struct_p_i_terminology.html">00505</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_i_terminology.html">PITerminology</a>
+<a name="l00506"></a>00506     {
+<a name="l00507"></a><a class="code" href="struct_p_i_terminology.html#648483fa1d1f7f8a3b6dcecca5d43713">00507</a>     int32   <a class="code" href="struct_p_i_terminology.html#648483fa1d1f7f8a3b6dcecca5d43713">version</a>;           
+<a name="l00508"></a><a class="code" href="struct_p_i_terminology.html#c57ab562db74f8b6bc4d114d20a8447e">00508</a>     OSType  <a class="code" href="struct_p_i_terminology.html#c57ab562db74f8b6bc4d114d20a8447e">classID</a>;           
+<a name="l00509"></a><a class="code" href="struct_p_i_terminology.html#e1916083068479badb5f07bc906df982">00509</a>     OSType  <a class="code" href="struct_p_i_terminology.html#e1916083068479badb5f07bc906df982">eventID</a>;           
+<a name="l00510"></a><a class="code" href="struct_p_i_terminology.html#366a0101976ef409e5648f4a18f6efbb">00510</a>     int16   <a class="code" href="struct_p_i_terminology.html#366a0101976ef409e5648f4a18f6efbb">terminologyID</a>;     
+<a name="l00512"></a><a class="code" href="struct_p_i_terminology.html#7d8323736b00f9b51e30370bdb16674f">00512</a>     <span class="keywordtype">char</span>    <a class="code" href="struct_p_i_terminology.html#7d8323736b00f9b51e30370bdb16674f">scopeString</a>[1];    
+<a name="l00519"></a>00519     } <a class="code" href="struct_p_i_terminology.html">PITerminology</a>;
+<a name="l00520"></a>00520 
+<a name="l00521"></a>00521 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00522"></a>00522 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l00523"></a>00523 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00524"></a>00524 <span class="preprocessor"></span>
+<a name="l00525"></a>00525 <span class="preprocessor">#if MSWindows</span>
+<a name="l00526"></a>00526 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(pop)</span>
+<a name="l00527"></a>00527 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00528"></a>00528 <span class="preprocessor"></span>
+<a name="l00529"></a><a class="code" href="_p_i_actions_8h.html#57bb75bb736557956b475774dfc0ef07">00529</a> <span class="preprocessor">#define PITerminologyMinSize 15</span>
+<a name="l00530"></a>00530 <span class="preprocessor"></span>
+<a name="l00531"></a>00531 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00532"></a>00532 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l00533"></a>00533 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00534"></a>00534 <span class="preprocessor"></span>
+<a name="l00539"></a><a class="code" href="struct_p_i_descriptor_simple_reference.html">00539</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_i_descriptor_simple_reference.html">PIDescriptorSimpleReference</a>
+<a name="l00540"></a>00540     {
+<a name="l00541"></a><a class="code" href="struct_p_i_descriptor_simple_reference.html#dfee97a0b89711463c25f9fdb0611ade">00541</a>     <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>    <a class="code" href="struct_p_i_descriptor_simple_reference.html#dfee97a0b89711463c25f9fdb0611ade">desiredClass</a>;  
+<a name="l00542"></a><a class="code" href="struct_p_i_descriptor_simple_reference.html#428c48977d0acadc75bd411ff3b0d80f">00542</a>     <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a>     <a class="code" href="struct_p_i_descriptor_simple_reference.html#428c48977d0acadc75bd411ff3b0d80f">keyForm</a>;       
+<a name="l00544"></a><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html">00544</a>     <span class="keyword">struct </span><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html">_keyData</a>
+<a name="l00545"></a>00545         {
+<a name="l00546"></a><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#89d94a425f36fbc2afbfc60ea6a9be93">00546</a>         Str255              <a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#89d94a425f36fbc2afbfc60ea6a9be93">name</a>;     
+<a name="l00547"></a><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#8edc0fca024541b81226fe5642f5095f">00547</a>         int32               <a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#8edc0fca024541b81226fe5642f5095f">index</a>;    
+<a name="l00548"></a><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#6f7b89a53ac8237ef2c166f7ef8979d0">00548</a>         <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>    <a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#6f7b89a53ac8237ef2c166f7ef8979d0">type</a>;     
+<a name="l00549"></a><a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#55baf5f33416f14544fab28aba938708">00549</a>         <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>    <a class="code" href="struct_p_i_descriptor_simple_reference_1_1__key_data.html#55baf5f33416f14544fab28aba938708">value</a>;    
+<a name="l00550"></a>00550         }               <a class="code" href="struct_p_i_descriptor_simple_reference.html#c1e51e18d8702c776abd07c1e5693bfa">keyData</a>;
+<a name="l00551"></a>00551     } <a class="code" href="struct_p_i_descriptor_simple_reference.html">PIDescriptorSimpleReference</a>;
+<a name="l00552"></a>00552     
+<a name="l00553"></a>00553 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00554"></a>00554 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l00555"></a>00555 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00556"></a>00556 <span class="preprocessor"></span>
+<a name="l00557"></a>00557 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00558"></a>00558 
+<a name="l00559"></a>00559 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00560"></a>00560 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span>
+<a name="l00561"></a>00561     {
+<a name="l00562"></a>00562 <span class="preprocessor">#endif</span>
+<a name="l00563"></a>00563 <span class="preprocessor"></span>
+<a name="l00609"></a>00609 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00611"></a>00611 <span class="comment"></span>
+<a name="l00612"></a>00612 
+<a name="l00620"></a><a class="code" href="group___descriptor_suite.html#g28c35979480d6e953e5764bf5e1f4218">00620</a> <span class="keyword">typedef</span> MACPASCAL <a class="code" href="_p_i_actions_8h.html#2ec600143c55f29f5331e84389871342">PIWriteDescriptor</a> (*<a class="code" href="group___descriptor_suite.html#g28c35979480d6e953e5764bf5e1f4218">OpenWriteDescriptorProc</a>)(void);
+<a name="l00621"></a>00621 
+<a name="l00630"></a><a class="code" href="group___descriptor_suite.html#gb0b4a0f27d4164b6288c9298b2282621">00630</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gb0b4a0f27d4164b6288c9298b2282621">CloseWriteDescriptorProc</a>)(<a class="code" href="_p_i_actions_8h.html#2ec600143c55f29f5331e84389871342">PIWriteDescriptor</a>, <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>*);
+<a name="l00631"></a>00631 
+<a name="l00639"></a><a class="code" href="group___descriptor_suite.html#gfb29c73be78f289f94ca90c1fb3342e7">00639</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gfb29c73be78f289f94ca90c1fb3342e7">PutIntegerProc</a>)(PIWriteDescriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a>, int32);
+<a name="l00640"></a>00640 
+<a name="l00648"></a><a class="code" href="group___descriptor_suite.html#gb8aea6cd6a27d0df894cd119ce0b6507">00648</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gb8aea6cd6a27d0df894cd119ce0b6507">PutFloatProc</a>)(PIWriteDescriptor, DescriptorKeyID, <span class="keyword">const</span> real64*);
+<a name="l00649"></a>00649 
+<a name="l00658"></a><a class="code" href="group___descriptor_suite.html#g018f06de7cf0f8834363a0e7146c32e2">00658</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g018f06de7cf0f8834363a0e7146c32e2">PutUnitFloatProc</a>)(PIWriteDescriptor, DescriptorKeyID, <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a>, <span class="keyword">const</span> real64*);
+<a name="l00659"></a>00659 
+<a name="l00667"></a><a class="code" href="group___descriptor_suite.html#g00409b5a33f69113b7b1785bf8090c23">00667</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g00409b5a33f69113b7b1785bf8090c23">PutBooleanProc</a>)(PIWriteDescriptor, DescriptorKeyID, Boolean);
+<a name="l00668"></a>00668 
+<a name="l00676"></a><a class="code" href="group___descriptor_suite.html#g8835d9bebaf04b436f3d2addc5d57d99">00676</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g8835d9bebaf04b436f3d2addc5d57d99">PutTextProc</a>)(PIWriteDescriptor, DescriptorKeyID, Handle);
+<a name="l00677"></a>00677 
+<a name="l00685"></a><a class="code" href="group___descriptor_suite.html#g7761ff61b7d5ce5acf472e5810af6aba">00685</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g7761ff61b7d5ce5acf472e5810af6aba">PutAliasProc</a>)(PIWriteDescriptor, DescriptorKeyID, Handle);
+<a name="l00686"></a>00686 
+<a name="l00696"></a><a class="code" href="group___descriptor_suite.html#g5de00744438e56df4734e8f3f6a6eb88">00696</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g5de00744438e56df4734e8f3f6a6eb88">PutEnumeratedProc</a>)(PIWriteDescriptor, DescriptorKeyID key, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a> type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a> value);
+<a name="l00697"></a>00697 
+<a name="l00705"></a><a class="code" href="group___descriptor_suite.html#ge69aa856ac9af8ed26fdb188dce1474c">00705</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#ge69aa856ac9af8ed26fdb188dce1474c">PutClassProc</a>)(PIWriteDescriptor, DescriptorKeyID, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>);
+<a name="l00706"></a>00706 
+<a name="l00715"></a><a class="code" href="group___descriptor_suite.html#gb8a53c078fe4d6afb795f4c9d27e4cb7">00715</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gb8a53c078fe4d6afb795f4c9d27e4cb7">PutSimpleReferenceProc</a>)(PIWriteDescriptor, DescriptorKeyID, <span class="keyword">const</span> <a class="code" href="struct_p_i_descriptor_simple_reference.html">PIDescriptorSimpleReference</a>*);
+<a name="l00716"></a>00716 
+<a name="l00725"></a><a class="code" href="group___descriptor_suite.html#g8f487dfc3c614eddad5140fd56d95781">00725</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g8f487dfc3c614eddad5140fd56d95781">PutObjectProc</a>)(PIWriteDescriptor, DescriptorKeyID, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>, <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>);
+<a name="l00726"></a>00726 
+<a name="l00734"></a><a class="code" href="group___descriptor_suite.html#g508f594eaf1f2823a40a69252e53463e">00734</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g508f594eaf1f2823a40a69252e53463e">PutCountProc</a>)(PIWriteDescriptor, DescriptorKeyID, uint32 count);
+<a name="l00735"></a>00735 
+<a name="l00743"></a><a class="code" href="group___descriptor_suite.html#gfd4794c5aebbeab74b2e82fd36fdc168">00743</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gfd4794c5aebbeab74b2e82fd36fdc168">PutStringProc</a>)(PIWriteDescriptor, DescriptorKeyID, ConstStr255Param);
+<a name="l00744"></a>00744 
+<a name="l00745"></a>00745 <span class="comment">// Scoped classes are not for use by plug-ins in Photoshop 4.0:</span>
+<a name="l00746"></a><a class="code" href="group___descriptor_suite.html#g27d0b48749e07cf9dfc39e3d377d14ce">00746</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g27d0b48749e07cf9dfc39e3d377d14ce">PutScopedClassProc</a>)(PIWriteDescriptor, DescriptorKeyID, DescriptorTypeID);
+<a name="l00747"></a><a class="code" href="group___descriptor_suite.html#g7c8474d97613802fb8754231f56d5a4b">00747</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g7c8474d97613802fb8754231f56d5a4b">PutScopedObjectProc</a>)(PIWriteDescriptor, DescriptorKeyID, DescriptorTypeID, <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>);
+<a name="l00748"></a>00748 
+<a name="l00749"></a>00749 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00751"></a>00751 <span class="comment"></span>
+<a name="l00752"></a>00752 
+<a name="l00763"></a><a class="code" href="group___descriptor_suite.html#gcb0ff4c9e31f65b55d835806ff59a636">00763</a> <span class="keyword">typedef</span> MACPASCAL <a class="code" href="_p_i_actions_8h.html#e1d49be81836010e646976a1aaf86155">PIReadDescriptor</a> (*<a class="code" href="group___descriptor_suite.html#gcb0ff4c9e31f65b55d835806ff59a636">OpenReadDescriptorProc</a>)(<a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>, <a class="code" href="_p_i_actions_8h.html#0fa23183ff2689dd6659563aad13aab7">DescriptorKeyIDArray</a>);
+<a name="l00764"></a>00764 
+<a name="l00773"></a><a class="code" href="group___descriptor_suite.html#g1e64142efaf2b2e6aa50367d3b6cd0c4">00773</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g1e64142efaf2b2e6aa50367d3b6cd0c4">CloseReadDescriptorProc</a>)(<a class="code" href="_p_i_actions_8h.html#e1d49be81836010e646976a1aaf86155">PIReadDescriptor</a>);
+<a name="l00774"></a>00774 
+<a name="l00790"></a><a class="code" href="group___descriptor_suite.html#gc8867c775ca1b71c4b264c64bf6034ea">00790</a> <span class="keyword">typedef</span> MACPASCAL Boolean (*<a class="code" href="group___descriptor_suite.html#gc8867c775ca1b71c4b264c64bf6034ea">GetKeyProc</a>)(<a class="code" href="_p_i_actions_8h.html#e1d49be81836010e646976a1aaf86155">PIReadDescriptor</a>, DescriptorKeyID* key, DescriptorTypeID* type, int32* flags);
+<a name="l00791"></a>00791 
+<a name="l00800"></a><a class="code" href="group___descriptor_suite.html#g9200f10541f35ee4207eb12dca978a71">00800</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g9200f10541f35ee4207eb12dca978a71">GetIntegerProc</a>)(PIReadDescriptor, int32*);
+<a name="l00801"></a>00801 
+<a name="l00810"></a><a class="code" href="group___descriptor_suite.html#g222a3b50ebbd7a43d0932558f7d02bc5">00810</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g222a3b50ebbd7a43d0932558f7d02bc5">GetFloatProc</a>)(PIReadDescriptor, real64*);
+<a name="l00811"></a>00811 
+<a name="l00821"></a><a class="code" href="group___descriptor_suite.html#g328248a9749b82ea19c9a3f2fe646021">00821</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g328248a9749b82ea19c9a3f2fe646021">GetUnitFloatProc</a>)(PIReadDescriptor, DescriptorUnitID*, real64*);
+<a name="l00822"></a>00822 
+<a name="l00831"></a><a class="code" href="group___descriptor_suite.html#g830fcf0cfc847fceccf16ec86fc0c5b9">00831</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g830fcf0cfc847fceccf16ec86fc0c5b9">GetBooleanProc</a>)(PIReadDescriptor, Boolean*);
+<a name="l00832"></a>00832 
+<a name="l00841"></a><a class="code" href="group___descriptor_suite.html#gf9428145f7cc0c7bdfe15a188808c522">00841</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gf9428145f7cc0c7bdfe15a188808c522">GetTextProc</a>)(PIReadDescriptor, Handle*);
+<a name="l00842"></a>00842 
+<a name="l00851"></a><a class="code" href="group___descriptor_suite.html#gd3454116b53b879ac55fdebbe090e198">00851</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gd3454116b53b879ac55fdebbe090e198">GetAliasProc</a>)(PIReadDescriptor, Handle*);
+<a name="l00852"></a>00852 
+<a name="l00861"></a><a class="code" href="group___descriptor_suite.html#g135a1b385b8c6ecd32d956602bf92098">00861</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g135a1b385b8c6ecd32d956602bf92098">GetEnumeratedProc</a>)(PIReadDescriptor, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>*);
+<a name="l00862"></a>00862 
+<a name="l00871"></a><a class="code" href="group___descriptor_suite.html#geb6c46facee86812ecbf6469553ddcad">00871</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#geb6c46facee86812ecbf6469553ddcad">GetClassProc</a>)(PIReadDescriptor, DescriptorTypeID*);
+<a name="l00872"></a>00872 
+<a name="l00881"></a><a class="code" href="group___descriptor_suite.html#g3e93ef3656090dd0301ef810c976c1f4">00881</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g3e93ef3656090dd0301ef810c976c1f4">GetSimpleReferenceProc</a>)(PIReadDescriptor, <a class="code" href="struct_p_i_descriptor_simple_reference.html">PIDescriptorSimpleReference</a>*);
+<a name="l00882"></a>00882 
+<a name="l00893"></a><a class="code" href="group___descriptor_suite.html#g306aa70d043775d0870572a356561f10">00893</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g306aa70d043775d0870572a356561f10">GetObjectProc</a>)(PIReadDescriptor, DescriptorTypeID*, PIDescriptorHandle*);
+<a name="l00894"></a>00894 
+<a name="l00901"></a><a class="code" href="group___descriptor_suite.html#g583fbdf31aecd6ab8c07c993ff030527">00901</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g583fbdf31aecd6ab8c07c993ff030527">GetCountProc</a>)(PIReadDescriptor, uint32*);
+<a name="l00902"></a>00902 
+<a name="l00911"></a><a class="code" href="group___descriptor_suite.html#ga56b9394f0a08a23ce20522cd9143071">00911</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#ga56b9394f0a08a23ce20522cd9143071">GetStringProc</a>)(PIReadDescriptor, Str255*);
+<a name="l00912"></a>00912 
+<a name="l00928"></a><a class="code" href="group___descriptor_suite.html#gfe0bebb2472aad449f2b46f4a42e4911">00928</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gfe0bebb2472aad449f2b46f4a42e4911">GetPinnedIntegerProc</a>)(PIReadDescriptor, int32 min, int32 max, int32*);
+<a name="l00929"></a>00929 
+<a name="l00945"></a><a class="code" href="group___descriptor_suite.html#g7e149cc5fe5263ce5689b5166f2403e3">00945</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#g7e149cc5fe5263ce5689b5166f2403e3">GetPinnedFloatProc</a>)(PIReadDescriptor, <span class="keyword">const</span> real64* min, <span class="keyword">const</span> real64* max, real64*);
+<a name="l00946"></a>00946 
+<a name="l00963"></a><a class="code" href="group___descriptor_suite.html#gb5d41457dee77c1cd8ecc41423731b83">00963</a> <span class="keyword">typedef</span> MACPASCAL OSErr (*<a class="code" href="group___descriptor_suite.html#gb5d41457dee77c1cd8ecc41423731b83">GetPinnedUnitFloatProc</a>)(PIReadDescriptor, <span class="keyword">const</span> real64* min, <span class="keyword">const</span> real64* max, DescriptorUnitID*, real64*);
+<a name="l00965"></a>00965 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00966"></a>00966 
+<a name="l00967"></a>00967 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00968"></a>00968 <span class="preprocessor"></span>    }
+<a name="l00969"></a>00969 <span class="preprocessor">#endif</span>
+<a name="l00970"></a>00970 <span class="preprocessor"></span>
+<a name="l00971"></a>00971 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00972"></a>00972 <span class="comment">//  WriteDescriptorProcs structure.</span>
+<a name="l00973"></a>00973 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l00974"></a>00974 
+<a name="l00975"></a>00975 <span class="comment">// Version:</span>
+<a name="l00976"></a><a class="code" href="group___descriptor_suite.html#ge9e6eff797789f545df282556c2ada58">00976</a> <span class="preprocessor">#define kCurrentWriteDescriptorProcsVersion 0</span>
+<a name="l00977"></a>00977 <span class="preprocessor"></span>
+<a name="l00978"></a>00978 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l00979"></a>00979 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l00980"></a>00980 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00981"></a>00981 <span class="preprocessor"></span>
+<a name="l00987"></a><a class="code" href="struct_write_descriptor_procs.html">00987</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_write_descriptor_procs.html">WriteDescriptorProcs</a>
+<a name="l00988"></a>00988     {
+<a name="l00989"></a><a class="code" href="struct_write_descriptor_procs.html#12dbdac97452e40acc4807fd7b62a0e2">00989</a>     int16 <a class="code" href="struct_write_descriptor_procs.html#12dbdac97452e40acc4807fd7b62a0e2">writeDescriptorProcsVersion</a>;    
+<a name="l00990"></a><a class="code" href="struct_write_descriptor_procs.html#46bdedbcc2a560651ae506eb6372d4d5">00990</a>     int16 <a class="code" href="struct_write_descriptor_procs.html#46bdedbcc2a560651ae506eb6372d4d5">numWriteDescriptorProcs</a>;        
+<a name="l00992"></a><a class="code" href="struct_write_descriptor_procs.html#5a2d1e899ee5c7d3429a93be1740eac2">00992</a>     <a class="code" href="group___descriptor_suite.html#g28c35979480d6e953e5764bf5e1f4218">OpenWriteDescriptorProc</a>     <a class="code" href="struct_write_descriptor_procs.html#5a2d1e899ee5c7d3429a93be1740eac2">openWriteDescriptorProc</a>;  
+<a name="l00993"></a><a class="code" href="struct_write_descriptor_procs.html#7401b22e7f28aba19dd4fd31e2414f37">00993</a>     <a class="code" href="group___descriptor_suite.html#gb0b4a0f27d4164b6288c9298b2282621">CloseWriteDescriptorProc</a>    <a class="code" href="struct_write_descriptor_procs.html#7401b22e7f28aba19dd4fd31e2414f37">closeWriteDescriptorProc</a>; 
+<a name="l00995"></a><a class="code" href="struct_write_descriptor_procs.html#948b02e49129fe6096397f975f678c6f">00995</a>     <a class="code" href="group___descriptor_suite.html#gfb29c73be78f289f94ca90c1fb3342e7">PutIntegerProc</a>              <a class="code" href="struct_write_descriptor_procs.html#948b02e49129fe6096397f975f678c6f">putIntegerProc</a>;    
+<a name="l00996"></a><a class="code" href="struct_write_descriptor_procs.html#cdb15e789fb707e2b6b7462f706ac32e">00996</a>     <a class="code" href="group___descriptor_suite.html#gb8aea6cd6a27d0df894cd119ce0b6507">PutFloatProc</a>                <a class="code" href="struct_write_descriptor_procs.html#cdb15e789fb707e2b6b7462f706ac32e">putFloatProc</a>;      
+<a name="l00997"></a><a class="code" href="struct_write_descriptor_procs.html#7df1d2b86ae01a1c3a3e9e732c0e2dcc">00997</a>     <a class="code" href="group___descriptor_suite.html#g018f06de7cf0f8834363a0e7146c32e2">PutUnitFloatProc</a>            <a class="code" href="struct_write_descriptor_procs.html#7df1d2b86ae01a1c3a3e9e732c0e2dcc">putUnitFloatProc</a>;  
+<a name="l00998"></a><a class="code" href="struct_write_descriptor_procs.html#a7fb75a826c3352b2ef6ec357b5228e3">00998</a>     <a class="code" href="group___descriptor_suite.html#g00409b5a33f69113b7b1785bf8090c23">PutBooleanProc</a>              <a class="code" href="struct_write_descriptor_procs.html#a7fb75a826c3352b2ef6ec357b5228e3">putBooleanProc</a>;    
+<a name="l00999"></a><a class="code" href="struct_write_descriptor_procs.html#49f461e6a334c401312ebcd0f18d2081">00999</a>     <a class="code" href="group___descriptor_suite.html#g8835d9bebaf04b436f3d2addc5d57d99">PutTextProc</a>                 <a class="code" href="struct_write_descriptor_procs.html#49f461e6a334c401312ebcd0f18d2081">putTextProc</a>;       
+<a name="l01000"></a><a class="code" href="struct_write_descriptor_procs.html#c3c595c21a8edf6bc65fdc706a2717a7">01000</a>     <a class="code" href="group___descriptor_suite.html#g7761ff61b7d5ce5acf472e5810af6aba">PutAliasProc</a>                <a class="code" href="struct_write_descriptor_procs.html#c3c595c21a8edf6bc65fdc706a2717a7">putAliasProc</a>;      
+<a name="l01002"></a><a class="code" href="struct_write_descriptor_procs.html#599d35c0e94210a12b6943a0a4a4e6f2">01002</a>     <a class="code" href="group___descriptor_suite.html#g5de00744438e56df4734e8f3f6a6eb88">PutEnumeratedProc</a>           <a class="code" href="struct_write_descriptor_procs.html#599d35c0e94210a12b6943a0a4a4e6f2">putEnumeratedProc</a>;  
+<a name="l01003"></a><a class="code" href="struct_write_descriptor_procs.html#b7542c3e693e61bd73671a5752016e15">01003</a>     <a class="code" href="group___descriptor_suite.html#ge69aa856ac9af8ed26fdb188dce1474c">PutClassProc</a>                <a class="code" href="struct_write_descriptor_procs.html#b7542c3e693e61bd73671a5752016e15">putClassProc</a>;       
+<a name="l01004"></a><a class="code" href="struct_write_descriptor_procs.html#866175a2404c506234e8fb55997321bd">01004</a>     <a class="code" href="group___descriptor_suite.html#gb8a53c078fe4d6afb795f4c9d27e4cb7">PutSimpleReferenceProc</a>      <a class="code" href="struct_write_descriptor_procs.html#866175a2404c506234e8fb55997321bd">putSimpleReferenceProc</a>;  
+<a name="l01005"></a><a class="code" href="struct_write_descriptor_procs.html#ece0cb1a90b43cca0152a874e4aeef72">01005</a>     <a class="code" href="group___descriptor_suite.html#g8f487dfc3c614eddad5140fd56d95781">PutObjectProc</a>               <a class="code" href="struct_write_descriptor_procs.html#ece0cb1a90b43cca0152a874e4aeef72">putObjectProc</a>;      
+<a name="l01007"></a><a class="code" href="struct_write_descriptor_procs.html#b5b8b26ad7aa32c48548b6591ec4a196">01007</a>     <a class="code" href="group___descriptor_suite.html#g508f594eaf1f2823a40a69252e53463e">PutCountProc</a>                <a class="code" href="struct_write_descriptor_procs.html#b5b8b26ad7aa32c48548b6591ec4a196">putCountProc</a>;       
+<a name="l01009"></a><a class="code" href="struct_write_descriptor_procs.html#55f565fe1078fccd8447cce394360d42">01009</a>     <a class="code" href="group___descriptor_suite.html#gfd4794c5aebbeab74b2e82fd36fdc168">PutStringProc</a>               <a class="code" href="struct_write_descriptor_procs.html#55f565fe1078fccd8447cce394360d42">putStringProc</a>;      
+<a name="l01012"></a><a class="code" href="struct_write_descriptor_procs.html#cd121ae72f0ef98a5c695653b4bc0a1b">01012</a>     <a class="code" href="group___descriptor_suite.html#g27d0b48749e07cf9dfc39e3d377d14ce">PutScopedClassProc</a>          <a class="code" href="struct_write_descriptor_procs.html#cd121ae72f0ef98a5c695653b4bc0a1b">putScopedClassProc</a>;  
+<a name="l01014"></a><a class="code" href="struct_write_descriptor_procs.html#6ed1a61eca8011e0d6c7a4698971fe20">01014</a>     <a class="code" href="group___descriptor_suite.html#g7c8474d97613802fb8754231f56d5a4b">PutScopedObjectProc</a>         <a class="code" href="struct_write_descriptor_procs.html#6ed1a61eca8011e0d6c7a4698971fe20">putScopedObjectProc</a>; 
+<a name="l01016"></a>01016     } <a class="code" href="struct_write_descriptor_procs.html">WriteDescriptorProcs</a>;
+<a name="l01017"></a>01017 
+<a name="l01018"></a>01018 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l01019"></a>01019 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l01020"></a>01020 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l01021"></a>01021 <span class="preprocessor"></span>
+<a name="l01022"></a>01022 <span class="comment">// Count:</span>
+<a name="l01023"></a><a class="code" href="group___descriptor_suite.html#gbfefb2a5a807a4903b908dd36949bcc3">01023</a> <span class="preprocessor">#define kCurrentWriteDescriptorProcsCount \</span>
+<a name="l01024"></a>01024 <span class="preprocessor">    ((sizeof(WriteDescriptorProcs) - offsetof(WriteDescriptorProcs, openWriteDescriptorProc)) / sizeof(void*))</span>
+<a name="l01025"></a>01025 <span class="preprocessor"></span>
+<a name="l01026"></a>01026 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01027"></a>01027 <span class="comment">//  ReadDescriptorProcs structure.</span>
+<a name="l01028"></a>01028 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01029"></a>01029 
+<a name="l01030"></a>01030 <span class="comment">// Version:</span>
+<a name="l01031"></a><a class="code" href="group___descriptor_suite.html#gd54ce09e06beba5c0db713eb30c175de">01031</a> <span class="preprocessor">#define kCurrentReadDescriptorProcsVersion 0</span>
+<a name="l01032"></a>01032 <span class="preprocessor"></span>
+<a name="l01033"></a>01033 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l01034"></a>01034 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l01035"></a>01035 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l01036"></a>01036 <span class="preprocessor"></span>
+<a name="l01042"></a><a class="code" href="struct_read_descriptor_procs.html">01042</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_read_descriptor_procs.html">ReadDescriptorProcs</a>
+<a name="l01043"></a>01043     {
+<a name="l01044"></a><a class="code" href="struct_read_descriptor_procs.html#e2365231004a84fbe4e476805c7648cc">01044</a>     int16 <a class="code" href="struct_read_descriptor_procs.html#e2365231004a84fbe4e476805c7648cc">readDescriptorProcsVersion</a>;    
+<a name="l01045"></a><a class="code" href="struct_read_descriptor_procs.html#23564d97261beab743332a30f3e60ba3">01045</a>     int16 <a class="code" href="struct_read_descriptor_procs.html#23564d97261beab743332a30f3e60ba3">numReadDescriptorProcs</a>;        
+<a name="l01047"></a><a class="code" href="struct_read_descriptor_procs.html#8fc79ace95ee691433a46d28831f8e9a">01047</a>     <a class="code" href="group___descriptor_suite.html#gcb0ff4c9e31f65b55d835806ff59a636">OpenReadDescriptorProc</a>      <a class="code" href="struct_read_descriptor_procs.html#8fc79ace95ee691433a46d28831f8e9a">openReadDescriptorProc</a>;    
+<a name="l01048"></a><a class="code" href="struct_read_descriptor_procs.html#4d13940e1c0c6af7fb2b0ea14c07a6bd">01048</a>     <a class="code" href="group___descriptor_suite.html#g1e64142efaf2b2e6aa50367d3b6cd0c4">CloseReadDescriptorProc</a>     <a class="code" href="struct_read_descriptor_procs.html#4d13940e1c0c6af7fb2b0ea14c07a6bd">closeReadDescriptorProc</a>;   
+<a name="l01049"></a><a class="code" href="struct_read_descriptor_procs.html#222fe60e80fec71fa4abf46bcf5cec5c">01049</a>     <a class="code" href="group___descriptor_suite.html#gc8867c775ca1b71c4b264c64bf6034ea">GetKeyProc</a>                  <a class="code" href="struct_read_descriptor_procs.html#222fe60e80fec71fa4abf46bcf5cec5c">getKeyProc</a>;         
+<a name="l01051"></a><a class="code" href="struct_read_descriptor_procs.html#e32592624f40b28c48f6d3f11e7ee2bd">01051</a>     <a class="code" href="group___descriptor_suite.html#g9200f10541f35ee4207eb12dca978a71">GetIntegerProc</a>              <a class="code" href="struct_read_descriptor_procs.html#e32592624f40b28c48f6d3f11e7ee2bd">getIntegerProc</a>;     
+<a name="l01052"></a><a class="code" href="struct_read_descriptor_procs.html#8617a428b9319d08743f01ba558335fa">01052</a>     <a class="code" href="group___descriptor_suite.html#g222a3b50ebbd7a43d0932558f7d02bc5">GetFloatProc</a>                <a class="code" href="struct_read_descriptor_procs.html#8617a428b9319d08743f01ba558335fa">getFloatProc</a>;       
+<a name="l01053"></a><a class="code" href="struct_read_descriptor_procs.html#b6bb57105d937cf2fe5c78c010c80052">01053</a>     <a class="code" href="group___descriptor_suite.html#g328248a9749b82ea19c9a3f2fe646021">GetUnitFloatProc</a>            <a class="code" href="struct_read_descriptor_procs.html#b6bb57105d937cf2fe5c78c010c80052">getUnitFloatProc</a>;   
+<a name="l01054"></a><a class="code" href="struct_read_descriptor_procs.html#99e8e420d586546a91f8587918c2df2d">01054</a>     <a class="code" href="group___descriptor_suite.html#g830fcf0cfc847fceccf16ec86fc0c5b9">GetBooleanProc</a>              <a class="code" href="struct_read_descriptor_procs.html#99e8e420d586546a91f8587918c2df2d">getBooleanProc</a>;     
+<a name="l01055"></a><a class="code" href="struct_read_descriptor_procs.html#eeb4507f79c0ee060da0ffe2bf1f2ed6">01055</a>     <a class="code" href="group___descriptor_suite.html#gf9428145f7cc0c7bdfe15a188808c522">GetTextProc</a>                 <a class="code" href="struct_read_descriptor_procs.html#eeb4507f79c0ee060da0ffe2bf1f2ed6">getTextProc</a>;        
+<a name="l01056"></a><a class="code" href="struct_read_descriptor_procs.html#47f3f9b76833a06c004e232df1d6232f">01056</a>     <a class="code" href="group___descriptor_suite.html#gd3454116b53b879ac55fdebbe090e198">GetAliasProc</a>                <a class="code" href="struct_read_descriptor_procs.html#47f3f9b76833a06c004e232df1d6232f">getAliasProc</a>;       
+<a name="l01058"></a><a class="code" href="struct_read_descriptor_procs.html#52165a91173cba3bb880d5380de5e903">01058</a>     <a class="code" href="group___descriptor_suite.html#g135a1b385b8c6ecd32d956602bf92098">GetEnumeratedProc</a>           <a class="code" href="struct_read_descriptor_procs.html#52165a91173cba3bb880d5380de5e903">getEnumeratedProc</a>;  
+<a name="l01059"></a><a class="code" href="struct_read_descriptor_procs.html#210e546a0f0bd91afd0e74a6bce7b9e3">01059</a>     <a class="code" href="group___descriptor_suite.html#geb6c46facee86812ecbf6469553ddcad">GetClassProc</a>                <a class="code" href="struct_read_descriptor_procs.html#210e546a0f0bd91afd0e74a6bce7b9e3">getClassProc</a>;       
+<a name="l01060"></a><a class="code" href="struct_read_descriptor_procs.html#89df14a9ee2a3dac97b1b93097a0319e">01060</a>     <a class="code" href="group___descriptor_suite.html#g3e93ef3656090dd0301ef810c976c1f4">GetSimpleReferenceProc</a>      <a class="code" href="struct_read_descriptor_procs.html#89df14a9ee2a3dac97b1b93097a0319e">getSimpleReferenceProc</a>;  
+<a name="l01061"></a><a class="code" href="struct_read_descriptor_procs.html#a39e274ea11d33082e0a9199934a1305">01061</a>     <a class="code" href="group___descriptor_suite.html#g306aa70d043775d0870572a356561f10">GetObjectProc</a>               <a class="code" href="struct_read_descriptor_procs.html#a39e274ea11d33082e0a9199934a1305">getObjectProc</a>;      
+<a name="l01063"></a><a class="code" href="struct_read_descriptor_procs.html#b1ebfbe768428078a5fc3590c023fc89">01063</a>     <a class="code" href="group___descriptor_suite.html#g583fbdf31aecd6ab8c07c993ff030527">GetCountProc</a>                <a class="code" href="struct_read_descriptor_procs.html#b1ebfbe768428078a5fc3590c023fc89">getCountProc</a>;       
+<a name="l01065"></a><a class="code" href="struct_read_descriptor_procs.html#0381dc8da29cf7312434c3486dae4f89">01065</a>     <a class="code" href="group___descriptor_suite.html#ga56b9394f0a08a23ce20522cd9143071">GetStringProc</a>               <a class="code" href="struct_read_descriptor_procs.html#0381dc8da29cf7312434c3486dae4f89">getStringProc</a>;      
+<a name="l01066"></a><a class="code" href="struct_read_descriptor_procs.html#5028dab12f9c393145173229fe929b07">01066</a>     <a class="code" href="group___descriptor_suite.html#gfe0bebb2472aad449f2b46f4a42e4911">GetPinnedIntegerProc</a>        <a class="code" href="struct_read_descriptor_procs.html#5028dab12f9c393145173229fe929b07">getPinnedIntegerProc</a>;   
+<a name="l01067"></a><a class="code" href="struct_read_descriptor_procs.html#74099c5bb3b2630f190c1097dd27f2ff">01067</a>     <a class="code" href="group___descriptor_suite.html#g7e149cc5fe5263ce5689b5166f2403e3">GetPinnedFloatProc</a>          <a class="code" href="struct_read_descriptor_procs.html#74099c5bb3b2630f190c1097dd27f2ff">getPinnedFloatProc</a>;     
+<a name="l01068"></a><a class="code" href="struct_read_descriptor_procs.html#241478de04c0cb4a667b894dd5d516b5">01068</a>     <a class="code" href="group___descriptor_suite.html#gb5d41457dee77c1cd8ecc41423731b83">GetPinnedUnitFloatProc</a>      <a class="code" href="struct_read_descriptor_procs.html#241478de04c0cb4a667b894dd5d516b5">getPinnedUnitFloatProc</a>; 
+<a name="l01070"></a>01070     } <a class="code" href="struct_read_descriptor_procs.html">ReadDescriptorProcs</a>;
+<a name="l01071"></a>01071 
+<a name="l01072"></a>01072 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l01073"></a>01073 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l01074"></a>01074 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l01075"></a>01075 <span class="preprocessor"></span>
+<a name="l01076"></a>01076 <span class="comment">// Count:</span>
+<a name="l01077"></a><a class="code" href="group___descriptor_suite.html#g6ff2ea6e3f3feab5b4c5a8c94ad844ef">01077</a> <span class="preprocessor">#define kCurrentReadDescriptorProcsCount \</span>
+<a name="l01078"></a>01078 <span class="preprocessor">    ((sizeof(ReadDescriptorProcs) - offsetof(ReadDescriptorProcs, openReadDescriptorProc)) / sizeof(void*))</span>
+<a name="l01079"></a>01079 <span class="preprocessor"></span>    
+<a name="l01080"></a>01080 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01081"></a>01081 <span class="comment">//  PIDescriptorParameters structure.</span>
+<a name="l01082"></a>01082 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01083"></a>01083 
+<a name="l01084"></a>01084 <span class="comment">// Version of the Descriptor Parameters structure.</span>
+<a name="l01085"></a><a class="code" href="group___descriptor_suite.html#g4222482ff3520258f08dfe20788fb158">01085</a> <span class="preprocessor">#define kCurrentDescriptorParametersVersion 0</span>
+<a name="l01086"></a>01086 <span class="preprocessor"></span>
+<a name="l01087"></a>01087 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l01088"></a>01088 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l01089"></a>01089 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l01090"></a>01090 <span class="preprocessor"></span>
+<a name="l01095"></a><a class="code" href="struct_p_i_descriptor_parameters.html">01095</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_i_descriptor_parameters.html">PIDescriptorParameters</a>
+<a name="l01096"></a>01096     {
+<a name="l01097"></a><a class="code" href="struct_p_i_descriptor_parameters.html#407bfa6c95d3b39772523ed4b09269e5">01097</a>     int16                   <a class="code" href="struct_p_i_descriptor_parameters.html#407bfa6c95d3b39772523ed4b09269e5">descriptorParametersVersion</a>;  
+<a name="l01098"></a><a class="code" href="struct_p_i_descriptor_parameters.html#c1fe273770f6f6d07a930de29c71b57c">01098</a>     int16                   <a class="code" href="struct_p_i_descriptor_parameters.html#c1fe273770f6f6d07a930de29c71b57c">playInfo</a>;                     
+<a name="l01100"></a><a class="code" href="struct_p_i_descriptor_parameters.html#b3d3c8e749ab55795dffb6cbb9897586">01100</a>     int16                   <a class="code" href="struct_p_i_descriptor_parameters.html#b3d3c8e749ab55795dffb6cbb9897586">recordInfo</a>;                   
+<a name="l01103"></a><a class="code" href="struct_p_i_descriptor_parameters.html#01a2a15707e75184483e241318495f93">01103</a>     <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>      <a class="code" href="struct_p_i_descriptor_parameters.html#01a2a15707e75184483e241318495f93">descriptor</a>;                   
+<a name="l01105"></a><a class="code" href="struct_p_i_descriptor_parameters.html#30cd9a9dad923c32e7cfa1280edb1c76">01105</a>     <a class="code" href="struct_write_descriptor_procs.html">WriteDescriptorProcs</a>*   <a class="code" href="struct_p_i_descriptor_parameters.html#30cd9a9dad923c32e7cfa1280edb1c76">writeDescriptorProcs</a>;         
+<a name="l01106"></a><a class="code" href="struct_p_i_descriptor_parameters.html#87c67cc7e5337141be27c4e31a1e87b6">01106</a>     <a class="code" href="struct_read_descriptor_procs.html">ReadDescriptorProcs</a>*    <a class="code" href="struct_p_i_descriptor_parameters.html#87c67cc7e5337141be27c4e31a1e87b6">readDescriptorProcs</a>;          
+<a name="l01107"></a>01107     } <a class="code" href="struct_p_i_descriptor_parameters.html">PIDescriptorParameters</a>;
+<a name="l01108"></a>01108 
+<a name="l01109"></a>01109 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l01110"></a>01110 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l01111"></a>01111 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l01112"></a>01112 <span class="preprocessor"></span> <span class="comment">// end ingroup DescriptorSuite</span>
+<a name="l01114"></a>01114 
+<a name="l01115"></a>01115 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01116"></a>01116 <span class="comment">//  Window notify suite.</span>
+<a name="l01117"></a>01117 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01118"></a>01118 
+<a name="l01145"></a>01145 <span class="preprocessor">#if !MSWindows</span>
+<a name="l01146"></a>01146 <span class="preprocessor"></span>
+<a name="l01147"></a>01147 
+<a name="l01149"></a><a class="code" href="group___pica_window_notify_suite.html#gcd3de27ef50278b8e17e65ba99407894">01149</a> <span class="preprocessor">#define kPSWindowNotifySuite    "482963f4-3ea1-11d1-8da3-00c04fd5f7ee"</span>
+<a name="l01151"></a><a class="code" href="group___pica_window_notify_suite.html#g1aca4c584c5d123db89d338be691f744">01151</a> <span class="preprocessor">#define kPSWindowNotifySuiteVersion 1</span>
+<a name="l01152"></a>01152 <span class="preprocessor"></span>
+<a name="l01153"></a>01153 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l01154"></a>01154 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span>
+<a name="l01155"></a>01155     {
+<a name="l01156"></a>01156 <span class="preprocessor">#endif</span>
+<a name="l01157"></a>01157 <span class="preprocessor"></span>
+<a name="l01163"></a><a class="code" href="group___pica_window_notify_suite.html#gff45cec2f76d56c633e757925b0b67ca">01163</a>     <span class="keyword">typedef</span> void (*<a class="code" href="group___pica_window_notify_suite.html#gff45cec2f76d56c633e757925b0b67ca">PIWindowNotifier</a>)(<span class="keyword">const</span> EventRecord* event, <span class="keywordtype">void</span>* data);
+<a name="l01164"></a>01164     
+<a name="l01165"></a>01165 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l01166"></a>01166 <span class="preprocessor"></span>    }
+<a name="l01167"></a>01167 <span class="preprocessor">#endif</span>
+<a name="l01168"></a>01168 <span class="preprocessor"></span>
+<a name="l01172"></a><a class="code" href="struct_p_s_window_notify_procs.html">01172</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_window_notify_procs.html">PSWindowNotifyProcs</a>
+<a name="l01173"></a>01173     {
+<a name="l01181"></a>01181     SPAPI OSErr (*<a class="code" href="struct_p_s_window_notify_procs.html#27451b3a1f51c531152ddb2bf7eed7d9">AddNotify</a>)(<span class="keywordtype">void</span>* window, <a class="code" href="group___pica_window_notify_suite.html#gff45cec2f76d56c633e757925b0b67ca">PIWindowNotifier</a> notifier, <span class="keywordtype">void</span>* data);
+<a name="l01182"></a>01182 
+<a name="l01188"></a>01188     SPAPI OSErr (*<a class="code" href="struct_p_s_window_notify_procs.html#6d27624ca098d0132880d698735614a5">RemoveNotify</a>)(<span class="keywordtype">void</span>* window);
+<a name="l01189"></a>01189 
+<a name="l01190"></a>01190 } <a class="code" href="struct_p_s_window_notify_procs.html">PSWindowNotifyProcs</a>;
+<a name="l01191"></a>01191     
+<a name="l01192"></a>01192 <span class="preprocessor">#endif</span>
+<a name="l01193"></a>01193 <span class="preprocessor"></span>
+<a name="l01196"></a>01196 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01197"></a>01197 
+<a name="l01201"></a><a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">01201</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>_ADsc*   <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>; 
+<a name="l01202"></a>01202 
+<a name="l01206"></a><a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">01206</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>_ALst*   <a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a>;
+<a name="l01207"></a>01207 
+<a name="l01211"></a><a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">01211</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>_ARef*   <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a>;
+<a name="l01212"></a>01212 
+<a name="l01213"></a>01213 <span class="comment">// other define for this is in ASZStringSuite.h;  placed here for SuspendHistory</span>
+<a name="l01214"></a>01214 <span class="preprocessor">#ifndef ASZString_defined</span>
+<a name="l01215"></a>01215 <span class="preprocessor"></span><span class="preprocessor">#define ASZString_defined</span>
+<a name="l01216"></a>01216 <span class="preprocessor"></span><span class="keyword">struct </span>ASZByteRun;
+<a name="l01217"></a><a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">01217</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>ASZByteRun *<a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a>;
+<a name="l01218"></a>01218 <span class="preprocessor">#endif</span>
+<a name="l01219"></a>01219 <span class="preprocessor"></span>
+<a name="l01220"></a>01220 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01221"></a>01221 <span class="comment">//  ActionControl suite.  Available only in Automation plug-ins.</span>
+<a name="l01222"></a>01222 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01223"></a>01223 
+<a name="l01252"></a>01252 
+<a name="l01253"></a><a class="code" href="group___pica_action_control_suite.html#g270f44b5f858747e8121d9455d6d960c">01253</a> <span class="preprocessor">#define kPSActionControlSuite           "bc1e4d70-f953-11d0-8d9f-00c04fd5f7ee"</span>
+<a name="l01254"></a>01254 <span class="preprocessor"></span>
+<a name="l01256"></a><a class="code" href="group___pica_action_control_suite.html#gf7c22a0083ab1ec3e8836c90baee6b22">01256</a> <span class="preprocessor">#define kPSActionControlSuiteVersion        3   // Current version, but it's</span>
+<a name="l01257"></a>01257 <span class="preprocessor"></span>
+<a name="l01259"></a><a class="code" href="group___pica_action_control_suite.html#g2d24b0f6b0cab193ca9be8df591b9149">01259</a> <span class="preprocessor">#define kPSActionControlSuitePrevVersion    2   // compatible with version 2</span>
+<a name="l01260"></a>01260 <span class="preprocessor"></span>
+<a name="l01261"></a>01261 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l01262"></a>01262 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span>
+<a name="l01263"></a>01263     {
+<a name="l01264"></a>01264 <span class="preprocessor">#endif</span>
+<a name="l01265"></a>01265 <span class="preprocessor"></span>
+<a name="l01274"></a><a class="code" href="group___pica_action_control_suite.html#gc19539ffdc84cddba8cd61fb43334b55">01274</a>     <span class="keyword">typedef</span> void (*<a class="code" href="group___pica_action_control_suite.html#gc19539ffdc84cddba8cd61fb43334b55">PIEventNotifier</a>)(<a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">DescriptorEventID</a> eventID, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="group___record_play_info_flags.html#g4819b6777d85776ad571523d5ed07233">PIDialogRecordOptions</a> options, <span class="keywordtype">void</span>* data);
+<a name="l01275"></a>01275         
+<a name="l01282"></a><a class="code" href="group___pica_action_control_suite.html#gef1e95c7cbc5d2c74c9d6fb7bbf61ba6">01282</a>     <span class="keyword">typedef</span> SPErr (*<a class="code" href="group___pica_action_control_suite.html#gef1e95c7cbc5d2c74c9d6fb7bbf61ba6">PISuspendProc</a>)(<span class="keywordtype">void</span> *data);
+<a name="l01283"></a>01283         
+<a name="l01284"></a>01284 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l01285"></a>01285 <span class="preprocessor"></span>    }
+<a name="l01286"></a>01286 <span class="preprocessor">#endif      </span>
+<a name="l01287"></a>01287 <span class="preprocessor"></span>
+<a name="l01291"></a><a class="code" href="struct_p_s_action_control_procs.html">01291</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_action_control_procs.html">PSActionControlProcs</a>
+<a name="l01292"></a>01292     {
+<a name="l01293"></a>01293 
+<a name="l01303"></a>01303     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#fcfb035053c1f72ca205e12e6e640bed">Play</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* result, <a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">DescriptorEventID</a> event, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="group___record_play_info_flags.html#gb9a28de950cbacff02666517246c1fea">PIDialogPlayOptions</a> options);
+<a name="l01304"></a>01304     
+<a name="l01316"></a>01316     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#8153372247a78943f4b2cbc0edaac42c">Get</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* result, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> reference);
+<a name="l01317"></a>01317 
+<a name="l01324"></a>01324     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#feb7ae046180a1dee265a2a03b9fe536">StringIDToTypeID</a>)(<span class="keywordtype">char</span>* stringID, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>* typeID);
+<a name="l01325"></a>01325         
+<a name="l01333"></a>01333     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#d2fb87bec99b6757024055b31d7705f9">TypeIDToStringID</a>)(<a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a> typeID, <span class="keywordtype">char</span>* stringID, uint32 stringLength);
+<a name="l01334"></a>01334 
+<a name="l01348"></a>01348     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#4c1bc016158001cde3d06ecf21eb1ee8">AddNotify</a>)(SPPluginRef ref, <a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">DescriptorEventID</a> event, <a class="code" href="group___pica_action_control_suite.html#gc19539ffdc84cddba8cd61fb43334b55">PIEventNotifier</a> notifier, <span class="keywordtype">void</span>* data);
+<a name="l01349"></a>01349 
+<a name="l01357"></a>01357     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#589b9c8ef1ecbf7e10aba7108e352e43">RemoveNotify</a>)(SPPluginRef ref, <a class="code" href="_p_i_actions_8h.html#dbd8cf87db14e05cf4ef109396ba05a2">DescriptorEventID</a> event);
+<a name="l01358"></a>01358         
+<a name="l01372"></a>01372     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#cc57d4cae60b545fc6425f056ef2d870">SuspendHistory</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> reference, <a class="code" href="group___pica_action_control_suite.html#gef1e95c7cbc5d2c74c9d6fb7bbf61ba6">PISuspendProc</a> proc, <span class="keywordtype">void</span>* procData, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> operationName);
+<a name="l01373"></a>01373 
+<a name="l01383"></a>01383     SPAPI OSErr (*<a class="code" href="struct_p_s_action_control_procs.html#c53efa8ffbf5d79c227ed439999f8947">MakeStringAlias</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span>*  newStringID, <span class="keyword">const</span> <span class="keywordtype">char</span>* existingStringID);
+<a name="l01384"></a>01384 
+<a name="l01385"></a>01385     } <a class="code" href="struct_p_s_action_control_procs.html">PSActionControlProcs</a>;
+<a name="l01386"></a>01386 <span class="comment">/* @} */</span>
+<a name="l01387"></a>01387 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01388"></a>01388 <span class="comment">//  Basic Action control suite.  Available to non-Automation plug-ins.</span>
+<a name="l01389"></a>01389 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01390"></a>01390 
+<a name="l01418"></a>01418 
+<a name="l01419"></a><a class="code" href="group___pica_basic_control_suite.html#gd95d21db0f4a5f2d4213d04e0d7a1e36">01419</a> <span class="preprocessor">#define kPSBasicActionControlSuite          "3eb7c480-8797-11d1-8da7-00c04fd5f7ee"</span>
+<a name="l01421"></a><a class="code" href="group___pica_basic_control_suite.html#g1c018a556286be35fb7cc3ced0562407">01421</a> <span class="preprocessor">#define kPSBasicActionControlSuiteVersion       2   </span>
+<a name="l01423"></a><a class="code" href="group___pica_basic_control_suite.html#ga89e931b81faf0315c389d53653a136b">01423</a> <span class="preprocessor">#define kPSBasicActionControlSuitePrevVersion   1   </span>
+<a name="l01424"></a>01424 <span class="preprocessor"></span>
+<a name="l01428"></a><a class="code" href="struct_p_s_basic_action_control_procs.html">01428</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_basic_action_control_procs.html">PSBasicActionControlProcs</a>
+<a name="l01429"></a>01429     {
+<a name="l01430"></a>01430 
+<a name="l01440"></a>01440     SPAPI OSErr (*<a class="code" href="struct_p_s_basic_action_control_procs.html#3daec567d3615c922d851e819d8a98d9">Get</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* result, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> reference);
+<a name="l01441"></a>01441         
+<a name="l01448"></a>01448     SPAPI OSErr (*<a class="code" href="struct_p_s_basic_action_control_procs.html#ae8f541f62e5ee56b63b5fa1644e6d71">StringIDToTypeID</a>)(<span class="keywordtype">char</span>* stringID, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>* typeID);
+<a name="l01449"></a>01449         
+<a name="l01457"></a>01457     SPAPI OSErr (*<a class="code" href="struct_p_s_basic_action_control_procs.html#303bcc8f696b8a7bdb11396283aded8b">TypeIDToStringID</a>)(<a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a> typeID, <span class="keywordtype">char</span>* stringID, uint32 stringLength);
+<a name="l01458"></a>01458 
+<a name="l01468"></a>01468     SPAPI OSErr (*<a class="code" href="struct_p_s_basic_action_control_procs.html#77d08a02468d648f1c84b7fbd8de6372">MakeStringAlias</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span>* newStringID, <span class="keyword">const</span> <span class="keywordtype">char</span>* existingStringID);
+<a name="l01469"></a>01469 
+<a name="l01470"></a>01470     } <a class="code" href="struct_p_s_basic_action_control_procs.html">PSBasicActionControlProcs</a>;
+<a name="l01474"></a>01474 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01475"></a>01475 <span class="comment">//  DescriptorRegistry suite.  Use to pass descriptors between plug-ins or</span>
+<a name="l01476"></a>01476 <span class="comment">//  save parameters between invocations.</span>
+<a name="l01477"></a>01477 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01478"></a>01478 
+<a name="l01507"></a>01507 
+<a name="l01508"></a><a class="code" href="group___pica_descriptor_registry_suite.html#g410c492f95765ec5cb0899fcab6b3d5d">01508</a> <span class="preprocessor">#define kPSDescriptorRegistrySuite          "61e608b0-40fd-11d1-8da3-00c04fd5f7ee"</span>
+<a name="l01510"></a><a class="code" href="group___pica_descriptor_registry_suite.html#g85873f9e6461f98561b6ce5058bf4419">01510</a> <span class="preprocessor">#define kPSDescriptorRegistrySuiteVersion   1</span>
+<a name="l01511"></a>01511 <span class="preprocessor"></span>
+<a name="l01515"></a><a class="code" href="struct_p_s_descriptor_registry_procs.html">01515</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_descriptor_registry_procs.html">PSDescriptorRegistryProcs</a>
+<a name="l01516"></a>01516     {
+<a name="l01517"></a>01517 
+<a name="l01526"></a>01526     SPAPI OSErr (*<a class="code" href="struct_p_s_descriptor_registry_procs.html#f596b81ff57dc7735423b8ccc4c71f35">Register</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span>* key, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, Boolean isPersistent);
+<a name="l01527"></a>01527         
+<a name="l01533"></a>01533     SPAPI OSErr (*<a class="code" href="struct_p_s_descriptor_registry_procs.html#dad2249c8881566590d4b5a6b6abf64b">Erase</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span>* key);
+<a name="l01534"></a>01534         
+<a name="l01542"></a>01542     SPAPI OSErr (*<a class="code" href="struct_p_s_descriptor_registry_procs.html#0cd9d050c92bf3730b2ba80ed29c35d4">Get</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span>* key, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* descriptor);
+<a name="l01543"></a>01543 
+<a name="l01544"></a>01544     } <a class="code" href="struct_p_s_descriptor_registry_procs.html">PSDescriptorRegistryProcs</a>;
+<a name="l01545"></a>01545 
+<a name="l01546"></a>01546 <span class="comment">/* @} */</span>
+<a name="l01547"></a>01547 
+<a name="l01548"></a>01548 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01549"></a>01549 <span class="comment">//  ActionDescriptor suite.  Use for putting keys and objects into descriptors,</span>
+<a name="l01550"></a>01550 <span class="comment">//  getting them out of descriptors, and other descriptor management.</span>
+<a name="l01551"></a>01551 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l01580"></a>01580 <span class="comment"></span>
+<a name="l01581"></a><a class="code" href="group___pica_action_descriptor_suite.html#gfc41d55c746f50326a317d8a2791e9ba">01581</a> <span class="preprocessor">#define kPSActionDescriptorSuite            "df135115-c769-11d0-8079-00c04fd7ec47"</span>
+<a name="l01583"></a><a class="code" href="group___pica_action_descriptor_suite.html#g006eee0824f5618955ec4ad4b4392b99">01583</a> <span class="preprocessor">#define kPSActionDescriptorSuiteVersion     3</span>
+<a name="l01584"></a><a class="code" href="group___pica_action_descriptor_suite.html#gad86f6d418b160f8f8e5e89ecfa0ea0d">01584</a> <span class="preprocessor"></span><span class="preprocessor">#define kPSActionDescriptorSuitePrevVersion 2</span>
+<a name="l01585"></a>01585 <span class="preprocessor"></span>
+<a name="l01589"></a><a class="code" href="struct_p_s_action_descriptor_procs.html">01589</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_action_descriptor_procs.html">PSActionDescriptorProcs</a>
+<a name="l01590"></a>01590     {
+<a name="l01596"></a>01596     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#48e09112a59e7e308242330cde6510eb">Make</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* descriptor);
+<a name="l01597"></a>01597     
+<a name="l01603"></a>01603     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#a9ea230997ceeb9716a7697e4eece5a1">Free</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor);
+<a name="l01604"></a>01604     
+<a name="l01613"></a>01613     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#762aebb3dba8b8ff31576ccb993c9794">GetType</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>* type);
+<a name="l01614"></a>01614     
+<a name="l01624"></a>01624     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#f6e9dedaeb05070c0ac69e4a8a1ac631">GetKey</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, uint32 index, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a>* key);
+<a name="l01625"></a>01625     
+<a name="l01634"></a>01634     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#0c0ff550e2ed0aef991c4b6442506dec">HasKey</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, Boolean* hasKey);
+<a name="l01635"></a>01635 
+<a name="l01642"></a>01642     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#cdf4c6fbc58407915f63c816f8c7e563">GetCount</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, uint32* count);
+<a name="l01643"></a>01643 
+<a name="l01651"></a>01651     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#f94bd5e59f58eb11ecfe5195cd8044fe">IsEqual</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> other, Boolean* isEqual);
+<a name="l01652"></a>01652     
+<a name="l01659"></a>01659     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#dd444c4e8108141658b561fa30555870">Erase</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> );
+<a name="l01660"></a>01660     
+<a name="l01666"></a>01666     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#67a7b3283f4ca81c56b041b40856ef1c">Clear</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor);
+<a name="l01667"></a>01667     
+<a name="l01675"></a>01675     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#cdcee0edd74185fe9045a086530f173c">PutInteger</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int32 value);
+<a name="l01676"></a>01676 
+<a name="l01684"></a>01684     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#b66b81c2969e9e6eb4686c40304a8ef9">PutFloat</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, real64 value);
+<a name="l01685"></a>01685 
+<a name="l01694"></a>01694     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#e2afc9968e58c635edcb5be8c4495395">PutUnitFloat</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a> unit, real64 value);
+<a name="l01695"></a>01695     
+<a name="l01703"></a>01703     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#c05a59021cfb00a407e3dba9d71c9b1a">PutString</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key,  <span class="keywordtype">char</span>* cstrValue);
+<a name="l01704"></a>01704     
+<a name="l01712"></a>01712     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#9599d690b1acb0fb6cc865afd44e0b97">PutBoolean</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, Boolean value);
+<a name="l01713"></a>01713     
+<a name="l01721"></a>01721     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#53e00d57cf589ddabaee80a6879be929">PutList</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key,  <a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> value);
+<a name="l01722"></a>01722     
+<a name="l01734"></a>01734     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#72c43e7cab79674b0d2d9ca4b354857c">PutObject</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> type,  <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> value);
+<a name="l01735"></a>01735     
+<a name="l01744"></a>01744     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#5c22fedc36c906b1f857c72f5801cdf0">PutGlobalObject</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> type,  <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> value);
+<a name="l01745"></a>01745 
+<a name="l01754"></a>01754     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#cc222a0be3fc30aa9622f082d0a31394">PutEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a> type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a> value);
+<a name="l01755"></a>01755 
+<a name="l01763"></a>01763     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#2b2404fbdf8f3b850b35e2c91e455194">PutReference</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key,  <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> value);
+<a name="l01764"></a>01764     
+<a name="l01772"></a>01772     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#54e30dd1965116a3a74888fb968941d8">PutClass</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> value);
+<a name="l01773"></a>01773 
+<a name="l01781"></a>01781     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#815ae24a6d1155af5ab5e7a5a82de2c4">PutGlobalClass</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> value);
+<a name="l01782"></a>01782 
+<a name="l01790"></a>01790     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#8c422cee5cec1a0018550cd84c963ee4">PutAlias</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, Handle value);
+<a name="l01791"></a>01791 
+<a name="l01799"></a>01799     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#b9379963a7504be12c6742b57c3a359a">GetInteger</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int32* value);
+<a name="l01800"></a>01800     
+<a name="l01808"></a>01808     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#ec8b808cd1bcab359d4e9eaeb75e195d">GetFloat</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, real64* value);
+<a name="l01809"></a>01809     
+<a name="l01818"></a>01818     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#56f62861b52587af43ddb651f173b965">GetUnitFloat</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a>* unit, real64* value);
+<a name="l01819"></a>01819     
+<a name="l01827"></a>01827     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#9a88d32ec906b9f536a5612a12f9bdec">GetStringLength</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, uint32* stringLength);
+<a name="l01828"></a>01828     
+<a name="l01837"></a>01837     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#b18e932f48941055ad9d63c8cdec72cb">GetString</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <span class="keywordtype">char</span>* cstrValue, uint32 maxLength);
+<a name="l01838"></a>01838 
+<a name="l01846"></a>01846     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#3faf1216ed1d8e00b2d1e800e9c2938c">GetBoolean</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, Boolean* value);
+<a name="l01847"></a>01847 
+<a name="l01855"></a>01855     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#8d951e91a9fbb57e2d9f82680e320254">GetList</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a>* value);
+<a name="l01856"></a>01856 
+<a name="l01868"></a>01868     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#b8d9a2730e9a692ea493adbd11e0aeca">GetObject</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* value);
+<a name="l01869"></a>01869     
+<a name="l01878"></a>01878     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#f678a0ad9f74993a1017a812dfb7a117">GetGlobalObject</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* value);
+<a name="l01879"></a>01879     
+<a name="l01888"></a>01888     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#1eafae6adb1acfc8cae8d69e0921032b">GetEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a>* type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>* value);
+<a name="l01889"></a>01889     
+<a name="l01897"></a>01897     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#8cbbdd93f2adb03be45a4e4fb4beacdd">GetReference</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a>* value);
+<a name="l01898"></a>01898     
+<a name="l01906"></a>01906     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#28ce2163bdeec175fb535bf679042596">GetClass</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* value);
+<a name="l01907"></a>01907     
+<a name="l01915"></a>01915     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#3cdd54b4f13dd35ece89f530110b814f">GetGlobalClass</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* value);
+<a name="l01916"></a>01916     
+<a name="l01924"></a>01924     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#acdcff177dc7b5c5006e75879b094ffa">GetAlias</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, Handle* value);
+<a name="l01925"></a>01925 
+<a name="l01933"></a>01933     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#4a99c6633b727b0e8e7e547dbaa91bba">HasKeys</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#0fa23183ff2689dd6659563aad13aab7">DescriptorKeyIDArray</a> requiredKeys, Boolean* hasKeys);
+<a name="l01934"></a>01934 
+<a name="l01943"></a>01943     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#a0ce95b8a0811b6aeebddf801b0db968">PutIntegers</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, uint32 count,  int32* );
+<a name="l01944"></a>01944 
+<a name="l01953"></a>01953     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#e2c8be9bfc5ff825f23aff33b9dea5bb">GetIntegers</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, uint32 count, int32* value);
+<a name="l01954"></a>01954 
+<a name="l01965"></a>01965     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#e2c55f05b27662f80b1525837b202dfc">AsHandle</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a>* value);
+<a name="l01966"></a>01966 
+<a name="l01977"></a>01977     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#d0e876703afca27584526ac658576054">HandleToDescriptor</a>)(<a class="code" href="_p_i_actions_8h.html#253a9e8fb220ebe6a1236970d2e0afad">PIDescriptorHandle</a> value, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* descriptor);
+<a name="l01978"></a>01978     
+<a name="l01986"></a>01986     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#f829a4f804c6097b65bdbc0edc4460f8">PutZString</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> zstring);
+<a name="l01987"></a>01987 
+<a name="l01995"></a>01995     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#d78ebf82608857d72557c2c503053e60">GetZString</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a>* zstring);
+<a name="l01996"></a>01996     
+<a name="l02005"></a>02005     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#09870e0648d569b3ab5eddca6fec582b">PutData</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int32 length, <span class="keywordtype">void</span>* value);
+<a name="l02006"></a>02006 
+<a name="l02014"></a>02014     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#e4220f0a479d48bffcca642b6071f2f1">GetDataLength</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int32* value);
+<a name="l02015"></a>02015 
+<a name="l02023"></a>02023     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#2904fc50deb2bb90d1042c81d78bd078">GetData</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, <span class="keywordtype">void</span>* value);
+<a name="l02024"></a>02024 
+<a name="l02025"></a>02025     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#881283e7e41ee192e7c1381093d371f5">PutInteger64</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int64 value);
+<a name="l02026"></a>02026     SPAPI OSErr (*<a class="code" href="struct_p_s_action_descriptor_procs.html#ba7e584f05acbadea811c26de2dc13fa">GetInteger64</a>)(<a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> descriptor, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> key, int64* value);
+<a name="l02027"></a>02027 
+<a name="l02028"></a>02028     } <a class="code" href="struct_p_s_action_descriptor_procs.html">PSActionDescriptorProcs</a>;
+<a name="l02029"></a>02029 <span class="comment">/* @} */</span>
+<a name="l02030"></a>02030 
+<a name="l02031"></a>02031 
+<a name="l02032"></a>02032 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02033"></a>02033 <span class="comment">//  ActionList suite.  Use to manage lists of keys.</span>
+<a name="l02034"></a>02034 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02063"></a>02063 <span class="comment"></span>
+<a name="l02064"></a><a class="code" href="group___pica_action_list_suite.html#g19bcfe21448dda7bd8ff0ebf57c80058">02064</a> <span class="preprocessor">#define kPSActionListSuite          "df135116-c769-11d0-8079-00c04fd7ec47"</span>
+<a name="l02066"></a><a class="code" href="group___pica_action_list_suite.html#g5496663cc178288e0291502ee97a4eef">02066</a> <span class="preprocessor">#define kPSActionListSuiteVersion       2</span>
+<a name="l02067"></a><a class="code" href="group___pica_action_list_suite.html#gddda61fe0047242c289cb5c30e360e31">02067</a> <span class="preprocessor"></span><span class="preprocessor">#define kPSActionListSuitePrevVersion   1</span>
+<a name="l02068"></a>02068 <span class="preprocessor"></span>
+<a name="l02072"></a><a class="code" href="struct_p_s_action_list_procs.html">02072</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_action_list_procs.html">PSActionListProcs</a>
+<a name="l02073"></a>02073     {
+<a name="l02074"></a>02074     
+<a name="l02080"></a>02080     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#5a76d04d0cf35dcde72ac6157febfdcf">Make</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a>* actionList);
+<a name="l02081"></a>02081     
+<a name="l02087"></a>02087     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#8bc733a240775065f6847517a9a66c48">Free</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> actionList);
+<a name="l02088"></a>02088 
+<a name="l02100"></a>02100     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#a64d9ef6bdf268bd74be051dec68fa0c">GetType</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#31a0c4b38916220049d565ffc1bb9f4b">DescriptorTypeID</a>* value);
+<a name="l02101"></a>02101 
+<a name="l02108"></a>02108     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#04779ff40f6a5a7291520f3f510dfcfc">GetCount</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32* value);
+<a name="l02109"></a>02109 
+<a name="l02116"></a>02116     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#13727bc7fb8525087f3b5d1ef7efade9">PutInteger</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, int32 value);
+<a name="l02117"></a>02117 
+<a name="l02124"></a>02124     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#261979afd4ea1fe5b4051c6d83062a8d">PutFloat</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, real64 value);
+<a name="l02125"></a>02125 
+<a name="l02133"></a>02133     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#49f9ffb887f5b9f0d37da00b2dcd265e">PutUnitFloat</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a> unit, real64 value);
+<a name="l02134"></a>02134     
+<a name="l02141"></a>02141     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#7955543ac88f4f7d098332e93bdf853b">PutString</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <span class="keywordtype">char</span>* cstr);
+<a name="l02142"></a>02142     
+<a name="l02149"></a>02149     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#c0b5269d675a85b536e634193b7947ff">PutBoolean</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, Boolean value);
+<a name="l02150"></a>02150     
+<a name="l02157"></a>02157     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#d5cdc676aacb793205e728a53f768b6c">PutList</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> value);
+<a name="l02158"></a>02158     
+<a name="l02169"></a>02169     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#593ddcd1787cc2bf4ccb18820683bbda">PutObject</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> value);
+<a name="l02170"></a>02170     
+<a name="l02181"></a>02181     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#ccf6a16db105c7a1200523c70a8159fa">PutGlobalObject</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a> value);
+<a name="l02182"></a>02182     
+<a name="l02190"></a>02190     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#2b0768ae4a0d8ff0c9bc05e9a8ccc8e4">PutEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a> type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a> value);
+<a name="l02191"></a>02191     
+<a name="l02198"></a>02198     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#7c8a78eca0f49fe74e12b6440d5064ba">PutReference</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> value);
+<a name="l02199"></a>02199     
+<a name="l02206"></a>02206     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#527e3fd849f0be052b10b7c850bed96b">PutClass</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> value);
+<a name="l02207"></a>02207     
+<a name="l02214"></a>02214     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#ade20dfa58f9f94562e4ddf1210e02c9">PutGlobalClass</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> value);
+<a name="l02215"></a>02215     
+<a name="l02222"></a>02222     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#f024301c1472c18a020943d042754be8">PutAlias</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, Handle value);
+<a name="l02223"></a>02223 
+<a name="l02234"></a>02234     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#e159ed075de54bed2a3bac254c59b170">GetInteger</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, int32* value);
+<a name="l02235"></a>02235 
+<a name="l02246"></a>02246     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#479bbd13e3def42014cdfb91569cf6b3">GetFloat</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, real64* value);
+<a name="l02247"></a>02247 
+<a name="l02259"></a>02259     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#536aa1a013e5ffe4e4050f2ced126472">GetUnitFloat</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#8ca91e1f8b1ab8fb4c1c3097a407df95">DescriptorUnitID</a>* unit, real64* value);
+<a name="l02260"></a>02260 
+<a name="l02268"></a>02268     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#ccd326f1565ce5a6aecef89c892581a7">GetStringLength</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, uint32* stringLength);
+<a name="l02269"></a>02269 
+<a name="l02278"></a>02278     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#6e5aa072e754cade39f14b4e191c49d5">GetString</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <span class="keywordtype">char</span>* cstr, uint32 maxLength);
+<a name="l02279"></a>02279 
+<a name="l02287"></a>02287     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#c03cad38597a6bac1264873d5f1e9be3">GetBoolean</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, Boolean* value);
+<a name="l02288"></a>02288 
+<a name="l02296"></a>02296     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#d05673336043247014a54fd8a3778c91">GetList</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a>* actionList);
+<a name="l02297"></a>02297 
+<a name="l02309"></a>02309     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#959092708bb31c95df1dc2cc782c2c16">GetObject</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* value);
+<a name="l02310"></a>02310 
+<a name="l02322"></a>02322     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#f000dda2fe2b62925ef8d7fe8e3d51ea">GetGlobalObject</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* type, <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>* value);
+<a name="l02323"></a>02323 
+<a name="l02332"></a>02332     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#5c4fd30fb98ffeaeaf375363eadbd339">GetEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a>* type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>* value);
+<a name="l02333"></a>02333 
+<a name="l02341"></a>02341     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#672f6a23d1d94d20c95f77ecbbcba5c6">GetReference</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a>* value);
+<a name="l02342"></a>02342 
+<a name="l02350"></a>02350     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#3b92dd3bbfc8b7958a334d395555c88f">GetClass</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* value);
+<a name="l02351"></a>02351 
+<a name="l02359"></a>02359     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#4ffaea7d4444d653c47dea23cbd7bacc">GetGlobalClass</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* value);
+<a name="l02360"></a>02360 
+<a name="l02368"></a>02368     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#8dc8d927f1a44f97f0d0b2f73df48a1c">GetAlias</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, Handle* aliasHandle);
+<a name="l02369"></a>02369 
+<a name="l02377"></a>02377     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#39cf10f6b678eacce35d5ac81c0003a8">PutIntegers</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 count, int32* );
+<a name="l02378"></a>02378 
+<a name="l02386"></a>02386     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#7d8d2794b6b057adcd147ca10604de4a">GetIntegers</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 count, int32* value);
+<a name="l02387"></a>02387 
+<a name="l02395"></a>02395     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#b55ed2bb13d575b0018edaa306858730">PutData</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, int32 length, <span class="keywordtype">void</span>* data);
+<a name="l02396"></a>02396 
+<a name="l02404"></a>02404     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#34077b8e0162ffe6cc1f5ecab7fd93a8">GetDataLength</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, int32* length);
+<a name="l02405"></a>02405 
+<a name="l02413"></a>02413     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#3d2d4e9f8d7377cae9df4b7777ffaa9d">GetData</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <span class="keywordtype">void</span>* value);
+<a name="l02414"></a>02414 
+<a name="l02421"></a>02421     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#acc3a576798a6f995b26465222ddfc93">PutZString</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> zstring);
+<a name="l02422"></a>02422 
+<a name="l02430"></a>02430     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#5817d4d3aee1d8446e6cad845fe64c7e">GetZString</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a>* zstring);
+<a name="l02431"></a>02431 
+<a name="l02432"></a>02432     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#8b51c6a6c73650b9c5fb8926873c1662">PutInteger64</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, int64 value);
+<a name="l02433"></a>02433     SPAPI OSErr (*<a class="code" href="struct_p_s_action_list_procs.html#ec52ca94b82805271f837ac63504f13f">GetInteger64</a>)(<a class="code" href="_p_i_actions_8h.html#e686f725b15aae5fa990cd48ba4aa2ec">PIActionList</a> list, uint32 index, int64 *value);
+<a name="l02434"></a>02434 
+<a name="l02435"></a>02435 
+<a name="l02436"></a>02436     } <a class="code" href="struct_p_s_action_list_procs.html">PSActionListProcs</a>;
+<a name="l02437"></a>02437 <span class="comment">/* @} */</span>
+<a name="l02438"></a>02438 
+<a name="l02439"></a>02439 
+<a name="l02440"></a>02440 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02441"></a>02441 <span class="comment">//  ActionReference suite.  Use to build references to objects to be able to</span>
+<a name="l02442"></a>02442 <span class="comment">//  get/set properties and target events.</span>
+<a name="l02443"></a>02443 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02444"></a>02444 
+<a name="l02475"></a>02475 
+<a name="l02476"></a><a class="code" href="group___pica_action_reference_suite.html#ga0ea00a7587df9f1ad2f1411fece1e3c">02476</a> <span class="preprocessor">#define kPSActionReferenceSuite         "df135117-c769-11d0-8079-00c04fd7ec47"</span>
+<a name="l02478"></a><a class="code" href="group___pica_action_reference_suite.html#g6720f65b16626893f429cb44870fb06e">02478</a> <span class="preprocessor">#define kPSActionReferenceSuiteVersion  3</span>
+<a name="l02479"></a><a class="code" href="group___pica_action_reference_suite.html#g91ace40148bd51d7d5a8d95c58aabb0b">02479</a> <span class="preprocessor"></span><span class="preprocessor">#define kPSActionReferenceSuitePrevVersion  2</span>
+<a name="l02480"></a>02480 <span class="preprocessor"></span>
+<a name="l02484"></a><a class="code" href="struct_p_s_action_reference_procs.html">02484</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_s_action_reference_procs.html">PSActionReferenceProcs</a>
+<a name="l02485"></a>02485     {
+<a name="l02486"></a>02486 
+<a name="l02492"></a>02492     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#97a65fce3a8e5cb70771f652214cd0df">Make</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a>* reference);
+<a name="l02493"></a>02493     
+<a name="l02499"></a>02499     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#e4e6a9fd395575e2888ed8ac79655f76">Free</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref);
+<a name="l02500"></a>02500 
+<a name="l02510"></a>02510     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#88cee43314d00b6843491001014484e8">GetForm</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#98f45d7f8d9e9ecefbab69522d44cb39">DescriptorFormID</a>* value);
+<a name="l02511"></a>02511 
+<a name="l02518"></a>02518     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#dc12b54ad8586d797cf93951c4d83a26">GetDesiredClass</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a>* value);
+<a name="l02519"></a>02519 
+<a name="l02527"></a>02527     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#c4c5d80d94f760d9921177972245f936">PutName</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, <span class="keywordtype">char</span>* cstrValue);
+<a name="l02528"></a>02528 
+<a name="l02536"></a>02536     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#a8c56cc93fc8655fed874eac5b1d9754">PutIndex</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, uint32 value);
+<a name="l02537"></a>02537 
+<a name="l02545"></a>02545     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#447f4ec03fd1946fdaf5f9ebfd1a78b9">PutIdentifier</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, uint32 value);
+<a name="l02546"></a>02546 
+<a name="l02554"></a>02554     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#78edfc97eda8f3afb05bd96a7a31f8bb">PutOffset</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, int32 value);
+<a name="l02555"></a>02555 
+<a name="l02565"></a>02565     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#ed2abff52706874cc07594a9af536063">PutEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a> type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a> value);
+<a name="l02566"></a>02566 
+<a name="l02574"></a>02574     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#3fa9e6376fb00b7233ec6c9a81319944">PutProperty</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a> value);
+<a name="l02575"></a>02575 
+<a name="l02582"></a>02582     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#d5ecf035e0b02a879eed36f00bee224b">PutClass</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass);
+<a name="l02583"></a>02583     
+<a name="l02590"></a>02590     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#499dbeb221f5bd740e5a1039f32bdd8d">GetNameLength</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, uint32* stringLength);
+<a name="l02591"></a>02591 
+<a name="l02599"></a>02599     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#18fd00ca315814bd8685b6270f5b0bfc">GetName</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <span class="keywordtype">char</span>* name, uint32 maxLength);
+<a name="l02600"></a>02600 
+<a name="l02607"></a>02607     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#a5469244ed0256cd487da028de6f36c3">GetIndex</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, uint32* value);
+<a name="l02608"></a>02608 
+<a name="l02615"></a>02615     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#8edab2aa256d9259ecee7ab98d499ebd">GetIdentifier</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, uint32* value);
+<a name="l02616"></a>02616 
+<a name="l02623"></a>02623     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#c32e815274add1c0f5c1cbab32df92c1">GetOffset</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, int32* value);
+<a name="l02624"></a>02624 
+<a name="l02632"></a>02632     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#b7d4945074ba2619dcf105aed3be9627">GetEnumerated</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#7674e56cb988b61b299909e4d1bb97fd">DescriptorEnumTypeID</a>* type, <a class="code" href="_p_i_actions_8h.html#2b91eda9d348a276d1bfa8dc7214fea9">DescriptorEnumID</a>* enumValue);
+<a name="l02633"></a>02633 
+<a name="l02640"></a>02640     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#a6b9572ae8ae03140a6ea97dac59d196">GetProperty</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#2fafe805a8972df708736505bcc400f2">DescriptorKeyID</a>* value);
+<a name="l02641"></a>02641 
+<a name="l02650"></a>02650     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#d8a7cfec80a226fb4b196be092ea9ee5">GetContainer</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a>* value);
+<a name="l02651"></a>02651 
+<a name="l02659"></a>02659     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#2687c854f38341d4db2bf4677a84871d">PutNameZString</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#4e48e02669fe628489f267e6f61e53a6">DescriptorClassID</a> desiredClass, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a> zstring);
+<a name="l02660"></a>02660 
+<a name="l02668"></a>02668     SPAPI OSErr (*<a class="code" href="struct_p_s_action_reference_procs.html#60f9b458b821c268c8222271bffc3b90">GetNameZString</a>)(<a class="code" href="_p_i_actions_8h.html#e96dd233b37976f6eb59d8292a7b293c">PIActionReference</a> ref, <a class="code" href="_p_i_actions_8h.html#a695f778ad117a3f02f5331bc93f8dfc">ASZString</a>* zstring);
+<a name="l02669"></a>02669 
+<a name="l02670"></a>02670     } <a class="code" href="struct_p_s_action_reference_procs.html">PSActionReferenceProcs</a>;
+<a name="l02675"></a>02675 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02676"></a>02676 <span class="comment">//  PIActionParameters structure.</span>
+<a name="l02677"></a>02677 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02678"></a>02678 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l02679"></a>02679 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=mac68k</span>
+<a name="l02680"></a>02680 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l02681"></a>02681 <span class="preprocessor"></span>
+<a name="l02682"></a>02682 <span class="preprocessor">#if MSWindows</span>
+<a name="l02683"></a>02683 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(push,1)</span>
+<a name="l02684"></a>02684 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l02685"></a>02685 <span class="preprocessor"></span>
+<a name="l02693"></a><a class="code" href="struct_p_i_action_parameters.html">02693</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_p_i_action_parameters.html">PIActionParameters</a>
+<a name="l02694"></a>02694     {
+<a name="l02695"></a>02695     
+<a name="l02696"></a><a class="code" href="struct_p_i_action_parameters.html#031e8614ea8a4499a8dc3c26d11a1a39">02696</a>     <a class="code" href="group___record_play_info_flags.html#gb9a28de950cbacff02666517246c1fea">PIDialogPlayOptions</a>     <a class="code" href="struct_p_i_action_parameters.html#031e8614ea8a4499a8dc3c26d11a1a39">playInfo</a>;   
+<a name="l02698"></a><a class="code" href="struct_p_i_action_parameters.html#9b0e734c68113d86fa1e075f315f2ba4">02698</a>     <a class="code" href="group___record_play_info_flags.html#g4819b6777d85776ad571523d5ed07233">PIDialogRecordOptions</a>   <a class="code" href="struct_p_i_action_parameters.html#9b0e734c68113d86fa1e075f315f2ba4">recordInfo</a>; 
+<a name="l02700"></a><a class="code" href="struct_p_i_action_parameters.html#e49f8c116008d5fe2d948307779c516f">02700</a>     <a class="code" href="_p_i_actions_8h.html#300cd9ffe9c177ec5147fa395833d127">PIActionDescriptor</a>      <a class="code" href="struct_p_i_action_parameters.html#e49f8c116008d5fe2d948307779c516f">descriptor</a>; 
+<a name="l02703"></a>02703     } <a class="code" href="struct_p_i_action_parameters.html">PIActionParameters</a>;
+<a name="l02704"></a>02704 
+<a name="l02705"></a>02705 
+<a name="l02706"></a>02706 <span class="preprocessor">#if PRAGMA_STRUCT_ALIGN</span>
+<a name="l02707"></a>02707 <span class="preprocessor"></span><span class="preprocessor">#pragma options align=reset</span>
+<a name="l02708"></a>02708 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l02709"></a>02709 <span class="preprocessor"></span>
+<a name="l02710"></a>02710 <span class="preprocessor">#if MSWindows</span>
+<a name="l02711"></a>02711 <span class="preprocessor"></span><span class="preprocessor">#pragma pack(pop)</span>
+<a name="l02712"></a>02712 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l02713"></a>02713 <span class="preprocessor"></span>
+<a name="l02714"></a>02714 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02715"></a>02715 
+<a name="l02716"></a>02716 <span class="preprocessor">#endif // Rez</span>
+<a name="l02717"></a>02717 <span class="preprocessor"></span>
+<a name="l02718"></a>02718 <span class="comment">//-------------------------------------------------------------------------------</span>
+<a name="l02719"></a>02719 
+<a name="l02720"></a>02720 <span class="preprocessor">#endif // __PIActions_h__</span>
+</pre></div>
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

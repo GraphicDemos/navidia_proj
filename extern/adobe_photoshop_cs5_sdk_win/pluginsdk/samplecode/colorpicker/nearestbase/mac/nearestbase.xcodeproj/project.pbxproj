@@ -1,0 +1,1307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6431B4A20A4741A700024067 /* PIUSuites.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B49D0A4741A700024067 /* PIUSuites.cpp */; };
+		6431B4A30A4741A700024067 /* PIUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B49E0A4741A700024067 /* PIUtilities.cpp */; };
+		6431B4B30A47420900024067 /* NearestBaseUIMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B4B20A47420900024067 /* NearestBaseUIMac.cpp */; };
+		6431B4B80A47421900024067 /* NearestBase.r in Rez */ = {isa = PBXBuildFile; fileRef = 6431B4B40A47421900024067 /* NearestBase.r */; };
+		6431B4B90A47421900024067 /* NearestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B4B60A47421900024067 /* NearestBase.cpp */; };
+		6431B4BA0A47421900024067 /* NearestBaseScripting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B4B70A47421900024067 /* NearestBaseScripting.cpp */; };
+		647B6482111392640067F135 /* DialogUtilitiesMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6431B49F0A4741A700024067 /* DialogUtilitiesMac.cpp */; };
+		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		6431B2920A47418000024067 /* ADSP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ADSP.h; path = /Developer/Headers/FlatCarbon/ADSP.h; sourceTree = "<absolute>"; };
+		6431B2930A47418000024067 /* AEDataModel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEDataModel.h; path = /Developer/Headers/FlatCarbon/AEDataModel.h; sourceTree = "<absolute>"; };
+		6431B2940A47418000024067 /* AEDataModel.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEDataModel.r; path = /Developer/Headers/FlatCarbon/AEDataModel.r; sourceTree = "<absolute>"; };
+		6431B2950A47418000024067 /* AEHelpers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEHelpers.h; path = /Developer/Headers/FlatCarbon/AEHelpers.h; sourceTree = "<absolute>"; };
+		6431B2960A47418000024067 /* AEInteraction.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEInteraction.h; path = /Developer/Headers/FlatCarbon/AEInteraction.h; sourceTree = "<absolute>"; };
+		6431B2970A47418000024067 /* AEMach.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEMach.h; path = /Developer/Headers/FlatCarbon/AEMach.h; sourceTree = "<absolute>"; };
+		6431B2980A47418000024067 /* AEObjects.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEObjects.h; path = /Developer/Headers/FlatCarbon/AEObjects.h; sourceTree = "<absolute>"; };
+		6431B2990A47418000024067 /* AEObjects.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEObjects.r; path = /Developer/Headers/FlatCarbon/AEObjects.r; sourceTree = "<absolute>"; };
+		6431B29A0A47418000024067 /* AEPackObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEPackObject.h; path = /Developer/Headers/FlatCarbon/AEPackObject.h; sourceTree = "<absolute>"; };
+		6431B29B0A47418000024067 /* AERegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AERegistry.h; path = /Developer/Headers/FlatCarbon/AERegistry.h; sourceTree = "<absolute>"; };
+		6431B29C0A47418000024067 /* AERegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AERegistry.r; path = /Developer/Headers/FlatCarbon/AERegistry.r; sourceTree = "<absolute>"; };
+		6431B29D0A47418000024067 /* AEUserTermTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AEUserTermTypes.h; path = /Developer/Headers/FlatCarbon/AEUserTermTypes.h; sourceTree = "<absolute>"; };
+		6431B29E0A47418000024067 /* AEUserTermTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEUserTermTypes.r; path = /Developer/Headers/FlatCarbon/AEUserTermTypes.r; sourceTree = "<absolute>"; };
+		6431B29F0A47418000024067 /* AEWideUserTermTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AEWideUserTermTypes.r; path = /Developer/Headers/FlatCarbon/AEWideUserTermTypes.r; sourceTree = "<absolute>"; };
+		6431B2A00A47418000024067 /* AIFF.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AIFF.h; path = /Developer/Headers/FlatCarbon/AIFF.h; sourceTree = "<absolute>"; };
+		6431B2A10A47418000024067 /* Aliases.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Aliases.h; path = /Developer/Headers/FlatCarbon/Aliases.h; sourceTree = "<absolute>"; };
+		6431B2A20A47418000024067 /* Appearance.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Appearance.h; path = /Developer/Headers/FlatCarbon/Appearance.h; sourceTree = "<absolute>"; };
+		6431B2A30A47418000024067 /* Appearance.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Appearance.r; path = /Developer/Headers/FlatCarbon/Appearance.r; sourceTree = "<absolute>"; };
+		6431B2A40A47418000024067 /* AppleDiskPartitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleDiskPartitions.h; path = /Developer/Headers/FlatCarbon/AppleDiskPartitions.h; sourceTree = "<absolute>"; };
+		6431B2A50A47418000024067 /* AppleEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleEvents.h; path = /Developer/Headers/FlatCarbon/AppleEvents.h; sourceTree = "<absolute>"; };
+		6431B2A60A47418000024067 /* AppleEvents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AppleEvents.r; path = /Developer/Headers/FlatCarbon/AppleEvents.r; sourceTree = "<absolute>"; };
+		6431B2A70A47418000024067 /* AppleGuide.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleGuide.h; path = /Developer/Headers/FlatCarbon/AppleGuide.h; sourceTree = "<absolute>"; };
+		6431B2A80A47418000024067 /* AppleHelp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleHelp.h; path = /Developer/Headers/FlatCarbon/AppleHelp.h; sourceTree = "<absolute>"; };
+		6431B2A90A47418000024067 /* AppleScript.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleScript.h; path = /Developer/Headers/FlatCarbon/AppleScript.h; sourceTree = "<absolute>"; };
+		6431B2AA0A47418000024067 /* AppleTalk.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppleTalk.h; path = /Developer/Headers/FlatCarbon/AppleTalk.h; sourceTree = "<absolute>"; };
+		6431B2AB0A47418000024067 /* ApplicationServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ApplicationServices.h; path = /Developer/Headers/FlatCarbon/ApplicationServices.h; sourceTree = "<absolute>"; };
+		6431B2AC0A47418000024067 /* ApplicationServices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ApplicationServices.r; path = /Developer/Headers/FlatCarbon/ApplicationServices.r; sourceTree = "<absolute>"; };
+		6431B2AD0A47418000024067 /* ASDebugging.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ASDebugging.h; path = /Developer/Headers/FlatCarbon/ASDebugging.h; sourceTree = "<absolute>"; };
+		6431B2AE0A47418000024067 /* ASRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ASRegistry.h; path = /Developer/Headers/FlatCarbon/ASRegistry.h; sourceTree = "<absolute>"; };
+		6431B2AF0A47418000024067 /* ASRegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ASRegistry.r; path = /Developer/Headers/FlatCarbon/ASRegistry.r; sourceTree = "<absolute>"; };
+		6431B2B00A47418000024067 /* ATA.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATA.h; path = /Developer/Headers/FlatCarbon/ATA.h; sourceTree = "<absolute>"; };
+		6431B2B10A47418000024067 /* ATSFont.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSFont.h; path = /Developer/Headers/FlatCarbon/ATSFont.h; sourceTree = "<absolute>"; };
+		6431B2B20A47418000024067 /* ATSLayoutTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSLayoutTypes.h; path = /Developer/Headers/FlatCarbon/ATSLayoutTypes.h; sourceTree = "<absolute>"; };
+		6431B2B30A47418000024067 /* ATSTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSTypes.h; path = /Developer/Headers/FlatCarbon/ATSTypes.h; sourceTree = "<absolute>"; };
+		6431B2B40A47418000024067 /* ATSUnicode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ATSUnicode.h; path = /Developer/Headers/FlatCarbon/ATSUnicode.h; sourceTree = "<absolute>"; };
+		6431B2B50A47418000024067 /* AVComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVComponents.h; path = /Developer/Headers/FlatCarbon/AVComponents.h; sourceTree = "<absolute>"; };
+		6431B2B60A47418000024067 /* AVComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVComponents.k.h; path = /Developer/Headers/FlatCarbon/AVComponents.k.h; sourceTree = "<absolute>"; };
+		6431B2B70A47418000024067 /* AVComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = AVComponents.r; path = /Developer/Headers/FlatCarbon/AVComponents.r; sourceTree = "<absolute>"; };
+		6431B2B80A47418000024067 /* AVLTree.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AVLTree.h; path = /Developer/Headers/FlatCarbon/AVLTree.h; sourceTree = "<absolute>"; };
+		6431B2B90A47418000024067 /* Balloons.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Balloons.h; path = /Developer/Headers/FlatCarbon/Balloons.h; sourceTree = "<absolute>"; };
+		6431B2BA0A47418000024067 /* Balloons.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Balloons.r; path = /Developer/Headers/FlatCarbon/Balloons.r; sourceTree = "<absolute>"; };
+		6431B2BB0A47418000024067 /* BalloonTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = BalloonTypes.r; path = /Developer/Headers/FlatCarbon/BalloonTypes.r; sourceTree = "<absolute>"; };
+		6431B2BC0A47418000024067 /* Carbon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Carbon.h; path = /Developer/Headers/FlatCarbon/Carbon.h; sourceTree = "<absolute>"; };
+		6431B2BD0A47418000024067 /* Carbon.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Carbon.r; path = /Developer/Headers/FlatCarbon/Carbon.r; sourceTree = "<absolute>"; };
+		6431B2BE0A47418000024067 /* CarbonEvents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CarbonEvents.h; path = /Developer/Headers/FlatCarbon/CarbonEvents.h; sourceTree = "<absolute>"; };
+		6431B2BF0A47418000024067 /* CarbonEvents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CarbonEvents.r; path = /Developer/Headers/FlatCarbon/CarbonEvents.r; sourceTree = "<absolute>"; };
+		6431B2C00A47418000024067 /* CardServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CardServices.h; path = /Developer/Headers/FlatCarbon/CardServices.h; sourceTree = "<absolute>"; };
+		6431B2C10A47418000024067 /* CFArray.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFArray.h; path = /Developer/Headers/FlatCarbon/CFArray.h; sourceTree = "<absolute>"; };
+		6431B2C20A47418000024067 /* CFBag.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBag.h; path = /Developer/Headers/FlatCarbon/CFBag.h; sourceTree = "<absolute>"; };
+		6431B2C30A47418000024067 /* CFBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBase.h; path = /Developer/Headers/FlatCarbon/CFBase.h; sourceTree = "<absolute>"; };
+		6431B2C40A47418000024067 /* CFBundle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFBundle.h; path = /Developer/Headers/FlatCarbon/CFBundle.h; sourceTree = "<absolute>"; };
+		6431B2C50A47418000024067 /* CFCharacterSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFCharacterSet.h; path = /Developer/Headers/FlatCarbon/CFCharacterSet.h; sourceTree = "<absolute>"; };
+		6431B2C60A47418000024067 /* CFData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFData.h; path = /Developer/Headers/FlatCarbon/CFData.h; sourceTree = "<absolute>"; };
+		6431B2C70A47418000024067 /* CFDate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFDate.h; path = /Developer/Headers/FlatCarbon/CFDate.h; sourceTree = "<absolute>"; };
+		6431B2C80A47418000024067 /* CFDictionary.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFDictionary.h; path = /Developer/Headers/FlatCarbon/CFDictionary.h; sourceTree = "<absolute>"; };
+		6431B2C90A47418000024067 /* CFNumber.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFNumber.h; path = /Developer/Headers/FlatCarbon/CFNumber.h; sourceTree = "<absolute>"; };
+		6431B2CA0A47418000024067 /* CFPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPlugIn.h; path = /Developer/Headers/FlatCarbon/CFPlugIn.h; sourceTree = "<absolute>"; };
+		6431B2CB0A47418000024067 /* CFPlugInCOM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPlugInCOM.h; path = /Developer/Headers/FlatCarbon/CFPlugInCOM.h; sourceTree = "<absolute>"; };
+		6431B2CC0A47418000024067 /* CFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPreferences.h; path = /Developer/Headers/FlatCarbon/CFPreferences.h; sourceTree = "<absolute>"; };
+		6431B2CD0A47418000024067 /* CFPropertyList.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFPropertyList.h; path = /Developer/Headers/FlatCarbon/CFPropertyList.h; sourceTree = "<absolute>"; };
+		6431B2CE0A47418000024067 /* CFSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFSet.h; path = /Developer/Headers/FlatCarbon/CFSet.h; sourceTree = "<absolute>"; };
+		6431B2CF0A47418000024067 /* CFString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFString.h; path = /Developer/Headers/FlatCarbon/CFString.h; sourceTree = "<absolute>"; };
+		6431B2D00A47418000024067 /* CFStringEncodingExt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFStringEncodingExt.h; path = /Developer/Headers/FlatCarbon/CFStringEncodingExt.h; sourceTree = "<absolute>"; };
+		6431B2D10A47418000024067 /* CFTimeZone.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFTimeZone.h; path = /Developer/Headers/FlatCarbon/CFTimeZone.h; sourceTree = "<absolute>"; };
+		6431B2D20A47418000024067 /* CFTree.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFTree.h; path = /Developer/Headers/FlatCarbon/CFTree.h; sourceTree = "<absolute>"; };
+		6431B2D30A47418000024067 /* CFURL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFURL.h; path = /Developer/Headers/FlatCarbon/CFURL.h; sourceTree = "<absolute>"; };
+		6431B2D40A47418000024067 /* CFURLAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFURLAccess.h; path = /Developer/Headers/FlatCarbon/CFURLAccess.h; sourceTree = "<absolute>"; };
+		6431B2D50A47418000024067 /* CFUUID.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFUUID.h; path = /Developer/Headers/FlatCarbon/CFUUID.h; sourceTree = "<absolute>"; };
+		6431B2D60A47418000024067 /* CFXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFXMLNode.h; path = /Developer/Headers/FlatCarbon/CFXMLNode.h; sourceTree = "<absolute>"; };
+		6431B2D70A47418000024067 /* CFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CFXMLParser.h; path = /Developer/Headers/FlatCarbon/CFXMLParser.h; sourceTree = "<absolute>"; };
+		6431B2D80A47418000024067 /* CGAffineTransform.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGAffineTransform.h; path = /Developer/Headers/FlatCarbon/CGAffineTransform.h; sourceTree = "<absolute>"; };
+		6431B2D90A47418000024067 /* CGBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGBase.h; path = /Developer/Headers/FlatCarbon/CGBase.h; sourceTree = "<absolute>"; };
+		6431B2DA0A47418000024067 /* CGBitmapContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGBitmapContext.h; path = /Developer/Headers/FlatCarbon/CGBitmapContext.h; sourceTree = "<absolute>"; };
+		6431B2DB0A47418000024067 /* CGColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGColorSpace.h; path = /Developer/Headers/FlatCarbon/CGColorSpace.h; sourceTree = "<absolute>"; };
+		6431B2DC0A47418000024067 /* CGContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGContext.h; path = /Developer/Headers/FlatCarbon/CGContext.h; sourceTree = "<absolute>"; };
+		6431B2DD0A47418000024067 /* CGDataConsumer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDataConsumer.h; path = /Developer/Headers/FlatCarbon/CGDataConsumer.h; sourceTree = "<absolute>"; };
+		6431B2DE0A47418000024067 /* CGDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDataProvider.h; path = /Developer/Headers/FlatCarbon/CGDataProvider.h; sourceTree = "<absolute>"; };
+		6431B2DF0A47418000024067 /* CGDirectDisplay.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDirectDisplay.h; path = /Developer/Headers/FlatCarbon/CGDirectDisplay.h; sourceTree = "<absolute>"; };
+		6431B2E00A47418000024067 /* CGDirectPalette.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGDirectPalette.h; path = /Developer/Headers/FlatCarbon/CGDirectPalette.h; sourceTree = "<absolute>"; };
+		6431B2E10A47418000024067 /* CGError.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGError.h; path = /Developer/Headers/FlatCarbon/CGError.h; sourceTree = "<absolute>"; };
+		6431B2E20A47418000024067 /* CGFont.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGFont.h; path = /Developer/Headers/FlatCarbon/CGFont.h; sourceTree = "<absolute>"; };
+		6431B2E30A47418000024067 /* CGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGGeometry.h; path = /Developer/Headers/FlatCarbon/CGGeometry.h; sourceTree = "<absolute>"; };
+		6431B2E40A47418000024067 /* CGImage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGImage.h; path = /Developer/Headers/FlatCarbon/CGImage.h; sourceTree = "<absolute>"; };
+		6431B2E50A47418000024067 /* CGPattern.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPattern.h; path = /Developer/Headers/FlatCarbon/CGPattern.h; sourceTree = "<absolute>"; };
+		6431B2E60A47418000024067 /* CGPDFContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPDFContext.h; path = /Developer/Headers/FlatCarbon/CGPDFContext.h; sourceTree = "<absolute>"; };
+		6431B2E70A47418000024067 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGPDFDocument.h; path = /Developer/Headers/FlatCarbon/CGPDFDocument.h; sourceTree = "<absolute>"; };
+		6431B2E80A47418000024067 /* CGRemoteOperation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGRemoteOperation.h; path = /Developer/Headers/FlatCarbon/CGRemoteOperation.h; sourceTree = "<absolute>"; };
+		6431B2E90A47418000024067 /* CGWindowLevel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CGWindowLevel.h; path = /Developer/Headers/FlatCarbon/CGWindowLevel.h; sourceTree = "<absolute>"; };
+		6431B2EA0A47418000024067 /* CMAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMAcceleration.h; path = /Developer/Headers/FlatCarbon/CMAcceleration.h; sourceTree = "<absolute>"; };
+		6431B2EB0A47418000024067 /* CMApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMApplication.h; path = /Developer/Headers/FlatCarbon/CMApplication.h; sourceTree = "<absolute>"; };
+		6431B2EC0A47418000024067 /* CMCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMCalibrator.h; path = /Developer/Headers/FlatCarbon/CMCalibrator.h; sourceTree = "<absolute>"; };
+		6431B2ED0A47418000024067 /* CMComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMComponent.h; path = /Developer/Headers/FlatCarbon/CMComponent.h; sourceTree = "<absolute>"; };
+		6431B2EE0A47418000024067 /* CMConversions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMConversions.h; path = /Developer/Headers/FlatCarbon/CMConversions.h; sourceTree = "<absolute>"; };
+		6431B2EF0A47418000024067 /* CMDeviceIntegration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMDeviceIntegration.h; path = /Developer/Headers/FlatCarbon/CMDeviceIntegration.h; sourceTree = "<absolute>"; };
+		6431B2F00A47418000024067 /* CMICCProfile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMICCProfile.h; path = /Developer/Headers/FlatCarbon/CMICCProfile.h; sourceTree = "<absolute>"; };
+		6431B2F10A47418000024067 /* CMMComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMMComponent.h; path = /Developer/Headers/FlatCarbon/CMMComponent.h; sourceTree = "<absolute>"; };
+		6431B2F20A47418000024067 /* CMPRComponent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMPRComponent.h; path = /Developer/Headers/FlatCarbon/CMPRComponent.h; sourceTree = "<absolute>"; };
+		6431B2F30A47418000024067 /* CMScriptingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMScriptingPlugin.h; path = /Developer/Headers/FlatCarbon/CMScriptingPlugin.h; sourceTree = "<absolute>"; };
+		6431B2F40A47418000024067 /* CMTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CMTypes.h; path = /Developer/Headers/FlatCarbon/CMTypes.h; sourceTree = "<absolute>"; };
+		6431B2F50A47418000024067 /* CodeFragments.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CodeFragments.h; path = /Developer/Headers/FlatCarbon/CodeFragments.h; sourceTree = "<absolute>"; };
+		6431B2F60A47418000024067 /* CodeFragments.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CodeFragments.r; path = /Developer/Headers/FlatCarbon/CodeFragments.r; sourceTree = "<absolute>"; };
+		6431B2F70A47418000024067 /* CodeFragmentTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CodeFragmentTypes.r; path = /Developer/Headers/FlatCarbon/CodeFragmentTypes.r; sourceTree = "<absolute>"; };
+		6431B2F80A47418000024067 /* Collections.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Collections.h; path = /Developer/Headers/FlatCarbon/Collections.h; sourceTree = "<absolute>"; };
+		6431B2F90A47418000024067 /* Collections.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Collections.r; path = /Developer/Headers/FlatCarbon/Collections.r; sourceTree = "<absolute>"; };
+		6431B2FA0A47418000024067 /* ColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ColorPicker.h; path = /Developer/Headers/FlatCarbon/ColorPicker.h; sourceTree = "<absolute>"; };
+		6431B2FB0A47418000024067 /* ColorPickerComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ColorPickerComponents.h; path = /Developer/Headers/FlatCarbon/ColorPickerComponents.h; sourceTree = "<absolute>"; };
+		6431B2FC0A47418000024067 /* CommResources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CommResources.h; path = /Developer/Headers/FlatCarbon/CommResources.h; sourceTree = "<absolute>"; };
+		6431B2FD0A47418000024067 /* CommResources.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CommResources.r; path = /Developer/Headers/FlatCarbon/CommResources.r; sourceTree = "<absolute>"; };
+		6431B2FE0A47418000024067 /* Components.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Components.h; path = /Developer/Headers/FlatCarbon/Components.h; sourceTree = "<absolute>"; };
+		6431B2FF0A47418000024067 /* Components.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Components.k.h; path = /Developer/Headers/FlatCarbon/Components.k.h; sourceTree = "<absolute>"; };
+		6431B3000A47418000024067 /* Components.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Components.r; path = /Developer/Headers/FlatCarbon/Components.r; sourceTree = "<absolute>"; };
+		6431B3010A47418000024067 /* ConditionalMacros.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ConditionalMacros.h; path = /Developer/Headers/FlatCarbon/ConditionalMacros.h; sourceTree = "<absolute>"; };
+		6431B3020A47418000024067 /* ConditionalMacros.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ConditionalMacros.r; path = /Developer/Headers/FlatCarbon/ConditionalMacros.r; sourceTree = "<absolute>"; };
+		6431B3030A47418000024067 /* Connections.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Connections.h; path = /Developer/Headers/FlatCarbon/Connections.h; sourceTree = "<absolute>"; };
+		6431B3040A47418000024067 /* ConnectionTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ConnectionTools.h; path = /Developer/Headers/FlatCarbon/ConnectionTools.h; sourceTree = "<absolute>"; };
+		6431B3050A47418000024067 /* ControlDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ControlDefinitions.h; path = /Developer/Headers/FlatCarbon/ControlDefinitions.h; sourceTree = "<absolute>"; };
+		6431B3060A47418000024067 /* ControlDefinitions.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ControlDefinitions.r; path = /Developer/Headers/FlatCarbon/ControlDefinitions.r; sourceTree = "<absolute>"; };
+		6431B3070A47418000024067 /* Controls.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Controls.h; path = /Developer/Headers/FlatCarbon/Controls.h; sourceTree = "<absolute>"; };
+		6431B3080A47418000024067 /* Controls.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Controls.r; path = /Developer/Headers/FlatCarbon/Controls.r; sourceTree = "<absolute>"; };
+		6431B3090A47418000024067 /* ControlStrip.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ControlStrip.h; path = /Developer/Headers/FlatCarbon/ControlStrip.h; sourceTree = "<absolute>"; };
+		6431B30A0A47418000024067 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CoreServices.h; path = /Developer/Headers/FlatCarbon/CoreServices.h; sourceTree = "<absolute>"; };
+		6431B30B0A47418000024067 /* CoreServices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = CoreServices.r; path = /Developer/Headers/FlatCarbon/CoreServices.r; sourceTree = "<absolute>"; };
+		6431B30C0A47418000024067 /* CRMSerialDevices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CRMSerialDevices.h; path = /Developer/Headers/FlatCarbon/CRMSerialDevices.h; sourceTree = "<absolute>"; };
+		6431B30D0A47418000024067 /* CryptoMessageSyntax.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CryptoMessageSyntax.h; path = /Developer/Headers/FlatCarbon/CryptoMessageSyntax.h; sourceTree = "<absolute>"; };
+		6431B30E0A47418000024067 /* CTBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CTBUtilities.h; path = /Developer/Headers/FlatCarbon/CTBUtilities.h; sourceTree = "<absolute>"; };
+		6431B30F0A47418000024067 /* CursorDevices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CursorDevices.h; path = /Developer/Headers/FlatCarbon/CursorDevices.h; sourceTree = "<absolute>"; };
+		6431B3100A47418000024067 /* DatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DatabaseAccess.h; path = /Developer/Headers/FlatCarbon/DatabaseAccess.h; sourceTree = "<absolute>"; };
+		6431B3110A47418000024067 /* DatabaseAccess.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = DatabaseAccess.r; path = /Developer/Headers/FlatCarbon/DatabaseAccess.r; sourceTree = "<absolute>"; };
+		6431B3120A47418000024067 /* DateTimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DateTimeUtils.h; path = /Developer/Headers/FlatCarbon/DateTimeUtils.h; sourceTree = "<absolute>"; };
+		6431B3130A47418000024067 /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Debugging.h; path = /Developer/Headers/FlatCarbon/Debugging.h; sourceTree = "<absolute>"; };
+		6431B3140A47418000024067 /* DeskBus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeskBus.h; path = /Developer/Headers/FlatCarbon/DeskBus.h; sourceTree = "<absolute>"; };
+		6431B3150A47418000024067 /* DesktopPrinting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DesktopPrinting.h; path = /Developer/Headers/FlatCarbon/DesktopPrinting.h; sourceTree = "<absolute>"; };
+		6431B3160A47418000024067 /* DesktopPrinting.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = DesktopPrinting.r; path = /Developer/Headers/FlatCarbon/DesktopPrinting.r; sourceTree = "<absolute>"; };
+		6431B3170A47418000024067 /* DeviceControl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeviceControl.h; path = /Developer/Headers/FlatCarbon/DeviceControl.h; sourceTree = "<absolute>"; };
+		6431B3180A47418000024067 /* DeviceControl.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DeviceControl.k.h; path = /Developer/Headers/FlatCarbon/DeviceControl.k.h; sourceTree = "<absolute>"; };
+		6431B3190A47418000024067 /* Devices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Devices.h; path = /Developer/Headers/FlatCarbon/Devices.h; sourceTree = "<absolute>"; };
+		6431B31A0A47418000024067 /* Devices.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Devices.r; path = /Developer/Headers/FlatCarbon/Devices.r; sourceTree = "<absolute>"; };
+		6431B31B0A47418000024067 /* Dialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Dialogs.h; path = /Developer/Headers/FlatCarbon/Dialogs.h; sourceTree = "<absolute>"; };
+		6431B31C0A47418000024067 /* Dialogs.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Dialogs.r; path = /Developer/Headers/FlatCarbon/Dialogs.r; sourceTree = "<absolute>"; };
+		6431B31D0A47418000024067 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Dictionary.h; path = /Developer/Headers/FlatCarbon/Dictionary.h; sourceTree = "<absolute>"; };
+		6431B31E0A47418000024067 /* DiskInit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DiskInit.h; path = /Developer/Headers/FlatCarbon/DiskInit.h; sourceTree = "<absolute>"; };
+		6431B31F0A47418000024067 /* Disks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Disks.h; path = /Developer/Headers/FlatCarbon/Disks.h; sourceTree = "<absolute>"; };
+		6431B3200A47418000024067 /* Displays.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Displays.h; path = /Developer/Headers/FlatCarbon/Displays.h; sourceTree = "<absolute>"; };
+		6431B3210A47418000024067 /* Displays.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Displays.r; path = /Developer/Headers/FlatCarbon/Displays.r; sourceTree = "<absolute>"; };
+		6431B3220A47418000024067 /* Drag.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Drag.h; path = /Developer/Headers/FlatCarbon/Drag.h; sourceTree = "<absolute>"; };
+		6431B3230A47418000024067 /* DrawSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DrawSprocket.h; path = /Developer/Headers/FlatCarbon/DrawSprocket.h; sourceTree = "<absolute>"; };
+		6431B3240A47418000024067 /* DriverFamilyMatching.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverFamilyMatching.h; path = /Developer/Headers/FlatCarbon/DriverFamilyMatching.h; sourceTree = "<absolute>"; };
+		6431B3250A47418000024067 /* DriverGestalt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverGestalt.h; path = /Developer/Headers/FlatCarbon/DriverGestalt.h; sourceTree = "<absolute>"; };
+		6431B3260A47418000024067 /* DriverServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverServices.h; path = /Developer/Headers/FlatCarbon/DriverServices.h; sourceTree = "<absolute>"; };
+		6431B3270A47418000024067 /* DriverSupport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverSupport.h; path = /Developer/Headers/FlatCarbon/DriverSupport.h; sourceTree = "<absolute>"; };
+		6431B3280A47418000024067 /* DriverSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DriverSynchronization.h; path = /Developer/Headers/FlatCarbon/DriverSynchronization.h; sourceTree = "<absolute>"; };
+		6431B3290A47418000024067 /* Editions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Editions.h; path = /Developer/Headers/FlatCarbon/Editions.h; sourceTree = "<absolute>"; };
+		6431B32A0A47418000024067 /* Endian.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Endian.h; path = /Developer/Headers/FlatCarbon/Endian.h; sourceTree = "<absolute>"; };
+		6431B32B0A47418000024067 /* ENET.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ENET.h; path = /Developer/Headers/FlatCarbon/ENET.h; sourceTree = "<absolute>"; };
+		6431B32C0A47418000024067 /* EPPC.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = EPPC.h; path = /Developer/Headers/FlatCarbon/EPPC.h; sourceTree = "<absolute>"; };
+		6431B32D0A47418000024067 /* EPPC.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = EPPC.r; path = /Developer/Headers/FlatCarbon/EPPC.r; sourceTree = "<absolute>"; };
+		6431B32E0A47418000024067 /* Errors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Errors.h; path = /Developer/Headers/FlatCarbon/Errors.h; sourceTree = "<absolute>"; };
+		6431B32F0A47418000024067 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Events.h; path = /Developer/Headers/FlatCarbon/Events.h; sourceTree = "<absolute>"; };
+		6431B3300A47418000024067 /* Files.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Files.h; path = /Developer/Headers/FlatCarbon/Files.h; sourceTree = "<absolute>"; };
+		6431B3310A47418000024067 /* FileSigning.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileSigning.h; path = /Developer/Headers/FlatCarbon/FileSigning.h; sourceTree = "<absolute>"; };
+		6431B3320A47418000024067 /* FileTransfers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTransfers.h; path = /Developer/Headers/FlatCarbon/FileTransfers.h; sourceTree = "<absolute>"; };
+		6431B3330A47418000024067 /* FileTransferTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTransferTools.h; path = /Developer/Headers/FlatCarbon/FileTransferTools.h; sourceTree = "<absolute>"; };
+		6431B3340A47418000024067 /* FileTypesAndCreators.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FileTypesAndCreators.h; path = /Developer/Headers/FlatCarbon/FileTypesAndCreators.h; sourceTree = "<absolute>"; };
+		6431B3350A47418000024067 /* FileTypesAndCreators.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = FileTypesAndCreators.r; path = /Developer/Headers/FlatCarbon/FileTypesAndCreators.r; sourceTree = "<absolute>"; };
+		6431B3360A47418000024067 /* FindByContent.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FindByContent.h; path = /Developer/Headers/FlatCarbon/FindByContent.h; sourceTree = "<absolute>"; };
+		6431B3370A47418000024067 /* Finder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Finder.h; path = /Developer/Headers/FlatCarbon/Finder.h; sourceTree = "<absolute>"; };
+		6431B3380A47418000024067 /* Finder.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Finder.r; path = /Developer/Headers/FlatCarbon/Finder.r; sourceTree = "<absolute>"; };
+		6431B3390A47418000024067 /* FinderRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FinderRegistry.h; path = /Developer/Headers/FlatCarbon/FinderRegistry.h; sourceTree = "<absolute>"; };
+		6431B33A0A47418000024067 /* FinderRegistry.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = FinderRegistry.r; path = /Developer/Headers/FlatCarbon/FinderRegistry.r; sourceTree = "<absolute>"; };
+		6431B33B0A47418000024067 /* FixMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FixMath.h; path = /Developer/Headers/FlatCarbon/FixMath.h; sourceTree = "<absolute>"; };
+		6431B33C0A47418000024067 /* Folders.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Folders.h; path = /Developer/Headers/FlatCarbon/Folders.h; sourceTree = "<absolute>"; };
+		6431B33D0A47418000024067 /* Folders.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Folders.r; path = /Developer/Headers/FlatCarbon/Folders.r; sourceTree = "<absolute>"; };
+		6431B33E0A47418000024067 /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Fonts.h; path = /Developer/Headers/FlatCarbon/Fonts.h; sourceTree = "<absolute>"; };
+		6431B33F0A47418000024067 /* Fonts.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Fonts.r; path = /Developer/Headers/FlatCarbon/Fonts.r; sourceTree = "<absolute>"; };
+		6431B3400A47418000024067 /* FontSync.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FontSync.h; path = /Developer/Headers/FlatCarbon/FontSync.h; sourceTree = "<absolute>"; };
+		6431B3410A47418000024067 /* fp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = fp.h; path = /Developer/Headers/FlatCarbon/fp.h; sourceTree = "<absolute>"; };
+		6431B3420A47418000024067 /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = FSM.h; path = /Developer/Headers/FlatCarbon/FSM.h; sourceTree = "<absolute>"; };
+		6431B3430A47418000024067 /* Gestalt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Gestalt.h; path = /Developer/Headers/FlatCarbon/Gestalt.h; sourceTree = "<absolute>"; };
+		6431B3440A47418000024067 /* Gestalt.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Gestalt.r; path = /Developer/Headers/FlatCarbon/Gestalt.r; sourceTree = "<absolute>"; };
+		6431B3450A47418000024067 /* GoggleSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GoggleSprocket.h; path = /Developer/Headers/FlatCarbon/GoggleSprocket.h; sourceTree = "<absolute>"; };
+		6431B3460A47418000024067 /* GXEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXEnvironment.h; path = /Developer/Headers/FlatCarbon/GXEnvironment.h; sourceTree = "<absolute>"; };
+		6431B3470A47418000024067 /* GXErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXErrors.h; path = /Developer/Headers/FlatCarbon/GXErrors.h; sourceTree = "<absolute>"; };
+		6431B3480A47418000024067 /* GXFonts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXFonts.h; path = /Developer/Headers/FlatCarbon/GXFonts.h; sourceTree = "<absolute>"; };
+		6431B3490A47418000024067 /* GXGraphics.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXGraphics.h; path = /Developer/Headers/FlatCarbon/GXGraphics.h; sourceTree = "<absolute>"; };
+		6431B34A0A47418000024067 /* GXLayout.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXLayout.h; path = /Developer/Headers/FlatCarbon/GXLayout.h; sourceTree = "<absolute>"; };
+		6431B34B0A47418000024067 /* GXMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXMath.h; path = /Developer/Headers/FlatCarbon/GXMath.h; sourceTree = "<absolute>"; };
+		6431B34C0A47418000024067 /* GXMessages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXMessages.h; path = /Developer/Headers/FlatCarbon/GXMessages.h; sourceTree = "<absolute>"; };
+		6431B34D0A47418000024067 /* GXPrinterDrivers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXPrinterDrivers.h; path = /Developer/Headers/FlatCarbon/GXPrinterDrivers.h; sourceTree = "<absolute>"; };
+		6431B34E0A47418000024067 /* GXPrinting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXPrinting.h; path = /Developer/Headers/FlatCarbon/GXPrinting.h; sourceTree = "<absolute>"; };
+		6431B34F0A47418000024067 /* GXTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GXTypes.h; path = /Developer/Headers/FlatCarbon/GXTypes.h; sourceTree = "<absolute>"; };
+		6431B3500A47418000024067 /* HFSVolumes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HFSVolumes.h; path = /Developer/Headers/FlatCarbon/HFSVolumes.h; sourceTree = "<absolute>"; };
+		6431B3510A47418000024067 /* HID.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HID.h; path = /Developer/Headers/FlatCarbon/HID.h; sourceTree = "<absolute>"; };
+		6431B3520A47418000024067 /* HTMLRendering.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HTMLRendering.h; path = /Developer/Headers/FlatCarbon/HTMLRendering.h; sourceTree = "<absolute>"; };
+		6431B3530A47418000024067 /* HyperXCmd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = HyperXCmd.h; path = /Developer/Headers/FlatCarbon/HyperXCmd.h; sourceTree = "<absolute>"; };
+		6431B3540A47418000024067 /* IAExtractor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IAExtractor.h; path = /Developer/Headers/FlatCarbon/IAExtractor.h; sourceTree = "<absolute>"; };
+		6431B3550A47418000024067 /* IAExtractor.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IAExtractor.r; path = /Developer/Headers/FlatCarbon/IAExtractor.r; sourceTree = "<absolute>"; };
+		6431B3560A47418000024067 /* IBCarbonRuntime.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IBCarbonRuntime.h; path = /Developer/Headers/FlatCarbon/IBCarbonRuntime.h; sourceTree = "<absolute>"; };
+		6431B3570A47418000024067 /* ICAApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICAApplication.h; path = /Developer/Headers/FlatCarbon/ICAApplication.h; sourceTree = "<absolute>"; };
+		6431B3580A47418000024067 /* ICACamera.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICACamera.h; path = /Developer/Headers/FlatCarbon/ICACamera.h; sourceTree = "<absolute>"; };
+		6431B3590A47418000024067 /* ICADevice.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ICADevice.h; path = /Developer/Headers/FlatCarbon/ICADevice.h; sourceTree = "<absolute>"; };
+		6431B35A0A47418000024067 /* Icons.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Icons.h; path = /Developer/Headers/FlatCarbon/Icons.h; sourceTree = "<absolute>"; };
+		6431B35B0A47418000024067 /* Icons.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Icons.r; path = /Developer/Headers/FlatCarbon/Icons.r; sourceTree = "<absolute>"; };
+		6431B35C0A47418000024067 /* ImageCodec.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCodec.h; path = /Developer/Headers/FlatCarbon/ImageCodec.h; sourceTree = "<absolute>"; };
+		6431B35D0A47418000024067 /* ImageCodec.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCodec.k.h; path = /Developer/Headers/FlatCarbon/ImageCodec.k.h; sourceTree = "<absolute>"; };
+		6431B35E0A47418000024067 /* ImageCodec.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ImageCodec.r; path = /Developer/Headers/FlatCarbon/ImageCodec.r; sourceTree = "<absolute>"; };
+		6431B35F0A47418000024067 /* ImageCompression.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCompression.h; path = /Developer/Headers/FlatCarbon/ImageCompression.h; sourceTree = "<absolute>"; };
+		6431B3600A47418000024067 /* ImageCompression.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ImageCompression.k.h; path = /Developer/Headers/FlatCarbon/ImageCompression.k.h; sourceTree = "<absolute>"; };
+		6431B3610A47418000024067 /* ImageCompression.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = ImageCompression.r; path = /Developer/Headers/FlatCarbon/ImageCompression.r; sourceTree = "<absolute>"; };
+		6431B3620A47418000024067 /* InputSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = InputSprocket.h; path = /Developer/Headers/FlatCarbon/InputSprocket.h; sourceTree = "<absolute>"; };
+		6431B3630A47418000024067 /* InputSprocket.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = InputSprocket.r; path = /Developer/Headers/FlatCarbon/InputSprocket.r; sourceTree = "<absolute>"; };
+		6431B3640A47418000024067 /* InternetConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = InternetConfig.h; path = /Developer/Headers/FlatCarbon/InternetConfig.h; sourceTree = "<absolute>"; };
+		6431B3650A47418000024067 /* Interrupts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Interrupts.h; path = /Developer/Headers/FlatCarbon/Interrupts.h; sourceTree = "<absolute>"; };
+		6431B3660A47418000024067 /* IntlResources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IntlResources.h; path = /Developer/Headers/FlatCarbon/IntlResources.h; sourceTree = "<absolute>"; };
+		6431B3670A47418000024067 /* IntlResources.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IntlResources.r; path = /Developer/Headers/FlatCarbon/IntlResources.r; sourceTree = "<absolute>"; };
+		6431B3680A47418000024067 /* IsochronousDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IsochronousDataHandler.h; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.h; sourceTree = "<absolute>"; };
+		6431B3690A47418000024067 /* IsochronousDataHandler.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = IsochronousDataHandler.k.h; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.k.h; sourceTree = "<absolute>"; };
+		6431B36A0A47418000024067 /* IsochronousDataHandler.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = IsochronousDataHandler.r; path = /Developer/Headers/FlatCarbon/IsochronousDataHandler.r; sourceTree = "<absolute>"; };
+		6431B36B0A47418000024067 /* JManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = JManager.h; path = /Developer/Headers/FlatCarbon/JManager.h; sourceTree = "<absolute>"; };
+		6431B36C0A47418000024067 /* Kernel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Kernel.h; path = /Developer/Headers/FlatCarbon/Kernel.h; sourceTree = "<absolute>"; };
+		6431B36D0A47418000024067 /* Keyboards.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Keyboards.h; path = /Developer/Headers/FlatCarbon/Keyboards.h; sourceTree = "<absolute>"; };
+		6431B36E0A47418000024067 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Keychain.h; path = /Developer/Headers/FlatCarbon/Keychain.h; sourceTree = "<absolute>"; };
+		6431B36F0A47418000024067 /* KeychainCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = KeychainCore.h; path = /Developer/Headers/FlatCarbon/KeychainCore.h; sourceTree = "<absolute>"; };
+		6431B3700A47418000024067 /* KeychainHI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = KeychainHI.h; path = /Developer/Headers/FlatCarbon/KeychainHI.h; sourceTree = "<absolute>"; };
+		6431B3710A47418000024067 /* LanguageAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LanguageAnalysis.h; path = /Developer/Headers/FlatCarbon/LanguageAnalysis.h; sourceTree = "<absolute>"; };
+		6431B3720A47418000024067 /* LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LaunchServices.h; path = /Developer/Headers/FlatCarbon/LaunchServices.h; sourceTree = "<absolute>"; };
+		6431B3730A47418000024067 /* Lists.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Lists.h; path = /Developer/Headers/FlatCarbon/Lists.h; sourceTree = "<absolute>"; };
+		6431B3740A47418000024067 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = /Developer/Headers/FlatCarbon/LocationManager.h; sourceTree = "<absolute>"; };
+		6431B3750A47418000024067 /* LocationManager.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LocationManager.k.h; path = /Developer/Headers/FlatCarbon/LocationManager.k.h; sourceTree = "<absolute>"; };
+		6431B3760A47418000024067 /* LocationManager.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = LocationManager.r; path = /Developer/Headers/FlatCarbon/LocationManager.r; sourceTree = "<absolute>"; };
+		6431B3770A47418000024067 /* LowMem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = LowMem.h; path = /Developer/Headers/FlatCarbon/LowMem.h; sourceTree = "<absolute>"; };
+		6431B3780A47418000024067 /* MacApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacApplication.h; path = /Developer/Headers/FlatCarbon/MacApplication.h; sourceTree = "<absolute>"; };
+		6431B3790A47418000024067 /* MacErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacErrors.h; path = /Developer/Headers/FlatCarbon/MacErrors.h; sourceTree = "<absolute>"; };
+		6431B37A0A47418000024067 /* MacHelp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacHelp.h; path = /Developer/Headers/FlatCarbon/MacHelp.h; sourceTree = "<absolute>"; };
+		6431B37B0A47418000024067 /* MachineExceptions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MachineExceptions.h; path = /Developer/Headers/FlatCarbon/MachineExceptions.h; sourceTree = "<absolute>"; };
+		6431B37C0A47418000024067 /* MacLocales.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacLocales.h; path = /Developer/Headers/FlatCarbon/MacLocales.h; sourceTree = "<absolute>"; };
+		6431B37D0A47418000024067 /* MacMemory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacMemory.h; path = /Developer/Headers/FlatCarbon/MacMemory.h; sourceTree = "<absolute>"; };
+		6431B37E0A47418000024067 /* MacTCP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTCP.h; path = /Developer/Headers/FlatCarbon/MacTCP.h; sourceTree = "<absolute>"; };
+		6431B37F0A47418000024067 /* MacTextEditor.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTextEditor.h; path = /Developer/Headers/FlatCarbon/MacTextEditor.h; sourceTree = "<absolute>"; };
+		6431B3800A47418000024067 /* MacTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacTypes.h; path = /Developer/Headers/FlatCarbon/MacTypes.h; sourceTree = "<absolute>"; };
+		6431B3810A47418000024067 /* MacTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MacTypes.r; path = /Developer/Headers/FlatCarbon/MacTypes.r; sourceTree = "<absolute>"; };
+		6431B3820A47418000024067 /* MacWindows.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MacWindows.h; path = /Developer/Headers/FlatCarbon/MacWindows.h; sourceTree = "<absolute>"; };
+		6431B3830A47418000024067 /* MacWindows.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MacWindows.r; path = /Developer/Headers/FlatCarbon/MacWindows.r; sourceTree = "<absolute>"; };
+		6431B3840A47418000024067 /* Math64.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Math64.h; path = /Developer/Headers/FlatCarbon/Math64.h; sourceTree = "<absolute>"; };
+		6431B3850A47418000024067 /* MediaHandlers.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MediaHandlers.h; path = /Developer/Headers/FlatCarbon/MediaHandlers.h; sourceTree = "<absolute>"; };
+		6431B3860A47418000024067 /* MediaHandlers.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MediaHandlers.k.h; path = /Developer/Headers/FlatCarbon/MediaHandlers.k.h; sourceTree = "<absolute>"; };
+		6431B3870A47418000024067 /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Memory.h; path = /Developer/Headers/FlatCarbon/Memory.h; sourceTree = "<absolute>"; };
+		6431B3880A47418000024067 /* Menus.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Menus.h; path = /Developer/Headers/FlatCarbon/Menus.h; sourceTree = "<absolute>"; };
+		6431B3890A47418000024067 /* Menus.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Menus.r; path = /Developer/Headers/FlatCarbon/Menus.r; sourceTree = "<absolute>"; };
+		6431B38A0A47418000024067 /* MIDI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MIDI.h; path = /Developer/Headers/FlatCarbon/MIDI.h; sourceTree = "<absolute>"; };
+		6431B38B0A47418000024067 /* MixedMode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MixedMode.h; path = /Developer/Headers/FlatCarbon/MixedMode.h; sourceTree = "<absolute>"; };
+		6431B38C0A47418000024067 /* MixedMode.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = MixedMode.r; path = /Developer/Headers/FlatCarbon/MixedMode.r; sourceTree = "<absolute>"; };
+		6431B38D0A47418000024067 /* Movies.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Movies.h; path = /Developer/Headers/FlatCarbon/Movies.h; sourceTree = "<absolute>"; };
+		6431B38E0A47418000024067 /* Movies.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Movies.k.h; path = /Developer/Headers/FlatCarbon/Movies.k.h; sourceTree = "<absolute>"; };
+		6431B38F0A47418000024067 /* MoviesFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MoviesFormat.h; path = /Developer/Headers/FlatCarbon/MoviesFormat.h; sourceTree = "<absolute>"; };
+		6431B3900A47418000024067 /* Multiprocessing.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Multiprocessing.h; path = /Developer/Headers/FlatCarbon/Multiprocessing.h; sourceTree = "<absolute>"; };
+		6431B3910A47418000024067 /* MultiprocessingInfo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = MultiprocessingInfo.h; path = /Developer/Headers/FlatCarbon/MultiprocessingInfo.h; sourceTree = "<absolute>"; };
+		6431B3920A47418000024067 /* NameRegistry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NameRegistry.h; path = /Developer/Headers/FlatCarbon/NameRegistry.h; sourceTree = "<absolute>"; };
+		6431B3930A47418000024067 /* Navigation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Navigation.h; path = /Developer/Headers/FlatCarbon/Navigation.h; sourceTree = "<absolute>"; };
+		6431B3940A47418000024067 /* NetSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NetSprocket.h; path = /Developer/Headers/FlatCarbon/NetSprocket.h; sourceTree = "<absolute>"; };
+		6431B3950A47418000024067 /* NetworkSetup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NetworkSetup.h; path = /Developer/Headers/FlatCarbon/NetworkSetup.h; sourceTree = "<absolute>"; };
+		6431B3960A47418000024067 /* NetworkSetup.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = NetworkSetup.r; path = /Developer/Headers/FlatCarbon/NetworkSetup.r; sourceTree = "<absolute>"; };
+		6431B3970A47418000024067 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Notification.h; path = /Developer/Headers/FlatCarbon/Notification.h; sourceTree = "<absolute>"; };
+		6431B3980A47418000024067 /* NSL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NSL.h; path = /Developer/Headers/FlatCarbon/NSL.h; sourceTree = "<absolute>"; };
+		6431B3990A47418000024067 /* NSLCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NSLCore.h; path = /Developer/Headers/FlatCarbon/NSLCore.h; sourceTree = "<absolute>"; };
+		6431B39A0A47418000024067 /* NumberFormatting.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NumberFormatting.h; path = /Developer/Headers/FlatCarbon/NumberFormatting.h; sourceTree = "<absolute>"; };
+		6431B39B0A47418000024067 /* OpenTptAppleTalk.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptAppleTalk.h; path = /Developer/Headers/FlatCarbon/OpenTptAppleTalk.h; sourceTree = "<absolute>"; };
+		6431B39C0A47418000024067 /* OpenTptClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptClient.h; path = /Developer/Headers/FlatCarbon/OpenTptClient.h; sourceTree = "<absolute>"; };
+		6431B39D0A47418000024067 /* OpenTptCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptCommon.h; path = /Developer/Headers/FlatCarbon/OpenTptCommon.h; sourceTree = "<absolute>"; };
+		6431B39E0A47418000024067 /* OpenTptConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptConfig.h; path = /Developer/Headers/FlatCarbon/OpenTptConfig.h; sourceTree = "<absolute>"; };
+		6431B39F0A47418000024067 /* OpenTptDevLinks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptDevLinks.h; path = /Developer/Headers/FlatCarbon/OpenTptDevLinks.h; sourceTree = "<absolute>"; };
+		6431B3A00A47418000024067 /* OpenTptGlobalNew.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptGlobalNew.h; path = /Developer/Headers/FlatCarbon/OpenTptGlobalNew.h; sourceTree = "<absolute>"; };
+		6431B3A10A47418000024067 /* OpenTptInternet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptInternet.h; path = /Developer/Headers/FlatCarbon/OpenTptInternet.h; sourceTree = "<absolute>"; };
+		6431B3A20A47418000024067 /* OpenTptISDN.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptISDN.h; path = /Developer/Headers/FlatCarbon/OpenTptISDN.h; sourceTree = "<absolute>"; };
+		6431B3A30A47418000024067 /* OpenTptLinks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptLinks.h; path = /Developer/Headers/FlatCarbon/OpenTptLinks.h; sourceTree = "<absolute>"; };
+		6431B3A40A47418000024067 /* OpenTptModule.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptModule.h; path = /Developer/Headers/FlatCarbon/OpenTptModule.h; sourceTree = "<absolute>"; };
+		6431B3A50A47418000024067 /* OpenTptPCISupport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptPCISupport.h; path = /Developer/Headers/FlatCarbon/OpenTptPCISupport.h; sourceTree = "<absolute>"; };
+		6431B3A60A47418000024067 /* OpenTptSerial.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptSerial.h; path = /Developer/Headers/FlatCarbon/OpenTptSerial.h; sourceTree = "<absolute>"; };
+		6431B3A70A47418000024067 /* OpenTptXTI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTptXTI.h; path = /Developer/Headers/FlatCarbon/OpenTptXTI.h; sourceTree = "<absolute>"; };
+		6431B3A80A47418000024067 /* OpenTransport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransport.h; path = /Developer/Headers/FlatCarbon/OpenTransport.h; sourceTree = "<absolute>"; };
+		6431B3A90A47418000024067 /* OpenTransport.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransport.r; path = /Developer/Headers/FlatCarbon/OpenTransport.r; sourceTree = "<absolute>"; };
+		6431B3AA0A47418000024067 /* OpenTransportKernel.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportKernel.h; path = /Developer/Headers/FlatCarbon/OpenTransportKernel.h; sourceTree = "<absolute>"; };
+		6431B3AB0A47418000024067 /* OpenTransportKernel.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportKernel.r; path = /Developer/Headers/FlatCarbon/OpenTransportKernel.r; sourceTree = "<absolute>"; };
+		6431B3AC0A47418000024067 /* OpenTransportProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportProtocol.h; path = /Developer/Headers/FlatCarbon/OpenTransportProtocol.h; sourceTree = "<absolute>"; };
+		6431B3AD0A47418000024067 /* OpenTransportProtocol.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportProtocol.r; path = /Developer/Headers/FlatCarbon/OpenTransportProtocol.r; sourceTree = "<absolute>"; };
+		6431B3AE0A47418000024067 /* OpenTransportProviders.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportProviders.h; path = /Developer/Headers/FlatCarbon/OpenTransportProviders.h; sourceTree = "<absolute>"; };
+		6431B3AF0A47418000024067 /* OpenTransportProviders.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OpenTransportProviders.r; path = /Developer/Headers/FlatCarbon/OpenTransportProviders.r; sourceTree = "<absolute>"; };
+		6431B3B00A47418000024067 /* OpenTransportUNIX.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OpenTransportUNIX.h; path = /Developer/Headers/FlatCarbon/OpenTransportUNIX.h; sourceTree = "<absolute>"; };
+		6431B3B10A47418000024067 /* OSA.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSA.h; path = /Developer/Headers/FlatCarbon/OSA.h; sourceTree = "<absolute>"; };
+		6431B3B20A47418000024067 /* OSA.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSA.k.h; path = /Developer/Headers/FlatCarbon/OSA.k.h; sourceTree = "<absolute>"; };
+		6431B3B30A47418000024067 /* OSAComp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSAComp.h; path = /Developer/Headers/FlatCarbon/OSAComp.h; sourceTree = "<absolute>"; };
+		6431B3B40A47418000024067 /* OSAGeneric.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSAGeneric.h; path = /Developer/Headers/FlatCarbon/OSAGeneric.h; sourceTree = "<absolute>"; };
+		6431B3B50A47418000024067 /* OSUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = OSUtils.h; path = /Developer/Headers/FlatCarbon/OSUtils.h; sourceTree = "<absolute>"; };
+		6431B3B60A47418000024067 /* OSUtils.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OSUtils.r; path = /Developer/Headers/FlatCarbon/OSUtils.r; sourceTree = "<absolute>"; };
+		6431B3B70A47418000024067 /* OTConfig.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = OTConfig.r; path = /Developer/Headers/FlatCarbon/OTConfig.r; sourceTree = "<absolute>"; };
+		6431B3B80A47418000024067 /* Packages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Packages.h; path = /Developer/Headers/FlatCarbon/Packages.h; sourceTree = "<absolute>"; };
+		6431B3B90A47418000024067 /* Palettes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Palettes.h; path = /Developer/Headers/FlatCarbon/Palettes.h; sourceTree = "<absolute>"; };
+		6431B3BA0A47418000024067 /* Palettes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Palettes.r; path = /Developer/Headers/FlatCarbon/Palettes.r; sourceTree = "<absolute>"; };
+		6431B3BB0A47418000024067 /* Patches.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Patches.h; path = /Developer/Headers/FlatCarbon/Patches.h; sourceTree = "<absolute>"; };
+		6431B3BC0A47418000024067 /* PCCard.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCard.h; path = /Developer/Headers/FlatCarbon/PCCard.h; sourceTree = "<absolute>"; };
+		6431B3BD0A47418000024067 /* PCCardAdapterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardAdapterPlugin.h; path = /Developer/Headers/FlatCarbon/PCCardAdapterPlugin.h; sourceTree = "<absolute>"; };
+		6431B3BE0A47418000024067 /* PCCardEnablerPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardEnablerPlugin.h; path = /Developer/Headers/FlatCarbon/PCCardEnablerPlugin.h; sourceTree = "<absolute>"; };
+		6431B3BF0A47418000024067 /* PCCardEnablerPlugin.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PCCardEnablerPlugin.r; path = /Developer/Headers/FlatCarbon/PCCardEnablerPlugin.r; sourceTree = "<absolute>"; };
+		6431B3C00A47418000024067 /* PCCardTuples.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCCardTuples.h; path = /Developer/Headers/FlatCarbon/PCCardTuples.h; sourceTree = "<absolute>"; };
+		6431B3C10A47418000024067 /* PCI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PCI.h; path = /Developer/Headers/FlatCarbon/PCI.h; sourceTree = "<absolute>"; };
+		6431B3C20A47418000024067 /* PEFBinaryFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PEFBinaryFormat.h; path = /Developer/Headers/FlatCarbon/PEFBinaryFormat.h; sourceTree = "<absolute>"; };
+		6431B3C30A47418000024067 /* Pict.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Pict.r; path = /Developer/Headers/FlatCarbon/Pict.r; sourceTree = "<absolute>"; };
+		6431B3C40A47418000024067 /* PictUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PictUtils.h; path = /Developer/Headers/FlatCarbon/PictUtils.h; sourceTree = "<absolute>"; };
+		6431B3C50A47418000024067 /* PictUtils.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PictUtils.r; path = /Developer/Headers/FlatCarbon/PictUtils.r; sourceTree = "<absolute>"; };
+		6431B3C60A47418000024067 /* PLStringFuncs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PLStringFuncs.h; path = /Developer/Headers/FlatCarbon/PLStringFuncs.h; sourceTree = "<absolute>"; };
+		6431B3C70A47418000024067 /* PMApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMApplication.h; path = /Developer/Headers/FlatCarbon/PMApplication.h; sourceTree = "<absolute>"; };
+		6431B3C80A47418000024067 /* PMCore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMCore.h; path = /Developer/Headers/FlatCarbon/PMCore.h; sourceTree = "<absolute>"; };
+		6431B3C90A47418000024067 /* PMDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PMDefinitions.h; path = /Developer/Headers/FlatCarbon/PMDefinitions.h; sourceTree = "<absolute>"; };
+		6431B3CA0A47418000024067 /* Power.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Power.h; path = /Developer/Headers/FlatCarbon/Power.h; sourceTree = "<absolute>"; };
+		6431B3CB0A47418000024067 /* PPCToolbox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = PPCToolbox.h; path = /Developer/Headers/FlatCarbon/PPCToolbox.h; sourceTree = "<absolute>"; };
+		6431B3CC0A47418000024067 /* PPCToolbox.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = PPCToolbox.r; path = /Developer/Headers/FlatCarbon/PPCToolbox.r; sourceTree = "<absolute>"; };
+		6431B3CD0A47418000024067 /* Printing.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Printing.h; path = /Developer/Headers/FlatCarbon/Printing.h; sourceTree = "<absolute>"; };
+		6431B3CE0A47418000024067 /* Processes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Processes.h; path = /Developer/Headers/FlatCarbon/Processes.h; sourceTree = "<absolute>"; };
+		6431B3CF0A47418000024067 /* Processes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Processes.r; path = /Developer/Headers/FlatCarbon/Processes.r; sourceTree = "<absolute>"; };
+		6431B3D00A47418000024067 /* QD3D.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3D.h; path = /Developer/Headers/FlatCarbon/QD3D.h; sourceTree = "<absolute>"; };
+		6431B3D10A47418000024067 /* QD3DAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DAcceleration.h; path = /Developer/Headers/FlatCarbon/QD3DAcceleration.h; sourceTree = "<absolute>"; };
+		6431B3D20A47418000024067 /* QD3DCamera.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DCamera.h; path = /Developer/Headers/FlatCarbon/QD3DCamera.h; sourceTree = "<absolute>"; };
+		6431B3D30A47418000024067 /* QD3DController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DController.h; path = /Developer/Headers/FlatCarbon/QD3DController.h; sourceTree = "<absolute>"; };
+		6431B3D40A47418000024067 /* QD3DCustomElements.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DCustomElements.h; path = /Developer/Headers/FlatCarbon/QD3DCustomElements.h; sourceTree = "<absolute>"; };
+		6431B3D50A47418000024067 /* QD3DDrawContext.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DDrawContext.h; path = /Developer/Headers/FlatCarbon/QD3DDrawContext.h; sourceTree = "<absolute>"; };
+		6431B3D60A47418000024067 /* QD3DErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DErrors.h; path = /Developer/Headers/FlatCarbon/QD3DErrors.h; sourceTree = "<absolute>"; };
+		6431B3D70A47418000024067 /* QD3DExtension.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DExtension.h; path = /Developer/Headers/FlatCarbon/QD3DExtension.h; sourceTree = "<absolute>"; };
+		6431B3D80A47418000024067 /* QD3DGeometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DGeometry.h; path = /Developer/Headers/FlatCarbon/QD3DGeometry.h; sourceTree = "<absolute>"; };
+		6431B3D90A47418000024067 /* QD3DGroup.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DGroup.h; path = /Developer/Headers/FlatCarbon/QD3DGroup.h; sourceTree = "<absolute>"; };
+		6431B3DA0A47418000024067 /* QD3DIO.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DIO.h; path = /Developer/Headers/FlatCarbon/QD3DIO.h; sourceTree = "<absolute>"; };
+		6431B3DB0A47418000024067 /* QD3DLight.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DLight.h; path = /Developer/Headers/FlatCarbon/QD3DLight.h; sourceTree = "<absolute>"; };
+		6431B3DC0A47418000024067 /* QD3DMath.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DMath.h; path = /Developer/Headers/FlatCarbon/QD3DMath.h; sourceTree = "<absolute>"; };
+		6431B3DD0A47418000024067 /* QD3DPick.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DPick.h; path = /Developer/Headers/FlatCarbon/QD3DPick.h; sourceTree = "<absolute>"; };
+		6431B3DE0A47418000024067 /* QD3DRenderer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DRenderer.h; path = /Developer/Headers/FlatCarbon/QD3DRenderer.h; sourceTree = "<absolute>"; };
+		6431B3DF0A47418000024067 /* QD3DSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DSet.h; path = /Developer/Headers/FlatCarbon/QD3DSet.h; sourceTree = "<absolute>"; };
+		6431B3E00A47418000024067 /* QD3DShader.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DShader.h; path = /Developer/Headers/FlatCarbon/QD3DShader.h; sourceTree = "<absolute>"; };
+		6431B3E10A47418000024067 /* QD3DStorage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DStorage.h; path = /Developer/Headers/FlatCarbon/QD3DStorage.h; sourceTree = "<absolute>"; };
+		6431B3E20A47418000024067 /* QD3DString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DString.h; path = /Developer/Headers/FlatCarbon/QD3DString.h; sourceTree = "<absolute>"; };
+		6431B3E30A47418000024067 /* QD3DStyle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DStyle.h; path = /Developer/Headers/FlatCarbon/QD3DStyle.h; sourceTree = "<absolute>"; };
+		6431B3E40A47418000024067 /* QD3DTransform.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DTransform.h; path = /Developer/Headers/FlatCarbon/QD3DTransform.h; sourceTree = "<absolute>"; };
+		6431B3E50A47418000024067 /* QD3DView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DView.h; path = /Developer/Headers/FlatCarbon/QD3DView.h; sourceTree = "<absolute>"; };
+		6431B3E60A47418000024067 /* QD3DViewer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DViewer.h; path = /Developer/Headers/FlatCarbon/QD3DViewer.h; sourceTree = "<absolute>"; };
+		6431B3E70A47418000024067 /* QD3DWinViewer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QD3DWinViewer.h; path = /Developer/Headers/FlatCarbon/QD3DWinViewer.h; sourceTree = "<absolute>"; };
+		6431B3E80A47418000024067 /* QDOffscreen.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QDOffscreen.h; path = /Developer/Headers/FlatCarbon/QDOffscreen.h; sourceTree = "<absolute>"; };
+		6431B3E90A47418000024067 /* QTML.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTML.h; path = /Developer/Headers/FlatCarbon/QTML.h; sourceTree = "<absolute>"; };
+		6431B3EA0A47418000024067 /* QTSMovie.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTSMovie.h; path = /Developer/Headers/FlatCarbon/QTSMovie.h; sourceTree = "<absolute>"; };
+		6431B3EB0A47418000024067 /* QTSMovie.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTSMovie.k.h; path = /Developer/Headers/FlatCarbon/QTSMovie.k.h; sourceTree = "<absolute>"; };
+		6431B3EC0A47418000024067 /* QTSMovie.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QTSMovie.r; path = /Developer/Headers/FlatCarbon/QTSMovie.r; sourceTree = "<absolute>"; };
+		6431B3ED0A47418000024067 /* QTStreamingComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTStreamingComponents.h; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.h; sourceTree = "<absolute>"; };
+		6431B3EE0A47418000024067 /* QTStreamingComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QTStreamingComponents.k.h; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.k.h; sourceTree = "<absolute>"; };
+		6431B3EF0A47418000024067 /* QTStreamingComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QTStreamingComponents.r; path = /Developer/Headers/FlatCarbon/QTStreamingComponents.r; sourceTree = "<absolute>"; };
+		6431B3F00A47418000024067 /* Quickdraw.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Quickdraw.h; path = /Developer/Headers/FlatCarbon/Quickdraw.h; sourceTree = "<absolute>"; };
+		6431B3F10A47418000024067 /* Quickdraw.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Quickdraw.r; path = /Developer/Headers/FlatCarbon/Quickdraw.r; sourceTree = "<absolute>"; };
+		6431B3F20A47418000024067 /* QuickdrawText.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickdrawText.h; path = /Developer/Headers/FlatCarbon/QuickdrawText.h; sourceTree = "<absolute>"; };
+		6431B3F30A47418000024067 /* QuickTime.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTime.h; path = /Developer/Headers/FlatCarbon/QuickTime.h; sourceTree = "<absolute>"; };
+		6431B3F40A47418000024067 /* QuickTime.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QuickTime.r; path = /Developer/Headers/FlatCarbon/QuickTime.r; sourceTree = "<absolute>"; };
+		6431B3F50A47418000024067 /* QuickTimeComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeComponents.h; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.h; sourceTree = "<absolute>"; };
+		6431B3F60A47418000024067 /* QuickTimeComponents.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeComponents.k.h; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.k.h; sourceTree = "<absolute>"; };
+		6431B3F70A47418000024067 /* QuickTimeComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = QuickTimeComponents.r; path = /Developer/Headers/FlatCarbon/QuickTimeComponents.r; sourceTree = "<absolute>"; };
+		6431B3F80A47418000024067 /* QuickTimeMusic.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeMusic.h; path = /Developer/Headers/FlatCarbon/QuickTimeMusic.h; sourceTree = "<absolute>"; };
+		6431B3F90A47418000024067 /* QuickTimeMusic.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeMusic.k.h; path = /Developer/Headers/FlatCarbon/QuickTimeMusic.k.h; sourceTree = "<absolute>"; };
+		6431B3FA0A47418000024067 /* QuickTimeStreaming.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeStreaming.h; path = /Developer/Headers/FlatCarbon/QuickTimeStreaming.h; sourceTree = "<absolute>"; };
+		6431B3FB0A47418000024067 /* QuickTimeVR.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeVR.h; path = /Developer/Headers/FlatCarbon/QuickTimeVR.h; sourceTree = "<absolute>"; };
+		6431B3FC0A47418000024067 /* QuickTimeVRFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = QuickTimeVRFormat.h; path = /Developer/Headers/FlatCarbon/QuickTimeVRFormat.h; sourceTree = "<absolute>"; };
+		6431B3FD0A47418000024067 /* RAVE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = RAVE.h; path = /Developer/Headers/FlatCarbon/RAVE.h; sourceTree = "<absolute>"; };
+		6431B3FE0A47418000024067 /* RAVESystem.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = RAVESystem.h; path = /Developer/Headers/FlatCarbon/RAVESystem.h; sourceTree = "<absolute>"; };
+		6431B3FF0A47418000024067 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = /Developer/Headers/FlatCarbon/Resources.h; sourceTree = "<absolute>"; };
+		6431B4000A47418000024067 /* Retrace.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Retrace.h; path = /Developer/Headers/FlatCarbon/Retrace.h; sourceTree = "<absolute>"; };
+		6431B4010A47418000024067 /* ROMDefs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ROMDefs.h; path = /Developer/Headers/FlatCarbon/ROMDefs.h; sourceTree = "<absolute>"; };
+		6431B4020A47418000024067 /* ScalerStreamTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ScalerStreamTypes.h; path = /Developer/Headers/FlatCarbon/ScalerStreamTypes.h; sourceTree = "<absolute>"; };
+		6431B4030A47418000024067 /* ScalerTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ScalerTypes.h; path = /Developer/Headers/FlatCarbon/ScalerTypes.h; sourceTree = "<absolute>"; };
+		6431B4040A47418000024067 /* Scrap.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Scrap.h; path = /Developer/Headers/FlatCarbon/Scrap.h; sourceTree = "<absolute>"; };
+		6431B4050A47418000024067 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Script.h; path = /Developer/Headers/FlatCarbon/Script.h; sourceTree = "<absolute>"; };
+		6431B4060A47418000024067 /* Script.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Script.r; path = /Developer/Headers/FlatCarbon/Script.r; sourceTree = "<absolute>"; };
+		6431B4070A47418000024067 /* SCSI.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SCSI.h; path = /Developer/Headers/FlatCarbon/SCSI.h; sourceTree = "<absolute>"; };
+		6431B4080A47418000024067 /* SegLoad.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SegLoad.h; path = /Developer/Headers/FlatCarbon/SegLoad.h; sourceTree = "<absolute>"; };
+		6431B4090A47418000024067 /* Serial.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Serial.h; path = /Developer/Headers/FlatCarbon/Serial.h; sourceTree = "<absolute>"; };
+		6431B40A0A47418000024067 /* SFNTLayoutTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SFNTLayoutTypes.h; path = /Developer/Headers/FlatCarbon/SFNTLayoutTypes.h; sourceTree = "<absolute>"; };
+		6431B40B0A47418000024067 /* SFNTTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SFNTTypes.h; path = /Developer/Headers/FlatCarbon/SFNTTypes.h; sourceTree = "<absolute>"; };
+		6431B40C0A47418000024067 /* ShutDown.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ShutDown.h; path = /Developer/Headers/FlatCarbon/ShutDown.h; sourceTree = "<absolute>"; };
+		6431B40D0A47418000024067 /* Slots.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Slots.h; path = /Developer/Headers/FlatCarbon/Slots.h; sourceTree = "<absolute>"; };
+		6431B40E0A47418000024067 /* Slots.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Slots.r; path = /Developer/Headers/FlatCarbon/Slots.r; sourceTree = "<absolute>"; };
+		6431B40F0A47418000024067 /* SocketServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SocketServices.h; path = /Developer/Headers/FlatCarbon/SocketServices.h; sourceTree = "<absolute>"; };
+		6431B4100A47418000024067 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = /Developer/Headers/FlatCarbon/Sound.h; sourceTree = "<absolute>"; };
+		6431B4110A47418000024067 /* Sound.k.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Sound.k.h; path = /Developer/Headers/FlatCarbon/Sound.k.h; sourceTree = "<absolute>"; };
+		6431B4120A47418000024067 /* Sound.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Sound.r; path = /Developer/Headers/FlatCarbon/Sound.r; sourceTree = "<absolute>"; };
+		6431B4130A47418000024067 /* SoundComponents.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundComponents.h; path = /Developer/Headers/FlatCarbon/SoundComponents.h; sourceTree = "<absolute>"; };
+		6431B4140A47418000024067 /* SoundComponents.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SoundComponents.r; path = /Developer/Headers/FlatCarbon/SoundComponents.r; sourceTree = "<absolute>"; };
+		6431B4150A47418000024067 /* SoundInput.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundInput.h; path = /Developer/Headers/FlatCarbon/SoundInput.h; sourceTree = "<absolute>"; };
+		6431B4160A47418000024067 /* SoundInput.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SoundInput.r; path = /Developer/Headers/FlatCarbon/SoundInput.r; sourceTree = "<absolute>"; };
+		6431B4170A47418000024067 /* SoundSprocket.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SoundSprocket.h; path = /Developer/Headers/FlatCarbon/SoundSprocket.h; sourceTree = "<absolute>"; };
+		6431B4180A47418000024067 /* Speech.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Speech.h; path = /Developer/Headers/FlatCarbon/Speech.h; sourceTree = "<absolute>"; };
+		6431B4190A47418000024067 /* SpeechRecognition.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SpeechRecognition.h; path = /Developer/Headers/FlatCarbon/SpeechRecognition.h; sourceTree = "<absolute>"; };
+		6431B41A0A47418000024067 /* SpeechSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SpeechSynthesis.h; path = /Developer/Headers/FlatCarbon/SpeechSynthesis.h; sourceTree = "<absolute>"; };
+		6431B41B0A47418000024067 /* StandardFile.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = StandardFile.h; path = /Developer/Headers/FlatCarbon/StandardFile.h; sourceTree = "<absolute>"; };
+		6431B41C0A47418000024067 /* Start.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Start.h; path = /Developer/Headers/FlatCarbon/Start.h; sourceTree = "<absolute>"; };
+		6431B41D0A47418000024067 /* StringCompare.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = StringCompare.h; path = /Developer/Headers/FlatCarbon/StringCompare.h; sourceTree = "<absolute>"; };
+		6431B41E0A47418000024067 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Strings.h; path = /Developer/Headers/FlatCarbon/Strings.h; sourceTree = "<absolute>"; };
+		6431B41F0A47418000024067 /* SysTypes.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = SysTypes.r; path = /Developer/Headers/FlatCarbon/SysTypes.r; sourceTree = "<absolute>"; };
+		6431B4200A47418000024067 /* Telephones.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Telephones.h; path = /Developer/Headers/FlatCarbon/Telephones.h; sourceTree = "<absolute>"; };
+		6431B4210A47418000024067 /* Terminals.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Terminals.h; path = /Developer/Headers/FlatCarbon/Terminals.h; sourceTree = "<absolute>"; };
+		6431B4220A47418000024067 /* TerminalTools.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TerminalTools.h; path = /Developer/Headers/FlatCarbon/TerminalTools.h; sourceTree = "<absolute>"; };
+		6431B4230A47418000024067 /* TextCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextCommon.h; path = /Developer/Headers/FlatCarbon/TextCommon.h; sourceTree = "<absolute>"; };
+		6431B4240A47418000024067 /* TextCommon.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = TextCommon.r; path = /Developer/Headers/FlatCarbon/TextCommon.r; sourceTree = "<absolute>"; };
+		6431B4250A47418000024067 /* TextEdit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEdit.h; path = /Developer/Headers/FlatCarbon/TextEdit.h; sourceTree = "<absolute>"; };
+		6431B4260A47418000024067 /* TextEncodingConverter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEncodingConverter.h; path = /Developer/Headers/FlatCarbon/TextEncodingConverter.h; sourceTree = "<absolute>"; };
+		6431B4270A47418000024067 /* TextEncodingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextEncodingPlugin.h; path = /Developer/Headers/FlatCarbon/TextEncodingPlugin.h; sourceTree = "<absolute>"; };
+		6431B4280A47418000024067 /* TextServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextServices.h; path = /Developer/Headers/FlatCarbon/TextServices.h; sourceTree = "<absolute>"; };
+		6431B4290A47418000024067 /* TextUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TextUtils.h; path = /Developer/Headers/FlatCarbon/TextUtils.h; sourceTree = "<absolute>"; };
+		6431B42A0A47418000024067 /* Threads.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Threads.h; path = /Developer/Headers/FlatCarbon/Threads.h; sourceTree = "<absolute>"; };
+		6431B42B0A47418000024067 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = /Developer/Headers/FlatCarbon/Timer.h; sourceTree = "<absolute>"; };
+		6431B42C0A47418000024067 /* ToolUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ToolUtils.h; path = /Developer/Headers/FlatCarbon/ToolUtils.h; sourceTree = "<absolute>"; };
+		6431B42D0A47418000024067 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Translation.h; path = /Developer/Headers/FlatCarbon/Translation.h; sourceTree = "<absolute>"; };
+		6431B42E0A47418000024067 /* TranslationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TranslationExtensions.h; path = /Developer/Headers/FlatCarbon/TranslationExtensions.h; sourceTree = "<absolute>"; };
+		6431B42F0A47418000024067 /* TranslationExtensions.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = TranslationExtensions.r; path = /Developer/Headers/FlatCarbon/TranslationExtensions.r; sourceTree = "<absolute>"; };
+		6431B4300A47418000024067 /* Traps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Traps.h; path = /Developer/Headers/FlatCarbon/Traps.h; sourceTree = "<absolute>"; };
+		6431B4310A47418000024067 /* TSMTE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSMTE.h; path = /Developer/Headers/FlatCarbon/TSMTE.h; sourceTree = "<absolute>"; };
+		6431B4320A47418000024067 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Types.h; path = /Developer/Headers/FlatCarbon/Types.h; sourceTree = "<absolute>"; };
+		6431B4330A47418000024067 /* Types.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Types.r; path = /Developer/Headers/FlatCarbon/Types.r; sourceTree = "<absolute>"; };
+		6431B4340A47418000024067 /* TypeSelect.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TypeSelect.h; path = /Developer/Headers/FlatCarbon/TypeSelect.h; sourceTree = "<absolute>"; };
+		6431B4350A47418000024067 /* Unicode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Unicode.h; path = /Developer/Headers/FlatCarbon/Unicode.h; sourceTree = "<absolute>"; };
+		6431B4360A47418000024067 /* UnicodeConverter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UnicodeConverter.h; path = /Developer/Headers/FlatCarbon/UnicodeConverter.h; sourceTree = "<absolute>"; };
+		6431B4370A47418000024067 /* UnicodeConverter.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = UnicodeConverter.r; path = /Developer/Headers/FlatCarbon/UnicodeConverter.r; sourceTree = "<absolute>"; };
+		6431B4380A47418000024067 /* UnicodeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UnicodeUtilities.h; path = /Developer/Headers/FlatCarbon/UnicodeUtilities.h; sourceTree = "<absolute>"; };
+		6431B4390A47418000024067 /* UnicodeUtilities.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = UnicodeUtilities.r; path = /Developer/Headers/FlatCarbon/UnicodeUtilities.r; sourceTree = "<absolute>"; };
+		6431B43A0A47418000024067 /* URLAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = URLAccess.h; path = /Developer/Headers/FlatCarbon/URLAccess.h; sourceTree = "<absolute>"; };
+		6431B43B0A47418000024067 /* USB.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = USB.h; path = /Developer/Headers/FlatCarbon/USB.h; sourceTree = "<absolute>"; };
+		6431B43C0A47418000024067 /* UTCUtils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UTCUtils.h; path = /Developer/Headers/FlatCarbon/UTCUtils.h; sourceTree = "<absolute>"; };
+		6431B43D0A47418000024067 /* vBasicOps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBasicOps.h; path = /Developer/Headers/FlatCarbon/vBasicOps.h; sourceTree = "<absolute>"; };
+		6431B43E0A47418000024067 /* vBigNum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBigNum.h; path = /Developer/Headers/FlatCarbon/vBigNum.h; sourceTree = "<absolute>"; };
+		6431B43F0A47418000024067 /* vBLAS.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vBLAS.h; path = /Developer/Headers/FlatCarbon/vBLAS.h; sourceTree = "<absolute>"; };
+		6431B4400A47418000024067 /* vDSP.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vDSP.h; path = /Developer/Headers/FlatCarbon/vDSP.h; sourceTree = "<absolute>"; };
+		6431B4410A47418000024067 /* vectorOps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vectorOps.h; path = /Developer/Headers/FlatCarbon/vectorOps.h; sourceTree = "<absolute>"; };
+		6431B4420A47418000024067 /* vfp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vfp.h; path = /Developer/Headers/FlatCarbon/vfp.h; sourceTree = "<absolute>"; };
+		6431B4430A47418000024067 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Video.h; path = /Developer/Headers/FlatCarbon/Video.h; sourceTree = "<absolute>"; };
+		6431B4440A47418000024067 /* Video.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Video.r; path = /Developer/Headers/FlatCarbon/Video.r; sourceTree = "<absolute>"; };
+		6431B4450A47418000024067 /* VideoServices.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = VideoServices.h; path = /Developer/Headers/FlatCarbon/VideoServices.h; sourceTree = "<absolute>"; };
+		6431B4460A47418000024067 /* Windows.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Windows.h; path = /Developer/Headers/FlatCarbon/Windows.h; sourceTree = "<absolute>"; };
+		6431B4470A47418000024067 /* Windows.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = Windows.r; path = /Developer/Headers/FlatCarbon/Windows.r; sourceTree = "<absolute>"; };
+		6431B4480A47418000024067 /* WorldScript.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = WorldScript.h; path = /Developer/Headers/FlatCarbon/WorldScript.h; sourceTree = "<absolute>"; };
+		6431B4490A47418000024067 /* ZoomedVideo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZoomedVideo.h; path = /Developer/Headers/FlatCarbon/ZoomedVideo.h; sourceTree = "<absolute>"; };
+		6431B4550A47419600024067 /* ASPreInclude.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASPreInclude.h; sourceTree = "<group>"; };
+		6431B4560A47419600024067 /* PIAbout.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAbout.h; sourceTree = "<group>"; };
+		6431B4570A47419600024067 /* PIAcquire.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAcquire.h; sourceTree = "<group>"; };
+		6431B4580A47419600024067 /* PIActions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIActions.h; sourceTree = "<group>"; };
+		6431B4590A47419600024067 /* PIActionsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIActionsPlugin.h; sourceTree = "<group>"; };
+		6431B45A0A47419600024067 /* PIAliasSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIAliasSuite.h; sourceTree = "<group>"; };
+		6431B45B0A47419600024067 /* PIBufferSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIBufferSuite.h; sourceTree = "<group>"; };
+		6431B45C0A47419600024067 /* PIChannelPortOperations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIChannelPortOperations.h; sourceTree = "<group>"; };
+		6431B45D0A47419600024067 /* PIChannelPortsSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIChannelPortsSuite.h; sourceTree = "<group>"; };
+		6431B45E0A47419600024067 /* PIColorSpaceSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIColorSpaceSuite.h; sourceTree = "<group>"; };
+		6431B45F0A47419600024067 /* PIErrorSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIErrorSuite.h; sourceTree = "<group>"; };
+		6431B4600A47419600024067 /* PIExport.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIExport.h; sourceTree = "<group>"; };
+		6431B4610A47419600024067 /* PIFilter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIFilter.h; sourceTree = "<group>"; };
+		6431B4620A47419600024067 /* PIFormat.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIFormat.h; sourceTree = "<group>"; };
+		6431B4630A47419600024067 /* PIGeneral.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGeneral.h; sourceTree = "<group>"; };
+		6431B4640A47419600024067 /* PIGetFileListSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGetFileListSuite.h; sourceTree = "<group>"; };
+		6431B4650A47419600024067 /* PIGetPathSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIGetPathSuite.h; sourceTree = "<group>"; };
+		6431B4660A47419600024067 /* PIHandleSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIHandleSuite.h; sourceTree = "<group>"; };
+		6431B4670A47419600024067 /* PIPicker.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIPicker.h; sourceTree = "<group>"; };
+		6431B4680A47419600024067 /* PIProgressSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIProgressSuite.h; sourceTree = "<group>"; };
+		6431B4690A47419600024067 /* PIProperties.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIProperties.h; sourceTree = "<group>"; };
+		6431B46A0A47419600024067 /* PIResDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIResDefines.h; sourceTree = "<group>"; };
+		6431B46B0A47419600024067 /* PISelection.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PISelection.h; sourceTree = "<group>"; };
+		6431B46C0A47419600024067 /* PIStringTerminology.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIStringTerminology.h; sourceTree = "<group>"; };
+		6431B46D0A47419600024067 /* PITerminology.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PITerminology.h; sourceTree = "<group>"; };
+		6431B46E0A47419600024067 /* PITypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PITypes.h; sourceTree = "<group>"; };
+		6431B46F0A47419600024067 /* PIUIHooksSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUIHooksSuite.h; sourceTree = "<group>"; };
+		6431B4700A47419600024067 /* PSErrorDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSErrorDefines.h; sourceTree = "<group>"; };
+		6431B4720A47419600024067 /* SPAccess.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPAccess.h; sourceTree = "<group>"; };
+		6431B4730A47419600024067 /* SPAdapts.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPAdapts.h; sourceTree = "<group>"; };
+		6431B4740A47419600024067 /* SPBasic.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBasic.h; sourceTree = "<group>"; };
+		6431B4750A47419600024067 /* SPBckDbg.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBckDbg.h; sourceTree = "<group>"; };
+		6431B4760A47419600024067 /* SPBlocks.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPBlocks.h; sourceTree = "<group>"; };
+		6431B4770A47419600024067 /* SPCaches.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCaches.h; sourceTree = "<group>"; };
+		6431B4780A47419600024067 /* SPCOM.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPCOM.h; sourceTree = "<group>"; };
+		6431B4790A47419600024067 /* SPConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPConfig.h; sourceTree = "<group>"; };
+		6431B47A0A47419600024067 /* SPEDebug.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SPEDebug.c; sourceTree = "<group>"; };
+		6431B47B0A47419600024067 /* SPErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPErrorCodes.h; sourceTree = "<group>"; };
+		6431B47C0A47419600024067 /* SPErrors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPErrors.h; sourceTree = "<group>"; };
+		6431B47D0A47419600024067 /* SPFiles.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPFiles.h; sourceTree = "<group>"; };
+		6431B47E0A47419600024067 /* SPHost.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPHost.h; sourceTree = "<group>"; };
+		6431B47F0A47419600024067 /* SPInterf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPInterf.h; sourceTree = "<group>"; };
+		6431B4800A47419600024067 /* SPMData.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPMData.h; sourceTree = "<group>"; };
+		6431B4810A47419600024067 /* SPObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPObject.h; sourceTree = "<group>"; };
+		6431B4820A47419600024067 /* SPPiPL.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPPiPL.h; sourceTree = "<group>"; };
+		6431B4830A47419600024067 /* SPPlugs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPPlugs.h; sourceTree = "<group>"; };
+		6431B4840A47419600024067 /* SPProps.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPProps.h; sourceTree = "<group>"; };
+		6431B4850A47419600024067 /* SPRuntme.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPRuntme.h; sourceTree = "<group>"; };
+		6431B4860A47419600024067 /* SPStrngs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPStrngs.h; sourceTree = "<group>"; };
+		6431B4870A47419600024067 /* SPSTSPrp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPSTSPrp.h; sourceTree = "<group>"; };
+		6431B4880A47419600024067 /* SPSuites.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPSuites.h; sourceTree = "<group>"; };
+		6431B4890A47419600024067 /* SPTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SPTypes.h; sourceTree = "<group>"; };
+		6431B48B0A47419600024067 /* PIGeneral.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIGeneral.r; sourceTree = "<group>"; };
+		6431B48C0A47419600024067 /* PIMI.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIMI.r; sourceTree = "<group>"; };
+		6431B48D0A47419600024067 /* PIPL.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIPL.r; sourceTree = "<group>"; };
+		6431B4920A4741A700024067 /* PIDefines.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIDefines.h; sourceTree = "<group>"; };
+		6431B4940A4741A700024067 /* PIUSuites.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUSuites.h; sourceTree = "<group>"; };
+		6431B4950A4741A700024067 /* PIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PIUtilities.h; sourceTree = "<group>"; };
+		6431B4960A4741A700024067 /* DialogUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DialogUtilities.h; sourceTree = "<group>"; };
+		6431B4990A4741A700024067 /* PIUtilities.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = PIUtilities.r; sourceTree = "<group>"; };
+		6431B49D0A4741A700024067 /* PIUSuites.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIUSuites.cpp; sourceTree = "<group>"; };
+		6431B49E0A4741A700024067 /* PIUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PIUtilities.cpp; sourceTree = "<group>"; };
+		6431B49F0A4741A700024067 /* DialogUtilitiesMac.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = DialogUtilitiesMac.cpp; sourceTree = "<group>"; };
+		6431B4B20A47420900024067 /* NearestBaseUIMac.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = NearestBaseUIMac.cpp; sourceTree = "<group>"; };
+		6431B4B40A47421900024067 /* NearestBase.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; name = NearestBase.r; path = ../common/NearestBase.r; sourceTree = SOURCE_ROOT; };
+		6431B4B50A47421900024067 /* NearestBase.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NearestBase.h; path = ../common/NearestBase.h; sourceTree = SOURCE_ROOT; };
+		6431B4B60A47421900024067 /* NearestBase.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = NearestBase.cpp; path = ../common/NearestBase.cpp; sourceTree = SOURCE_ROOT; };
+		6431B4B70A47421900024067 /* NearestBaseScripting.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = NearestBaseScripting.cpp; path = ../common/NearestBaseScripting.cpp; sourceTree = SOURCE_ROOT; };
+		64CC2EED111CE1E200423B46 /* JSScriptingSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = JSScriptingSuite.h; sourceTree = "<group>"; };
+		64CF8E550AA3A68700120C5A /* ASConfig.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASConfig.h; sourceTree = "<group>"; };
+		64CF8E560AA3A68700120C5A /* ASPragma.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASPragma.h; sourceTree = "<group>"; };
+		64CF8E570AA3A68700120C5A /* ASTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASTypes.h; sourceTree = "<group>"; };
+		64CF8E580AA3A68700120C5A /* ASZStringSuite.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ASZStringSuite.h; sourceTree = "<group>"; };
+		64DD4BFC1111575800619C3D /* PSIntTypes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSIntTypes.h; sourceTree = "<group>"; };
+		8D01CCD20486CAD60068D4B7 /* NearestBase.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearestBase.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2880D8E0B0EF4AF001C1C00 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* NearestBase */ = {
+			isa = PBXGroup;
+			children = (
+				6431B4B50A47421900024067 /* NearestBase.h */,
+				6431B4B60A47421900024067 /* NearestBase.cpp */,
+				6431B4B70A47421900024067 /* NearestBaseScripting.cpp */,
+				6431B4B20A47420900024067 /* NearestBaseUIMac.cpp */,
+				6431B4B40A47421900024067 /* NearestBase.r */,
+				6431B48F0A4741A700024067 /* SDK common */,
+				6431B44A0A47419600024067 /* Photoshop common */,
+				6431B2910A47418000024067 /* Mac OS common */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = NearestBase;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D01CCD20486CAD60068D4B7 /* NearestBase.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6431B2910A47418000024067 /* Mac OS common */ = {
+			isa = PBXGroup;
+			children = (
+				6431B2920A47418000024067 /* ADSP.h */,
+				6431B2930A47418000024067 /* AEDataModel.h */,
+				6431B2940A47418000024067 /* AEDataModel.r */,
+				6431B2950A47418000024067 /* AEHelpers.h */,
+				6431B2960A47418000024067 /* AEInteraction.h */,
+				6431B2970A47418000024067 /* AEMach.h */,
+				6431B2980A47418000024067 /* AEObjects.h */,
+				6431B2990A47418000024067 /* AEObjects.r */,
+				6431B29A0A47418000024067 /* AEPackObject.h */,
+				6431B29B0A47418000024067 /* AERegistry.h */,
+				6431B29C0A47418000024067 /* AERegistry.r */,
+				6431B29D0A47418000024067 /* AEUserTermTypes.h */,
+				6431B29E0A47418000024067 /* AEUserTermTypes.r */,
+				6431B29F0A47418000024067 /* AEWideUserTermTypes.r */,
+				6431B2A00A47418000024067 /* AIFF.h */,
+				6431B2A10A47418000024067 /* Aliases.h */,
+				6431B2A20A47418000024067 /* Appearance.h */,
+				6431B2A30A47418000024067 /* Appearance.r */,
+				6431B2A40A47418000024067 /* AppleDiskPartitions.h */,
+				6431B2A50A47418000024067 /* AppleEvents.h */,
+				6431B2A60A47418000024067 /* AppleEvents.r */,
+				6431B2A70A47418000024067 /* AppleGuide.h */,
+				6431B2A80A47418000024067 /* AppleHelp.h */,
+				6431B2A90A47418000024067 /* AppleScript.h */,
+				6431B2AA0A47418000024067 /* AppleTalk.h */,
+				6431B2AB0A47418000024067 /* ApplicationServices.h */,
+				6431B2AC0A47418000024067 /* ApplicationServices.r */,
+				6431B2AD0A47418000024067 /* ASDebugging.h */,
+				6431B2AE0A47418000024067 /* ASRegistry.h */,
+				6431B2AF0A47418000024067 /* ASRegistry.r */,
+				6431B2B00A47418000024067 /* ATA.h */,
+				6431B2B10A47418000024067 /* ATSFont.h */,
+				6431B2B20A47418000024067 /* ATSLayoutTypes.h */,
+				6431B2B30A47418000024067 /* ATSTypes.h */,
+				6431B2B40A47418000024067 /* ATSUnicode.h */,
+				6431B2B50A47418000024067 /* AVComponents.h */,
+				6431B2B60A47418000024067 /* AVComponents.k.h */,
+				6431B2B70A47418000024067 /* AVComponents.r */,
+				6431B2B80A47418000024067 /* AVLTree.h */,
+				6431B2B90A47418000024067 /* Balloons.h */,
+				6431B2BA0A47418000024067 /* Balloons.r */,
+				6431B2BB0A47418000024067 /* BalloonTypes.r */,
+				6431B2BC0A47418000024067 /* Carbon.h */,
+				6431B2BD0A47418000024067 /* Carbon.r */,
+				6431B2BE0A47418000024067 /* CarbonEvents.h */,
+				6431B2BF0A47418000024067 /* CarbonEvents.r */,
+				6431B2C00A47418000024067 /* CardServices.h */,
+				6431B2C10A47418000024067 /* CFArray.h */,
+				6431B2C20A47418000024067 /* CFBag.h */,
+				6431B2C30A47418000024067 /* CFBase.h */,
+				6431B2C40A47418000024067 /* CFBundle.h */,
+				6431B2C50A47418000024067 /* CFCharacterSet.h */,
+				6431B2C60A47418000024067 /* CFData.h */,
+				6431B2C70A47418000024067 /* CFDate.h */,
+				6431B2C80A47418000024067 /* CFDictionary.h */,
+				6431B2C90A47418000024067 /* CFNumber.h */,
+				6431B2CA0A47418000024067 /* CFPlugIn.h */,
+				6431B2CB0A47418000024067 /* CFPlugInCOM.h */,
+				6431B2CC0A47418000024067 /* CFPreferences.h */,
+				6431B2CD0A47418000024067 /* CFPropertyList.h */,
+				6431B2CE0A47418000024067 /* CFSet.h */,
+				6431B2CF0A47418000024067 /* CFString.h */,
+				6431B2D00A47418000024067 /* CFStringEncodingExt.h */,
+				6431B2D10A47418000024067 /* CFTimeZone.h */,
+				6431B2D20A47418000024067 /* CFTree.h */,
+				6431B2D30A47418000024067 /* CFURL.h */,
+				6431B2D40A47418000024067 /* CFURLAccess.h */,
+				6431B2D50A47418000024067 /* CFUUID.h */,
+				6431B2D60A47418000024067 /* CFXMLNode.h */,
+				6431B2D70A47418000024067 /* CFXMLParser.h */,
+				6431B2D80A47418000024067 /* CGAffineTransform.h */,
+				6431B2D90A47418000024067 /* CGBase.h */,
+				6431B2DA0A47418000024067 /* CGBitmapContext.h */,
+				6431B2DB0A47418000024067 /* CGColorSpace.h */,
+				6431B2DC0A47418000024067 /* CGContext.h */,
+				6431B2DD0A47418000024067 /* CGDataConsumer.h */,
+				6431B2DE0A47418000024067 /* CGDataProvider.h */,
+				6431B2DF0A47418000024067 /* CGDirectDisplay.h */,
+				6431B2E00A47418000024067 /* CGDirectPalette.h */,
+				6431B2E10A47418000024067 /* CGError.h */,
+				6431B2E20A47418000024067 /* CGFont.h */,
+				6431B2E30A47418000024067 /* CGGeometry.h */,
+				6431B2E40A47418000024067 /* CGImage.h */,
+				6431B2E50A47418000024067 /* CGPattern.h */,
+				6431B2E60A47418000024067 /* CGPDFContext.h */,
+				6431B2E70A47418000024067 /* CGPDFDocument.h */,
+				6431B2E80A47418000024067 /* CGRemoteOperation.h */,
+				6431B2E90A47418000024067 /* CGWindowLevel.h */,
+				6431B2EA0A47418000024067 /* CMAcceleration.h */,
+				6431B2EB0A47418000024067 /* CMApplication.h */,
+				6431B2EC0A47418000024067 /* CMCalibrator.h */,
+				6431B2ED0A47418000024067 /* CMComponent.h */,
+				6431B2EE0A47418000024067 /* CMConversions.h */,
+				6431B2EF0A47418000024067 /* CMDeviceIntegration.h */,
+				6431B2F00A47418000024067 /* CMICCProfile.h */,
+				6431B2F10A47418000024067 /* CMMComponent.h */,
+				6431B2F20A47418000024067 /* CMPRComponent.h */,
+				6431B2F30A47418000024067 /* CMScriptingPlugin.h */,
+				6431B2F40A47418000024067 /* CMTypes.h */,
+				6431B2F50A47418000024067 /* CodeFragments.h */,
+				6431B2F60A47418000024067 /* CodeFragments.r */,
+				6431B2F70A47418000024067 /* CodeFragmentTypes.r */,
+				6431B2F80A47418000024067 /* Collections.h */,
+				6431B2F90A47418000024067 /* Collections.r */,
+				6431B2FA0A47418000024067 /* ColorPicker.h */,
+				6431B2FB0A47418000024067 /* ColorPickerComponents.h */,
+				6431B2FC0A47418000024067 /* CommResources.h */,
+				6431B2FD0A47418000024067 /* CommResources.r */,
+				6431B2FE0A47418000024067 /* Components.h */,
+				6431B2FF0A47418000024067 /* Components.k.h */,
+				6431B3000A47418000024067 /* Components.r */,
+				6431B3010A47418000024067 /* ConditionalMacros.h */,
+				6431B3020A47418000024067 /* ConditionalMacros.r */,
+				6431B3030A47418000024067 /* Connections.h */,
+				6431B3040A47418000024067 /* ConnectionTools.h */,
+				6431B3050A47418000024067 /* ControlDefinitions.h */,
+				6431B3060A47418000024067 /* ControlDefinitions.r */,
+				6431B3070A47418000024067 /* Controls.h */,
+				6431B3080A47418000024067 /* Controls.r */,
+				6431B3090A47418000024067 /* ControlStrip.h */,
+				6431B30A0A47418000024067 /* CoreServices.h */,
+				6431B30B0A47418000024067 /* CoreServices.r */,
+				6431B30C0A47418000024067 /* CRMSerialDevices.h */,
+				6431B30D0A47418000024067 /* CryptoMessageSyntax.h */,
+				6431B30E0A47418000024067 /* CTBUtilities.h */,
+				6431B30F0A47418000024067 /* CursorDevices.h */,
+				6431B3100A47418000024067 /* DatabaseAccess.h */,
+				6431B3110A47418000024067 /* DatabaseAccess.r */,
+				6431B3120A47418000024067 /* DateTimeUtils.h */,
+				6431B3130A47418000024067 /* Debugging.h */,
+				6431B3140A47418000024067 /* DeskBus.h */,
+				6431B3150A47418000024067 /* DesktopPrinting.h */,
+				6431B3160A47418000024067 /* DesktopPrinting.r */,
+				6431B3170A47418000024067 /* DeviceControl.h */,
+				6431B3180A47418000024067 /* DeviceControl.k.h */,
+				6431B3190A47418000024067 /* Devices.h */,
+				6431B31A0A47418000024067 /* Devices.r */,
+				6431B31B0A47418000024067 /* Dialogs.h */,
+				6431B31C0A47418000024067 /* Dialogs.r */,
+				6431B31D0A47418000024067 /* Dictionary.h */,
+				6431B31E0A47418000024067 /* DiskInit.h */,
+				6431B31F0A47418000024067 /* Disks.h */,
+				6431B3200A47418000024067 /* Displays.h */,
+				6431B3210A47418000024067 /* Displays.r */,
+				6431B3220A47418000024067 /* Drag.h */,
+				6431B3230A47418000024067 /* DrawSprocket.h */,
+				6431B3240A47418000024067 /* DriverFamilyMatching.h */,
+				6431B3250A47418000024067 /* DriverGestalt.h */,
+				6431B3260A47418000024067 /* DriverServices.h */,
+				6431B3270A47418000024067 /* DriverSupport.h */,
+				6431B3280A47418000024067 /* DriverSynchronization.h */,
+				6431B3290A47418000024067 /* Editions.h */,
+				6431B32A0A47418000024067 /* Endian.h */,
+				6431B32B0A47418000024067 /* ENET.h */,
+				6431B32C0A47418000024067 /* EPPC.h */,
+				6431B32D0A47418000024067 /* EPPC.r */,
+				6431B32E0A47418000024067 /* Errors.h */,
+				6431B32F0A47418000024067 /* Events.h */,
+				6431B3300A47418000024067 /* Files.h */,
+				6431B3310A47418000024067 /* FileSigning.h */,
+				6431B3320A47418000024067 /* FileTransfers.h */,
+				6431B3330A47418000024067 /* FileTransferTools.h */,
+				6431B3340A47418000024067 /* FileTypesAndCreators.h */,
+				6431B3350A47418000024067 /* FileTypesAndCreators.r */,
+				6431B3360A47418000024067 /* FindByContent.h */,
+				6431B3370A47418000024067 /* Finder.h */,
+				6431B3380A47418000024067 /* Finder.r */,
+				6431B3390A47418000024067 /* FinderRegistry.h */,
+				6431B33A0A47418000024067 /* FinderRegistry.r */,
+				6431B33B0A47418000024067 /* FixMath.h */,
+				6431B33C0A47418000024067 /* Folders.h */,
+				6431B33D0A47418000024067 /* Folders.r */,
+				6431B33E0A47418000024067 /* Fonts.h */,
+				6431B33F0A47418000024067 /* Fonts.r */,
+				6431B3400A47418000024067 /* FontSync.h */,
+				6431B3410A47418000024067 /* fp.h */,
+				6431B3420A47418000024067 /* FSM.h */,
+				6431B3430A47418000024067 /* Gestalt.h */,
+				6431B3440A47418000024067 /* Gestalt.r */,
+				6431B3450A47418000024067 /* GoggleSprocket.h */,
+				6431B3460A47418000024067 /* GXEnvironment.h */,
+				6431B3470A47418000024067 /* GXErrors.h */,
+				6431B3480A47418000024067 /* GXFonts.h */,
+				6431B3490A47418000024067 /* GXGraphics.h */,
+				6431B34A0A47418000024067 /* GXLayout.h */,
+				6431B34B0A47418000024067 /* GXMath.h */,
+				6431B34C0A47418000024067 /* GXMessages.h */,
+				6431B34D0A47418000024067 /* GXPrinterDrivers.h */,
+				6431B34E0A47418000024067 /* GXPrinting.h */,
+				6431B34F0A47418000024067 /* GXTypes.h */,
+				6431B3500A47418000024067 /* HFSVolumes.h */,
+				6431B3510A47418000024067 /* HID.h */,
+				6431B3520A47418000024067 /* HTMLRendering.h */,
+				6431B3530A47418000024067 /* HyperXCmd.h */,
+				6431B3540A47418000024067 /* IAExtractor.h */,
+				6431B3550A47418000024067 /* IAExtractor.r */,
+				6431B3560A47418000024067 /* IBCarbonRuntime.h */,
+				6431B3570A47418000024067 /* ICAApplication.h */,
+				6431B3580A47418000024067 /* ICACamera.h */,
+				6431B3590A47418000024067 /* ICADevice.h */,
+				6431B35A0A47418000024067 /* Icons.h */,
+				6431B35B0A47418000024067 /* Icons.r */,
+				6431B35C0A47418000024067 /* ImageCodec.h */,
+				6431B35D0A47418000024067 /* ImageCodec.k.h */,
+				6431B35E0A47418000024067 /* ImageCodec.r */,
+				6431B35F0A47418000024067 /* ImageCompression.h */,
+				6431B3600A47418000024067 /* ImageCompression.k.h */,
+				6431B3610A47418000024067 /* ImageCompression.r */,
+				6431B3620A47418000024067 /* InputSprocket.h */,
+				6431B3630A47418000024067 /* InputSprocket.r */,
+				6431B3640A47418000024067 /* InternetConfig.h */,
+				6431B3650A47418000024067 /* Interrupts.h */,
+				6431B3660A47418000024067 /* IntlResources.h */,
+				6431B3670A47418000024067 /* IntlResources.r */,
+				6431B3680A47418000024067 /* IsochronousDataHandler.h */,
+				6431B3690A47418000024067 /* IsochronousDataHandler.k.h */,
+				6431B36A0A47418000024067 /* IsochronousDataHandler.r */,
+				6431B36B0A47418000024067 /* JManager.h */,
+				6431B36C0A47418000024067 /* Kernel.h */,
+				6431B36D0A47418000024067 /* Keyboards.h */,
+				6431B36E0A47418000024067 /* Keychain.h */,
+				6431B36F0A47418000024067 /* KeychainCore.h */,
+				6431B3700A47418000024067 /* KeychainHI.h */,
+				6431B3710A47418000024067 /* LanguageAnalysis.h */,
+				6431B3720A47418000024067 /* LaunchServices.h */,
+				6431B3730A47418000024067 /* Lists.h */,
+				6431B3740A47418000024067 /* LocationManager.h */,
+				6431B3750A47418000024067 /* LocationManager.k.h */,
+				6431B3760A47418000024067 /* LocationManager.r */,
+				6431B3770A47418000024067 /* LowMem.h */,
+				6431B3780A47418000024067 /* MacApplication.h */,
+				6431B3790A47418000024067 /* MacErrors.h */,
+				6431B37A0A47418000024067 /* MacHelp.h */,
+				6431B37B0A47418000024067 /* MachineExceptions.h */,
+				6431B37C0A47418000024067 /* MacLocales.h */,
+				6431B37D0A47418000024067 /* MacMemory.h */,
+				6431B37E0A47418000024067 /* MacTCP.h */,
+				6431B37F0A47418000024067 /* MacTextEditor.h */,
+				6431B3800A47418000024067 /* MacTypes.h */,
+				6431B3810A47418000024067 /* MacTypes.r */,
+				6431B3820A47418000024067 /* MacWindows.h */,
+				6431B3830A47418000024067 /* MacWindows.r */,
+				6431B3840A47418000024067 /* Math64.h */,
+				6431B3850A47418000024067 /* MediaHandlers.h */,
+				6431B3860A47418000024067 /* MediaHandlers.k.h */,
+				6431B3870A47418000024067 /* Memory.h */,
+				6431B3880A47418000024067 /* Menus.h */,
+				6431B3890A47418000024067 /* Menus.r */,
+				6431B38A0A47418000024067 /* MIDI.h */,
+				6431B38B0A47418000024067 /* MixedMode.h */,
+				6431B38C0A47418000024067 /* MixedMode.r */,
+				6431B38D0A47418000024067 /* Movies.h */,
+				6431B38E0A47418000024067 /* Movies.k.h */,
+				6431B38F0A47418000024067 /* MoviesFormat.h */,
+				6431B3900A47418000024067 /* Multiprocessing.h */,
+				6431B3910A47418000024067 /* MultiprocessingInfo.h */,
+				6431B3920A47418000024067 /* NameRegistry.h */,
+				6431B3930A47418000024067 /* Navigation.h */,
+				6431B3940A47418000024067 /* NetSprocket.h */,
+				6431B3950A47418000024067 /* NetworkSetup.h */,
+				6431B3960A47418000024067 /* NetworkSetup.r */,
+				6431B3970A47418000024067 /* Notification.h */,
+				6431B3980A47418000024067 /* NSL.h */,
+				6431B3990A47418000024067 /* NSLCore.h */,
+				6431B39A0A47418000024067 /* NumberFormatting.h */,
+				6431B39B0A47418000024067 /* OpenTptAppleTalk.h */,
+				6431B39C0A47418000024067 /* OpenTptClient.h */,
+				6431B39D0A47418000024067 /* OpenTptCommon.h */,
+				6431B39E0A47418000024067 /* OpenTptConfig.h */,
+				6431B39F0A47418000024067 /* OpenTptDevLinks.h */,
+				6431B3A00A47418000024067 /* OpenTptGlobalNew.h */,
+				6431B3A10A47418000024067 /* OpenTptInternet.h */,
+				6431B3A20A47418000024067 /* OpenTptISDN.h */,
+				6431B3A30A47418000024067 /* OpenTptLinks.h */,
+				6431B3A40A47418000024067 /* OpenTptModule.h */,
+				6431B3A50A47418000024067 /* OpenTptPCISupport.h */,
+				6431B3A60A47418000024067 /* OpenTptSerial.h */,
+				6431B3A70A47418000024067 /* OpenTptXTI.h */,
+				6431B3A80A47418000024067 /* OpenTransport.h */,
+				6431B3A90A47418000024067 /* OpenTransport.r */,
+				6431B3AA0A47418000024067 /* OpenTransportKernel.h */,
+				6431B3AB0A47418000024067 /* OpenTransportKernel.r */,
+				6431B3AC0A47418000024067 /* OpenTransportProtocol.h */,
+				6431B3AD0A47418000024067 /* OpenTransportProtocol.r */,
+				6431B3AE0A47418000024067 /* OpenTransportProviders.h */,
+				6431B3AF0A47418000024067 /* OpenTransportProviders.r */,
+				6431B3B00A47418000024067 /* OpenTransportUNIX.h */,
+				6431B3B10A47418000024067 /* OSA.h */,
+				6431B3B20A47418000024067 /* OSA.k.h */,
+				6431B3B30A47418000024067 /* OSAComp.h */,
+				6431B3B40A47418000024067 /* OSAGeneric.h */,
+				6431B3B50A47418000024067 /* OSUtils.h */,
+				6431B3B60A47418000024067 /* OSUtils.r */,
+				6431B3B70A47418000024067 /* OTConfig.r */,
+				6431B3B80A47418000024067 /* Packages.h */,
+				6431B3B90A47418000024067 /* Palettes.h */,
+				6431B3BA0A47418000024067 /* Palettes.r */,
+				6431B3BB0A47418000024067 /* Patches.h */,
+				6431B3BC0A47418000024067 /* PCCard.h */,
+				6431B3BD0A47418000024067 /* PCCardAdapterPlugin.h */,
+				6431B3BE0A47418000024067 /* PCCardEnablerPlugin.h */,
+				6431B3BF0A47418000024067 /* PCCardEnablerPlugin.r */,
+				6431B3C00A47418000024067 /* PCCardTuples.h */,
+				6431B3C10A47418000024067 /* PCI.h */,
+				6431B3C20A47418000024067 /* PEFBinaryFormat.h */,
+				6431B3C30A47418000024067 /* Pict.r */,
+				6431B3C40A47418000024067 /* PictUtils.h */,
+				6431B3C50A47418000024067 /* PictUtils.r */,
+				6431B3C60A47418000024067 /* PLStringFuncs.h */,
+				6431B3C70A47418000024067 /* PMApplication.h */,
+				6431B3C80A47418000024067 /* PMCore.h */,
+				6431B3C90A47418000024067 /* PMDefinitions.h */,
+				6431B3CA0A47418000024067 /* Power.h */,
+				6431B3CB0A47418000024067 /* PPCToolbox.h */,
+				6431B3CC0A47418000024067 /* PPCToolbox.r */,
+				6431B3CD0A47418000024067 /* Printing.h */,
+				6431B3CE0A47418000024067 /* Processes.h */,
+				6431B3CF0A47418000024067 /* Processes.r */,
+				6431B3D00A47418000024067 /* QD3D.h */,
+				6431B3D10A47418000024067 /* QD3DAcceleration.h */,
+				6431B3D20A47418000024067 /* QD3DCamera.h */,
+				6431B3D30A47418000024067 /* QD3DController.h */,
+				6431B3D40A47418000024067 /* QD3DCustomElements.h */,
+				6431B3D50A47418000024067 /* QD3DDrawContext.h */,
+				6431B3D60A47418000024067 /* QD3DErrors.h */,
+				6431B3D70A47418000024067 /* QD3DExtension.h */,
+				6431B3D80A47418000024067 /* QD3DGeometry.h */,
+				6431B3D90A47418000024067 /* QD3DGroup.h */,
+				6431B3DA0A47418000024067 /* QD3DIO.h */,
+				6431B3DB0A47418000024067 /* QD3DLight.h */,
+				6431B3DC0A47418000024067 /* QD3DMath.h */,
+				6431B3DD0A47418000024067 /* QD3DPick.h */,
+				6431B3DE0A47418000024067 /* QD3DRenderer.h */,
+				6431B3DF0A47418000024067 /* QD3DSet.h */,
+				6431B3E00A47418000024067 /* QD3DShader.h */,
+				6431B3E10A47418000024067 /* QD3DStorage.h */,
+				6431B3E20A47418000024067 /* QD3DString.h */,
+				6431B3E30A47418000024067 /* QD3DStyle.h */,
+				6431B3E40A47418000024067 /* QD3DTransform.h */,
+				6431B3E50A47418000024067 /* QD3DView.h */,
+				6431B3E60A47418000024067 /* QD3DViewer.h */,
+				6431B3E70A47418000024067 /* QD3DWinViewer.h */,
+				6431B3E80A47418000024067 /* QDOffscreen.h */,
+				6431B3E90A47418000024067 /* QTML.h */,
+				6431B3EA0A47418000024067 /* QTSMovie.h */,
+				6431B3EB0A47418000024067 /* QTSMovie.k.h */,
+				6431B3EC0A47418000024067 /* QTSMovie.r */,
+				6431B3ED0A47418000024067 /* QTStreamingComponents.h */,
+				6431B3EE0A47418000024067 /* QTStreamingComponents.k.h */,
+				6431B3EF0A47418000024067 /* QTStreamingComponents.r */,
+				6431B3F00A47418000024067 /* Quickdraw.h */,
+				6431B3F10A47418000024067 /* Quickdraw.r */,
+				6431B3F20A47418000024067 /* QuickdrawText.h */,
+				6431B3F30A47418000024067 /* QuickTime.h */,
+				6431B3F40A47418000024067 /* QuickTime.r */,
+				6431B3F50A47418000024067 /* QuickTimeComponents.h */,
+				6431B3F60A47418000024067 /* QuickTimeComponents.k.h */,
+				6431B3F70A47418000024067 /* QuickTimeComponents.r */,
+				6431B3F80A47418000024067 /* QuickTimeMusic.h */,
+				6431B3F90A47418000024067 /* QuickTimeMusic.k.h */,
+				6431B3FA0A47418000024067 /* QuickTimeStreaming.h */,
+				6431B3FB0A47418000024067 /* QuickTimeVR.h */,
+				6431B3FC0A47418000024067 /* QuickTimeVRFormat.h */,
+				6431B3FD0A47418000024067 /* RAVE.h */,
+				6431B3FE0A47418000024067 /* RAVESystem.h */,
+				6431B3FF0A47418000024067 /* Resources.h */,
+				6431B4000A47418000024067 /* Retrace.h */,
+				6431B4010A47418000024067 /* ROMDefs.h */,
+				6431B4020A47418000024067 /* ScalerStreamTypes.h */,
+				6431B4030A47418000024067 /* ScalerTypes.h */,
+				6431B4040A47418000024067 /* Scrap.h */,
+				6431B4050A47418000024067 /* Script.h */,
+				6431B4060A47418000024067 /* Script.r */,
+				6431B4070A47418000024067 /* SCSI.h */,
+				6431B4080A47418000024067 /* SegLoad.h */,
+				6431B4090A47418000024067 /* Serial.h */,
+				6431B40A0A47418000024067 /* SFNTLayoutTypes.h */,
+				6431B40B0A47418000024067 /* SFNTTypes.h */,
+				6431B40C0A47418000024067 /* ShutDown.h */,
+				6431B40D0A47418000024067 /* Slots.h */,
+				6431B40E0A47418000024067 /* Slots.r */,
+				6431B40F0A47418000024067 /* SocketServices.h */,
+				6431B4100A47418000024067 /* Sound.h */,
+				6431B4110A47418000024067 /* Sound.k.h */,
+				6431B4120A47418000024067 /* Sound.r */,
+				6431B4130A47418000024067 /* SoundComponents.h */,
+				6431B4140A47418000024067 /* SoundComponents.r */,
+				6431B4150A47418000024067 /* SoundInput.h */,
+				6431B4160A47418000024067 /* SoundInput.r */,
+				6431B4170A47418000024067 /* SoundSprocket.h */,
+				6431B4180A47418000024067 /* Speech.h */,
+				6431B4190A47418000024067 /* SpeechRecognition.h */,
+				6431B41A0A47418000024067 /* SpeechSynthesis.h */,
+				6431B41B0A47418000024067 /* StandardFile.h */,
+				6431B41C0A47418000024067 /* Start.h */,
+				6431B41D0A47418000024067 /* StringCompare.h */,
+				6431B41E0A47418000024067 /* Strings.h */,
+				6431B41F0A47418000024067 /* SysTypes.r */,
+				6431B4200A47418000024067 /* Telephones.h */,
+				6431B4210A47418000024067 /* Terminals.h */,
+				6431B4220A47418000024067 /* TerminalTools.h */,
+				6431B4230A47418000024067 /* TextCommon.h */,
+				6431B4240A47418000024067 /* TextCommon.r */,
+				6431B4250A47418000024067 /* TextEdit.h */,
+				6431B4260A47418000024067 /* TextEncodingConverter.h */,
+				6431B4270A47418000024067 /* TextEncodingPlugin.h */,
+				6431B4280A47418000024067 /* TextServices.h */,
+				6431B4290A47418000024067 /* TextUtils.h */,
+				6431B42A0A47418000024067 /* Threads.h */,
+				6431B42B0A47418000024067 /* Timer.h */,
+				6431B42C0A47418000024067 /* ToolUtils.h */,
+				6431B42D0A47418000024067 /* Translation.h */,
+				6431B42E0A47418000024067 /* TranslationExtensions.h */,
+				6431B42F0A47418000024067 /* TranslationExtensions.r */,
+				6431B4300A47418000024067 /* Traps.h */,
+				6431B4310A47418000024067 /* TSMTE.h */,
+				6431B4320A47418000024067 /* Types.h */,
+				6431B4330A47418000024067 /* Types.r */,
+				6431B4340A47418000024067 /* TypeSelect.h */,
+				6431B4350A47418000024067 /* Unicode.h */,
+				6431B4360A47418000024067 /* UnicodeConverter.h */,
+				6431B4370A47418000024067 /* UnicodeConverter.r */,
+				6431B4380A47418000024067 /* UnicodeUtilities.h */,
+				6431B4390A47418000024067 /* UnicodeUtilities.r */,
+				6431B43A0A47418000024067 /* URLAccess.h */,
+				6431B43B0A47418000024067 /* USB.h */,
+				6431B43C0A47418000024067 /* UTCUtils.h */,
+				6431B43D0A47418000024067 /* vBasicOps.h */,
+				6431B43E0A47418000024067 /* vBigNum.h */,
+				6431B43F0A47418000024067 /* vBLAS.h */,
+				6431B4400A47418000024067 /* vDSP.h */,
+				6431B4410A47418000024067 /* vectorOps.h */,
+				6431B4420A47418000024067 /* vfp.h */,
+				6431B4430A47418000024067 /* Video.h */,
+				6431B4440A47418000024067 /* Video.r */,
+				6431B4450A47418000024067 /* VideoServices.h */,
+				6431B4460A47418000024067 /* Windows.h */,
+				6431B4470A47418000024067 /* Windows.r */,
+				6431B4480A47418000024067 /* WorldScript.h */,
+				6431B4490A47418000024067 /* ZoomedVideo.h */,
+			);
+			name = "Mac OS common";
+			path = /Developer/Headers/FlatCarbon;
+			sourceTree = "<absolute>";
+		};
+		6431B44A0A47419600024067 /* Photoshop common */ = {
+			isa = PBXGroup;
+			children = (
+				6431B4540A47419600024067 /* photoshop */,
+				6431B4710A47419600024067 /* pica_sp */,
+				6431B48A0A47419600024067 /* resources */,
+			);
+			name = "Photoshop common";
+			path = ../../../../photoshopapi;
+			sourceTree = SOURCE_ROOT;
+		};
+		6431B4540A47419600024067 /* photoshop */ = {
+			isa = PBXGroup;
+			children = (
+				64CC2EED111CE1E200423B46 /* JSScriptingSuite.h */,
+				64DD4BFC1111575800619C3D /* PSIntTypes.h */,
+				64CF8E550AA3A68700120C5A /* ASConfig.h */,
+				64CF8E560AA3A68700120C5A /* ASPragma.h */,
+				64CF8E570AA3A68700120C5A /* ASTypes.h */,
+				64CF8E580AA3A68700120C5A /* ASZStringSuite.h */,
+				6431B4550A47419600024067 /* ASPreInclude.h */,
+				6431B4560A47419600024067 /* PIAbout.h */,
+				6431B4570A47419600024067 /* PIAcquire.h */,
+				6431B4580A47419600024067 /* PIActions.h */,
+				6431B4590A47419600024067 /* PIActionsPlugin.h */,
+				6431B45A0A47419600024067 /* PIAliasSuite.h */,
+				6431B45B0A47419600024067 /* PIBufferSuite.h */,
+				6431B45C0A47419600024067 /* PIChannelPortOperations.h */,
+				6431B45D0A47419600024067 /* PIChannelPortsSuite.h */,
+				6431B45E0A47419600024067 /* PIColorSpaceSuite.h */,
+				6431B45F0A47419600024067 /* PIErrorSuite.h */,
+				6431B4600A47419600024067 /* PIExport.h */,
+				6431B4610A47419600024067 /* PIFilter.h */,
+				6431B4620A47419600024067 /* PIFormat.h */,
+				6431B4630A47419600024067 /* PIGeneral.h */,
+				6431B4640A47419600024067 /* PIGetFileListSuite.h */,
+				6431B4650A47419600024067 /* PIGetPathSuite.h */,
+				6431B4660A47419600024067 /* PIHandleSuite.h */,
+				6431B4670A47419600024067 /* PIPicker.h */,
+				6431B4680A47419600024067 /* PIProgressSuite.h */,
+				6431B4690A47419600024067 /* PIProperties.h */,
+				6431B46A0A47419600024067 /* PIResDefines.h */,
+				6431B46B0A47419600024067 /* PISelection.h */,
+				6431B46C0A47419600024067 /* PIStringTerminology.h */,
+				6431B46D0A47419600024067 /* PITerminology.h */,
+				6431B46E0A47419600024067 /* PITypes.h */,
+				6431B46F0A47419600024067 /* PIUIHooksSuite.h */,
+				6431B4700A47419600024067 /* PSErrorDefines.h */,
+			);
+			path = photoshop;
+			sourceTree = "<group>";
+		};
+		6431B4710A47419600024067 /* pica_sp */ = {
+			isa = PBXGroup;
+			children = (
+				6431B4720A47419600024067 /* SPAccess.h */,
+				6431B4730A47419600024067 /* SPAdapts.h */,
+				6431B4740A47419600024067 /* SPBasic.h */,
+				6431B4750A47419600024067 /* SPBckDbg.h */,
+				6431B4760A47419600024067 /* SPBlocks.h */,
+				6431B4770A47419600024067 /* SPCaches.h */,
+				6431B4780A47419600024067 /* SPCOM.h */,
+				6431B4790A47419600024067 /* SPConfig.h */,
+				6431B47A0A47419600024067 /* SPEDebug.c */,
+				6431B47B0A47419600024067 /* SPErrorCodes.h */,
+				6431B47C0A47419600024067 /* SPErrors.h */,
+				6431B47D0A47419600024067 /* SPFiles.h */,
+				6431B47E0A47419600024067 /* SPHost.h */,
+				6431B47F0A47419600024067 /* SPInterf.h */,
+				6431B4800A47419600024067 /* SPMData.h */,
+				6431B4810A47419600024067 /* SPObject.h */,
+				6431B4820A47419600024067 /* SPPiPL.h */,
+				6431B4830A47419600024067 /* SPPlugs.h */,
+				6431B4840A47419600024067 /* SPProps.h */,
+				6431B4850A47419600024067 /* SPRuntme.h */,
+				6431B4860A47419600024067 /* SPStrngs.h */,
+				6431B4870A47419600024067 /* SPSTSPrp.h */,
+				6431B4880A47419600024067 /* SPSuites.h */,
+				6431B4890A47419600024067 /* SPTypes.h */,
+			);
+			path = pica_sp;
+			sourceTree = "<group>";
+		};
+		6431B48A0A47419600024067 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6431B48B0A47419600024067 /* PIGeneral.r */,
+				6431B48C0A47419600024067 /* PIMI.r */,
+				6431B48D0A47419600024067 /* PIPL.r */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		6431B48F0A4741A700024067 /* SDK common */ = {
+			isa = PBXGroup;
+			children = (
+				6431B4900A4741A700024067 /* includes */,
+				6431B4970A4741A700024067 /* resources */,
+				6431B49B0A4741A700024067 /* sources */,
+			);
+			name = "SDK common";
+			path = ../../../common;
+			sourceTree = SOURCE_ROOT;
+		};
+		6431B4900A4741A700024067 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				6431B4920A4741A700024067 /* PIDefines.h */,
+				6431B4940A4741A700024067 /* PIUSuites.h */,
+				6431B4950A4741A700024067 /* PIUtilities.h */,
+				6431B4960A4741A700024067 /* DialogUtilities.h */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		6431B4970A4741A700024067 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E2880D8E0B0EF4AF001C1C00 /* Info.plist */,
+				6431B4990A4741A700024067 /* PIUtilities.r */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		6431B49B0A4741A700024067 /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				6431B49D0A4741A700024067 /* PIUSuites.cpp */,
+				6431B49E0A4741A700024067 /* PIUtilities.cpp */,
+				6431B49F0A4741A700024067 /* DialogUtilitiesMac.cpp */,
+			);
+			path = sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D01CCC60486CAD60068D4B7 /* NearestBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FADC23308B4156C00ABE55E /* Build configuration list for PBXNativeTarget "NearestBase" */;
+			buildPhases = (
+				8D01CCC90486CAD60068D4B7 /* Resources */,
+				8D01CCCB0486CAD60068D4B7 /* Sources */,
+				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
+				6431B4A80A4741F100024067 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NearestBase;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = NearestBase;
+			productReference = 8D01CCD20486CAD60068D4B7 /* NearestBase.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "nearestbase" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* NearestBase */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D01CCC60486CAD60068D4B7 /* NearestBase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D01CCC90486CAD60068D4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		6431B4A80A4741F100024067 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6431B4B80A47421900024067 /* NearestBase.r in Rez */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6431B4A20A4741A700024067 /* PIUSuites.cpp in Sources */,
+				6431B4A30A4741A700024067 /* PIUtilities.cpp in Sources */,
+				6431B4B30A47420900024067 /* NearestBaseUIMac.cpp in Sources */,
+				6431B4B90A47421900024067 /* NearestBase.cpp in Sources */,
+				6431B4BA0A47421900024067 /* NearestBaseScripting.cpp in Sources */,
+				647B6482111392640067F135 /* DialogUtilitiesMac.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4FADC23408B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				INFOPLIST_FILE = ../../../common/resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PLUGIN_TYPE = 8BCM;
+				PRODUCT_NAME = NearestBase;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				WRAPPER_EXTENSION = plugin;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		4FADC23808B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				OBJROOT = "$(SYMROOT)../../Objs";
+				PREBINDING = NO;
+				REZ_PREFIX_FILE = "$(SRCROOT)/../../../common/includes/MachOMacrezXcode.h";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SYMROOT = ../../../Output/Mac/Debug/;
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FADC23308B4156C00ABE55E /* Build configuration list for PBXNativeTarget "NearestBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23408B4156C00ABE55E /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "nearestbase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23808B4156C00ABE55E /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

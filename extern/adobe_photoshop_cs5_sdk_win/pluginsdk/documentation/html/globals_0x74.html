@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Data Fields</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="globals.html"><span>All</span></a></li>
+    <li><a href="globals_type.html"><span>Typedefs</span></a></li>
+    <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+    <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
+    <li><a href="globals_defs.html"><span>Defines</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="globals.html#index_a"><span>a</span></a></li>
+    <li><a href="globals_0x62.html#index_b"><span>b</span></a></li>
+    <li><a href="globals_0x63.html#index_c"><span>c</span></a></li>
+    <li><a href="globals_0x64.html#index_d"><span>d</span></a></li>
+    <li><a href="globals_0x65.html#index_e"><span>e</span></a></li>
+    <li><a href="globals_0x66.html#index_f"><span>f</span></a></li>
+    <li><a href="globals_0x67.html#index_g"><span>g</span></a></li>
+    <li><a href="globals_0x68.html#index_h"><span>h</span></a></li>
+    <li><a href="globals_0x69.html#index_i"><span>i</span></a></li>
+    <li><a href="globals_0x6a.html#index_j"><span>j</span></a></li>
+    <li><a href="globals_0x6b.html#index_k"><span>k</span></a></li>
+    <li><a href="globals_0x6c.html#index_l"><span>l</span></a></li>
+    <li><a href="globals_0x6d.html#index_m"><span>m</span></a></li>
+    <li><a href="globals_0x6e.html#index_n"><span>n</span></a></li>
+    <li><a href="globals_0x6f.html#index_o"><span>o</span></a></li>
+    <li><a href="globals_0x70.html#index_p"><span>p</span></a></li>
+    <li><a href="globals_0x72.html#index_r"><span>r</span></a></li>
+    <li><a href="globals_0x73.html#index_s"><span>s</span></a></li>
+    <li id="current"><a href="globals_0x74.html#index_t"><span>t</span></a></li>
+    <li><a href="globals_0x75.html#index_u"><span>u</span></a></li>
+    <li><a href="globals_0x77.html#index_w"><span>w</span></a></li>
+  </ul>
+</div>
+
+<p>
+Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:
+<p>
+<h3><a class="anchor" name="index_t">- t -</a></h3><ul>
+<li>TestAbortProc
+: <a class="el" href="group___direct_callbacks.html#gdbe639c3cac9253725c492c97797202f">PIGeneral.h</a><li>typeActionData
+: <a class="el" href="_p_i_terminology_8h.html#8d3f30be21cd5ef8f5f3599ceb3c8ca4">PITerminology.h</a><li>typeActionReference
+: <a class="el" href="_p_i_terminology_8h.html#51972b984bed8a5773ab91e417b1185a">PITerminology.h</a><li>typeAlignDistributeSelector
+: <a class="el" href="_p_i_terminology_8h.html#60229448c5fb6596d319ab1424508110">PITerminology.h</a><li>typeAlignment
+: <a class="el" href="_p_i_terminology_8h.html#bda845626ee0c9fda99c844cdb5779b4">PITerminology.h</a><li>typeAmount
+: <a class="el" href="_p_i_terminology_8h.html#275cf39530daf2913c30fb28364fc89c">PITerminology.h</a><li>typeAntiAlias
+: <a class="el" href="_p_i_terminology_8h.html#b36b943ba84401d71f23cfd8bc0c7da0">PITerminology.h</a><li>typeAreaSelector
+: <a class="el" href="_p_i_terminology_8h.html#f1b54ddc3a6dfc134bd1106790408c4c">PITerminology.h</a><li>typeAssumeOptions
+: <a class="el" href="_p_i_terminology_8h.html#55e38970ddcd88d03c833d8b360520d1">PITerminology.h</a><li>typeBevelEmbossStampStyle
+: <a class="el" href="_p_i_terminology_8h.html#ee3e1167e6f316421b467499226eca61">PITerminology.h</a><li>typeBevelEmbossStyle
+: <a class="el" href="_p_i_terminology_8h.html#2c938615f0893ef79f367e25568abb53">PITerminology.h</a><li>typeBitDepth
+: <a class="el" href="_p_i_terminology_8h.html#ca48494b1b6f419974d98442817446ff">PITerminology.h</a><li>typeBlackGeneration
+: <a class="el" href="_p_i_terminology_8h.html#d03df3eb3a86173a88562c02ae5ab740">PITerminology.h</a><li>typeBlendMode
+: <a class="el" href="_p_i_terminology_8h.html#aa53e2a0e42302b2b338262e9dacebfd">PITerminology.h</a><li>typeBlurMethod
+: <a class="el" href="_p_i_terminology_8h.html#ebf09ec5777e6badb30b242f438b9657">PITerminology.h</a><li>typeBlurQuality
+: <a class="el" href="_p_i_terminology_8h.html#13701e29ab9d9630bf6a8152c68f26d0">PITerminology.h</a><li>typeBrushType
+: <a class="el" href="_p_i_terminology_8h.html#369fee335e51b816e52a8c26a9c68727">PITerminology.h</a><li>typeBuiltInContour
+: <a class="el" href="_p_i_terminology_8h.html#96db9ce41f92d0044e0f09ebdb2bf937">PITerminology.h</a><li>typeBuiltinProfile
+: <a class="el" href="_p_i_terminology_8h.html#611a5c7d4a38cef8e20ea62caf02042e">PITerminology.h</a><li>typeCalculation
+: <a class="el" href="_p_i_terminology_8h.html#7f8fa986a437061b624274da12ed4ee8">PITerminology.h</a><li>typeChannel
+: <a class="el" href="_p_i_terminology_8h.html#ded164536b6642a5db3e52529a801fed">PITerminology.h</a><li>typeChannelReference
+: <a class="el" href="_p_i_terminology_8h.html#70757cea9f8f8b67870776ecd9b4ac7c">PITerminology.h</a><li>typeCheckerboardSize
+: <a class="el" href="_p_i_terminology_8h.html#0a8aa703d33fcea32109f3b1d555b29f">PITerminology.h</a><li>typeClass
+: <a class="el" href="_p_i_terminology_8h.html#b46e02fe20549bf7324286a9678566fd">PITerminology.h</a><li>typeClassColor
+: <a class="el" href="_p_i_terminology_8h.html#eb6eaf54816d0d5b9d530312c2af66f8">PITerminology.h</a><li>typeClassElement
+: <a class="el" href="_p_i_terminology_8h.html#5c673145354c2cbb3ede664a2545a695">PITerminology.h</a><li>typeClassExport
+: <a class="el" href="_p_i_terminology_8h.html#c425456867abb5aa4eeb3c1e1b479d5a">PITerminology.h</a><li>typeClassFormat
+: <a class="el" href="_p_i_terminology_8h.html#0d89bedad6050944e5be46be924b55bc">PITerminology.h</a><li>typeClassHueSatHueSatV2
+: <a class="el" href="_p_i_terminology_8h.html#ecc284ed7611e164f56f515e99f20f1d">PITerminology.h</a><li>typeClassImport
+: <a class="el" href="_p_i_terminology_8h.html#112f1c3d83c5c06ef28f250f42eadac8">PITerminology.h</a><li>typeClassMode
+: <a class="el" href="_p_i_terminology_8h.html#72f381229cd6ff6af83dd0b79bcc345f">PITerminology.h</a><li>typeClassStringFormat
+: <a class="el" href="_p_i_terminology_8h.html#f6185948995468b1f474a330131397e8">PITerminology.h</a><li>typeClassTextExport
+: <a class="el" href="_p_i_terminology_8h.html#d0093ffedccc6b217a2e6ddc0f46a070">PITerminology.h</a><li>typeClassTextImport
+: <a class="el" href="_p_i_terminology_8h.html#f4e4c8c313fe0f8464951db8c129008b">PITerminology.h</a><li>typeCMYKSetupEngine
+: <a class="el" href="_p_i_terminology_8h.html#61e5c86ba441172913d3fc323a655a11">PITerminology.h</a><li>typeColor
+: <a class="el" href="_p_i_terminology_8h.html#589ab5e4a1e9bbd8689adc6b536d1702">PITerminology.h</a><li>typeColorChannel
+: <a class="el" href="_p_i_terminology_8h.html#2cc7162c57b11a25aa608a63bd5cf7c5">PITerminology.h</a><li>typeColorPalette
+: <a class="el" href="_p_i_terminology_8h.html#8c3596b864829541576982061f16e1d8">PITerminology.h</a><li>typeColors
+: <a class="el" href="_p_i_terminology_8h.html#649638c4bd308c4ec4a2a0c52a8a5e40">PITerminology.h</a><li>typeColorSpace
+: <a class="el" href="_p_i_terminology_8h.html#8d528ef2ea2b61e57871297b127c7b36">PITerminology.h</a><li>typeColorStopType
+: <a class="el" href="_p_i_terminology_8h.html#9d1f1625df617dd56db279909e371bab">PITerminology.h</a><li>typeCompensation
+: <a class="el" href="_p_i_terminology_8h.html#08fd2b5633a47442619470930709224e">PITerminology.h</a><li>typeContourEdge
+: <a class="el" href="_p_i_terminology_8h.html#8c1eacfc50862cf5bca3b27698307122">PITerminology.h</a><li>typeConvert
+: <a class="el" href="_p_i_terminology_8h.html#ab86badb33596db4e99f946fa85ffbca">PITerminology.h</a><li>typeCorrectionMethod
+: <a class="el" href="_p_i_terminology_8h.html#14b7137820bab9f5f39731535278cda8">PITerminology.h</a><li>typeCursorKind
+: <a class="el" href="_p_i_terminology_8h.html#e2a18883944b9a2310ff580815d1a833">PITerminology.h</a><li>typeDCS
+: <a class="el" href="_p_i_terminology_8h.html#4cb3750cd8c34f103096fc5f9141b0d0">PITerminology.h</a><li>typeDeepDepth
+: <a class="el" href="_p_i_terminology_8h.html#50428c531cec5b7df8db2e1fe1bc24ab">PITerminology.h</a><li>typeDepth
+: <a class="el" href="_p_i_terminology_8h.html#57b1781f01ffab323a01a529d8f123d4">PITerminology.h</a><li>typeDiffuseMode
+: <a class="el" href="_p_i_terminology_8h.html#c85295570d86f6229cb8bef1b15ac51e">PITerminology.h</a><li>typeDirection
+: <a class="el" href="_p_i_terminology_8h.html#8700be7a97ca9ce9832d39125268f357">PITerminology.h</a><li>typeDisplacementMap
+: <a class="el" href="_p_i_terminology_8h.html#f291712ad27c59cc99edc87117d5b662">PITerminology.h</a><li>typeDistribution
+: <a class="el" href="_p_i_terminology_8h.html#929da5613fcdf58905e7e72f614f6bda">PITerminology.h</a><li>typeDither
+: <a class="el" href="_p_i_terminology_8h.html#612f1a012b2090a38811dba55225d728">PITerminology.h</a><li>typeDitherQuality
+: <a class="el" href="_p_i_terminology_8h.html#660dd3f6c41789f47a5977eeae322532">PITerminology.h</a><li>typeDocumentReference
+: <a class="el" href="_p_i_terminology_8h.html#38ac80e9edadadf1c0f30722fe9f4ada">PITerminology.h</a><li>typeElementReference
+: <a class="el" href="_p_i_terminology_8h.html#46f31cc6ef6d5047fffdbd9d64d7c5a3">PITerminology.h</a><li>typeEncoding
+: <a class="el" href="_p_i_terminology_8h.html#c6fc22160ffd55bbe8051628ec4f54dd">PITerminology.h</a><li>typeEPSPreview
+: <a class="el" href="_p_i_terminology_8h.html#381df024e0e29e89649089a4fb33b7e7">PITerminology.h</a><li>typeEraserKind
+: <a class="el" href="_p_i_terminology_8h.html#e0ca446d634dcd61a1ad15c7717d7ae6">PITerminology.h</a><li>typeExtrudeRandom
+: <a class="el" href="_p_i_terminology_8h.html#ca9374d92f7e952bcd09be9db52e3040">PITerminology.h</a><li>typeExtrudeType
+: <a class="el" href="_p_i_terminology_8h.html#e8e1a73be2293606649207da55b1d8f4">PITerminology.h</a><li>typeEyeDropperSample
+: <a class="el" href="_p_i_terminology_8h.html#5466b90c1a14466884b69ac7f928debe">PITerminology.h</a><li>typeFill
+: <a class="el" href="_p_i_terminology_8h.html#23fbb5a64e343fd7954fe2bb39512563">PITerminology.h</a><li>typeFillColor
+: <a class="el" href="_p_i_terminology_8h.html#4bc93447b7d06c15799f13ce7272254f">PITerminology.h</a><li>typeFillContents
+: <a class="el" href="_p_i_terminology_8h.html#472c2db086995395fb2cb25529c657f3">PITerminology.h</a><li>typeFillMode
+: <a class="el" href="_p_i_terminology_8h.html#306e99784862a3db934adea4f51ffc9b">PITerminology.h</a><li>typeForcedColors
+: <a class="el" href="_p_i_terminology_8h.html#70b4ecd42e853f7ae147a168bf5a8c84">PITerminology.h</a><li>typeFPXCompress
+: <a class="el" href="_p_i_terminology_8h.html#d2bb4386e284cd7f1b77a14f2a629b80">PITerminology.h</a><li>typeFrameFill
+: <a class="el" href="_p_i_terminology_8h.html#07e48545d06af019838aca1b29289189">PITerminology.h</a><li>typeFrameStyle
+: <a class="el" href="_p_i_terminology_8h.html#94f112362636ced818062aa99764a3e3">PITerminology.h</a><li>typeGIFColorFileType
+: <a class="el" href="_p_i_terminology_8h.html#4302eff1daa259f7aff4d1b436d741e8">PITerminology.h</a><li>typeGIFPaletteType
+: <a class="el" href="_p_i_terminology_8h.html#16586b85bd5cf3aed4e98991b19dfef6">PITerminology.h</a><li>typeGIFRequiredColorSpaceType
+: <a class="el" href="_p_i_terminology_8h.html#778c6fb59d99447539f60be09c45e4b7">PITerminology.h</a><li>typeGIFRowOrderType
+: <a class="el" href="_p_i_terminology_8h.html#2bdd9130154957d2293888d0abb21f5c">PITerminology.h</a><li>typeGlobalClass
+: <a class="el" href="_p_i_terminology_8h.html#f4c296738cbe1ec335c536a7197a9132">PITerminology.h</a><li>typeGlobalObject
+: <a class="el" href="_p_i_terminology_8h.html#fc60fc7a7e82738c365c88d1766bf15e">PITerminology.h</a><li>typeGradientForm
+: <a class="el" href="_p_i_terminology_8h.html#6b6c9cb667335d4ce4fe9c5baa2f4b5e">PITerminology.h</a><li>typeGradientType
+: <a class="el" href="_p_i_terminology_8h.html#83d26b9d2f7e60be2b1f8eb255b77dcd">PITerminology.h</a><li>typeGrainType
+: <a class="el" href="_p_i_terminology_8h.html#23573f37867510aceea39c18e92a98ac">PITerminology.h</a><li>typeGrayBehavior
+: <a class="el" href="_p_i_terminology_8h.html#7bd3b7aea3c86aed775c66cbb02d1bed">PITerminology.h</a><li>typeGuideGridColor
+: <a class="el" href="_p_i_terminology_8h.html#c728134bc01e70f0a04313121dc64116">PITerminology.h</a><li>typeGuideGridStyle
+: <a class="el" href="_p_i_terminology_8h.html#225ada86555226951955eb337f98da51">PITerminology.h</a><li>typeHistoryStateSource
+: <a class="el" href="_p_i_terminology_8h.html#5cfd7b49d981602ea0542252b01505ea">PITerminology.h</a><li>typeHorizontalLocation
+: <a class="el" href="_p_i_terminology_8h.html#927cc7627f22a2f901a213618cebc583">PITerminology.h</a><li>typeImageReference
+: <a class="el" href="_p_i_terminology_8h.html#307a61ab5deec0ec4e2880bbb45f79f8">PITerminology.h</a><li>typeInnerGlowSource
+: <a class="el" href="_p_i_terminology_8h.html#1a00adaa642ff9bf4d9ae111cdf53857">PITerminology.h</a><li>typeIntegerChannel
+: <a class="el" href="_p_i_terminology_8h.html#8af236e42d24c46b994e800cc9baa233">PITerminology.h</a><li>typeIntent
+: <a class="el" href="_p_i_terminology_8h.html#8ecb14556f40a28af02837397af1bcd8">PITerminology.h</a><li>typeInterlaceCreateType
+: <a class="el" href="_p_i_terminology_8h.html#27f18b993081113e8a492cfd24ceccf8">PITerminology.h</a><li>typeInterlaceEliminateType
+: <a class="el" href="_p_i_terminology_8h.html#cbb90afbd840181480090e0816b8c1c5">PITerminology.h</a><li>typeInterpolation
+: <a class="el" href="_p_i_terminology_8h.html#132e610a7c295108f4d16d0d34e8704a">PITerminology.h</a><li>typeKelvin
+: <a class="el" href="_p_i_terminology_8h.html#ee3f07ae1bb2ac9818eb2a6c0d0f0812">PITerminology.h</a><li>typeKelvinCustomWhitePoint
+: <a class="el" href="_p_i_terminology_8h.html#7f6ff7bcc576b287942005f93ee739b7">PITerminology.h</a><li>typeLens
+: <a class="el" href="_p_i_terminology_8h.html#e7f0ed1f0db92a32fc235de9cd9dea72">PITerminology.h</a><li>typeLightDirection
+: <a class="el" href="_p_i_terminology_8h.html#0c5389c9f903ee2b9ada3f5c71b05572">PITerminology.h</a><li>typeLightPosition
+: <a class="el" href="_p_i_terminology_8h.html#d351e5f585c5d75d4b7301b10eb0a278">PITerminology.h</a><li>typeLightType
+: <a class="el" href="_p_i_terminology_8h.html#70c17321000c26ec797b7a6e3a12dc87">PITerminology.h</a><li>typeLocationReference
+: <a class="el" href="_p_i_terminology_8h.html#e5fef50d3440ad7313d39c30424f4dfb">PITerminology.h</a><li>typeMaskIndicator
+: <a class="el" href="_p_i_terminology_8h.html#95d3a8b20e11280e02044afa5b663bf1">PITerminology.h</a><li>typeMatteColor
+: <a class="el" href="_p_i_terminology_8h.html#8a0d1cc2daf5b7d6a805378dbc183371">PITerminology.h</a><li>typeMatteTechnique
+: <a class="el" href="_p_i_terminology_8h.html#d6d236b161d94d4aa260a3f457b9446e">PITerminology.h</a><li>typeMenuItem
+: <a class="el" href="_p_i_terminology_8h.html#0e4843db60e13a23db60b33d9945eaeb">PITerminology.h</a><li>typeMethod
+: <a class="el" href="_p_i_terminology_8h.html#a4131ca76775cdf81ed082da42810e11">PITerminology.h</a><li>typeMezzotintType
+: <a class="el" href="_p_i_terminology_8h.html#a421c5e32c092ec2ef203458df72c784">PITerminology.h</a><li>typeMode
+: <a class="el" href="_p_i_terminology_8h.html#efdb923c1ce8492b53b20e2464d1d4d3">PITerminology.h</a><li>typeNotify
+: <a class="el" href="_p_i_terminology_8h.html#ce262d14fa3be63b2acb52f81c7dc3ed">PITerminology.h</a><li>typeObject
+: <a class="el" href="_p_i_terminology_8h.html#b182278c4d95723e1d16582f04c93944">PITerminology.h</a><li>typeObjectReference
+: <a class="el" href="_p_i_terminology_8h.html#e5246d7e9fcf32879c84d62a782eba76">PITerminology.h</a><li>typeOnOff
+: <a class="el" href="_p_i_terminology_8h.html#bf55f06e43b2c48c990407fdedb4b1ee">PITerminology.h</a><li>typeOrdinal
+: <a class="el" href="_p_i_terminology_8h.html#f7baacdd370ef72b6b64d08e71e27d18">PITerminology.h</a><li>typeOrientation
+: <a class="el" href="_p_i_terminology_8h.html#13d6231a18d2a026f05e763ffa308d58">PITerminology.h</a><li>typePagePosition
+: <a class="el" href="_p_i_terminology_8h.html#9dbbdeed6f34e7db9cbb7caa4284f206">PITerminology.h</a><li>typePath
+: <a class="el" href="_p_i_actions_8h.html#4962abaaabcab9a7201694fdf2b8d5d6">PIActions.h</a><li>typePathKind
+: <a class="el" href="_p_i_terminology_8h.html#5a132b7cb710a827cc33929f7628c2e7">PITerminology.h</a><li>typePathReference
+: <a class="el" href="_p_i_terminology_8h.html#d30b7dec7bf86ad684cc5282d03714e4">PITerminology.h</a><li>typePhosphors
+: <a class="el" href="_p_i_terminology_8h.html#23b2bca85c47c5b46d9f0c1993d513a0">PITerminology.h</a><li>typePhosphorsCustomPhosphors
+: <a class="el" href="_p_i_terminology_8h.html#1b4a859754bfb11065e0662abf550e70">PITerminology.h</a><li>typePickerKind
+: <a class="el" href="_p_i_terminology_8h.html#48c60a276f86952256067cf9c43b4114">PITerminology.h</a><li>typePixelPaintSize
+: <a class="el" href="_p_i_terminology_8h.html#a4a96f94026e53b9d4ebad123ed324e9">PITerminology.h</a><li>typePlatform
+: <a class="el" href="_p_i_terminology_8h.html#f9912cc798ccf572b0ae1280c0755509">PITerminology.h</a><li>typePlatformFilePath
+: <a class="el" href="_p_i_actions_8h.html#7a5019561a353bdea01f8aeea88e572a">PIActions.h</a><li>typePNGFilter
+: <a class="el" href="_p_i_terminology_8h.html#eb28fdcd7cab3b1aa782229f9e940357">PITerminology.h</a><li>typePNGInterlaceType
+: <a class="el" href="_p_i_terminology_8h.html#2de7e5ceae6c3439fd5f15958fefb81f">PITerminology.h</a><li>typePreview
+: <a class="el" href="_p_i_terminology_8h.html#48d0531375a928b82b0fd7dfdf70cfe6">PITerminology.h</a><li>typePreviewCMYK
+: <a class="el" href="_p_i_terminology_8h.html#d0612c6640626474b3c899aa6b84d5e2">PITerminology.h</a><li>typeProfileMismatch
+: <a class="el" href="_p_i_terminology_8h.html#e27e42de666df3fde35c23d61e8ce114">PITerminology.h</a><li>typePurgeItem
+: <a class="el" href="_p_i_terminology_8h.html#3553a0a4ef066a8c8be27f1af4d81fe0">PITerminology.h</a><li>typeQuadCenterState
+: <a class="el" href="_p_i_terminology_8h.html#83c9ffdbec878a56ff9f0bb284d96ac3">PITerminology.h</a><li>typeQuality
+: <a class="el" href="_p_i_terminology_8h.html#67d5474c0037bd8788189ee3d3b5cac4">PITerminology.h</a><li>typeQueryState
+: <a class="el" href="_p_i_terminology_8h.html#87450dcb8ad60a40b33de837c4267709">PITerminology.h</a><li>typeRawData
+: <a class="el" href="_p_i_terminology_8h.html#b564431e8f931c29aae4da20ca9bad18">PITerminology.h</a><li>typeRGBSetupSource
+: <a class="el" href="_p_i_terminology_8h.html#0b2b4646364cbbb91667fee210daf4d6">PITerminology.h</a><li>typeRippleSize
+: <a class="el" href="_p_i_terminology_8h.html#99b0c893ef8a43067ae6bb2e64c8acc8">PITerminology.h</a><li>typeRulerUnits
+: <a class="el" href="_p_i_terminology_8h.html#d7d5fe1809651f61626bff76bc5f2e62">PITerminology.h</a><li>typeScreenType
+: <a class="el" href="_p_i_terminology_8h.html#465984c7e76b8aa3f8c94a8278a466f8">PITerminology.h</a><li>typeShape
+: <a class="el" href="_p_i_terminology_8h.html#0b6b396952113d37594d13c1422b5054">PITerminology.h</a><li>typeSmartBlurMode
+: <a class="el" href="_p_i_terminology_8h.html#4f1d40b6039331004882f1d0f0e34dc1">PITerminology.h</a><li>typeSmartBlurQuality
+: <a class="el" href="_p_i_terminology_8h.html#03dbc48709088645e457090ab3b7a8d9">PITerminology.h</a><li>typeSourceMode
+: <a class="el" href="_p_i_terminology_8h.html#e55c2cb61c52e525dc9cf6175c14084a">PITerminology.h</a><li>typeSpherizeMode
+: <a class="el" href="_p_i_terminology_8h.html#a2e3ba12f7a06e215f28e4ec69b8deab">PITerminology.h</a><li>typeState
+: <a class="el" href="_p_i_terminology_8h.html#555ecded8f05a5ddf0db9912bc807607">PITerminology.h</a><li>typeStringChannel
+: <a class="el" href="_p_i_terminology_8h.html#f6fc2a68d4709410677812f8b25195eb">PITerminology.h</a><li>typeStringClassFormat
+: <a class="el" href="_p_i_terminology_8h.html#2cc0a19c166324e63770f6df689673d4">PITerminology.h</a><li>typeStringCompensation
+: <a class="el" href="_p_i_terminology_8h.html#8334ade63e68c89998ba78899978561a">PITerminology.h</a><li>typeStringFSS
+: <a class="el" href="_p_i_terminology_8h.html#ef91aa67fc5bc5a01b738bcd5edda77c">PITerminology.h</a><li>typeStringInteger
+: <a class="el" href="_p_i_terminology_8h.html#06f9093958b4573178b94bdc8fb90f15">PITerminology.h</a><li>typeStrokeDirection
+: <a class="el" href="_p_i_terminology_8h.html#8ad1bfbe296ec4f1455de7de941d59f1">PITerminology.h</a><li>typeStrokeLocation
+: <a class="el" href="_p_i_terminology_8h.html#6301325304b2a0e7bfabf32705755a1b">PITerminology.h</a><li>typeTermText
+: <a class="el" href="_p_i_terminology_8h.html#67f7494013dec7f42e3c17249457e452">PITerminology.h</a><li>typeTextureType
+: <a class="el" href="_p_i_terminology_8h.html#3ff66ae265009cf15810865dbdb52ba3">PITerminology.h</a><li>typeTransparencyGridColors
+: <a class="el" href="_p_i_terminology_8h.html#08fb9ee3727633a2982ac5076a48c524">PITerminology.h</a><li>typeTransparencyGridSize
+: <a class="el" href="_p_i_terminology_8h.html#2264393bf1bb78831cd7861003fa2a1e">PITerminology.h</a><li>typeTypeClassModeOrClassMode
+: <a class="el" href="_p_i_terminology_8h.html#676fbae9e38ae036bfe658f0fd22cfcf">PITerminology.h</a><li>typeUndefinedArea
+: <a class="el" href="_p_i_terminology_8h.html#faf11a04f5760b79a536ddbc41d329d1">PITerminology.h</a><li>typeUnitFloat
+: <a class="el" href="_p_i_terminology_8h.html#fbe5ce8a269c75c010f1136ce47d3582">PITerminology.h</a><li>typeUrgency
+: <a class="el" href="_p_i_terminology_8h.html#671d0f9cb160a34fa59198bf5527ef12">PITerminology.h</a><li>typeUserMaskOptions
+: <a class="el" href="_p_i_terminology_8h.html#ad58688cd8b1d1041fe7a709eabefe86">PITerminology.h</a><li>typeValueList
+: <a class="el" href="_p_i_terminology_8h.html#d16298077e2245b5d5ab9e5f55fb3ebf">PITerminology.h</a><li>typeVerticalLocation
+: <a class="el" href="_p_i_terminology_8h.html#1dd556e9892f7e516ef6087c846a0fab">PITerminology.h</a><li>typeWaveType
+: <a class="el" href="_p_i_terminology_8h.html#9de7a2677b2ef7992cc873f57b02940f">PITerminology.h</a><li>typeWindMethod
+: <a class="el" href="_p_i_terminology_8h.html#bdb365265ae8c457a0067687f77b483d">PITerminology.h</a><li>typeYesNo
+: <a class="el" href="_p_i_terminology_8h.html#b7a06efbae1dcb53ae96f52e12c89d36">PITerminology.h</a><li>typeZigZagType
+: <a class="el" href="_p_i_terminology_8h.html#d1bb3b4aa180ea1fb02bbcf577ca910e">PITerminology.h</a></ul>
+
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

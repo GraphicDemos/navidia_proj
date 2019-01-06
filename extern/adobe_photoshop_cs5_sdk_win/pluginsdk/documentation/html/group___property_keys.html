@@ -1,0 +1,1449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Property Keys Recognized by Property Suite Callbacks</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1>Property Keys Recognized by Property Suite Callbacks</h1>Properties are either simple (represented by a 32 bit integer) or complex (represented by a handle).  
+<a href="#_details">More...</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gf92e5f91620d0e32950415a2df7015ae">propNumberOfChannels</a>&nbsp;&nbsp;&nbsp;'nuch'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of channels in the document; (Simple, read-only).  <a href="#gf92e5f91620d0e32950415a2df7015ae"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gb8620cb3429feb609c2acce5eeb55ac5">propChannelName</a>&nbsp;&nbsp;&nbsp;'nmch'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Name of the channel; (Complex, read-only).  <a href="#gb8620cb3429feb609c2acce5eeb55ac5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g6ae31239525ecd2e3c4e6cda5dfe0d64">propUnicodeChannelName</a>&nbsp;&nbsp;&nbsp;'unch'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode characters for the name of the channel; (Complex, read-only).  <a href="#g6ae31239525ecd2e3c4e6cda5dfe0d64"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gafc7db27bc95eff4b2f174073ebd5011">propTargetLayerLock</a>&nbsp;&nbsp;&nbsp;'tllk'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lock bits for the target layer; (Simple, read-only).  <a href="#gafc7db27bc95eff4b2f174073ebd5011"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g91b305c172e95f043c9a3ed0b502295b">propImageMode</a>&nbsp;&nbsp;&nbsp;'mode'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode of the image, returned using the <a class="el" href="group___image_modes.html">Image Modes</a> constants; (Simple, read-only).  <a href="#g91b305c172e95f043c9a3ed0b502295b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g6b2ea15b985f4e69511eb5b9ea3286d5">propNumberOfPaths</a>&nbsp;&nbsp;&nbsp;'nupa'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of paths in the document; (Simple, read-only).  <a href="#g6b2ea15b985f4e69511eb5b9ea3286d5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g30d9b74dd1d4e0fe091d1d4f25781b8a">propPathName</a>&nbsp;&nbsp;&nbsp;'nmpa'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Name of the indexed path; (Complex, read-only).  <a href="#g30d9b74dd1d4e0fe091d1d4f25781b8a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gcbe16037b80a6a9265923ae08eda6237">propUnicodePathName</a>&nbsp;&nbsp;&nbsp;'unmp'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode name of the indexed path; (Complex, read-only).  <a href="#gcbe16037b80a6a9265923ae08eda6237"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g29422c68ee0626cb4020091e485e7bfa">propPathContents</a>&nbsp;&nbsp;&nbsp;'path'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Contents of the indexed path in the format described in the path resources documentation; (Complex, read-only).  <a href="#g29422c68ee0626cb4020091e485e7bfa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g4b696c5f3e51d3225f5878caaeb6ab67">propPathContentsAI</a>&nbsp;&nbsp;&nbsp;'paAI'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Contents of the path as Illustrator data; (Complex, read-only).  <a href="#g4b696c5f3e51d3225f5878caaeb6ab67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gb5a0b3328bc57a29654e64710b665781">propWorkPathIndex</a>&nbsp;&nbsp;&nbsp;'wkpa'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index of the work path; (Simple, read-only).  <a href="#gb5a0b3328bc57a29654e64710b665781"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g4b07fd4c802fdaacea67918e346e91dc">propClippingPathIndex</a>&nbsp;&nbsp;&nbsp;'clpa'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index of the clipping path; (Simple, read-only).  <a href="#g4b07fd4c802fdaacea67918e346e91dc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g8a7421cac763d858e4cd84427bb128db">propTargetPathIndex</a>&nbsp;&nbsp;&nbsp;'tgpa'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index of the target path; (Simple, read-only).  <a href="#g8a7421cac763d858e4cd84427bb128db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g3edd62af2c7c06f669b6a313145f3715">propCaption</a>&nbsp;&nbsp;&nbsp;'capt'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">File caption information in a IPTC-NAA record; (Complex, modifiable).  <a href="#g3edd62af2c7c06f669b6a313145f3715"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g08dbd0e8c15cd439cb2c68f11e8a8611">propXMP</a>&nbsp;&nbsp;&nbsp;'xmpd'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">File XMP meta information in a IPTC-NAA record; (Complex, modifiable).  <a href="#g08dbd0e8c15cd439cb2c68f11e8a8611"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g69bbad0a5ad13e970e4bd1d4b46d4b99">propBigNudgeH</a>&nbsp;&nbsp;&nbsp;'bndH'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Horizontal component of the nudge distance, represented as a 16.16 value; (Simple, modifiable).  <a href="#g69bbad0a5ad13e970e4bd1d4b46d4b99"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g39dc541088c08c0f66eacff2bcf7aff4">propBigNudgeV</a>&nbsp;&nbsp;&nbsp;'bndV'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vertical component of the nudge distance, represented as a 16.16 value; (Simple, modifiable).  <a href="#g39dc541088c08c0f66eacff2bcf7aff4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g302ca7615311b836b512fa544e86d0eb">propInterpolationMethod</a>&nbsp;&nbsp;&nbsp;'intp'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current interpolation method; (Simple, read-only).  <a href="#g302ca7615311b836b512fa544e86d0eb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gea4e4e4e299ad1cbc00bdb32107f4122">propRulerUnits</a>&nbsp;&nbsp;&nbsp;'rulr'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current ruler units; (Simple, read-only).  <a href="#gea4e4e4e299ad1cbc00bdb32107f4122"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g1f7c4248c259fe11494b3edceafa205e">propRulerOriginH</a>&nbsp;&nbsp;&nbsp;'rorH'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Horizontal component of the current ruler origin, represented as a 16.16 value; (Simple, modifiable).  <a href="#g1f7c4248c259fe11494b3edceafa205e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g32c9d2b0f4daae6d2c8c0b6dbda0d5ed">propRulerOriginV</a>&nbsp;&nbsp;&nbsp;'rorV'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vertical component of the current ruler origin, represented as a 16.16 value; (Simple, modifiable).  <a href="#g32c9d2b0f4daae6d2c8c0b6dbda0d5ed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g09531e27fbf796325d924bd05543c787">propGridMajor</a>&nbsp;&nbsp;&nbsp;'grmj'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current major grid rules, in inches, unless <code>propRulerUnits</code> is pixels, and then pixels; (Simple, modifiable).  <a href="#g09531e27fbf796325d924bd05543c787"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g05baefebd253ea746a9e74e984440051">propGridMinor</a>&nbsp;&nbsp;&nbsp;'grmn'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The current number of grid subdivisions per major rule; (Simple, modifiable).  <a href="#g05baefebd253ea746a9e74e984440051"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g683e75a801873d2b9880f959765fe271">propSerialString</a>&nbsp;&nbsp;&nbsp;'sstr'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The serial number string shown to the user; (Complex, read-only).  <a href="#g683e75a801873d2b9880f959765fe271"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gfd2a5747a4dec4a0955bfcc27dffb871">propSerialString2</a>&nbsp;&nbsp;&nbsp;'sstR'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The serial number string shown to the user; (Complex, read-only).  <a href="#gfd2a5747a4dec4a0955bfcc27dffb871"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g30ef1fe184f4115f47d1ef38870c3a41">propHardwareGammaTable</a>&nbsp;&nbsp;&nbsp;'hgam'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hardware gamma table.  <a href="#g30ef1fe184f4115f47d1ef38870c3a41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gea4cc75cee35192bf5b49441e2169081">propInterfaceColor</a>&nbsp;&nbsp;&nbsp;'iclr'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The interface color scheme; (Complex, read-only).  <a href="#gea4cc75cee35192bf5b49441e2169081"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g11d80908b49050a24a3326aecedc48f0">propWatchSuspension</a>&nbsp;&nbsp;&nbsp;'wtch'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The watch suspension level; (Simple, modifiable).  <a href="#g11d80908b49050a24a3326aecedc48f0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g09a157931602ffe17338001060c3478a">propCopyright</a>&nbsp;&nbsp;&nbsp;'cpyr'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether the current image is considered under copywrite; (Simple, modifiable).  <a href="#g09a157931602ffe17338001060c3478a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g6069503c840dd94cdf11135b7900e493">propCopyright2</a>&nbsp;&nbsp;&nbsp;'cpyR'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Whether the current image is considered under copywrite; (Simple, modifiable).  <a href="#g6069503c840dd94cdf11135b7900e493"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gebcc4f158280d072cfd42e499e80db90">propWatermark</a>&nbsp;&nbsp;&nbsp;'watr'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates whether a digital signature or watermark is present; (Simple, modifiable).  <a href="#gebcc4f158280d072cfd42e499e80db90"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g830082e1d9686d5e3751242ee5407e96">propURL</a>&nbsp;&nbsp;&nbsp;'URL '</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The URL for the current image; (Complex, modifiable).  <a href="#g830082e1d9686d5e3751242ee5407e96"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g458ff3eacc13be3553576f13a3918fe8">propTitle</a>&nbsp;&nbsp;&nbsp;'titl'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The title of the current document; (Complex, read-only).  <a href="#g458ff3eacc13be3553576f13a3918fe8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gc5679f02a2cfab65437a444d2fa1701c">propDocumentWidth</a>&nbsp;&nbsp;&nbsp;'docW'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The width of the current document in pixels; (Simple, read-only).  <a href="#gc5679f02a2cfab65437a444d2fa1701c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g4d7964b869804a3730fb106cf942ef75">propDocumentHeight</a>&nbsp;&nbsp;&nbsp;'docH'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The height of the current document in pixels; (Simple, read-only).  <a href="#g4d7964b869804a3730fb106cf942ef75"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g66c3b43c1102c0e2d4ec81108174da4d">propSlices</a>&nbsp;&nbsp;&nbsp;'slcs'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The slices for the document; (Complex, modifiable).  <a href="#g66c3b43c1102c0e2d4ec81108174da4d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g0d82b71e28971af63ce98227194427ef">propSelectedSliceID</a>&nbsp;&nbsp;&nbsp;'slid'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The currently selected slice ID; (Simple, modifiable).  <a href="#g0d82b71e28971af63ce98227194427ef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#ge29abd6184490822817ccb6630f25579">propSelectedSliceIDList</a>&nbsp;&nbsp;&nbsp;'slis'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The currently selected slice ID list; (Complex, modifiable).  <a href="#ge29abd6184490822817ccb6630f25579"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#ge8015a2aafef8dae352a86a702b90fff">propSelectedSliceIndex</a>&nbsp;&nbsp;&nbsp;'slin'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The currently selected slice index; (Simple, read-only).  <a href="#ge8015a2aafef8dae352a86a702b90fff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gb504d40585fb530db1e4ff2ac3198e7d">propShowSliceNumbers</a>&nbsp;&nbsp;&nbsp;'slsh'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicate whether the user has set slice numbers to show; (Simple, read-only).  <a href="#gb504d40585fb530db1e4ff2ac3198e7d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gfc8ebb5d4bcbd63678f1a368d1037837">propSliceLineColor</a>&nbsp;&nbsp;&nbsp;'sllc'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The color of the slice lines; (Complex, read-only).  <a href="#gfc8ebb5d4bcbd63678f1a368d1037837"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g895512f2eba8b905f39e2d90dcd6ba9f">propToolTips</a>&nbsp;&nbsp;&nbsp;'tltp'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tool tip display; (Simple, read-only).  <a href="#g895512f2eba8b905f39e2d90dcd6ba9f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#ga242aba702a3383168d99405d60e688e">propPaintCursorKind</a>&nbsp;&nbsp;&nbsp;'PCrK'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Type of paint cursor being used; (Simple, read-only).  <a href="#ga242aba702a3383168d99405d60e688e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g8b526827f55a9e821cdaef21684513d2">propPaintCursorShape</a>&nbsp;&nbsp;&nbsp;'PCrS'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cursor options being used; (Simple, read-only).  <a href="#g8b526827f55a9e821cdaef21684513d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#ge9454adad51d60bfbae0701a8e17fbb8">propPaintCursorCrosshair</a>&nbsp;&nbsp;&nbsp;'PCrC'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cursor crosshair visibility; (Simple, read-only).  <a href="#ge9454adad51d60bfbae0701a8e17fbb8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gc0840f373f0c928903ccd00c85680d48">propEXIFData</a>&nbsp;&nbsp;&nbsp;'EXIF'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">EXIF camera and device data; (Complex, modifiable).  <a href="#gc0840f373f0c928903ccd00c85680d48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g7e85aca6327af94e26117d6f93c9eb59">propVersion</a>&nbsp;&nbsp;&nbsp;'vers'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current version of Photoshop.  <a href="#g7e85aca6327af94e26117d6f93c9eb59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g6bc209a9be64c47a38f2cca0b47faab6">propPlayInProgress</a>&nbsp;&nbsp;&nbsp;'plip'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Action play information, for actions palette or automation plug in; (Simple, read-only).  <a href="#g6bc209a9be64c47a38f2cca0b47faab6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g20a68f7102ea6558d1be4b825c402877">propUnicodeName</a>&nbsp;&nbsp;&nbsp;'unnm'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode name of the document; (Complex, read-only).  <a href="#g20a68f7102ea6558d1be4b825c402877"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gb44ef04ffd8b57d0ed6e5b68c56aebd8">propUniStr255Name</a>&nbsp;&nbsp;&nbsp;'u25n'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode name of the document; (Complex, read-only).  <a href="#gb44ef04ffd8b57d0ed6e5b68c56aebd8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g181b9955b2f4388ace24bbf8034d056d">propUnicodeNameWithoutExtension</a>&nbsp;&nbsp;&nbsp;'neun'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unicode name of the document without extension; (Complex, read-only).  <a href="#g181b9955b2f4388ace24bbf8034d056d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gbd82e4e53bf08720276da54c8e56ed85">propDontShowAgainCount</a>&nbsp;&nbsp;&nbsp;'DSAC'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Global "Don't show again" counter for dialog boxes; (Simple, read-only).  <a href="#gbd82e4e53bf08720276da54c8e56ed85"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g0fdcf110c987430525b6955aac985931">propNumberOfLayers</a>&nbsp;&nbsp;&nbsp;'nuly'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of layers in the document; (Simple, read-only).  <a href="#g0fdcf110c987430525b6955aac985931"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gf30f69de802eeca5c10113278561c4ac">propTargetLayerIndex</a>&nbsp;&nbsp;&nbsp;'tgly'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index of the target layer; (Simple, read-only).  <a href="#gf30f69de802eeca5c10113278561c4ac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g3ff8494c001753d82eb74a3b2ce4f793">propLayerName</a>&nbsp;&nbsp;&nbsp;'lynm'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Layer name of the layer with a given index; (Complex, read-only).  <a href="#g3ff8494c001753d82eb74a3b2ce4f793"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g5447ae1254dba8ba78fd680ea29d0211">propUnicodeLayerName</a>&nbsp;&nbsp;&nbsp;'lynu'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Layer name as a unicode string of the layer with a given index; (Complex, read-only).  <a href="#g5447ae1254dba8ba78fd680ea29d0211"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g10508fb2cf588d44adf298e20ddd5bfe">propPixelScaleFactor</a>&nbsp;&nbsp;&nbsp;'pxsf'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pixel aspect ratio for the document; (Simple, read-only).  <a href="#g10508fb2cf588d44adf298e20ddd5bfe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gd6f5dd23c677d2a2b239852b13844c1c">propDoingPlace</a>&nbsp;&nbsp;&nbsp;'DPlc'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current operation is part of a place command; (Simple, read-only).  <a href="#gd6f5dd23c677d2a2b239852b13844c1c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g4138de3844e43a2c2126e0df98a632ef">propRasterizingSmartObject</a>&nbsp;&nbsp;&nbsp;'RsSO'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Current operation is part of rasertizing a smart object; (Simple, read-only).  <a href="#g4138de3844e43a2c2126e0df98a632ef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gc4b0902f2e9ac25f4553a0adbc79163c">propAppIsModal</a>&nbsp;&nbsp;&nbsp;'aism'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Use this property to tell if Photoshop is in a modal dialog or a modal tool.  <a href="#gc4b0902f2e9ac25f4553a0adbc79163c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#ga8d648efa5499749b5ec7834eeeb4576">propPixelLength</a>&nbsp;&nbsp;&nbsp;'MSpl'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">measurement scale pixel length (Simple)  <a href="#ga8d648efa5499749b5ec7834eeeb4576"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g6a171c2f693c302c0182de6aebaa8dbd">propLogicalLength</a>&nbsp;&nbsp;&nbsp;'MSll'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">measurement scale logical length(Simple)  <a href="#g6a171c2f693c302c0182de6aebaa8dbd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gcf2fe34857d1fa53e97458684aa8e38f">propMUnits</a>&nbsp;&nbsp;&nbsp;'MSun'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">measurement scale units in unicode string (Complex)  <a href="#gcf2fe34857d1fa53e97458684aa8e38f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#gdec1eeee3b73d34363657f90ad2d2989">propTileSize</a>&nbsp;&nbsp;&nbsp;'TSiz'</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___property_keys.html#g98bd944d661d57e9f6cc3ef9b2c8fc74">propAPEIsInitialized</a>&nbsp;&nbsp;&nbsp;'mnky'</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+Properties are either simple (represented by a 32 bit integer) or complex (represented by a handle). 
+<p>
+Some properties can be modified by calling <a class="el" href="group___property_suite.html#gf16d12b8402b281497a4262bcd555694">SetPropertyProc</a>, others are read-only, and can only be used with <a class="el" href="group___property_suite.html#gdb86a78a3a2909322292a111dd39e0b7">GetPropertyProc</a>. <hr><h2>Define Documentation</h2>
+<a class="anchor" name="gf92e5f91620d0e32950415a2df7015ae"></a><!-- doxytag: member="PIProperties.h::propNumberOfChannels" ref="gf92e5f91620d0e32950415a2df7015ae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propNumberOfChannels&nbsp;&nbsp;&nbsp;'nuch'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of channels in the document; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g91b305c172e95f043c9a3ed0b502295b"></a><!-- doxytag: member="PIProperties.h::propImageMode" ref="g91b305c172e95f043c9a3ed0b502295b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propImageMode&nbsp;&nbsp;&nbsp;'mode'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mode of the image, returned using the <a class="el" href="group___image_modes.html">Image Modes</a> constants; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g1f7c4248c259fe11494b3edceafa205e"></a><!-- doxytag: member="PIProperties.h::propRulerOriginH" ref="g1f7c4248c259fe11494b3edceafa205e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propRulerOriginH&nbsp;&nbsp;&nbsp;'rorH'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Horizontal component of the current ruler origin, represented as a 16.16 value; (Simple, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gb8620cb3429feb609c2acce5eeb55ac5"></a><!-- doxytag: member="PIProperties.h::propChannelName" ref="gb8620cb3429feb609c2acce5eeb55ac5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propChannelName&nbsp;&nbsp;&nbsp;'nmch'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Name of the channel; (Complex, read-only). 
+<p>
+The channels are indexed from 0 and consist of the composite channels, the transparency mask, the layer mask, and the alpha channels. 
+</div>
+</div><p>
+<a class="anchor" name="g6ae31239525ecd2e3c4e6cda5dfe0d64"></a><!-- doxytag: member="PIProperties.h::propUnicodeChannelName" ref="g6ae31239525ecd2e3c4e6cda5dfe0d64" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUnicodeChannelName&nbsp;&nbsp;&nbsp;'unch'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Unicode characters for the name of the channel; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gafc7db27bc95eff4b2f174073ebd5011"></a><!-- doxytag: member="PIProperties.h::propTargetLayerLock" ref="gafc7db27bc95eff4b2f174073ebd5011" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propTargetLayerLock&nbsp;&nbsp;&nbsp;'tllk'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lock bits for the target layer; (Simple, read-only). 
+<p>
+See <a class="el" href="group___target_layer_lock_bits.html">target layer lock bits</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g6b2ea15b985f4e69511eb5b9ea3286d5"></a><!-- doxytag: member="PIProperties.h::propNumberOfPaths" ref="g6b2ea15b985f4e69511eb5b9ea3286d5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propNumberOfPaths&nbsp;&nbsp;&nbsp;'nupa'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of paths in the document; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g30d9b74dd1d4e0fe091d1d4f25781b8a"></a><!-- doxytag: member="PIProperties.h::propPathName" ref="g30d9b74dd1d4e0fe091d1d4f25781b8a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPathName&nbsp;&nbsp;&nbsp;'nmpa'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Name of the indexed path; (Complex, read-only). 
+<p>
+The paths are indexed starting with zero. A complex, read-only property. 
+</div>
+</div><p>
+<a class="anchor" name="gcbe16037b80a6a9265923ae08eda6237"></a><!-- doxytag: member="PIProperties.h::propUnicodePathName" ref="gcbe16037b80a6a9265923ae08eda6237" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUnicodePathName&nbsp;&nbsp;&nbsp;'unmp'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Unicode name of the indexed path; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g29422c68ee0626cb4020091e485e7bfa"></a><!-- doxytag: member="PIProperties.h::propPathContents" ref="g29422c68ee0626cb4020091e485e7bfa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPathContents&nbsp;&nbsp;&nbsp;'path'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Contents of the indexed path in the format described in the path resources documentation; (Complex, read-only). 
+<p>
+The paths are indexed starting with zero. The data is stored in big endian form. Refer to chapter 10 for more information on path data. 
+</div>
+</div><p>
+<a class="anchor" name="g4b696c5f3e51d3225f5878caaeb6ab67"></a><!-- doxytag: member="PIProperties.h::propPathContentsAI" ref="g4b696c5f3e51d3225f5878caaeb6ab67" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPathContentsAI&nbsp;&nbsp;&nbsp;'paAI'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Contents of the path as Illustrator data; (Complex, read-only). 
+<p>
+The paths are indexed starting with zero. 
+</div>
+</div><p>
+<a class="anchor" name="gb5a0b3328bc57a29654e64710b665781"></a><!-- doxytag: member="PIProperties.h::propWorkPathIndex" ref="gb5a0b3328bc57a29654e64710b665781" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propWorkPathIndex&nbsp;&nbsp;&nbsp;'wkpa'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Index of the work path; (Simple, read-only). 
+<p>
+The value of the property is -1 if no work path. 
+</div>
+</div><p>
+<a class="anchor" name="g4b07fd4c802fdaacea67918e346e91dc"></a><!-- doxytag: member="PIProperties.h::propClippingPathIndex" ref="g4b07fd4c802fdaacea67918e346e91dc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propClippingPathIndex&nbsp;&nbsp;&nbsp;'clpa'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Index of the clipping path; (Simple, read-only). 
+<p>
+The value of the property is -1 if no clipping path. 
+</div>
+</div><p>
+<a class="anchor" name="g8a7421cac763d858e4cd84427bb128db"></a><!-- doxytag: member="PIProperties.h::propTargetPathIndex" ref="g8a7421cac763d858e4cd84427bb128db" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propTargetPathIndex&nbsp;&nbsp;&nbsp;'tgpa'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Index of the target path; (Simple, read-only). 
+<p>
+The value of the property is -1 if no target path. 
+</div>
+</div><p>
+<a class="anchor" name="g3edd62af2c7c06f669b6a313145f3715"></a><!-- doxytag: member="PIProperties.h::propCaption" ref="g3edd62af2c7c06f669b6a313145f3715" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propCaption&nbsp;&nbsp;&nbsp;'capt'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+File caption information in a IPTC-NAA record; (Complex, modifiable). 
+<p>
+For more information, see <em> Photoshop File Formats.pdf. </em> 
+</div>
+</div><p>
+<a class="anchor" name="g08dbd0e8c15cd439cb2c68f11e8a8611"></a><!-- doxytag: member="PIProperties.h::propXMP" ref="g08dbd0e8c15cd439cb2c68f11e8a8611" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propXMP&nbsp;&nbsp;&nbsp;'xmpd'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+File XMP meta information in a IPTC-NAA record; (Complex, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g69bbad0a5ad13e970e4bd1d4b46d4b99"></a><!-- doxytag: member="PIProperties.h::propBigNudgeH" ref="g69bbad0a5ad13e970e4bd1d4b46d4b99" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propBigNudgeH&nbsp;&nbsp;&nbsp;'bndH'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Horizontal component of the nudge distance, represented as a 16.16 value; (Simple, modifiable). 
+<p>
+This is the value used when moving around using the shift key. The default value is ten pixels. 
+</div>
+</div><p>
+<a class="anchor" name="g39dc541088c08c0f66eacff2bcf7aff4"></a><!-- doxytag: member="PIProperties.h::propBigNudgeV" ref="g39dc541088c08c0f66eacff2bcf7aff4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propBigNudgeV&nbsp;&nbsp;&nbsp;'bndV'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vertical component of the nudge distance, represented as a 16.16 value; (Simple, modifiable). 
+<p>
+This is the value used when moving around using the shift key. The default value is ten pixels. 
+</div>
+</div><p>
+<a class="anchor" name="g302ca7615311b836b512fa544e86d0eb"></a><!-- doxytag: member="PIProperties.h::propInterpolationMethod" ref="g302ca7615311b836b512fa544e86d0eb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propInterpolationMethod&nbsp;&nbsp;&nbsp;'intp'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current interpolation method; (Simple, read-only). 
+<p>
+1=point sample, 2=bilinear, 3=bicubic. 
+</div>
+</div><p>
+<a class="anchor" name="gea4e4e4e299ad1cbc00bdb32107f4122"></a><!-- doxytag: member="PIProperties.h::propRulerUnits" ref="gea4e4e4e299ad1cbc00bdb32107f4122" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propRulerUnits&nbsp;&nbsp;&nbsp;'rulr'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current ruler units; (Simple, read-only). 
+<p>
+For values, see <a class="el" href="_p_i_properties_8h.html#5004456123cb3f9e0d4f6b79b976b32e">RulerUnits</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g32c9d2b0f4daae6d2c8c0b6dbda0d5ed"></a><!-- doxytag: member="PIProperties.h::propRulerOriginV" ref="g32c9d2b0f4daae6d2c8c0b6dbda0d5ed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propRulerOriginV&nbsp;&nbsp;&nbsp;'rorV'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vertical component of the current ruler origin, represented as a 16.16 value; (Simple, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g09531e27fbf796325d924bd05543c787"></a><!-- doxytag: member="PIProperties.h::propGridMajor" ref="g09531e27fbf796325d924bd05543c787" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propGridMajor&nbsp;&nbsp;&nbsp;'grmj'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current major grid rules, in inches, unless <code>propRulerUnits</code> is pixels, and then pixels; (Simple, modifiable). 
+<p>
+Represented as 16.16 value. 
+</div>
+</div><p>
+<a class="anchor" name="g05baefebd253ea746a9e74e984440051"></a><!-- doxytag: member="PIProperties.h::propGridMinor" ref="g05baefebd253ea746a9e74e984440051" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propGridMinor&nbsp;&nbsp;&nbsp;'grmn'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The current number of grid subdivisions per major rule; (Simple, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g683e75a801873d2b9880f959765fe271"></a><!-- doxytag: member="PIProperties.h::propSerialString" ref="g683e75a801873d2b9880f959765fe271" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSerialString&nbsp;&nbsp;&nbsp;'sstr'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The serial number string shown to the user; (Complex, read-only). 
+<p>
+DEPRECATED - Use propSerialString2 below 
+</div>
+</div><p>
+<a class="anchor" name="gfd2a5747a4dec4a0955bfcc27dffb871"></a><!-- doxytag: member="PIProperties.h::propSerialString2" ref="gfd2a5747a4dec4a0955bfcc27dffb871" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSerialString2&nbsp;&nbsp;&nbsp;'sstR'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The serial number string shown to the user; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g30ef1fe184f4115f47d1ef38870c3a41"></a><!-- doxytag: member="PIProperties.h::propHardwareGammaTable" ref="g30ef1fe184f4115f47d1ef38870c3a41" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propHardwareGammaTable&nbsp;&nbsp;&nbsp;'hgam'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Hardware gamma table. 
+<p>
+Only valid for Windows; (Complex, read-only). 
+</div>
+</div><p>
+<a class="anchor" name="gea4cc75cee35192bf5b49441e2169081"></a><!-- doxytag: member="PIProperties.h::propInterfaceColor" ref="gea4cc75cee35192bf5b49441e2169081" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propInterfaceColor&nbsp;&nbsp;&nbsp;'iclr'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The interface color scheme; (Complex, read-only). 
+<p>
+Allows a plug-in interface to mimic system colors. The handle returned from <code>getPropertyProc</code> can be cast as a <code><a class="el" href="struct_p_i_interface_color.html">PIInterfaceColor</a></code> structure. <dl compact><dt><b>Note:</b></dt><dd>Currently, user-selected system colors are supported on Windows; when they are available on MAC OS, they will likely be supported in future versions of Photoshop through this same mechanism.</dd></dl>
+The color scheme is indexed, see <a class="el" href="_p_i_general_8h.html#InterfaceColorIndex">Interface Color Indexes</a> for index values to pass into <code>getPropertyProc</code>. These interface color values map onto Photoshop system colors according to the following diagram:<p>
+<div><div align="center">
+<img src="InterfaceScheme.gif" alt="InterfaceScheme.gif">
+</div>
+</div><p>
+Constants are remapped to create the system look. Use the indexed color scheme to draw PICTs. <div><div align="center">
+<img src="InterfaceSystem.gif" alt="InterfaceSystem.gif">
+</div>
+</div> 
+</div>
+</div><p>
+<a class="anchor" name="g11d80908b49050a24a3326aecedc48f0"></a><!-- doxytag: member="PIProperties.h::propWatchSuspension" ref="g11d80908b49050a24a3326aecedc48f0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propWatchSuspension&nbsp;&nbsp;&nbsp;'wtch'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The watch suspension level; (Simple, modifiable). 
+<p>
+When non-zero, a plug-in can make callbacks to the host without fear that the watch will start spinning. It is reset to zero at the beginning of each call from the host to the plug-in. 
+</div>
+</div><p>
+<a class="anchor" name="g09a157931602ffe17338001060c3478a"></a><!-- doxytag: member="PIProperties.h::propCopyright" ref="g09a157931602ffe17338001060c3478a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propCopyright&nbsp;&nbsp;&nbsp;'cpyr'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Whether the current image is considered under copywrite; (Simple, modifiable). 
+<p>
+This property key can only be used to set the flag. 
+</div>
+</div><p>
+<a class="anchor" name="g6069503c840dd94cdf11135b7900e493"></a><!-- doxytag: member="PIProperties.h::propCopyright2" ref="g6069503c840dd94cdf11135b7900e493" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propCopyright2&nbsp;&nbsp;&nbsp;'cpyR'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Whether the current image is considered under copywrite; (Simple, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gebcc4f158280d072cfd42e499e80db90"></a><!-- doxytag: member="PIProperties.h::propWatermark" ref="gebcc4f158280d072cfd42e499e80db90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propWatermark&nbsp;&nbsp;&nbsp;'watr'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Indicates whether a digital signature or watermark is present; (Simple, modifiable). 
+<p>
+The (c) copyright symbol will appear if this is set, or if the user has checked the copyrightproperty in the File Info dialog. Do not turn the copyright flag off, ever. Use to indicate if you’ve found your digital signature. 
+</div>
+</div><p>
+<a class="anchor" name="g830082e1d9686d5e3751242ee5407e96"></a><!-- doxytag: member="PIProperties.h::propURL" ref="g830082e1d9686d5e3751242ee5407e96" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propURL&nbsp;&nbsp;&nbsp;'URL '          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The URL for the current image; (Complex, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g458ff3eacc13be3553576f13a3918fe8"></a><!-- doxytag: member="PIProperties.h::propTitle" ref="g458ff3eacc13be3553576f13a3918fe8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propTitle&nbsp;&nbsp;&nbsp;'titl'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The title of the current document; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gc5679f02a2cfab65437a444d2fa1701c"></a><!-- doxytag: member="PIProperties.h::propDocumentWidth" ref="gc5679f02a2cfab65437a444d2fa1701c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propDocumentWidth&nbsp;&nbsp;&nbsp;'docW'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The width of the current document in pixels; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g4d7964b869804a3730fb106cf942ef75"></a><!-- doxytag: member="PIProperties.h::propDocumentHeight" ref="g4d7964b869804a3730fb106cf942ef75" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propDocumentHeight&nbsp;&nbsp;&nbsp;'docH'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The height of the current document in pixels; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g66c3b43c1102c0e2d4ec81108174da4d"></a><!-- doxytag: member="PIProperties.h::propSlices" ref="g66c3b43c1102c0e2d4ec81108174da4d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSlices&nbsp;&nbsp;&nbsp;'slcs'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The slices for the document; (Complex, modifiable). 
+<p>
+See the Slices resource format documented in <em> Photoshop File Formats.pdf. </em> 
+</div>
+</div><p>
+<a class="anchor" name="g0d82b71e28971af63ce98227194427ef"></a><!-- doxytag: member="PIProperties.h::propSelectedSliceID" ref="g0d82b71e28971af63ce98227194427ef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSelectedSliceID&nbsp;&nbsp;&nbsp;'slid'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The currently selected slice ID; (Simple, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ge29abd6184490822817ccb6630f25579"></a><!-- doxytag: member="PIProperties.h::propSelectedSliceIDList" ref="ge29abd6184490822817ccb6630f25579" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSelectedSliceIDList&nbsp;&nbsp;&nbsp;'slis'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The currently selected slice ID list; (Complex, modifiable). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ge8015a2aafef8dae352a86a702b90fff"></a><!-- doxytag: member="PIProperties.h::propSelectedSliceIndex" ref="ge8015a2aafef8dae352a86a702b90fff" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSelectedSliceIndex&nbsp;&nbsp;&nbsp;'slin'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The currently selected slice index; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gb504d40585fb530db1e4ff2ac3198e7d"></a><!-- doxytag: member="PIProperties.h::propShowSliceNumbers" ref="gb504d40585fb530db1e4ff2ac3198e7d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propShowSliceNumbers&nbsp;&nbsp;&nbsp;'slsh'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Indicate whether the user has set slice numbers to show; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gfc8ebb5d4bcbd63678f1a368d1037837"></a><!-- doxytag: member="PIProperties.h::propSliceLineColor" ref="gfc8ebb5d4bcbd63678f1a368d1037837" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propSliceLineColor&nbsp;&nbsp;&nbsp;'sllc'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The color of the slice lines; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g895512f2eba8b905f39e2d90dcd6ba9f"></a><!-- doxytag: member="PIProperties.h::propToolTips" ref="g895512f2eba8b905f39e2d90dcd6ba9f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propToolTips&nbsp;&nbsp;&nbsp;'tltp'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Tool tip display; (Simple, read-only). 
+<p>
+The value is 0 if off, 1 if on. 
+</div>
+</div><p>
+<a class="anchor" name="ga242aba702a3383168d99405d60e688e"></a><!-- doxytag: member="PIProperties.h::propPaintCursorKind" ref="ga242aba702a3383168d99405d60e688e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPaintCursorKind&nbsp;&nbsp;&nbsp;'PCrK'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Type of paint cursor being used; (Simple, read-only). 
+<p>
+1 = standard; 2 = precise; 3 = brush size. 
+</div>
+</div><p>
+<a class="anchor" name="g8b526827f55a9e821cdaef21684513d2"></a><!-- doxytag: member="PIProperties.h::propPaintCursorShape" ref="g8b526827f55a9e821cdaef21684513d2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPaintCursorShape&nbsp;&nbsp;&nbsp;'PCrS'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Cursor options being used; (Simple, read-only). 
+<p>
+1 = normal; 2 = full sized. 
+</div>
+</div><p>
+<a class="anchor" name="ge9454adad51d60bfbae0701a8e17fbb8"></a><!-- doxytag: member="PIProperties.h::propPaintCursorCrosshair" ref="ge9454adad51d60bfbae0701a8e17fbb8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPaintCursorCrosshair&nbsp;&nbsp;&nbsp;'PCrC'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Cursor crosshair visibility; (Simple, read-only). 
+<p>
+0 = not visible; 1 = visible. 
+</div>
+</div><p>
+<a class="anchor" name="gc0840f373f0c928903ccd00c85680d48"></a><!-- doxytag: member="PIProperties.h::propEXIFData" ref="gc0840f373f0c928903ccd00c85680d48" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propEXIFData&nbsp;&nbsp;&nbsp;'EXIF'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+EXIF camera and device data; (Complex, modifiable). 
+<p>
+The EXIF property is controlled by The Japan Electronic Industry Development Association (JEIDA) and Electronic Industries Association of Japan (EIAJ) which merged in November of 2000. The EXIF specification can be downloaded from their web site at the following location: <a href="http://it.jeita.or.jp/jhistory/document/standard/exif_eng/jeida49eng.htm">http://it.jeita.or.jp/jhistory/document/standard/exif_eng/jeida49eng.htm</a> 
+</div>
+</div><p>
+<a class="anchor" name="g7e85aca6327af94e26117d6f93c9eb59"></a><!-- doxytag: member="PIProperties.h::propVersion" ref="g7e85aca6327af94e26117d6f93c9eb59" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propVersion&nbsp;&nbsp;&nbsp;'vers'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current version of Photoshop. 
+<p>
+Major.Minor.Fix 
+</div>
+</div><p>
+<a class="anchor" name="g6bc209a9be64c47a38f2cca0b47faab6"></a><!-- doxytag: member="PIProperties.h::propPlayInProgress" ref="g6bc209a9be64c47a38f2cca0b47faab6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPlayInProgress&nbsp;&nbsp;&nbsp;'plip'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Action play information, for actions palette or automation plug in; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g20a68f7102ea6558d1be4b825c402877"></a><!-- doxytag: member="PIProperties.h::propUnicodeName" ref="g20a68f7102ea6558d1be4b825c402877" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUnicodeName&nbsp;&nbsp;&nbsp;'unnm'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Unicode name of the document; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gb44ef04ffd8b57d0ed6e5b68c56aebd8"></a><!-- doxytag: member="PIProperties.h::propUniStr255Name" ref="gb44ef04ffd8b57d0ed6e5b68c56aebd8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUniStr255Name&nbsp;&nbsp;&nbsp;'u25n'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Unicode name of the document; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g181b9955b2f4388ace24bbf8034d056d"></a><!-- doxytag: member="PIProperties.h::propUnicodeNameWithoutExtension" ref="g181b9955b2f4388ace24bbf8034d056d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUnicodeNameWithoutExtension&nbsp;&nbsp;&nbsp;'neun'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Unicode name of the document without extension; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gbd82e4e53bf08720276da54c8e56ed85"></a><!-- doxytag: member="PIProperties.h::propDontShowAgainCount" ref="gbd82e4e53bf08720276da54c8e56ed85" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propDontShowAgainCount&nbsp;&nbsp;&nbsp;'DSAC'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Global "Don't show again" counter for dialog boxes; (Simple, read-only). 
+<p>
+The property value is incremented every time these dialogs are reset. Each dialog that supports this feature should maintain its own unsigned32 counter in the preferences file. It should be initialized to zero. Before showing the dialog, the local counter should be compared to the global counter. If equal, don't show the dialog. When the user checks the "Don't show again" check box, the local counter should be set to the master counter. 
+</div>
+</div><p>
+<a class="anchor" name="g0fdcf110c987430525b6955aac985931"></a><!-- doxytag: member="PIProperties.h::propNumberOfLayers" ref="g0fdcf110c987430525b6955aac985931" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propNumberOfLayers&nbsp;&nbsp;&nbsp;'nuly'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of layers in the document; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gf30f69de802eeca5c10113278561c4ac"></a><!-- doxytag: member="PIProperties.h::propTargetLayerIndex" ref="gf30f69de802eeca5c10113278561c4ac" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propTargetLayerIndex&nbsp;&nbsp;&nbsp;'tgly'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Index of the target layer; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g3ff8494c001753d82eb74a3b2ce4f793"></a><!-- doxytag: member="PIProperties.h::propLayerName" ref="g3ff8494c001753d82eb74a3b2ce4f793" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propLayerName&nbsp;&nbsp;&nbsp;'lynm'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Layer name of the layer with a given index; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g5447ae1254dba8ba78fd680ea29d0211"></a><!-- doxytag: member="PIProperties.h::propUnicodeLayerName" ref="g5447ae1254dba8ba78fd680ea29d0211" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propUnicodeLayerName&nbsp;&nbsp;&nbsp;'lynu'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Layer name as a unicode string of the layer with a given index; (Complex, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g10508fb2cf588d44adf298e20ddd5bfe"></a><!-- doxytag: member="PIProperties.h::propPixelScaleFactor" ref="g10508fb2cf588d44adf298e20ddd5bfe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPixelScaleFactor&nbsp;&nbsp;&nbsp;'pxsf'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Pixel aspect ratio for the document; (Simple, read-only). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gd6f5dd23c677d2a2b239852b13844c1c"></a><!-- doxytag: member="PIProperties.h::propDoingPlace" ref="gd6f5dd23c677d2a2b239852b13844c1c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propDoingPlace&nbsp;&nbsp;&nbsp;'DPlc'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current operation is part of a place command; (Simple, read-only). 
+<p>
+Provided for file formats that need to record descriptors differently when placing. 
+</div>
+</div><p>
+<a class="anchor" name="g4138de3844e43a2c2126e0df98a632ef"></a><!-- doxytag: member="PIProperties.h::propRasterizingSmartObject" ref="g4138de3844e43a2c2126e0df98a632ef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propRasterizingSmartObject&nbsp;&nbsp;&nbsp;'RsSO'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Current operation is part of rasertizing a smart object; (Simple, read-only). 
+<p>
+Provided for file formats that need to read/obey descriptors differently when rasterizing. 
+</div>
+</div><p>
+<a class="anchor" name="gc4b0902f2e9ac25f4553a0adbc79163c"></a><!-- doxytag: member="PIProperties.h::propAppIsModal" ref="gc4b0902f2e9ac25f4553a0adbc79163c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propAppIsModal&nbsp;&nbsp;&nbsp;'aism'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Use this property to tell if Photoshop is in a modal dialog or a modal tool. 
+<p>
+(Simple) 
+</div>
+</div><p>
+<a class="anchor" name="ga8d648efa5499749b5ec7834eeeb4576"></a><!-- doxytag: member="PIProperties.h::propPixelLength" ref="ga8d648efa5499749b5ec7834eeeb4576" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propPixelLength&nbsp;&nbsp;&nbsp;'MSpl'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+measurement scale pixel length (Simple) 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g6a171c2f693c302c0182de6aebaa8dbd"></a><!-- doxytag: member="PIProperties.h::propLogicalLength" ref="g6a171c2f693c302c0182de6aebaa8dbd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propLogicalLength&nbsp;&nbsp;&nbsp;'MSll'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+measurement scale logical length(Simple) 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gcf2fe34857d1fa53e97458684aa8e38f"></a><!-- doxytag: member="PIProperties.h::propMUnits" ref="gcf2fe34857d1fa53e97458684aa8e38f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propMUnits&nbsp;&nbsp;&nbsp;'MSun'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+measurement scale units in unicode string (Complex) 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gdec1eeee3b73d34363657f90ad2d2989"></a><!-- doxytag: member="PIProperties.h::propTileSize" ref="gdec1eeee3b73d34363657f90ad2d2989" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propTileSize&nbsp;&nbsp;&nbsp;'TSiz'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g98bd944d661d57e9f6cc3ef9b2c8fc74"></a><!-- doxytag: member="PIProperties.h::propAPEIsInitialized" ref="g98bd944d661d57e9f6cc3ef9b2c8fc74" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define propAPEIsInitialized&nbsp;&nbsp;&nbsp;'mnky'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Making a 64 bit Windows plug-in for Photoshop</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1><a class="anchor" name="SixtyFour">Making a 64 bit Windows plug-in for Photoshop</a></h1>This page describes the process for creating a 64 bit Windows plug-in for Photoshop.<p>
+Here is a list of the items needed to build and test a 64 bit Windows plug-in. This documentation will focus on updating the Dissolve filter example for 64 bit. All projects in the SDK have a 64 bit output option. Refer to the specific plug-in type for more information.<p>
+<ul>
+<li>Adobe Photoshop CS5 Windows</li><li>Adobe Photoshop CS5 SDK</li><li>Microsoft Visual Studio 2008 Professional Edition</li><li>Microsoft Windows Vista 64</li></ul>
+<h2><a class="anchor" name="Portability">
+Step 1: Find portability issues</a></h2>
+The majority of the problems you will deal with when converting from 32 bit to 64 bit are assumptions made about the size of a pointer. There is a lot of code that puts a pointer ( 4 or 8 bytes ) into an int or long ( 4 bytes only ). As you can see, that will no longer work in the 64 bit environment. The second biggest problem is using the wrong type when getting the size of information. The new operator and many size operators return a size_t type ( 4 or 8 bytes ) and are assigned to int or long ( 4 byte ) values. Visual Studio has an option to give developers warnings about these situations. The warnings occur in your 32 bit build environment so you can start removing those issues before you tackle 64 bit specific problems. It is recommended that this be the first step in getting your plug-in to 64 bit. Visual Studio has an option that will generate warnings for 64 bit compatibility issues. From the Project menu select Properties. In the left pane select Configuration Properties, select C/C++, select General. In the right pane change "Detect 64-bit Portability Issues" to Yes<p>
+<div align="center">
+<img src="images/Detect64BitIssues.jpg" alt="Detect64BitIssues.jpg">
+</div>
+<p>
+After building with this option on you will find four typcical warnings that are all basically the same type of a problem outlined above. "Possible loss of data" converting from one type to another. Typically, changing one location moves the problem to another location until you finally refactor your code all the way. You will find that many helper and utility routines found in the SDK common folder had to be modified for such situations.<p>
+<ul>
+<li>size_t is 4 or 8 bytes</li><li>int is 4 bytes</li><li>long is 4 bytes</li><li>pointer is 4 or 8 bytes</li><li>intptr_t is 4 or 8 bytes</li></ul>
+<h2><a class="anchor" name="Add64">
+Step 2: Add 64 bit target</a></h2>
+Once completing step 1 a new target for 64 bit builds needs to be made to your project. From the Project menu select Properties. Click the Configuration Manager button at the top right. From the Active Solution Platform select new. Select x64 from the Type or Select new platform. If you do not see the x64 target option you will need to re-run the installer for Visual Studio. See <a class="el" href="sixtyfour.html#MSDEV64Installer">Microsoft Visual Studio Installer</a> notes below.<p>
+Adjust your intermediate and output files for the Debug x64 target. I changed all locations from a Debug folder to a Debug64 folder. Go through each option in your Properties dialog to find all locations for your outputs.<h2><a class="anchor" name="AddPiPL">
+Step 3: Fix entry point and PiPL</a></h2>
+The main entry point to the plug-in needs to be changed.<p>
+<div class="fragment"><pre class="fragment"><span class="comment">// --------------------------------------</span>
+<span class="comment">// The old entrypoint</span>
+<span class="comment">// --------------------------------------</span>
+DLLExport MACPASCAL <span class="keywordtype">void</span> PluginMain(
+  <span class="keyword">const</span> int16 selector, 
+  <span class="keywordtype">void</span> * filterRecord, 
+  int32 * data, 
+  int16 * result)
+
+<span class="comment">// --------------------------------------</span>
+<span class="comment">// Thew new entrypoint</span>
+<span class="comment">// using the dynamic type intptr_t </span>
+<span class="comment">// --------------------------------------</span>
+DLLExport MACPASCAL <span class="keywordtype">void</span> PluginMain(
+  <span class="keyword">const</span> int16 selector, 
+  <span class="keywordtype">void</span> * filterRecord, 
+  intptr_t * data, 
+  int16 * result)
+</pre></div><p>
+The PiPL property needs a 64 bit selector. Here is the recommended PiPL properties for all platforms:<p>
+<div class="fragment"><pre class="fragment"><span class="preprocessor">#ifdef __PIMac__</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if (defined(__i386__))</span>
+<span class="preprocessor"></span>        CodeMacIntel32 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if (defined(__ppc__))</span>
+<span class="preprocessor"></span>        CodeMachOPowerPC { 0, 0, <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor"></span><span class="preprocessor">#else</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if defined(_WIN64)</span>
+<span class="preprocessor"></span>        CodeWin64X86 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #else</span>
+<span class="preprocessor"></span>        CodeWin32X86 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor">#endif</span>
+</pre></div><h2><a class="anchor" name="Test">
+Step 4: Test</a></h2>
+Adobe Photoshop CS5 installs two copies on a 64 bit compatibile operating system. The 32 bit version can be found at<div class="fragment"><pre class="fragment">C:\Program Files (x86)\Adobe\Adobe Photoshop CS5 </pre></div> This is the default location for 32 bit applications for Windows Vista 64. The 64 bit version can be found at<div class="fragment"><pre class="fragment">C:\Program Files\Adobe\Adobe Photoshop CS5 </pre></div> Ensure that you copy the correct version of your plug-in to the correct version of the host application. The Windows Task Manager will show a *32 next to the application name in the "Image Name" column under the Processes tab.<h2><a class="anchor" name="OtherIssues">
+Other Issues</a></h2>
+Inline assembly will not work for 64 bit targets. MMX code will not work for 64 bit targets. These can work using the Intel compiler but not Visual Studio. Please refer to the Intel web page for information about the Intel Compiler. The Photoshop SDK does not use any assembler code in the examples. Use the WIN64 compile flag to determine that the target is 64 bit.<h2><a class="anchor" name="InfoOnline">
+Online Information</a></h2>
+More information is found on the Microsoft Developer Network. <a href="http://msdn2.microsoft.com/en-us/library/3b2e7499.aspx">Common Visual C++ 64-bit Migration Issues</a> and <a href="http://msdn2.microsoft.com/en-us/library/b0084kay(VS.80).aspx">Predefined Macros</a> are good starting points.<h2><a class="anchor" name="VersionInfo">
+Finding the Version info in Visual Studio</a></h2>
+Find the version from the command line. Type "cl /?" at the prompt. The Version at the beginning is 15.00.30729.01.<p>
+Or from the Help &gt; About Microsoft Visual Studio menu <div class="fragment"><pre class="fragment">Microsoft Visual Studio 2008
+Version 9.0.30729.1 SP
+Microsoft .NET Framework
+Version 3.5 SP1
+Microsoft Visual C++ 2008   91605-270-4005417-60312
+</pre></div><p>
+<a class="anchor" name="MSDEV64Installer"></a> <b>Microsoft Visual Studio Installer</b><p>
+Run the Microsoft Visual Studio Installer. At the Options Page dialog make sure the X64 Compilers and Tools option is selected. After running the installer make sure that Visual Studio is up to date by running the Microsoft Updater. Service Pack 1 and many other updates are required before proceeding. This image is from the 2005 installer. The 2008 installer is very similar.<p>
+<div align="center">
+<img src="images/VisualStudio64BitOption.jpg" alt="VisualStudio64BitOption.jpg">
+</div>
+ 
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

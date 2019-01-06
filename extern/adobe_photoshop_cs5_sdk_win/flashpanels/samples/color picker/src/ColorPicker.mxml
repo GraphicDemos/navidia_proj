@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+*************************************************************************
+	ADOBE SYSTEMS INCORPORATED
+	 Copyright 2008 Adobe Systems Incorporated
+	 All Rights Reserved.
+
+	NOTICE:  Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the Adobe license agreement accompanying
+	it.  If you have received this file from a source other than Adobe, then
+	your use, modification, or distribution of it requires the prior written
+	permission of Adobe.
+**************************************************************************
+
+	Name:			ColorPicker.mxml
+	Author:			John Huan Vu
+					Photoshop Engineering Intern
+					Adobe Systems Incorporated
+	Description:	The mxml contains a script that communicates with the
+					corresponding ColorPicker.jsx file, contains two color
+					pickers and two labels. The file also contain utility
+					functions aiding the conversion of four character id
+					numbers and also monitoring events done in Adobe Photoshop.
+-->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init();">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.csxs.core.CSXSInterface;
+			import com.adobe.csxs.types.*;
+			import com.adobe.csxs.events.*;
+			import com.adobe.csxs.external.*;
+			import com.adobe.csxs.external.resources.*;
+			import mx.controls.Alert;
+			
+			public var hostMajorVersion:Number = -1;
+			public var hostMinorVersion:Number = -1;
+			public var hostFixVersion:Number = -1;
+			public const photoshopCS4Version:Number = 11;
+			
+			/**
+				Function:		changePSForeground
+				Description:	Call the "setForeground" function in ColorPicker.jsx passing
+								the parameter of the color currently selected by ForegroundPicker.
+			*/
+			public function changePSForeground():void{
+				CSXSInterface.instance.evalScript("colorpicker.setForeground", ForegroundPicker.selectedColor.toString());
+			}
+
+			/**
+				Function:		changePSBackground
+				Description:	Call the "setBackground" function in ColorPicker.jsx passing
+								the parameter of the color currently selected by BackgroundPicker.
+			*/
+			public function changePSBackground():void{
+				CSXSInterface.instance.evalScript("colorpicker.setBackground", BackgroundPicker.selectedColor.toString());
+			}
+
+			/**
+				Function:		getPSForeground
+				Description:	Call the "getForeground" function in ColorPicker.jsx retrieving
+								the value "foreground" from the reqResult.
+			*/
+			public function getPSForeground():void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.getForeground");
+				if (SyncRequestResult.COMPLETE == reqResult.status) {
+					ForegroundPicker.selectedColor = parseInt("0x" + reqResult.data.foreground);
+				}
+			}
+
+			/**
+				Function:		getPSBackground
+				Description:	Call the "getBackground" function in ColorPicker.jsx retrieving
+								the value "background" from the reqResult.
+			*/
+			public function getPSBackground():void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.getBackground");
+				if (SyncRequestResult.COMPLETE == reqResult.status) {
+					BackgroundPicker.selectedColor = parseInt("0x" + reqResult.data.background);
+				}
+			}
+
+
+			/**
+				Function:		getPSVersion
+				Description:	Call the "getVersion" function in ColorPicker.jsx retrieving
+								the value "version" from the reqResult.
+			*/
+			public function getPSVersion():void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.getVersion");
+				if (SyncRequestResult.COMPLETE == reqResult.status) {
+					VersionString.text = reqResult.data.version;
+					var versionArray:Array = VersionString.text.split(".");
+					if (versionArray.length >= 1) {
+						hostMajorVersion = Number(versionArray[0]);
+						VersionMajor.text = hostMajorVersion.toString();
+					}
+					if (versionArray.length >= 2) {
+						hostMinorVersion = Number(versionArray[1]);
+						VersionMinor.text = hostMinorVersion.toString();
+					}
+					if (versionArray.length >= 3) {
+						hostFixVersion = Number(versionArray[2]);
+						VersionFix.text = hostFixVersion.toString();
+					}
+				}
+			}
+	
+
+			/**
+				Function:		getPSAppBitMode
+				Description:	Call the "getAppBitMode" function in ColorPicker.jsx retrieving
+								the app bit mode from the reqResult.
+			*/
+			public function getPSAppBitMode():void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.getAppBitMode");
+				if (SyncRequestResult.COMPLETE == reqResult.status) {
+					RuntimeInfo.text = reqResult.data.appBitMode.toString();
+				}
+			}
+	
+
+			/**
+				Function:		dumpDescriptor
+				Description:	Call the "getBackground" function in ColorPicker.jsx retrieving
+								the value "background" from the reqResult.
+			*/
+			public function dumpDescriptor(id:Number):void{
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.dumpDescriptor", id.toString());
+				if (SyncRequestResult.COMPLETE == reqResult.status) {
+					// reqResult.data.count;
+					// reqResult.data.descriptor is xml describing the desc TODO
+				}
+			}
+
+			/**
+				Function:		init
+				Description:	Initializes the two color pickers on the panel to the colors
+								currently displayed and chosen in Adobe Photoshop palette. Registers
+								the "setd" and "Rset" event to be monitored. Initializes the
+								"PhotoshopCallback" function to monitor events in Adobe Photoshop.
+			*/
+			public function init():void{
+				logIt("Start init\n");
+
+				getPSForeground();
+				getPSBackground();
+				getPSVersion();
+				getPSAppBitMode();
+				
+				CSXSInterface.instance.evalScript("PhotoshopPersistent");
+
+				var windowGeoData:WindowGeometry = new WindowGeometry(100, 100, 800, 400); 
+				CSXSInterface.instance.requestStateChange(StateChangeEvent.WINDOW_RESIZE, windowGeoData);
+
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("setd").toString());
+				CSXSInterface.instance.evalScript("PhotoshopRegisterEvent", charToInteger("Rset").toString());
+
+				if (hostMajorVersion == photoshopCS4Version) {
+					ExternalInterface.addCallback("PhotoshopCallback", PhotoshopCallback);
+				} else {
+					ExternalInterface.addCallback("PhotoshopCallback" + CSXSInterface.instance.getExtensionId(), PhotoshopCallback);
+				}
+
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_CLOSE, windowCloseEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_GET_FOCUS, windowGetFocusEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_HIDE, windowHideEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_LOSE_FOCUS , windowLoseFocusEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_MINIMIZE, windowMinimizeEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_MOVE , windowMoveEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_OPEN, windowOpenEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_RESIZE , windowResizeEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_RESTORE, windowRestoreEvent);
+				CSXSInterface.instance.addEventListener(StateChangeEvent.WINDOW_SHOW, windowShowEvent);
+
+				logIt("End init\n");
+			}		
+
+			/**
+				Function:		charToInteger
+				Description:	Converts a four character id key to an integer value
+								understood by PhotoshopRegisterEvent.
+				@param keyword - a String variable of the four character id key to
+								to be converted.
+				@return The converted value from the four character id key
+			*/
+			public function charToInteger(keyword:String):Number{
+				var value:Number;
+				value  = keyword.charCodeAt(0) * 256 * 256 * 256;
+				value += keyword.charCodeAt(1) * 256 * 256;
+				value += keyword.charCodeAt(2) * 256;
+				value += keyword.charCodeAt(3);
+				return value;
+			}
+
+			/**
+				Function:		PhotoshopCallback
+				Description:	Monitors events in Adobe Photoshop so that when "setd" or "Rset" occurs,
+								then it will call the functions getPSForeground and getPSBackground.
+				@param eventID A Number variable that's been converted by charToInteger
+				@param descID A Number variable (not used)
+			*/	
+			public function PhotoshopCallback(eventID:Number, descID:Number):void {
+				try {
+					if (hostMajorVersion > photoshopCS4Version) {
+						logIt(CSXSInterface.instance.getExtensionId().toString() + ":");
+					}
+					logIt("PhotoshopCallback:" + eventID.toString() + ":" + descID.toString() + "\n");
+					if(eventID == charToInteger("setd") || eventID == charToInteger("Rset")){
+						getPSForeground();
+						getPSBackground();
+						dumpDescriptor(descID);
+					}
+				}
+				catch(e:Error) {
+					logIt("PhotoshopCallback:Error:" + e.toString() + "\n");
+				}
+			}
+			
+			private function windowCloseEvent(e:Event):void {
+				logIt("windowCloseEvent\n");
+			}
+			
+			private function windowGetFocusEvent(e:Event):void {
+				logIt("windowGetFocusEvent\n");
+			}
+
+			private function windowHideEvent(e:Event):void {
+				logIt("windowHideEvent\n");
+			}
+			
+			private function windowLoseFocusEvent(e:Event):void {
+				logIt("windowLoseFocusEvent\n");
+			}
+			
+			private function windowMinimizeEvent(e:Event):void { 
+				logIt("windowMinimizeEvent\n");
+			}
+
+			private function windowMoveEvent(e:Event):void {
+				logIt("windowMoveEvent\n");
+			}
+
+			private function windowOpenEvent(e:Event):void {
+				logIt("windowOpenEvent\n");
+			}
+
+			private function windowResizeEvent(e:Event):void {
+				logIt("windowResizeEvent\n");
+			}
+
+			private function windowRestoreEvent(e:Event):void {
+				logIt("windowRestoreEvent\n");
+			}
+
+			private function windowShowEvent(e:Event):void {
+				logIt("windowShowEvent\n");
+			}
+			
+			private function logIt(inMessage:String):void {
+				var reqResult:SyncRequestResult = CSXSInterface.instance.evalScript("colorpicker.LogIt", encodeURIComponent(inMessage));	
+			}
+
+		]]>
+	</mx:Script>
+	<mx:Label x="120" y="70" id="RuntimeInfo" text=""/>
+	<mx:Label x="100" y="70" id="VersionFix" text=""/>
+	<mx:Label x="80" y="70" id="VersionMinor" text=""/>
+	<mx:Label x="60" y="70" id="VersionMajor" text=""/>
+	<mx:Label x="10" y="70" id="VersionString" text=""/>
+	<mx:ColorPicker x="10" y="10" id="ForegroundPicker" change="changePSForeground();"/>
+	<mx:ColorPicker x="10" y="40" id="BackgroundPicker" change="changePSBackground();"/>
+	<mx:Label x="40" y="14" text="Foreground Color"/>
+	<mx:Label x="40" y="44" text="Background Color"/>
+</mx:Application>

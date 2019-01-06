@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F7E9A96-8945-43A0-B23F-35F6F20E2462}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>fftw</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\thirdparty\win-libs-vc10-x64\fftw\lib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\fftw\config.h" />
+    <ClInclude Include="..\..\..\fftw\fftw-int.h" />
+    <ClInclude Include="..\..\..\fftw\fftw.h">
+      <DeploymentContent>true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\fftw\config.c" />
+    <ClCompile Include="..\..\..\fftw\executor.c" />
+    <ClCompile Include="..\..\..\fftw\fftwf77.c" />
+    <ClCompile Include="..\..\..\fftw\fftwnd.c" />
+    <ClCompile Include="..\..\..\fftw\fni_1.c" />
+    <ClCompile Include="..\..\..\fftw\fni_10.c" />
+    <ClCompile Include="..\..\..\fftw\fni_11.c" />
+    <ClCompile Include="..\..\..\fftw\fni_12.c" />
+    <ClCompile Include="..\..\..\fftw\fni_13.c" />
+    <ClCompile Include="..\..\..\fftw\fni_14.c" />
+    <ClCompile Include="..\..\..\fftw\fni_15.c" />
+    <ClCompile Include="..\..\..\fftw\fni_16.c" />
+    <ClCompile Include="..\..\..\fftw\fni_2.c" />
+    <ClCompile Include="..\..\..\fftw\fni_3.c" />
+    <ClCompile Include="..\..\..\fftw\fni_32.c" />
+    <ClCompile Include="..\..\..\fftw\fni_4.c" />
+    <ClCompile Include="..\..\..\fftw\fni_5.c" />
+    <ClCompile Include="..\..\..\fftw\fni_6.c" />
+    <ClCompile Include="..\..\..\fftw\fni_64.c" />
+    <ClCompile Include="..\..\..\fftw\fni_7.c" />
+    <ClCompile Include="..\..\..\fftw\fni_8.c" />
+    <ClCompile Include="..\..\..\fftw\fni_9.c" />
+    <ClCompile Include="..\..\..\fftw\fn_1.c" />
+    <ClCompile Include="..\..\..\fftw\fn_10.c" />
+    <ClCompile Include="..\..\..\fftw\fn_11.c" />
+    <ClCompile Include="..\..\..\fftw\fn_12.c" />
+    <ClCompile Include="..\..\..\fftw\fn_13.c" />
+    <ClCompile Include="..\..\..\fftw\fn_14.c" />
+    <ClCompile Include="..\..\..\fftw\fn_15.c" />
+    <ClCompile Include="..\..\..\fftw\fn_16.c" />
+    <ClCompile Include="..\..\..\fftw\fn_2.c" />
+    <ClCompile Include="..\..\..\fftw\fn_3.c" />
+    <ClCompile Include="..\..\..\fftw\fn_32.c" />
+    <ClCompile Include="..\..\..\fftw\fn_4.c" />
+    <ClCompile Include="..\..\..\fftw\fn_5.c" />
+    <ClCompile Include="..\..\..\fftw\fn_6.c" />
+    <ClCompile Include="..\..\..\fftw\fn_64.c" />
+    <ClCompile Include="..\..\..\fftw\fn_7.c" />
+    <ClCompile Include="..\..\..\fftw\fn_8.c" />
+    <ClCompile Include="..\..\..\fftw\fn_9.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_10.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_16.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_2.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_3.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_32.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_4.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_5.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_6.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_64.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_7.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_8.c" />
+    <ClCompile Include="..\..\..\fftw\ftwi_9.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_10.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_16.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_2.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_3.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_32.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_4.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_5.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_6.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_64.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_7.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_8.c" />
+    <ClCompile Include="..\..\..\fftw\ftw_9.c" />
+    <ClCompile Include="..\..\..\fftw\generic.c" />
+    <ClCompile Include="..\..\..\fftw\malloc.c" />
+    <ClCompile Include="..\..\..\fftw\planner.c" />
+    <ClCompile Include="..\..\..\fftw\putils.c" />
+    <ClCompile Include="..\..\..\fftw\rader.c" />
+    <ClCompile Include="..\..\..\fftw\timer.c" />
+    <ClCompile Include="..\..\..\fftw\twiddle.c" />
+    <ClCompile Include="..\..\..\fftw\wisdom.c" />
+    <ClCompile Include="..\..\..\fftw\wisdomio.c" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\fftw\config.h.in" />
+    <None Include="..\..\..\fftw\fftw.h.in" />
+    <None Include="..\..\..\fftw\Makefile.am" />
+    <None Include="..\..\..\fftw\Makefile.in" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

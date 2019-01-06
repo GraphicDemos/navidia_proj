@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Making a 64 bit Macintosh plug-in for Photoshop</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1><a class="anchor" name="SixtyFourMacintosh">Making a 64 bit Macintosh plug-in for Photoshop</a></h1>This page describes the process for creating a 64 bit Macintosh plug-in for Photoshop.<p>
+Here is a list of the items needed to build and test a 64 bit Macintosh plug-in. This documentation will focus on updating the Dissolve filter example for 64 bit. All projects in the SDK have a 64 bit output option. Refer to the specific plug-in type for more information.<p>
+<ul>
+<li>Adobe Photoshop CS5 Macintosh</li><li>Adobe Photoshop CS5 SDK</li><li>Xcode 3.1.2</li><li>Macintosh OS X 10.5 or higher</li></ul>
+<h2><a class="anchor" name="PortabilityMac">
+Step 1: Find portability issues</a></h2>
+The majority of the problems you will deal with when converting from 32 bit to 64 bit are assumptions made about the size of a pointer. There is a lot of code that puts a pointer ( 4 or 8 bytes ) into an int or long ( 4 bytes only ). As you can see, that will no longer work in the 64 bit environment. The second biggest problem is using the wrong type when getting the size of information. The new operator and many size operators return a size_t type ( 4 or 8 bytes ) and are assigned to int ( 4 byte ) values or long ( 4 or 8 bytes).<p>
+<ul>
+<li>size_t is 4 or 8 bytes</li><li>int is 4 bytes</li><li>long is 4 or 8 bytes (Windows is 4 bytes only)</li><li>pointer is 4 or 8 bytes</li><li>intptr_t is 4 or 8 bytes</li></ul>
+<h2><a class="anchor" name="Apple105SDK">
+Step 2: Switch to the 10.5 SDK from Apple</a></h2>
+It is recommended to use the 10.5 SDK from Apple. Switch to the 10.5 SDK by clicking on your Plug-in in the Targets section of your project. Select "Get Info" and then select the "Build" tab. Make sure that "Mac OS X 10.5" is selected in the Base SDK section.<p>
+<div align="center">
+<img src="images/Use105SDK.jpg" alt="Use105SDK.jpg">
+</div>
+<h2><a class="anchor" name="Add64BitTargets">
+Step 3: Add 64 bit configurations to your project</a></h2>
+Select your main project and then "Get Info". Click on the configurations tab. Select your Debug target and then click the Dupulicate button at the bottom to clone this target to a new one. Use Debug_x86_64 as the new configuration name.<p>
+<div align="center">
+<img src="images/Add64BitTargets.jpg" alt="Add64BitTargets.jpg">
+</div>
+<h2><a class="anchor" name="Add64BitArch">
+Step 4: Change to 64 bit architecture for new configuration</a></h2>
+Switch to the 64 bit architecture by clicking on your Plug-in in the Targets section of your project. Select "Get Info" and then select the "Build" tab. Make sure that "X86_64" is selected in the Architectures section.<p>
+<div align="center">
+<img src="images/ChangeArchMac.jpg" alt="ChangeArchMac.jpg">
+</div>
+<h2><a class="anchor" name="AddPiPL">
+Step 3: Fix entry point and PiPL</a></h2>
+The main entry point to the plug-in needs to be changed.<p>
+<div class="fragment"><pre class="fragment"><span class="comment">// --------------------------------------</span>
+<span class="comment">// The old entrypoint</span>
+<span class="comment">// --------------------------------------</span>
+DLLExport MACPASCAL <span class="keywordtype">void</span> PluginMain(
+  <span class="keyword">const</span> int16 selector, 
+  <span class="keywordtype">void</span> * filterRecord, 
+  int32 * data, 
+  int16 * result)
+
+<span class="comment">// --------------------------------------</span>
+<span class="comment">// Thew new entrypoint</span>
+<span class="comment">// using the dynamic type intptr_t </span>
+<span class="comment">// --------------------------------------</span>
+DLLExport MACPASCAL <span class="keywordtype">void</span> PluginMain(
+  <span class="keyword">const</span> int16 selector, 
+  <span class="keywordtype">void</span> * filterRecord, 
+  intptr_t * data, 
+  int16 * result)
+</pre></div><p>
+The PiPL property needs a 64 bit selector. Here is the recommended PiPL properties for all platforms:<p>
+<div class="fragment"><pre class="fragment"><span class="preprocessor">#ifdef __PIMac__</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if (defined(__x86_64__))</span>
+<span class="preprocessor"></span>        CodeMacIntel64 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if (defined(__i386__))</span>
+<span class="preprocessor"></span>        CodeMacIntel32 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor"></span><span class="preprocessor">#else</span>
+<span class="preprocessor"></span><span class="preprocessor">    #if defined(_WIN64)</span>
+<span class="preprocessor"></span>        CodeWin64X86 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #else</span>
+<span class="preprocessor"></span>        CodeWin32X86 { <span class="stringliteral">"PluginMain"</span> },
+<span class="preprocessor">    #endif</span>
+<span class="preprocessor">#endif</span>
+</pre></div><h2><a class="anchor" name="Test">
+Step 4: Test</a></h2>
+Adobe Photoshop CS5 installs as a universal binary with i386 and x86_64 as the two binaries inside. Depending on your operating system the correct binary will launch. It is recommended to test on both a 64 bit operating system and a 32 bit operating system.<h2><a class="anchor" name="OtherIssuesXcode">
+Other Issues</a></h2>
+Only the Dissolve example has been converted to a Cocoa UI and all the projects noted above. All of the other examples have had their UI removed on the 64 bit Macintosh Platform. Use the Dissolve example to see how to hook up a UI on 64 bit Macintosh to a plug-in. All of the other plug-ins are default configured to make a Universal Binary for i386 and x86_64. Use the __LP64__ compile flag to determine that the target is 64 bit.<h2><a class="anchor" name="InfoOnlineXcode">
+Online Information</a></h2>
+Watch out for Objective-C naming conflicts. Please use a unique id for all of your Objective-C code names as described here. See this for more information: <a href="http://developer.apple.com/mac/library/documentation/UserExperience/Conceptual/PreferencePanes/Tasks/Conflicts.html">Preventing Name Conflicts</a><h2><a class="anchor" name="VersionInfoXcode">
+Finding the Version info in Xcode</a></h2>
+From the Xcode menu select About Xcode <div class="fragment"><pre class="fragment">Version 3.1.2
+Component versions
+Xcode IDE: 1149.0
+Xcode Core: 1148.0
+ToolSupport: 1102.0
+</pre></div> 
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

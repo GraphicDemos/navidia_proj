@@ -1,0 +1,20 @@
+;
+;  File: statistics.def
+;
+;  Copyright 2006 by Adobe Systems, Inc.
+;
+;  Window's def file for statistics filter.
+;
+LIBRARY     statistics
+
+EXPORTS     MEAN_ENTRY   @1
+			SUM_ENTRY   @2
+			MIN_ENTRY   @3
+			MAX_ENTRY   @4
+			MEDIAN_ENTRY @5
+			VAR_ENTRY	@6
+			STDDEV_ENTRY	@7
+			SKEW_ENTRY	@8
+			KURT_ENTRY	@9
+			RANGE_ENTRY	@10
+			ENTROPY_ENTRY @11

@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!--
+/*
+    Copyright 2005-2006 Adobe Systems Incorporated
+    Distributed under the MIT License (see accompanying file LICENSE_1_0_0.txt
+    or a copy at http://opensource.adobe.com/licenses.html)
+*/
+Some files are held under additional license. Please see "licenses.html" for more information.
+-->
+
+<head>
+    <TITLE>Adobe Photoshop SDK: Code Descriptor PiPL Properties</TITLE>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html;charset=ISO-8859-1"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="basic.css"/>
+    <STYLE TYPE="text/css" MEDIA="all"><!--
+        @import url("modern.css");
+    --></STYLE>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="print.css" MEDIA="print"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="mainnav.css"/>
+    <LINK TYPE="text/css" REL="stylesheet" HREF="stlab.css"/>
+	<link href="adobetabs.css" rel="stylesheet" type="text/css">
+<!-- 
+    <LINK REL="alternate" TITLE="opensource.adobe.com RSS" HREF="http://sourceforge.net/export/rss2_projnews.php?group_id=132417&amp;rss_fulltext=1" TYPE="application/rss+xml"/>
+-->
+</HEAD>
+
+<body bgcolor="white">
+
+<div id="mainnav" width="100%">
+<table width="100%" border="0"><tr><td width="50%">
+<a title="Adobe Systems home page" href="http://www.adobe.com/" tabindex="2"><img src="images/logo.gif" alt="Adobe Systems, Inc." height="80" width="150"/></a>
+</td><td align="right" valign="top">
+<a href="index.html" class="el" target="_top"><font size="+2" color="black">Adobe Photoshop SDK</font></a><br/>
+<!--
+<a href="http://opensource.adobe.com" class="el" target="_top"><font size="-2" color="black">opensource.adobe.com</font></a>
+-->
+</td></tr></table>
+
+</div>
+<br/>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td width="10" nowrap="1"> </td>
+<td valign="top">
+    <table border="0" bgcolor=#ededed cellpadding="5">
+    <tr><td nowrap="1">
+        <h3 class="navbar">Getting Started</h3>
+        <ul>
+            <li><a href="ProgrammersGuideIntro.html">Home</a></li>
+            <li><a href="index.html">New for CS5</a></li>
+	        <li><a href="SixtyFourMacintosh.html">Making 64 bit plug-ins for Macintosh</a></li>
+	        <li><a href="SixtyFour.html">Making 64 bit plug-ins for Windows</a></li>
+            <li><a href="faqs.html">Frequently Asked Questions</a></li>
+            <li><a href="tutorialsexamples.html">Tutorials and Examples</a></li>
+			<li><a href="DeveloperResources.html">Developer Resources</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Reference</h3>
+        <ul>
+			<li><a href="annotated.html">Data Structure List</a></li>
+		    <li><a href="classes.html">Data Structure Index</a></li>
+			<li><a href="functions.html">Member Index</a></li>
+			<li><a href="files.html">File List</a></li>
+		    <li><a href="globals.html">File Member Index</a></li>
+        </ul>
+        <h3 class="navbar">SDK API Features</h3>
+        <ul>
+            <li><a href="rgcallbacks.html">Callbacks</a></li>
+			<li><a href="pluginmodules.html">Plug-in Modules</a></li>
+		    <li><a href="memorymanagement.html">Memory Management</a></li>
+			<li><a href="resourcemanagement.html">Resource Management</a></li>
+			<li><a href="pixelmanagement.html">Pixel Management</a></li>
+			<li><a href="colormanagement.html">Color Management</a></li>
+			<li><a href="automation.html">Actions and Automation</a></li>
+			<li><a href="filehandling.html">File Handling</a></li>
+        </ul>
+<!--  Moved to link under "Other Documentation"
+        <h3 class="navbar">Progammer's Guide</h3>
+        <ul>
+            <li><a href="PGPlugInBasics.html">Plug-in Basics</a></li>
+            <li><a href="PGPlugInTypes.html">Plug-in Types</a></li>
+            <li><a href="PGPlugInInterface.html">Plug-in Interface</a></li>
+            <li><a href="PGMemoryMgmtStrategies.html">Memory Management Strategies</a></li>
+            <li><a href="PGMacOSPlugins.html">Creating Mac OS Plug-ins</a></li>
+            <li><a href="PGWinPlugins.html">Creating Windows Plug-ins</a></li>
+            <li><a href="PGCallbacks.html">Callbacks and Callback Suites</a></li>
+            <li><a href="PGWritingPlugins.html">Writing Plug-ins</a></li>
+			<li><a href="PGScriptingPlugins.html">Scripting Plug-ins</a>
+		    <li><a href="pgpiplresources.html">Creating PiPL Resources</a></li>
+		    <li><a href="pgsamplecode.html">Sample Code</a></li>
+		    <li><a href="glossary.html">Glossary of Acronyms</a></li>
+        </ul>
+-->
+        <h3 class="navbar">Other Documentation</h3>
+        <ul>
+          <li><a href="MachOConversion.html">Converting to Mach-O format</a></li>
+          <li><a href="MakingXCodeProjects.html">Making XCode Projects for Mac OS</a></li>
+          <li><a href="ProgrammersGuideMain.html">SDK Programmer's Guide</a></li>
+		      <li><a href="../PICA.pdf">Adobe PICA API</a>
+		      <li><a href="../ADMReferenceGuide.pdf">Adobe Dialog Manager</a>
+        </ul>
+<!--  Moved to Link under "Getting Started".
+        <h3 class="navbar">Developer Resources</h3>
+        <ul>
+			<li><a href="http://partners.adobe.com/public/developer/photoshop/devcenter.html">Adobe Photoshop Developer Center</a>
+            <li><a href="mailinglistandforum.html">Suppport</a></li>
+            <li><a href="technicalnotes.html">Technical Notes</a></li>
+            <li><a href="license.html">SDK License Agreements</a></li>
+        </ul>
+-->
+    </td></tr>
+    </table>
+</td>
+
+<td width="10" nowrap="1"> </td>
+<td width="100%" valign="top">
+
+<!-- End Header -->
+
+<!-- Generated by Doxygen 1.4.7 -->
+<h1>Code Descriptor PiPL Properties</h1>Code descriptors tell Photoshop the type and location of a plug-in’s code.  
+<a href="#_details">More...</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Defines</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#gc3606047789bcdcb45ce0de76835f1b9">PIPowerPCMachOCodeProperty</a>&nbsp;&nbsp;&nbsp;'mach'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PowerPC Mach-O code descriptor.  <a href="#gc3606047789bcdcb45ce0de76835f1b9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g98126ff8ea7870e7035f3e8433fd683d">PICodeFragmentProperty</a>&nbsp;&nbsp;&nbsp;'frag'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PowerPC fragment descriptor.  <a href="#g98126ff8ea7870e7035f3e8433fd683d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g5355a9517765bd7ff487cc80affbb72f">PICarbonCodeFragmentProperty</a>&nbsp;&nbsp;&nbsp;'frgc'</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PowerPC CARBON fragment descriptor.  <a href="#g5355a9517765bd7ff487cc80affbb72f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g05471ff1d32098ca0e8d1bad06e11fc4">PI68KFPUCodeProperty</a>&nbsp;&nbsp;&nbsp;0x36386670L</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A 68k code resource with FPU.  <a href="#g05471ff1d32098ca0e8d1bad06e11fc4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g09bb40269c4a5b151c273c02baf979bd">PIUnixSPARCV7CodeProperty</a>&nbsp;&nbsp;&nbsp;0x75737037</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A SPARC version 7 code descriptor.  <a href="#g09bb40269c4a5b151c273c02baf979bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g13725e43ac3593a324f7fdac0de1671f">PIUnixSPARCV8CodeProperty</a>&nbsp;&nbsp;&nbsp;0x75737038</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A SPARC version 8 code descriptor.  <a href="#g13725e43ac3593a324f7fdac0de1671f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g64da4874172f8161935f134d0fdcff2a">PIUnixSPARCV9CodeProperty</a>&nbsp;&nbsp;&nbsp;0x75737039</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A SPARC version 9 code descriptor.  <a href="#g64da4874172f8161935f134d0fdcff2a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g8e32f22f2242b3a17e88d12196044916">PIUnixSPARCCodeProperty</a>&nbsp;&nbsp;&nbsp;PIUnixSPARCV7CodeProperty</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A SPARC version 7 code descriptor.  <a href="#g8e32f22f2242b3a17e88d12196044916"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g3e8c987c4aa40843b9655fda95555cbc">PIUnixMIPSR3000CodeProperty</a>&nbsp;&nbsp;&nbsp;0x756d7233</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A MIPS R3000 code descriptor.  <a href="#g3e8c987c4aa40843b9655fda95555cbc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#gf28d5fc8db54d08715bf93435795b9e0">PIUnixMIPSR4000CodeProperty</a>&nbsp;&nbsp;&nbsp;0x756d7234</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A MIPS R4000 code descriptor.  <a href="#gf28d5fc8db54d08715bf93435795b9e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g6f6d83f4c8332b7c1be860b0cf9f68e6">PIUnixMIPSR400064BitCodeProperty</a>&nbsp;&nbsp;&nbsp;0x756d3477</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A MIPS R4000 code descriptor, can be 64 bit.  <a href="#g6f6d83f4c8332b7c1be860b0cf9f68e6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#g5f915517a9f8fda1d74f4304f806fae6">PIUnixMIPSR8000CodeProperty</a>&nbsp;&nbsp;&nbsp;0x756d7238</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A MIPS R8000 code descriptor, always 64 bit.  <a href="#g5f915517a9f8fda1d74f4304f806fae6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___pi_p_l_code_descriptor_keys.html#geb36b96543a70c839c44a0647320e2d0">PIUnixMIPSCodeProperty</a>&nbsp;&nbsp;&nbsp;PIUnixMIPSR3000CodeProperty</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A MIPS R3000 code descriptor.  <a href="#geb36b96543a70c839c44a0647320e2d0"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+Code descriptors tell Photoshop the type and location of a plug-in’s code. 
+<p>
+More than one code descriptor may be included to build a "fat" plug-in which will run on different types of machines. Photoshop selects the best performing option. Photoshop makes sure that the callback structure is filled in with appropriate functions for the type of code that is loaded. So for PowerPC code, native function pointers will be provided and routine descriptor operations are not required either in calling the plug-in or for the plug-in to invoke Photoshop callback functions. <dl compact><dt><b>Note:</b></dt><dd>In Windows, the CNVTPIPL.EXE utility only recognizes Windows specific properties. It ignores all MAC OS specific properties described in this section. </dd></dl>
+<hr><h2>Define Documentation</h2>
+<a class="anchor" name="gc3606047789bcdcb45ce0de76835f1b9"></a><!-- doxytag: member="PIGeneral.h::PIPowerPCMachOCodeProperty" ref="gc3606047789bcdcb45ce0de76835f1b9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIPowerPCMachOCodeProperty&nbsp;&nbsp;&nbsp;'mach'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+PowerPC Mach-O code descriptor. 
+<p>
+Key is 'mach'. This property key reflects the <code>CodeMachOPowerPC</code> property in the PiPL resource file. The property data has type <a class="el" href="struct_p_i_mach_o_code_desc.html">PIMachOCodeDesc</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g98126ff8ea7870e7035f3e8433fd683d"></a><!-- doxytag: member="PIGeneral.h::PICodeFragmentProperty" ref="g98126ff8ea7870e7035f3e8433fd683d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICodeFragmentProperty&nbsp;&nbsp;&nbsp;'frag'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+PowerPC fragment descriptor. 
+<p>
+Key is 'frag'. This property key reflects the <code>CodeFragmentPPC</code> property in the PiPL resource file. The property data has type <a class="el" href="struct_p_i_fragment_code_desc.html">PIFragmentCodeDesc</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g5355a9517765bd7ff487cc80affbb72f"></a><!-- doxytag: member="PIGeneral.h::PICarbonCodeFragmentProperty" ref="g5355a9517765bd7ff487cc80affbb72f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PICarbonCodeFragmentProperty&nbsp;&nbsp;&nbsp;'frgc'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+PowerPC CARBON fragment descriptor. 
+<p>
+Key is 'frgc'. This property key reflects the <code>CodeFragmentCarbonPPC</code> property in the PiPL resource file. The property data has type <a class="el" href="struct_p_i_fragment_code_desc.html">PIFragmentCodeDesc</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g05471ff1d32098ca0e8d1bad06e11fc4"></a><!-- doxytag: member="PIGeneral.h::PI68KFPUCodeProperty" ref="g05471ff1d32098ca0e8d1bad06e11fc4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PI68KFPUCodeProperty&nbsp;&nbsp;&nbsp;0x36386670L          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A 68k code resource with FPU. 
+<p>
+Key is '68fp'. This property key reflects the <code>Code68kFPU</code> property in the PiPL resource file. The data for the property has type <a class="el" href="struct_p_i68_k_code_desc.html">PI68KCodeDesc</a>. 
+</div>
+</div><p>
+<a class="anchor" name="g09bb40269c4a5b151c273c02baf979bd"></a><!-- doxytag: member="PIGeneral.h::PIUnixSPARCV7CodeProperty" ref="g09bb40269c4a5b151c273c02baf979bd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixSPARCV7CodeProperty&nbsp;&nbsp;&nbsp;0x75737037          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A SPARC version 7 code descriptor. 
+<p>
+Key is 'usp7'. 
+</div>
+</div><p>
+<a class="anchor" name="g13725e43ac3593a324f7fdac0de1671f"></a><!-- doxytag: member="PIGeneral.h::PIUnixSPARCV8CodeProperty" ref="g13725e43ac3593a324f7fdac0de1671f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixSPARCV8CodeProperty&nbsp;&nbsp;&nbsp;0x75737038          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A SPARC version 8 code descriptor. 
+<p>
+Key is 'usp8. 
+</div>
+</div><p>
+<a class="anchor" name="g64da4874172f8161935f134d0fdcff2a"></a><!-- doxytag: member="PIGeneral.h::PIUnixSPARCV9CodeProperty" ref="g64da4874172f8161935f134d0fdcff2a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixSPARCV9CodeProperty&nbsp;&nbsp;&nbsp;0x75737039          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A SPARC version 9 code descriptor. 
+<p>
+Key is 'usp9'. 
+</div>
+</div><p>
+<a class="anchor" name="g8e32f22f2242b3a17e88d12196044916"></a><!-- doxytag: member="PIGeneral.h::PIUnixSPARCCodeProperty" ref="g8e32f22f2242b3a17e88d12196044916" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixSPARCCodeProperty&nbsp;&nbsp;&nbsp;PIUnixSPARCV7CodeProperty          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A SPARC version 7 code descriptor. 
+<p>
+Key is 'usp7'. 
+</div>
+</div><p>
+<a class="anchor" name="g3e8c987c4aa40843b9655fda95555cbc"></a><!-- doxytag: member="PIGeneral.h::PIUnixMIPSR3000CodeProperty" ref="g3e8c987c4aa40843b9655fda95555cbc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixMIPSR3000CodeProperty&nbsp;&nbsp;&nbsp;0x756d7233          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A MIPS R3000 code descriptor. 
+<p>
+Key is 'umr3'. 
+</div>
+</div><p>
+<a class="anchor" name="gf28d5fc8db54d08715bf93435795b9e0"></a><!-- doxytag: member="PIGeneral.h::PIUnixMIPSR4000CodeProperty" ref="gf28d5fc8db54d08715bf93435795b9e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixMIPSR4000CodeProperty&nbsp;&nbsp;&nbsp;0x756d7234          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A MIPS R4000 code descriptor. 
+<p>
+Key is 'umr4'. 
+</div>
+</div><p>
+<a class="anchor" name="g6f6d83f4c8332b7c1be860b0cf9f68e6"></a><!-- doxytag: member="PIGeneral.h::PIUnixMIPSR400064BitCodeProperty" ref="g6f6d83f4c8332b7c1be860b0cf9f68e6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixMIPSR400064BitCodeProperty&nbsp;&nbsp;&nbsp;0x756d3477          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A MIPS R4000 code descriptor, can be 64 bit. 
+<p>
+Key is 'um4w'. 
+</div>
+</div><p>
+<a class="anchor" name="g5f915517a9f8fda1d74f4304f806fae6"></a><!-- doxytag: member="PIGeneral.h::PIUnixMIPSR8000CodeProperty" ref="g5f915517a9f8fda1d74f4304f806fae6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixMIPSR8000CodeProperty&nbsp;&nbsp;&nbsp;0x756d7238          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A MIPS R8000 code descriptor, always 64 bit. 
+<p>
+Key is 'umr8'. 
+</div>
+</div><p>
+<a class="anchor" name="geb36b96543a70c839c44a0647320e2d0"></a><!-- doxytag: member="PIGeneral.h::PIUnixMIPSCodeProperty" ref="geb36b96543a70c839c44a0647320e2d0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIUnixMIPSCodeProperty&nbsp;&nbsp;&nbsp;PIUnixMIPSR3000CodeProperty          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+A MIPS R3000 code descriptor. 
+<p>
+Key is 'umr3'. 
+</div>
+</div><p>
+
+<!-- Begin Footer -->
+</td>
+<td width="20">&nbsp;&nbsp;</td>
+</table>
+
+<div id="footerrow"><!--give footer 25px of white above--></div>
+<div id="footer" title="footer: links to copyright and other legal information">
+<p><a href="licenses.html" class="el">&copy; 2010 Adobe Systems Incorporated</a></p>
+<a title="Terms of Use" href="http://www.adobe.com/misc/copyright.html">Terms of Use - </a>
+<a title="Privacy Policy" href="http://www.adobe.com/misc/privacy.html">Privacy Policy - </a>
+<a href="http://access.adobe.com">Accessibility - </a>
+<a title="Avoid software piracy" href="http://www.adobe.com/aboutadobe/antipiracy/main.html">Avoid software piracy - </a>
+<a title="Permissions and trademarks" href="http://www.adobe.com/misc/agreement.html">Permissions and trademarks - </a>
+<a title="Product License Agreements" href="http://www.adobe.com/products/eulas/main.html">Product License Agreements</a></div>
+<p/>
+</body>
+</html>

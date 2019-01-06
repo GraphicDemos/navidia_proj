@@ -1,0 +1,48 @@
+/*
+    File: statistics.RC
+
+	Copyright 2006 by Adobe Systems Inc..
+
+    Windows's resource file for stackProto Acquire.
+*/
+
+#include <windows.h>
+#include "winres.h"
+
+#include "PIGeneral.h"
+
+//#include "version.h"
+
+// TODO clean up all these version strings and dates
+
+#define VER_FILETYPE                 VFT_DLL
+#define VER_FILESUBTYPE              VFT2_UNKNOWN
+#define VER_FILEDESCRIPTION_STR     "Statistics"
+#define VER_INTERNALNAME_STR        "Statistics"
+#define VER_ORIGINALFILENAME_STR    "Statistics.8BA"
+#define VER_PRODUCTVERSION_STR		"12.0"
+//#include "common.ver"
+
+#include "statistics.pipl"
+
+
+
+16000 DIALOG LOADONCALL MOVEABLE DISCARDABLE 0, 0, 125, 92
+STYLE DS_MODALFRAME | WS_POPUP
+FONT  8, "MS Sans Serif"
+BEGIN
+    CTEXT   VER_FILEDESCRIPTION_STR					-1, 5, 10, 115, 12
+    CTEXT   "\251 2010 Adobe Systems, Inc."      	-1, 5, 25, 115, 12
+	CTEXT	VER_PRODUCTVERSION_STR					-1, 5, 40, 115, 12
+	CTEXT	"Image Stack Statistics"				-1, 5, 60, 115, 12
+END
+
+
+/*------------------------- String Table ----------------------*/
+
+STRINGTABLE DISCARDABLE
+BEGIN
+1   "Image Stack Statistics Module\nCopyright 2010 Adobe Systems Inc.\0"
+2   "Statistics\0"
+END
+

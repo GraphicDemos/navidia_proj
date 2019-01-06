@@ -1,0 +1,48 @@
+PROJECT(nv_dxut)
+
+SET(NV_DXUT_SRCS
+	DXUTExport.h
+	DXUT.h DXUT.cpp
+	DXUTenum.h DXUTenum.cpp
+	DXUTgui.h DXUTgui.cpp
+	DXUTMesh.h DXUTMesh.cpp
+	DXUTmisc.h DXUTmisc.cpp
+	DXUTSettingsDlg.h DXUTSettingsDlg.cpp
+	DXUTSound.h DXUTSound.cpp
+	DXUTcamera.h DXUTcamera.cpp
+	DXUTShapes.h DXUTShapes.cpp
+	DXUTwavefile.h DXUTwavefile.cpp
+	SDKmisc.h SDKmisc.cpp
+	DXUTres.h		DXUTres.cpp
+    dxstdafx.h dxstdafx.cpp
+	
+	)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+IF(VS_2015)
+	ADD_DEFINITIONS(-DDIRECTX_SDK_FROM_WINDOW=1)
+ELSE(VS_2015)
+	INCLUDE_DIRECTORIES(${DX10_INCLUDE_PATH})
+	LINK_DIRECTORIES(${DX10_INCLUDE_PATH}/../Lib/x86)
+ENDIF(VS_2015)
+
+# targets
+ADD_DEFINITIONS(-DNV_DXUT_EXPORTS)
+ADD_DEFINITIONS(-DDXUT_AUTOLIB)
+
+IF(NV_DXUT_SHARED)
+    ADD_DEFINITIONS(-DNV_DXUT_DLL=1)
+    ADD_LIBRARY(nv_dxut SHARED ${NV_DXUT_SRCS})
+ELSE(NV_DXUT_SHARED)
+    ADD_LIBRARY(nv_dxut ${NV_DXUT_SRCS})
+ENDIF(NV_DXUT_SHARED)
+
+TARGET_LINK_LIBRARIES(nv_dxut ${LIBS}  )
+
+
+INSTALL(TARGETS nv_dxut
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static)
+
+INSTALL(FILES dxstdafx.h DXUT.h DXUTSound.h DXUTenum.h DXUTcamera.h DXUTgui.h DXUTmisc.h DXUTSettingsDlg.h DXUTMesh.h DXUTExport.h DESTINATION include/DXUT)

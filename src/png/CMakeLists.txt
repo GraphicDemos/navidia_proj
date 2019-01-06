@@ -1,0 +1,36 @@
+PROJECT(nv_png)
+
+SET(NV_PNG_SRCS
+	nv_png_dec.h
+    data_path.h
+	data_path.cpp
+	nv_png.h 
+	nv_png.cpp
+	array_texture.h
+	array_texture.cpp)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+ 
+
+IF(PNG_FOUND)
+	INCLUDE_DIRECTORIES(${PNG_PNG_INCLUDE_DIR})
+	INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR})
+ENDIF(PNG_FOUND)
+# targets
+ADD_DEFINITIONS(-DNV_PNG_EXPORTS)
+
+IF(NV_PNG_SHARED)
+    ADD_DEFINITIONS(-DNV_PNG_DLL=1)
+    ADD_LIBRARY(nv_png SHARED ${NV_PNG_SRCS})
+ELSE(NV_PNG_SHARED)
+    ADD_LIBRARY(nv_png ${NV_PNG_SRCS})
+ENDIF(NV_PNG_SHARED)
+
+target_include_directories(nv_png PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../extern)
+TARGET_LINK_LIBRARIES(nv_png ${LIBS} ${PNG_LIBRARY_DEBUG} ${ZLIB_LIBRARY_RELEASE} opengl32 glu32)
+
+INSTALL(TARGETS nv_png
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static)
+INSTALL(FILES nv_png.h nv_png_dec.h data_path.h array_texture.h DESTINATION include/nv_png)

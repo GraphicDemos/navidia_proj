@@ -1,0 +1,29 @@
+PROJECT(nvthread)
+
+SET(THREAD_SRCS
+	nvthread.h nvthread.cpp
+	Atomic.h
+	Event.h Event.cpp
+	Mutex.h Mutex.cpp
+	ParallelFor.h ParallelFor.cpp
+	Thread.h Thread.cpp
+	ThreadPool.h ThreadPool.cpp)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+
+# targets
+ADD_DEFINITIONS(-DNV_THREAD_EXPORTS) 
+
+IF(NV_THREAD_SHARED)
+	ADD_LIBRARY(nvthread SHARED ${THREAD_SRCS})
+	ADD_DEFINITIONS(-DNV_THREAD_SHARED_DLL=1)
+ELSE(NV_THREAD_SHARED)
+	ADD_LIBRARY(nvthread ${THREAD_SRCS})
+ENDIF(NV_THREAD_SHARED)
+
+TARGET_LINK_LIBRARIES(nvthread ${LIBS} nvcore)
+
+INSTALL(TARGETS nvthread
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)

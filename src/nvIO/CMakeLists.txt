@@ -1,0 +1,28 @@
+PROJECT(nvIO)
+
+SET(IO_SRCS
+    nvMeshIO.h
+	NVMeshMender.h NVMeshMender.cpp
+	nvObjReader.h nvObjReader.cpp
+	nvMeshPreprocessor.h nvMeshPreprocessor.cpp
+	nvObjIO.h nvObjIO.cpp)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+INCLUDE_DIRECTORIES(${NV_SOURCE_DIR}/src/nv_math)
+# targets
+ADD_DEFINITIONS(-DNVIO_EXPORTS)
+
+IF(NVIO_SHARED)
+    ADD_DEFINITIONS(-DNVIO_SHARED=1)
+    ADD_LIBRARY(nvIO SHARED ${IO_SRCS})
+ELSE(NVIO_SHARED)
+    ADD_LIBRARY(nvIO ${IO_SRCS})
+ENDIF(NVIO_SHARED)
+
+TARGET_LINK_LIBRARIES(nvIO ${LIBS} nv_math)
+
+INSTALL(TARGETS nvIO
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static)
+INSTALL(FILES nvObjReader.h NVMeshMender.h nvMeshPreprocessor.h nvMeshIO.h nvObjIO.h DESTINATION include/nvIO)

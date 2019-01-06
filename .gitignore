@@ -3,8 +3,10 @@ CMakeFiles/
 CMakeCache.txt
 
 ##visual stuido
-**/*.vcxproj
-**/*.vcxproj.filters
+*/**/*.vcproj
+*/**/*.vcxproj
+*/**/*.vcxproj.filters
+*/**/*.manifest
 
 *.sln
 **/*.cmake
@@ -24,6 +26,7 @@ CMakeCache.txt
 **/*.opendb
 **/*.db
 **/*.cso 
+*/**/*.exe
 
 ## hlsl compile tmp
 **/*.pixelShader

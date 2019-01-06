@@ -1,0 +1,12 @@
+#include "common.cg"
+#include "uniforms.cg"
+
+half4 main(vf30 In,
+           uniform samplerRECT tex0) : COLOR
+{
+	half4 color;
+
+	color = texRECT(tex0, In.TEX0.xy);
+	
+	return color;
+}

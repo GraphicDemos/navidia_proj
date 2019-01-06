@@ -1,0 +1,72 @@
+// constrain particle to be outside volume of a sphere
+void SphereConstraint(inout float3 x, float3 center, float r)
+{
+    float3 delta = x - center;
+    float dist = length(delta);
+    if (dist < r) {
+        x = center + delta*(r / dist);
+    }
+}
+
+// constrain particle to be above floor
+void FloorConstraint(inout float3 x, float level)
+{
+    if (x.y < level) {
+        x.y = level;
+    }
+}
+
+// constrain particle to heightfield stored in texture
+void TerrainConstraint(inout float3 pos, uniform sampler2D terrain_tex, float3 scale, float3 offset)
+{
+    float2 uv = (pos.xz - offset.xz) / scale.xz;
+    float h = tex2D(terrain_tex, uv).r*scale.y + offset.y;
+    if (pos.y < h) {
+        pos.y = h;
+    }
+}
+
+void SphereCollide(inout float3 x, inout float3 vel, float3 center, float r, float3 sphere_vel, float friction, inout float3 force)
+{
+    float3 delta = x - center;
+    float dist = length(delta);
+    if (dist < r) {
+//      x = center + delta*(r / dist);    
+      vel += (delta / dist) * friction;
+      vel += sphere_vel;
+    }
+}
+
+void FloorCollide(inout float3 x, inout float3 vel, float level, float friction, inout float3 force)
+{
+    if (x.y < level) {
+//        x.y = level;
+//        force.y += -vel.y*friction;
+        vel.y += -vel.y*friction;
+    }
+}
+
+void Gravitation(float3 pos, float3 mass_pos, inout float3 force, float epsilon)
+{
+  float3 delta = mass_pos - pos;
+  float dist = length(delta);
+  float3 dir = delta / dist;
+  force += dir * (1.0 / (epsilon + dist*dist));
+}
+
+void TerrainCollide(float3 pos, inout float3 vel, uniform sampler2D terrain_tex, float3 scale, float3 offset, float friction)
+{
+    const float2 texelSize = float2( 1.0 / 256.0, 1.0 / 256.0 );
+    float2 uv = (pos.xz - offset.xz) / scale.xz;
+    float h0 = tex2D(terrain_tex, uv).r;
+    float h = h0*scale.y + offset.y;
+    if (pos.y < h) {
+        // calculate normal (could precalc this)
+        float h1 = tex2D(terrain_tex, uv + texelSize*float2(1, 0) ).r;
+        float h2 = tex2D(terrain_tex, uv + texelSize*float2(0, 1) ).r;
+        float3 N = cross( float3(scale.x*texelSize.x, (h1-h0)*scale.y, 0), float3(0, (h2-h0)*scale.y, scale.z*texelSize.y) );
+        N = normalize(N);
+        vel = reflect(vel, N);
+        vel *= friction;
+    }
+}

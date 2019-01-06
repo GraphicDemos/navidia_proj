@@ -1,0 +1,107 @@
+// Note: this code depends on the use of signed RGB textures 
+// for normalization cube maps.  These are available on 
+// NVIDIA GeForce 3 and higher GPUs, through the GL_SIGNED_RGB_NV
+// texture internal format (The DirectX equivalent is 
+// D3DFMT_Q8W8V8U8). If unsigned textures are used, care must be taken 
+// to range expand the vectors obtained from the cube map lookups:  
+// vec = 2 * h3texCUBE() - 1.
+
+#ifdef USE_HALF
+#define REAL      half
+#define REAL2     half2
+#define REAL3     half3
+#define REAL4     half4
+#define R4TEX2D   h4tex2D
+#define R3TEX2D   h3tex2D
+#define R3TEXCUBE h3texCUBE
+#define R2TEXCUBE h2texCUBE
+#define R1TEXCUBE h1texCUBE
+#else
+#define REAL      float
+#define REAL2     float2
+#define REAL3     float3
+#define REAL4     float4
+#define R4TEX2D   f4tex2D
+#define R3TEX2D   f3tex2D
+#define R3TEXCUBE f3texCUBE
+#define R2TEXCUBE f2texCUBE
+#define R1TEXCUBE f1texCUBE
+#endif
+
+struct fragin 
+{
+    REAL2 texcoords            : TEXCOORD0;
+    REAL4 shadowcoords         : TEXCOORD1;
+    REAL4 tangentToEyeMat0     : TEXCOORD4;
+    REAL3 tangentToEyeMat1     : TEXCOORD5;
+    REAL3 tangentToEyeMat2     : TEXCOORD6;
+    REAL3 eyeSpacePosition     : TEXCOORD7;
+};
+
+interface Normalizer
+{
+    REAL3 nrm(REAL3 v);
+};
+
+struct StdNormalizer : Normalizer
+{
+    REAL3 nrm(REAL3 v) { return normalize(v); }
+};
+
+struct CubeNormalizer : Normalizer 
+{
+    samplerCUBE normCube;
+    REAL3 nrm(REAL3 v) { return R3TEXCUBE(normCube, v).xyz; }
+};
+
+struct HiloCubeNormalizer : Normalizer
+{
+    samplerCUBE normCubeXY;
+    samplerCUBE normCubeZ;
+    REAL3 nrm(REAL3 v) 
+    {
+        return REAL3(R2TEXCUBE(normCubeXY, v).xy, R1TEXCUBE(normCubeZ, v).x); 
+    }
+};
+
+
+REAL4 main(fragin In,
+   uniform sampler2D normalTexture,
+   uniform sampler2D diffuseTexture,
+   uniform sampler2D glossyTexture,
+   uniform samplerCUBE normCubeTexture,
+   uniform REAL3 eyeSpaceLightPosition,
+   uniform Normalizer normalizer[4]) : COLOR
+{  
+    REAL4 kd = R4TEX2D(diffuseTexture, In.texcoords);   // diffuse albedo
+    REAL4 ks = R4TEX2D(glossyTexture, In.texcoords);    // specular "gloss" map
+
+    // Eye-space eye vector.    
+    REAL3 v = normalizer[0].nrm(-In.eyeSpacePosition);
+
+    // Eye-space light vector.
+    REAL3 l = normalizer[1].nrm(eyeSpaceLightPosition - In.eyeSpacePosition);
+    
+    // Eye-space half-angle vector
+    REAL3 h = normalizer[2].nrm(v + l);
+
+    // Tangent-space normal vector from normal map.
+    REAL3 bumpScale = {In.tangentToEyeMat0.ww, 1};   
+    REAL3 tangentSpaceNormal = bumpScale * R3TEX2D(normalTexture, In.texcoords).xyz;
+    
+    // Transform normal vector into eye-space.
+    REAL3 n;
+    n.x = dot(In.tangentToEyeMat0.xyz, tangentSpaceNormal);
+    n.y = dot(In.tangentToEyeMat1, tangentSpaceNormal);
+    n.z = dot(In.tangentToEyeMat2, tangentSpaceNormal);
+
+    static const REAL m = 34;    // specular exponent
+    REAL4 coeffs;
+
+    n = normalizer[3].nrm(n);
+
+    // Compute Blinn-Phong lighting.
+    coeffs = lit(dot(n, l), dot(n, h), m);
+    return coeffs.y * kd + coeffs.z * ks;
+}
+

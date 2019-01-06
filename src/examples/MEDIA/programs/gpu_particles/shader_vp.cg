@@ -1,0 +1,37 @@
+// shader vertex program
+
+void main(in float4 pos   : POSITION,
+//          in float4 texcoord : TEXCOORD0,
+          in float4 particleData : TEXCOORD0,
+          in float4 color : COLOR0,
+          
+          out float4 hpos : POSITION,
+          out float4 tex0 : TEXCOORD0,
+          out float4 color0 : COLOR0,
+          out float psize : PSIZE,
+
+          uniform float4x4 modelView,
+          uniform float4x4 modelViewProj,
+          uniform float time
+          )
+{
+//    tex0 = texcoord;
+    color0 = color;
+    
+#if 1
+    // calculate point size
+    const float4 pointSize = 64.0;
+    const float3 atten = float3(1.0, 0.0, 1.0);
+    float4 pos_eye = mul(modelView, pos);
+    float d = length(pos_eye.xyz);
+    psize = pointSize * sqrt(1.0 / (atten[0] + atten[2]*d*d));
+#endif
+    
+    hpos = mul(modelViewProj, pos);
+#if 1
+    // kill particle if it's not active
+    if ((time < particleData.x) || (time > particleData.y)) {
+        hpos.w = -1.0;
+    }
+#endif    
+}

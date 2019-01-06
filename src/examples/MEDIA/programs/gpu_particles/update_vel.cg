@@ -1,0 +1,39 @@
+// update velocity based on acceleration
+
+#include "common.cg"
+
+float4 main(in float2 uv : TEXCOORD0,
+
+            uniform samplerRECT pos_tex,
+            uniform samplerRECT vel_tex,
+            uniform sampler2D terrain_tex,            
+            
+            uniform float timestep = 0.01,
+            uniform float damping = 0.99,
+            uniform float3 gravity = float3(0, -1, 0),
+            uniform float3 spherePos,
+            uniform float3 sphereVel            
+            ) : COLOR
+{
+    const float3 terrain_scale = float3(8.0, 2.0, 8.0);
+    const float3 terrain_offset = float3(-4.0, 0.01, -4.0);
+
+    float3 pos = texRECT(pos_tex, uv).xyz;
+    float3 vel = texRECT(vel_tex, uv).xyz;
+
+    float3 pos_next = pos + vel * timestep;  // predicted position next timestep
+
+    float3 force = gravity;
+//    float3 force = 0.0;
+//    Gravitation(pos, spherePos, force, 0.1);
+
+    SphereCollide(pos_next, vel, spherePos, 1.0, sphereVel, 0.5, force);
+//    FloorCollide(pos_next, vel, 0.0, 0.5, force);
+    TerrainCollide(pos_next, vel, terrain_tex, terrain_scale, terrain_offset, 0.5);
+    
+    const float inv_mass = 1.0;    
+    vel += force * inv_mass * timestep; // F = ma      
+    vel *= damping;
+
+    return float4(vel, 1.0);
+}

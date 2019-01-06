@@ -1,0 +1,260 @@
+///////////////////////////////////////////////////////////////////////////////
+// Vertex source
+///////////////////////////////////////////////////////////////////////////////
+
+
+struct interpolants
+{
+    float2 texcoords            : TEXCOORD0;
+    float2 texcoords1           : TEXCOORD1;
+    float4 tangentToEyeMat0     : TEXCOORD4;
+    float4 tangentToEyeMat1     : TEXCOORD5;
+    float3 tangentToEyeMat2     : TEXCOORD6;
+    float4 eyeSpacePosition     : TEXCOORD7;
+};
+
+void vertexProgram(in float4 oPosition   : POSITION,
+                   in float2 texcoord0   : TEXCOORD0,
+                   in float3 tangent     : TANGENT,
+                   in float3 binormal    : BINORMAL,
+                   in float3 normal      : NORMAL,
+
+                   out float4 hPosition  : POSITION,
+                   out float4 color      : COLOR0,
+                   out interpolants OUT,
+
+                   uniform float bumpScale,
+
+                   uniform float diseaseMapScale,
+                   uniform float diseaseBumpScale,
+
+                   uniform float4x4 modelViewProj,
+                   uniform float4x4 modelView)
+{
+    hPosition = mul(modelViewProj, oPosition);
+    color = float4(1.0, 1.0, 1.0, 1.0);
+
+    OUT.texcoords = texcoord0;
+    OUT.texcoords1 = diseaseMapScale * texcoord0;
+    
+    OUT.eyeSpacePosition = mul(modelView, oPosition);
+
+    OUT.tangentToEyeMat0.x = dot(modelView[0].xyz, tangent);
+    OUT.tangentToEyeMat0.y = dot(modelView[0].xyz, binormal);
+    OUT.tangentToEyeMat0.z = dot(modelView[0].xyz, normal);
+    OUT.tangentToEyeMat0.w = bumpScale;
+        
+    OUT.tangentToEyeMat1.x = dot(modelView[1].xyz, tangent);
+    OUT.tangentToEyeMat1.y = dot(modelView[1].xyz, binormal);
+    OUT.tangentToEyeMat1.z = dot(modelView[1].xyz, normal);
+    OUT.tangentToEyeMat1.w = diseaseBumpScale;
+
+    OUT.tangentToEyeMat2.x = dot(modelView[2].xyz, tangent);
+    OUT.tangentToEyeMat2.y = dot(modelView[2].xyz, binormal);
+    OUT.tangentToEyeMat2.z = dot(modelView[2].xyz, normal);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Fragment source
+///////////////////////////////////////////////////////////////////////////////
+
+struct fragin 
+{
+    half2 texcoords            : TEXCOORD0;
+    half2 diseasecoords        : TEXCOORD1;
+    half4 tangentToEyeMat0     : TEXCOORD4;
+    half4 tangentToEyeMat1     : TEXCOORD5;
+    half3 tangentToEyeMat2     : TEXCOORD6;
+    half3 eyeSpacePosition     : TEXCOORD7;
+};
+
+half4 blinnSkin(fragin In,
+        uniform sampler2D normalTexture,
+        uniform sampler2D diffuseTexture,
+        uniform sampler2D glossyTexture,
+        uniform half3 eyeSpaceLightPosition) : COLOR
+{  
+    half4 kd = tex2D(diffuseTexture, In.texcoords);   // diffuse color
+    half4 ks = tex2D(glossyTexture, In.texcoords);    // specular color
+
+    // Get eye-space eye vector.    
+    half3 v = normalize(-In.eyeSpacePosition);
+
+    // Get eye-space light and halfangle vectors.
+    half3 l = normalize(eyeSpaceLightPosition - In.eyeSpacePosition);
+
+    half3 h = normalize(v + l);
+
+    // Get tangent-space normal vector from normal map.
+    half3 bumpScale = {In.tangentToEyeMat0.ww, 1};   
+    half3 tangentSpaceNormal = 
+        bumpScale * tex2D(normalTexture, In.texcoords).xyz;
+    
+    // Transform it into eye-space.
+    half3 n;
+    n.x = dot(In.tangentToEyeMat0.xyz, tangentSpaceNormal);
+    n.y = dot(In.tangentToEyeMat1.xyz, tangentSpaceNormal);
+    n.z = dot(In.tangentToEyeMat2, tangentSpaceNormal);
+
+    static const half m = 34;    // specular exponent
+    half4 coeffs;
+
+    n = normalize(n);
+    coeffs.y = dot(n,l);
+    coeffs.z = dot(n,h);
+
+    coeffs = lit(coeffs.y, coeffs.z, m);
+
+    // Compute Blinn-Phong lighting.
+    return coeffs.y * kd + coeffs.z * ks;
+}
+
+
+half4 crawlSkin(fragin In,
+        uniform sampler2D normalTexture,
+        uniform sampler2D diffuseTexture,
+        uniform sampler2D glossyTexture,
+        uniform sampler2D diseaseNormalTexture,
+        uniform half3 eyeSpaceLightPosition) : COLOR
+{  
+    half4 kd = tex2D(diffuseTexture, In.texcoords);   // diffuse color
+    half4 ks = tex2D(glossyTexture, In.texcoords);    // specular color
+
+    // Get eye-space eye vector.    
+    half3 v = normalize(-In.eyeSpacePosition);
+
+    // Get eye-space light and halfangle vectors.
+    half3 l = normalize(eyeSpaceLightPosition - In.eyeSpacePosition);
+
+    half3 h =    normalize(v + l);
+
+    // Get tangent-space normal vector from normal map.
+    half3 bumpScale =        { In.tangentToEyeMat0.ww, 1 };   
+    half3 diseaseBumpScale = { In.tangentToEyeMat1.ww, 1 };
+    
+    half3 tangentSpaceNormal = diseaseBumpScale * 
+        (2 * tex2D(diseaseNormalTexture, In.diseasecoords).xyz - 1);
+    tangentSpaceNormal += bumpScale * tex2D(normalTexture, In.texcoords).xyz;
+    
+    // Transform it into eye-space.
+    half3 n;
+    n.x = dot(In.tangentToEyeMat0.xyz, tangentSpaceNormal);
+    n.y = dot(In.tangentToEyeMat1.xyz, tangentSpaceNormal);
+    n.z = dot(In.tangentToEyeMat2, tangentSpaceNormal);
+
+    static const half m = 34;    // specular exponent
+    half4 coeffs;
+
+    n = normalize(n);
+    coeffs.y = dot(n,l);
+    coeffs.z = dot(n,h);
+
+    coeffs = lit(coeffs.y, coeffs.z, m);
+
+    // Compute Blinn-Phong lighting.
+    return coeffs.y * kd + coeffs.z * ks;
+}
+
+half4 diseaseSkin(fragin In,
+          uniform sampler2D normalTexture,
+          uniform sampler2D diffuseTexture,
+          uniform sampler2D glossyTexture,
+          uniform sampler2D diseaseNormalTexture,
+          uniform sampler2D diseaseTexture,
+          uniform half3 eyeSpaceLightPosition,
+          uniform half3 diseaseColor) : COLOR
+{  
+    half4 kd = tex2D(diffuseTexture, In.texcoords);   // diffuse color
+    half4 ks = tex2D(glossyTexture, In.texcoords);    // specular color
+ 
+    // Get eye-space eye vector.    
+    half3 v = normalize(-In.eyeSpacePosition);
+
+    // Get eye-space light and halfangle vectors.
+    half3 l = normalize(eyeSpaceLightPosition - In.eyeSpacePosition);
+
+    half3 h = normalize(v + l);
+
+    // Get tangent-space normal vector from normal map.
+    half3 bumpScale = {In.tangentToEyeMat0.ww, 1};   
+    half3 diseaseBumpScale = { In.tangentToEyeMat1.w, In.tangentToEyeMat1.w, 1 };
+    // The dynamic normal map is unsigned, so we have to scale and bias to [-1, 1].
+    half3 tangentSpaceNormal = diseaseBumpScale * 
+        (2 * h3tex2D(diseaseNormalTexture, In.diseasecoords).rgb - 1);
+    tangentSpaceNormal += bumpScale * h3tex2D( normalTexture, In.texcoords ).rgb;
+    
+    // Transform it into eye-space.
+    half3 n;
+    n.x = dot(In.tangentToEyeMat0.xyz, tangentSpaceNormal);
+    n.y = dot(In.tangentToEyeMat1.xyz, tangentSpaceNormal);
+    n.z = dot(In.tangentToEyeMat2, tangentSpaceNormal);
+
+    n = normalize(n);
+    // Modify the skin color where the disease makes lesions.
+    half t = 1 - tex2D(diseaseTexture, In.diseasecoords).x;
+    kd.xyz = lerp(kd.xyz, diseaseColor, t);
+
+    static const half m = 34;    // specular exponent
+    half4 coeffs;
+
+    coeffs.y = dot(n,l);
+    coeffs.z = dot(n,h);
+
+    coeffs = lit(coeffs.y, coeffs.z, m);
+
+    // Compute Blinn-Phong lighting.
+    return coeffs.y * kd + coeffs.z * ks;
+}
+
+half4 chromeSkin(fragin In,
+          uniform sampler2D normalTexture,
+          uniform sampler2D diffuseTexture,
+          uniform sampler2D glossyTexture,
+          uniform sampler2D diseaseNormalTexture,
+          uniform sampler2D diseaseTexture,
+          uniform samplerCUBE envTexture,
+          uniform half3 eyeSpaceLightPosition) : COLOR
+{  
+    half4 kd = tex2D(diffuseTexture, In.texcoords);   // diffuse color
+    half4 ks = tex2D(glossyTexture, In.texcoords);    // specular color
+ 
+    // Get eye-space eye vector.    
+    half3 v = normalize(-In.eyeSpacePosition);
+
+    // Get eye-space light and halfangle vectors.
+    half3 l = normalize(eyeSpaceLightPosition - In.eyeSpacePosition);
+
+    half3 h = normalize(v + l);
+
+    // Get tangent-space normal vector from normal map.
+    half3 bumpScale = {In.tangentToEyeMat0.ww, 1};   
+    half3 diseaseBumpScale = { In.tangentToEyeMat1.w, In.tangentToEyeMat1.w, 1 };
+    // The dynamic normal map is unsigned, so we have to scale and bias to [-1, 1].
+    half3 tangentSpaceNormal = diseaseBumpScale * 
+        (2 * h3tex2D(diseaseNormalTexture, In.diseasecoords).rgb - 1);
+    tangentSpaceNormal += bumpScale * h3tex2D( normalTexture, In.texcoords ).rgb;
+    
+    // Transform it into eye-space.
+    half3 n;
+    n.x = dot(In.tangentToEyeMat0.xyz, tangentSpaceNormal);
+    n.y = dot(In.tangentToEyeMat1.xyz, tangentSpaceNormal);
+    n.z = dot(In.tangentToEyeMat2, tangentSpaceNormal);
+    
+    n = normalize(n);
+    
+    // Modify the skin color where the disease makes lesions.
+    half t = 1 - tex2D(diseaseTexture, In.diseasecoords).x;
+    kd.xyz = lerp(kd.xyz, texCUBE(envTexture, n), smoothstep(0.5, 1.0, diseaseBumpScale * t));
+    
+    static const half m = 34;    // specular exponent
+    half4 coeffs;
+
+    coeffs.y = dot(n,l);
+    coeffs.z = dot(n,h);
+
+    coeffs = lit(coeffs.y, coeffs.z, m);
+
+    // Compute Blinn-Phong lighting.
+    return coeffs.y * kd + coeffs.z * ks;
+}
+

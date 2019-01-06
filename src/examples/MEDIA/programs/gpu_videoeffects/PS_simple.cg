@@ -1,0 +1,17 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+
+half4 main(vf30 In,
+           uniform samplerRECT tex0) : COLOR
+{
+	half4 color;
+
+	if (UseYUV) {
+		color = yuyv_texture_sampler(tex0, In.TEX0.xy);
+	} else {
+		color = texRECT(tex0, In.TEX0.xy);
+	}
+	
+	return color;
+}

@@ -1,0 +1,43 @@
+!!RC1.0                    
+// Equal weight combination
+// Since there are 4 bilinear samples of two texels each, the 
+//  averaging factor is 1/4 for each.  Set a constant for this:
+// This constant is a color mask - It is used to only keep the 
+//    green component for the accumulation of neighbor texel info.
+// In this way, the cell field is sampled for the "green" axis 
+//    in the texreg2gb lookup which controls the rules of the game.
+const0 = (0, .25, 0, 0);
+const1 = (1, 1, 1, 1);
+{                                 
+    rgb                           
+    {                             
+        discard = tex0 * const0;  
+        discard = tex1 * const0;         
+        spare0 = sum();           
+    }                             
+}                                 
+{                                 
+   rgb                            
+   {                              
+       discard = tex2 * const0;   
+       discard = tex3 * const0;          
+       spare1 = sum();            
+   }                              
+}                              
+{
+   rgb
+   {
+       discard = spare0;
+       discard = spare1;
+       spare0 = sum();
+   }
+}   
+{
+   // for alpha test
+   rgb
+   {
+       spare1 = spare0 . const1;
+   }
+}
+out.rgb = spare0;
+out.a = spare1.b;                

@@ -1,0 +1,61 @@
+!!ARBvp1.0
+# CV_WORLDVIEWPROJ_0  = 0,
+# CV_WORLDVIEWPROJ_1  = 1,
+# CV_WORLDVIEWPROJ_2  = 2,
+# CV_WORLDVIEWPROJ_3  = 3,
+#
+# CV_UV_OFFSET_TO_USE = 4,
+#
+#
+# CV_UV_T0_NO_OFFSET  = 8,
+# CV_UV_T0_TYPE1      = 9,
+# CV_UV_T0_TYPE2      = 10,
+# CV_UV_T0_TYPE3      = 11,
+# CV_UV_T0_TYPE4      = 12,
+#
+# CV_UV_T1_NO_OFFSET  = 13,
+# CV_UV_T1_TYPE1      = 14,
+# CV_UV_T1_TYPE2      = 15,
+# CV_UV_T1_TYPE3      = 16,
+# CV_UV_T1_TYPE4      = 17,
+#
+# CV_UV_T2_NO_OFFSET  = 18,
+# CV_UV_T2_TYPE1      = 19,
+# CV_UV_T2_TYPE2      = 20,
+# CV_UV_T2_TYPE3      = 21,
+# CV_UV_T2_TYPE4      = 22,
+#
+# CV_UV_T3_NO_OFFSET  = 23,
+# CV_UV_T3_TYPE1      = 24,
+# CV_UV_T3_TYPE2      = 25,
+# CV_UV_T3_TYPE3      = 26,
+# CV_UV_T3_TYPE4      = 27,
+
+PARAM mvp[4] = { state.matrix.mvp };
+PARAM arr[20] = { program.env[8..27] };
+PARAM c0 = program.env[4];
+
+ATTRIB v0 = vertex.position;
+ADDRESS addr;
+
+TEMP R0;
+
+# Transform vertex-position to clip-space
+DP4 result.position.x, v0, mvp[0];
+DP4 result.position.y, v0, mvp[1];
+DP4 result.position.z, v0, mvp[2];
+DP4 result.position.w, v0, mvp[3];
+
+# Read which set of offsets to use
+ARL addr.x, c0.x;
+
+# Add the offsets to the input texture
+# coordinate, creating 4 sets of independent
+# texture coordinates.
+
+ADD result.texcoord[0], arr[addr.x + 0],  vertex.texcoord[0];
+ADD result.texcoord[1], arr[addr.x + 5],  vertex.texcoord[0];
+ADD result.texcoord[2], arr[addr.x + 10], vertex.texcoord[0];
+ADD result.texcoord[3], arr[addr.x + 15], vertex.texcoord[0];
+
+END

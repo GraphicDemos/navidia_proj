@@ -1,0 +1,29 @@
+// update positions based on velocity
+
+#include "common.cg"
+
+float4 main(in float2 uv : TEXCOORD0,
+
+            uniform samplerRECT pos_tex,
+            uniform samplerRECT vel_tex,
+            uniform sampler2D terrain_tex,
+            
+            uniform float timestep = 0.01,
+            uniform float3 spherePos
+            ) : COLOR
+{
+    const float3 terrain_scale = float3(8.0, 2.0, 8.0);
+    const float3 terrain_offset = float3(-4.0, 0.01, -4.0);
+
+    // get previous position and velocity
+    float3 pos = texRECT(pos_tex, uv).xyz;
+    float3 vel = texRECT(vel_tex, uv).xyz;
+
+    SphereConstraint(pos, spherePos, 1.0f);
+//    FloorConstraint(pos, 0.0f);
+    TerrainConstraint(pos, terrain_tex, terrain_scale, terrain_offset);
+
+    pos += vel * timestep;
+
+    return float4(pos, 1.0);
+}

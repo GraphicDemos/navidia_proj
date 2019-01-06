@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_FogPolygonVolumes3\
+File:  RGBEncodeAndCompare_30.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Generates an RGB-encoded depth value using two texture reads.
+Compares the color to an RGB-encoded depth value for solid objects in the scene read from a texture
+and selects the lesser depth value.
+Sets the sign of the lesser depth value using the vFace ps.3.0 register.
+Blends the signed RGB-encoded depth value to the render target.
+
+The render target should be a floating point render target texture where additive fp blending is 
+supported.
+
+-Greg J. 3/22/2004
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "Constants.h"
+
+ps.3.0
+def c9, 0.0, 0.0, 0.0, 0.0
+
+dcl_texcoord0	v0.xyzw
+dcl				vFace
+TEX_RGDECL3				// dcl for RGB-encoding texture stage
+TEX_BDECL3				// dcl for RGB-encoding texture stage
+dcl_2d			s0		// s0 set to render target texture containing RGB-encoded depth of scene objects
+
+// Fetch color ramps for RGB-encoding of depth
+texld	r0, TEX_RGCRDI3, TEX_RGSAMP
+texld   r1, TEX_BCRDI3,  TEX_BSAMP
+add		r0, r0, r1			// add red+green+blue ramps
+
+texldp  r1, v0, s0		// RGB-encoded depth of scene objects from render target texture
+
+// Compare RGB-encoded depth of triangle being rendered to the RGB-encoded depth of the
+//  scene objects read from texture s0
+// RGB-encoded difference
+add		r2, r0, -r1
+// Decode to positive or negative value
+dp4		r2, r2,	CPN_RGB_TEXADDR_WEIGHTS
+
+// cmp r0, d, r1, r2
+// component-wise decision d >=0 ? r1 : r2
+// always choose the lesser of r1 and r0
+cmp		r0, r2.xxxx, r1, r0
+
+// Give the value a sign depending on whether the triangle is front or back facing.
+// Front facing tris have a negative sign (their depth is subtracted) and back facing tris
+//  have a positive sign (their depth is added).
+if_gt vFace, c9.w
+	mov r0, -r0
+endif
+
+mov oC0, r0

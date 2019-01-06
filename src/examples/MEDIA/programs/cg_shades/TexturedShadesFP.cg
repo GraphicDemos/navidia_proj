@@ -1,0 +1,109 @@
+// ----------------------------------------------------------------------------
+// File:
+//      TexturedShades.cg
+//
+// Contents:
+//      This version of the shades shader allows to apply a texture to the
+//      slats. For details of how the texture is mapped onto the slats see
+//      the whitepaper.
+//
+// Author: Frank Jargstorff (fjargstorff@nvidia.com)
+//
+// Note:
+//      Copyright (c) 2004 by NVIDIA Corp. All rights reserved.
+// 
+// ----------------------------------------------------------------------------
+
+
+        // VertexToFragment
+        //
+        // Description:
+        //      Data from the vertex shader.
+        //          For a complete description see ShadesVP.cg
+        //
+struct VertexToFragment
+{
+    float4 vPosition   : POSITION;
+    float3 vTopColor   : COLOR;
+    float4 vUeUlSlU    : TEXCOORD0;
+    float4 vNeShVeV    : TEXCOORD1;
+    float4 vNhNl       : TEXCOORD2;
+};
+
+
+        // main
+        //
+        // Description:
+        //      Procedural shades.
+        //          Assuming the shader is applied to a quad the algorithm 
+        //      determines if the top of a slat or on of the sides is hit by
+        //      the eye-ray. If neither is true a totally transpartent color is
+        //      returned. Otherwise the shader returns the top color as passed
+        //      from the vertex shader in the top-of-the-slat case; otherwise
+        //      the shader evaluates a lighting term for the side of the slat 
+        //      and returns that.
+        //
+        // Parameters:
+        //      oInput - the input data struct from the vertex program.
+        //      cAmbientColor - the ambient color intensity.
+        //      cDiffuseColor - the diffuse color intensity.
+        //      cSpecularColor - the specular color intensity.
+        //      nShininess     - the slat's shininess factor.
+        //      nSpacing - spacing of the slats in u-direction.
+        //      nHeight - height of the slats
+        //      nOffset - offset in u-direction of the slat's top against
+        //                its bottom. This enables to "tilt" slats.
+        //      nScaleTexture - not used by this shader.
+        //      oAlphaTexture - not used by this shader.
+        //      oTexture - the texture that is being applied to the slats.
+        //
+        // Returns:
+        //      The fragment's final color.
+        //
+        half4
+main(in VertexToFragment oInput,
+     uniform float4 cAmbientColor,
+     uniform float4 cDiffuseColor,
+     uniform float4 cSpecularColor,
+     uniform float  nShininess,
+     uniform float  nSpacing,
+     uniform float  nHeight, 
+     uniform float  nOffset, 
+     uniform float2 vScaleTexture,
+     uniform sampler1D oAlphaTexture,
+     uniform sampler2D oTexture
+    ): COLOR
+{
+    float u = frac(oInput.vUeUlSlU.w);
+    float p = nHeight * oInput.vUeUlSlU.x / oInput.vNeShVeV.x;
+
+    float dVdU = vScaleTexture.y/vScaleTexture.x;
+
+    float2 vTexCoord;
+    if (oInput.vUeUlSlU.x >= 0)
+        vTexCoord = float2(u/p*nSpacing, oInput.vNeShVeV.w - u * dVdU * oInput.vNeShVeV.z/oInput.vUeUlSlU.x);
+    else
+        vTexCoord = float2((1+(nSpacing-u)/p)*nSpacing, oInput.vNeShVeV.w + (nSpacing - u) * dVdU * oInput.vNeShVeV.z/oInput.vUeUlSlU.x);
+
+    vTexCoord.x += floor(oInput.vUeUlSlU.w);
+    vTexCoord   /= vScaleTexture;
+
+    half3 vDiffuse  = tex2D(oTexture, vTexCoord).rgb * oInput.vUeUlSlU.z;
+    half3 vSpecular = cSpecularColor.rgb * pow(abs(oInput.vNeShVeV.y), nShininess);
+                                // determine color of right slat's left side
+    half4 vSideColor = step((u - nOffset), p) * tex1D(oAlphaTexture, vTexCoord.y)
+                * half4(vDiffuse + step(0,  oInput.vUeUlSlU.z) * vSpecular, 1);
+                                // right side of the left slat
+    vSideColor += step(p, (u - nSpacing - nOffset)) * tex1D(oAlphaTexture, vTexCoord.y)
+                * half4(-vDiffuse + step(0, -oInput.vUeUlSlU.z) * vSpecular, 1);
+                                // texture the top of the slats
+    float2 vTexCoordTop = float2(oInput.vUeUlSlU.w, oInput.vNeShVeV.w)/vScaleTexture;
+    half3 vSpecularTop  = cSpecularColor.rgb * pow(abs(oInput.vNhNl.x), nShininess);
+    half4 vTopColor = half4(tex2D(oTexture, vTexCoordTop).rgb * tex1D(oAlphaTexture, vTexCoordTop.y).rgb * oInput.vNhNl.y
+                    + vSpecularTop, 1);
+        
+                                // if (u < nSpacing) return side color, 
+                                // otherwise return top color
+    return step(u, nSpacing) * vSideColor + (1-step(u, nSpacing)) * vTopColor;
+}
+ 

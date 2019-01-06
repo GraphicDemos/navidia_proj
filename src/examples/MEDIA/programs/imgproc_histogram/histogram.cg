@@ -1,0 +1,19 @@
+half4 main(in float4 wpos : WPOS,
+           uniform samplerRECT tex,
+           uniform half min,
+           uniform half max,
+           uniform half3 channels
+           ) : COLOR
+{
+    // fetch color from texture
+    half4 c = h4texRECT(tex, wpos.xy);
+    
+    // calculate luminance or select channel
+    half lum = dot(channels, c.rgb);
+
+    // discard pixel if not inside range
+    if (lum < min || lum >= max)
+        discard;
+
+    return c;
+}

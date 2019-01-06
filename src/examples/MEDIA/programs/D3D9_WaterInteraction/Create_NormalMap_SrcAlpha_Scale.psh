@@ -1,0 +1,75 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  Create_NormalMap_SrcAlpha_Scale.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+ 3/17/01 - Greg James
+11/15/01 - updated
+
+Neighbor-differencing for RGB normal map creation.  Scale factors for s and t
+  axis components are set in program code.
+This does a crude 1-s^2-t^2 calculation for the blue component in order to
+  approximately normalize the RGB normal map vector.  For s^2+t^2 close to 1.0,
+  this is a close approximation to blue = sqrt(1 - s^2 - t^2) which would give a
+  normalized vector.
+An additional pass with a dependent texture lookup (alpha-red or green-blue)
+  could be used to produce an exactly normalized normal.
+
+** This version sources height from .a channel of textures, which allows other
+   data to be kept in the texture .rgb
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+ps.1.1
+
+// Define c[PCN_RED_MASK] as RGBA = (scale, 0, 0, 0)
+//  Where scale [0,1] is applied to reduce the magnitude
+//  of the s axis component of the normal.
+// Define c[PCN_GREEN_MASK] similarly to affect the 
+//  t axis component
+// blue mask for r axis component (blue = up out of texture)
+def c4, 0.0, 0.0, 1.0, 1.0
+def c2, 0.5, 0.5, 0.0, 0.0
+def c1, 1.0, 1.0, 0.0, 0.0
+
+// get colors from all 4 texture stages
+// t0 = -s,  0
+// t1 = +s,  0
+// t2 =  0, +t
+// t3 =  0, -t
+
+tex t0
+tex t1
+tex t2
+tex t3
+
+// Source height from texture alpha!  This is to allow for 'packing'
+//  other data into the .rgb fields.
+
+sub_x4  r0.a, t0, t1					// (t0 - t1)*4  : 4 for higher scale
+
+mul     t0.rgb, r0.a, PCR_RED_MASK		// t0 = s result in red only
+										//  .a to smear across all .rgba
++ sub_x4  r1.a, t3, t2					// r1 = t result in green
+
+mad     r0, r1.a, PCR_GREEN_MASK, t0	    // r0 = red,green for s and t result
+
+mul_x2_sat  t1, r0, r0          // t1 = ( 2 * s^2, 2 * t^2, 0.0)
+
+dp3_d2  r1, 1-t1, c1        // ( 1-2s^2 + 1-2t^2 )/2 = 1 - s^2 - t^2
+
+add     r0, r0, c2          // bias red,green to 0.5
+
+mad     r0, r1, c4, r0      // RGB = (r+0, g+0, 0+blue )

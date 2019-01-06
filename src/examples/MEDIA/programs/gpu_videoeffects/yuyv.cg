@@ -1,0 +1,119 @@
+
+// CCIR 601 standard
+//const half3 std601R={  1.164 ,  0     ,  1.4022   }; // from previous definition
+const half3 std601R = {  1.1644,  0.0011,  1.5957   };
+const half3 std601G = {  1.1644, -0.3913, -0.8130   };
+const half3 std601B = {  1.1644,  2.0174,  0.0011   };
+const half4 stdbias = { -0.0625,  -0.5  , -0.5, 0   };
+
+// CCIR 709 standard (Garry amann)
+const half3 std709R = {  1.1644,  0.0008,  1.7932   };
+const half3 std709G = {  1.1642, -0.2131,  0.5328   };
+const half3 std709B = {  1.1665,  2.1124,  0.0011   };
+//const half4 stdbias={ -0.0625, -0.5  , -0.5, 0   };
+
+// CCIR 601 extended (Garry Amann)
+const half3 ext601R = {  1.0,  0     ,  1.4022   };
+const half3 ext601G = {  1.0, -0.3456, -0.7145   };
+const half3 ext601B = {  1.0,  1.7710,  0        };
+const half4 extbias = {  0,   -0.5   , -0.5, 0   };
+
+// CCIR 709 extended (Garry amann)
+// const mat3 can be used
+const half3 ext709R = {  1.000 ,  0    ,  1.540   };
+const half3 ext709G = {  1.000 , -0.183, -0.459   };
+const half3 ext709B = {  1.000 ,  1.816,  0       };
+//const half4 extbias = { -0.0625, -0.5  , -0.5, 0  };
+
+// This does YUY2 to RGB conversion
+half4 yuyv_texture_sampler(	in samplerRECT  texture,
+							in half2 texcoord)
+{
+	half4 outColor;
+	half4 texColor0;
+	half4 texColor1;
+	half2 tc0, tc1;
+	half isOddUV, texel_sample, texel_offset;
+
+	isOddUV = floor(frac(texcoord.x * 0.5) * 2);
+	texel_sample = 1.0;
+	texel_offset = +0.5;
+
+	tc0.x = floor(texcoord.x) - (isOddUV * texel_sample) + texel_offset;
+	tc1.x = tc0.x + texel_sample;
+
+	texColor0 = texRECT(texture, float2(tc0));
+	texColor1 = texRECT(texture, float2(tc1));
+	
+	// For L8A8, assume Y0Y1<-rgb, U0V0<-alpha 
+	texColor0.r = texColor0.r; // assign Y0 (1st position) automatic
+	texColor0.g = texColor0.a; // assign U0 (2nd position)
+	texColor0.b = texColor1.a; // assign V0 (3rd position)
+
+	texColor1.r = texColor1.r; // assign Y1 (1st position) automatic
+	texColor1.g = texColor0.a; // assign U0 (2nd position)
+	texColor1.b = texColor1.a; // assign V0 (3rd position)
+	
+	// assume RGBA0 (Y0 U0)
+	// assume RGBA1 (Y1 V0)
+	texColor1 = texColor1 * half4(isOddUV);
+
+	// assume RGBA0 (Y0 U0)
+	// assume RGBA1 (Y1 V0)
+	texColor0 = texColor0 * half4(1-isOddUV);
+
+	texColor0 = texColor0 + texColor1 + stdbias;
+	
+    outColor = half4(dot(std601R, texColor0),
+					dot(std601G, texColor0),
+					dot(std601B, texColor0),
+					1.0 );
+	return outColor;
+}
+
+// This does UYVY to RGB conversion
+half4 uyvy_texture_sampler(	in samplerRECT texture,
+							in half2 texcoord)
+{
+	half4 outColor;
+	half4 texColor0;
+	half4 texColor1;
+	half2 tc0, tc1;
+	half isOddUV, texel_sample, texel_offset;
+	
+	isOddUV = floor(frac(texcoord.x * 0.5) * 2);
+	texel_sample = 1.0;
+	texel_offset = +0.5;
+
+	tc0.x = floor(texcoord.x) - (isOddUV * texel_sample) + texel_offset;
+	tc1.x = tc0.x + texel_sample;
+
+	texColor0 = texRECT(texture, tc0);
+	texColor1 = texRECT(texture, tc1);
+
+	// For A8L8, assume A8<-rgb L8<-alpha
+	texColor0.r = texColor0.a; // assign Y0 (1st position)
+	texColor0.g = texColor0.g; // assign U0 (2nd position)
+	texColor0.b = texColor1.b; // assign V0 (3rd position)
+
+	texColor1.r = texColor1.a; // assign Y1 (1st position)
+	texColor1.g = texColor0.g; // assign U0 (2nd position)
+	texColor1.b = texColor1.b; // assign V0 (3rd position)
+	
+	// assume RGBA0 (Y0 U0)
+	// assume RGBA1 (Y1 V0)
+	texColor1 = texColor1 * half4(isOddUV);
+
+	// assume RGBA0 (Y0 U0)
+	// assume RGBA1 (Y1 V0)
+	texColor0 = texColor0 * half4(1-isOddUV);
+
+	texColor0 = texColor0 + texColor1 + stdbias;
+	
+    outColor = half4(dot(std601R, texColor0),
+					dot(std601G, texColor0),
+					dot(std601B, texColor0),
+					1.0 );
+	return outColor;
+}
+

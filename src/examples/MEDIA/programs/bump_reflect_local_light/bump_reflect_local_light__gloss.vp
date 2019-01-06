@@ -1,0 +1,20 @@
+!!ARBvp1.0
+
+# c[0..3] == MODELVIEW_PROJECTION
+
+PARAM mvp[4] = { state.matrix.mvp };
+PARAM c93 = program.env[93];
+PARAM c95 = program.env[95];
+ATTRIB v0 = vertex.attrib[0];
+ATTRIB v8 = vertex.attrib[8];
+
+DP4 result.position.x, mvp[0], v0;
+DP4 result.position.y, mvp[1], v0;
+DP4 result.position.z, mvp[2], v0;
+DP4 result.position.w, mvp[3], v0;
+
+# pass thru texture coordinates for normal map
+MUL result.texcoord[3].xy, v8, c95; 
+MOV result.texcoord[3].w,  c93.z;
+
+END

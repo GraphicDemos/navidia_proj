@@ -1,0 +1,141 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  Create_EMBMMap_SrcAlpha.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+12/07/01 - Greg J.
+
+Derived from normal map creation pixel shader.
+This shader creates a map for "environment mapped bump mapping" or EMBM.  The
+  texture created contains 2D texture coordinate offset vectors with their 
+  components in green and blue.
+Trick is, unlike normal maps which hold biased-and-scaled values where
+  0.5 represents zero and less than 0.5 represents less than one, the EMBM map
+  contains twos-complement numbers where 0 represents 0, [0,0.5] is positive
+  and [1.0,0.5] is negative with 1.0 being closest to zero, 0.49 being largest
+  negative.
+
+Supports scaling the EMBM offset result based on input shader
+  constant.  This scaling can only reduce the magnitude of the 
+  offset, as shader constants are in the range [-1,1]
+
+This is the first part of a two-pass approach, as changes in DX8.1 shader 
+validation prevent a one-pass approach working for ps.1.1
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+// Declare pixel shader version
+ps.1.1
+
+// Define c[PCN_BLUE_MASK] as RGBA = ( 0, 0, scale, 0)
+//  Where scale [0,1] is applied to reduce the magnitude
+//  of the s axis component of the normal.
+// Define c[PCN_GREEN_MASK] similarly to affect the 
+//  t axis component
+// Define RGBA constants
+
+def c1, 0.5, 0.5, 0.5, 0.5
+def c2, 0.0, 0.0, 1.0, 0.0
+
+// Mask for green component only
+def c4, 0.0, 1.0, 0.0, 0.0
+
+// Mask for blue component only
+def c5, 0.0, 0.0, 1.0, 0.0
+
+// get colors from 4 neighboring texels
+// Set same texture at all stages 0-3
+// t0 = -s,  0
+// t1 = +s,  0
+// t2 =  0, +t
+// t3 =  0, -t
+
+tex t0
+tex t1
+tex t2
+tex t3
+
+// Source height must be in both the blue and alpha channels
+//  of the texture inputs.  This is to allow co-issue of pixel
+//  shader instructions and squeeze the required math into 
+//  only eight pixel shader instructions.
+
+// Compute difference in height for one axis
+sub_x4		r1.a,	t0,	t1
+
+// It would make more sense to simplify the code by doing a co-issue
+//  here (as below) but shader validation prevents this with DX8.1, as
+//  it will not allow us to use 4 Tn args in one instruction.
+//
+// sub_x4		r1.rgb,	t3,		t2		// (t3 - t2)*4  : 4 for higher scale
+// + sub_x4		r1.a,	t0,		t1		// (t0 - t1)*4
+//
+//  To create the twos-complement value for EMBM we need to
+//   select between values based on whether or not the slopes above
+//   are negative or positive.  Since the cnd (conditional) selection
+//   instruction has only one fixed threshold of 0.5 against which to
+//   compare, we must bias the slope values up by 0.5.  Keep this
+//   biased slope in the temporary r0 because the compare value must
+//   be held in r0.a.
+//  With this bias, the effect of the cnd will be to select between
+//   arguments based on the sign of the slope calculated above.
+
+sub_x4	r1.rgb,		t3,	t2				// compute other axis difference
++ add	r0.a,		r1, c1				// bias a up by 0.5
+
+// r0.rgb does not yet contain the r1.rgb + 0.5 that it should
+
+// Scale the two axis differences & put into t2.
+// Put -r1.rgba * scale into t2.
+// These will be used to create the 0.5 to 1.0 part
+// of the twos complement number.
+
+mul		t2, -r1, PCR_EMBM_SCALE
+
+// Simultaneous - bias a blue decision variable for later use, and
+//  perform the first conditional to decide the U axis displacement component
+//
+// Use the conditional to select either the positive slope
+//  or 1 minus the negative slope.  This constructs the proper
+//  twos-complement value for one axis of the slope
+//
+//  cnd d, r0.a, s1, s2    ; d = ( r0.a > 0.5 ? s1 : s2 )
+//
+// This cnd is for the green (or 'S' or 'U') axis of the embm map
+
+add		r0.rgb,		r1,	c1					// bias blue decision variable by +0.5
++ cnd	t0.a,		r0.a,	-t2.a, 1-t2.a	// correct s-axis difference
+											// in twos-complement
+
+// cnd operates only on the value in r0.a, so we have to use
+//  a dot-product to copy the other slope decision value to r0.a 
+dp3			r0.rgba,  r0, c2			// blue to alpha for next cnd
+
+// This cnd is for the blue (or 'T' or 'V') axis of the embm map
+cnd			t1, r0.a,   -t2, 1-t2		// corrected blue in blue chan
+
+// We now have the correct twos-complement values for each axis
+//  in t0 and t1.  t0.a value is the valid number for one axis, and t1.blue is
+//  the valid part for the other axis.
+//
+// We now mask out the relevant component of each into the proper
+//  destination color, and use mad to add the masked values
+
+mul		t0, t0.a, c4			// 1st axis diff to green only
+								// t0.a to replicate across all channels before
+								//  the mult by c4.  This moves alpha to green
+mad		r0, t1, c5, t0			// 2nd axis diff to blue only,
+								//  add green and blue to create
+								//  the final output

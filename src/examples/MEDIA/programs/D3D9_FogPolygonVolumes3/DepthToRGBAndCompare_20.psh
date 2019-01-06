@@ -1,0 +1,68 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_FogPolygonVolumes3\
+File:  DepthToRGBAndCompare_20.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Reads t3 and does depth comparison between t3 color (an RGB encoded depth value)
+and the color computed from t0 and t1 (RGB encoded depth of the pixel being
+rendered).
+
+In this way a shading decision can be made based on whether the current pixel's
+depth is less than or greater than the depth stored in t3.
+
+For this shader, the lesser depth value is always chosen and output as the 
+rendered color.
+
+This version uses ps_2_0 for more efficient comparison and flexibility.
+
+-Greg J. 2/25/2003
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "Constants.h"
+
+// 1/256 = 0.0039062
+// 1/255 = 0.0039215
+
+ps.2.0
+def c3, 0.1, 0.1, 0.1, 0.1
+
+dcl		t0.xy
+dcl		t1.xy			// texcoord
+dcl		t3.xyzw
+dcl_2d		s0			// red+green ramp texture for depth encode
+dcl_2d		s1			// blue ramp texture for depth encode
+dcl_2d		s3			// RGB-encoded depth value to compare against
+						//  and possibly select as the output
+
+texld	r0, t0, s0		// red+green part of depth encoding
+texld	r1, t1, s1		// blue part of depth encoding
+add		r0, r0, r1		// RGB-encoded depth of triangle's pixel
+
+texldp	r1, t3, s3		// RGB-encoded depth from texture at s2
+
+
+// Compare depth of triangle's pixel (r0) to depth from texture (r1)
+// and choose the lesser value to output.
+// RGB-encoded difference
+add		r2, r0, -r1
+
+// Decode to positive or negative value
+dp4		r2, r2,	CPN_RGB_TEXADDR_WEIGHTS
+
+// cmp r0, d, s1, s2
+// component-wise decision d >=0 ? c1 : c2
+// always choose the lesser value
+cmp		r3, r2.xxxx, r1, r0
+
+mov oC0, r3

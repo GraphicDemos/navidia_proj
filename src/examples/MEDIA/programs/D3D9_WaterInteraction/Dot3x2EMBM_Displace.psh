@@ -1,0 +1,71 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  Dot3x2EMBM_Displace.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+ 
+ps.1.1
+
+def c1, 0.5, 0.5, 0.5, 0.5
+def c2, 0.7, 0.7, 0.7, 0.7
+def c3, 1.0, 1.0, 1.0, 1.0
+
+// Fetch displacement map
+// Here this is neither a normal map or an EMBM displacement
+// It has x,y displacements in red,green, and 1.0 in blue
+
+tex t0
+
+// _bx2 converts unsigned displacements that center about 0.5
+//   and biases and scales them to the [-1,1] range.
+//
+// The blue = 1.0 value remains 1.0 so that when dotted with the
+//   z component of the t2 and t3 texture coordinates, the z 
+//   component will serve as the unperturbed texture coordinate
+//   about which to center the perturbations
+// The x,y texture coordinates of t2 and t3 rotate the red,green
+//   displacements in t0 about the z axis (2D rotation)
+
+texm3x2pad  t2,  t0_bx2
+texm3x2tex  t3,  t0_bx2
+
+mov r0, t3
+
+// Compute a quasi-Fresnel alpha blend value 
+//  based on dotproduct between eye vector and
+//  t0 surface displacement map.  Eye vector must
+//  be in same space as t0 displacements.  The 
+//  vertex shader guarantees this.
+
+dp3  r1.rgba, t0_bx2, v0_bx2
+
+// shift -1,1 to 0,1
+// write to r0.a
+// Perhaps instead we should take the abs value of r1.a and
+//  raise that to a power?
+
+mad  r0.a, r1.a, c1.a, c1.a
+mul  r0.a, r0.a, r0.a
+mul  r0.a, r0.a, r0.a
+
+// use this line to set alpha to 0
+;mov  r0.a, 1-c3
+
+
+
+

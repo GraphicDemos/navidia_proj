@@ -1,0 +1,90 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_Mandelbrot\
+File:  Julia30.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+This shader executes a few iterations for generating a Julia set fractal.  It is identical to 
+Mandelbrot30.psh except that the constant offset applied at each iteration is the same for all 
+pixels, whereas with the Mandelbrot set, the constant offset is different at each pixel.
+
+-------------------------------------------------------------------------------|--------------------*/
+
+ps.3.0
+def c0, 2.0f, 1.0, 1.0, 0.0
+def c1, 500.0f, 0.0, 0.0, 0.0
+def c2, 1.0f, -1.0f, 1.0f, 0.0
+
+dcl_2d	s0				// const offset for z^2+c
+dcl_2d	s1				// current orbit point
+dcl_texcoord0	v0.xyzw
+
+texld	r0, v0, s0		// constant offset
+texld	r1, v0, s1		// orbit point
+
+mul		r2,    r1.xyxx, r1.xyxy
+mad		r2.xz, r2.y, c2.ywx, r2.x	// x = x*x - y*y, z = x*x + y*y
+
+if_lt r2.z, c1.x
+	add		r2.y,  r2.w, r2.w				// 2*x*y
+	add		r2.xy, r2.xy, c3.xy				// x += cx, y += cy
+	mad		r2.zw, r1.z, c0.wwyw, c0.wwyw	// increment r1.z (the iteration count), and set w = 0
+	
+	//-- another iteration
+	mul		r1,    r2.xyxx, r2.xyxy
+	mad		r1.xz, r1.y, c2.ywx, r1.x		// x = x*x - y*y, z = x*x + y*y
+	if_lt r1.z, c1.x							// if not escaped
+		add		r1.y,  r1.w, r1.w				// 2*x*y
+		add		r1.xy, r1.xy, c3.xy				// x += cx, y += cy
+		mad		r1.zw, r2.z, c0.wwyw, c0.wwyw	// increment r1.z (the iteration count), and set w = 0
+		
+		//-- another iteration
+		mul		r2,    r1.xyxx, r1.xyxy
+		mad		r2.xz, r2.y, c2.ywx, r2.x		// x = x*x - y*y, z = x*x + y*y
+		if_lt r2.z, c1.x							// if not escaped
+			add		r2.y,  r2.w, r2.w				// 2*x*y
+			add		r2.xy, r2.xy, c3.xy				// x += cx, y += cy
+			mad		r2.zw, r1.z, c0.wwyw, c0.wwyw	// increment r1.z (the iteration count), and set w = 0
+			
+			//-- another iteration
+			mul		r1,    r2.xyxx, r2.xyxy
+			mad		r1.xz, r1.y, c2.ywx, r1.x		// x = x*x - y*y, z = x*x + y*y
+			if_lt r1.z, c1.x							// if not escaped
+				add		r1.y,  r1.w, r1.w				// 2*x*y
+				add		r1.xy, r1.xy, c3.xy				// x += cx, y += cy
+				mad		r1.zw, r2.z, c0.wwyw, c0.wwyw	// increment r1.z (the iteration count), and set w = 0
+				
+				//-- another iteration
+				mul		r2,    r1.xyxx, r1.xyxy
+				mad		r2.xz, r2.y, c2.ywx, r2.x		// x = x*x - y*y, z = x*x + y*y
+				if_lt r2.z, c1.x							// if not escaped
+					add		r2.y,  r2.w, r2.w				// 2*x*y
+					add		r2.xy, r2.xy, c3.xy				// x += cx, y += cy
+					mad		r2.zw, r1.z, c0.wwyw, c0.wwyw	// increment r1.z (the iteration count), and set w = 0
+				else
+					mad     r2, r1, c0.yyyw, c0.wwwz	// If escaped, copy the point coordinate and iteration count, and set .w to 1
+				endif						
+			else
+				mad     r2, r2, c0.yyyw, c0.wwwz	// If escaped, copy the point coordinate and iteration count, and set .w to 1
+			endif
+		else
+			mad     r2, r1, c0.yyyw, c0.wwwz	// If escaped, copy the point coordinate and iteration count, and set .w to 1
+		endif		
+	else
+		mad     r2, r2, c0.yyyw, c0.wwwz	// If escaped, copy the point coordinate and iteration count, and set .w to 1
+	endif
+else
+	mad     r2, r1, c0.yyyw, c0.wwwz	// If escaped, copy the point coordinate and iteration count, and set .w to 1
+endif
+
+mov oC0, r2
+

@@ -1,0 +1,68 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+///////////////////////////////////////////////////////////
+/////////////////////////////////// data structures ///////
+///////////////////////////////////////////////////////////
+
+struct VS_OUTPUT_BLUR
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[8]: TEXCOORD0;
+};
+
+struct VS_OUTPUT
+{
+   	float4 Position   : POSITION;
+    float2 TexCoord0  : TEXCOORD0;
+    float2 TexCoord1  : TEXCOORD1;
+};
+
+struct VS_OUTPUT_DOWNSAMPLE
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[4]: TEXCOORD0;
+};
+
+// function declarations
+float luminance(half3 c)
+{
+	return dot( c, half3(0.3, 0.59, 0.11) );
+}
+
+// this function should be baked into a texture lookup for performance
+float highlights(half3 c)
+{
+	return smoothstep(HighlightThreshold, 1.0, luminance(c.rgb));
+}
+
+// blur filter weights
+const float weights7[7] = {
+	0.05,
+	0.1,
+	0.2,
+	0.3,
+	0.2,
+	0.1,
+	0.05,
+};	
+
+const float weights7_Central[7] = {
+	0.0,
+	0.0,
+	0.2,
+	0.6,
+	0.2,
+	0.0,
+	0.0,
+};	
+
+half4 main(	VS_OUTPUT_BLUR IN,
+			uniform samplerRECT HBlurTex) : COLOR
+{
+	half4 c = 0;
+	for (int i=0; i < 7; i++) {
+		c += texRECT(HBlurTex, IN.TexCoord[i].xy * texsize) * weights7[i];
+	}
+	return c;
+}

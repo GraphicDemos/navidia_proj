@@ -1,0 +1,29 @@
+// Motion blur fragment shader
+
+struct v2f {
+  float4 wpos     : WPOS;
+  half3  velocity : TEXCOORD0;
+};
+
+half4 main(v2f In,
+           uniform samplerRECT sceneTex,
+           uniform samplerRECT velTex,
+           uniform half blurScale
+           ) : COLOR
+{
+  const float samples = 16;
+
+  half2 wpos = In.wpos.xy;
+  half2 velocity = In.velocity.xy * blurScale;           // read velocity from texture coordinate
+//  half2 velocity = texRECT(velTex, wpos) * blurScale;  // read velocity from texture
+
+  // sample into scene texture along motion vector
+  const fixed w = 1.0 / samples;  // weight
+  fixed4 a = 0;
+  for(float i=0; i<samples; i+=1) {
+    half t = i / (samples-1);
+    a = a + texRECT(sceneTex, wpos + velocity*t) * w;
+  }
+
+  return a;
+}

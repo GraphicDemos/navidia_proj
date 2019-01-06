@@ -1,0 +1,38 @@
+#include "uniforms.cg"
+
+const float  nsamples = 7;
+const float2 direction = { 1, 1 };
+
+///////////////////////////////////////////////////////////
+/////////////////////////////////// data structures ///////
+///////////////////////////////////////////////////////////
+
+struct VS_OUTPUT_BLUR
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[8]: TEXCOORD0;
+};
+
+struct VS_OUTPUT
+{
+   	float4 Position   : POSITION;
+    float2 TexCoord0  : TEXCOORD0;
+    float2 TexCoord1  : TEXCOORD1;
+};
+
+struct VS_OUTPUT_DOWNSAMPLE
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[4]: TEXCOORD0;
+};
+
+VS_OUTPUT main	(	float4 Position : POSITION,
+					float2 TexCoord : TEXCOORD0 )
+{
+	VS_OUTPUT OUT;
+	OUT.Position = Position;
+	float2 texelSize = 1.0 / winsize;
+	OUT.TexCoord0 = TexCoord/texsize + texelSize*0.5;
+	OUT.TexCoord1 = TexCoord/texsize + texelSize*0.5/DownsampleScale;
+	return OUT;
+}

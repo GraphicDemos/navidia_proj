@@ -1,0 +1,45 @@
+!!ARBvp1.0
+
+PARAM modelview[4] = { state.matrix.modelview };
+PARAM modelviewIT[4] = { state.matrix.modelview.invtrans };
+PARAM proj[4] = { state.matrix.projection };
+PARAM mlight[4] = { state.matrix.program[0] };
+
+PARAM lightpos = state.light[0].position;
+
+TEMP	vpos, lightv;
+
+# transform position to view-space
+DP4	vpos.x, modelview[0], vertex.position;
+DP4	vpos.y, modelview[1], vertex.position;
+DP4	vpos.z, modelview[2], vertex.position;
+DP4	vpos.w, modelview[3], vertex.position;
+
+# transform position to shadow-map space
+DP4	result.texcoord[1].x, mlight[0], vpos;
+DP4	result.texcoord[1].y, mlight[1], vpos;
+DP4	result.texcoord[1].z, mlight[2], vpos;
+DP4	result.texcoord[1].w, mlight[3], vpos;
+
+# transform position to clip space
+DP4	result.position.x, proj[0], vpos;
+DP4	result.position.y, proj[1], vpos;
+DP4	result.position.z, proj[2], vpos;
+DP4	result.position.w, proj[3], vpos;
+
+# transform normal to view-space
+DP4	result.texcoord[2].x, modelviewIT[0], vertex.normal;
+DP4	result.texcoord[2].y, modelviewIT[1], vertex.normal;
+DP4	result.texcoord[2].z, modelviewIT[2], vertex.normal;
+DP4	result.texcoord[2].w, modelviewIT[3], vertex.normal;
+
+# pass through diffuse map coordinates
+MOV	result.texcoord[0], vertex.texcoord[0];
+
+# calculate light vector
+SUB	result.texcoord[3], lightpos, vpos;
+
+# emit view vector
+MOV	result.texcoord[4], -vpos;
+
+END

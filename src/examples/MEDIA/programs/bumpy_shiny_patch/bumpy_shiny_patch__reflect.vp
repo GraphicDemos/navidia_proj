@@ -1,0 +1,133 @@
+!!ARBvp1.0
+
+#
+# Vertex Program for bumped reflection mapping
+#
+
+# position
+TEMP R0, R1, R2, R3, R4;
+ATTRIB dpdu = vertex.texcoord[0];
+ATTRIB dpdv = vertex.normal;
+ATTRIB texcoord = vertex.color;
+
+PARAM c4 = program.env[4];
+PARAM c5 = program.env[5];
+PARAM c20 = program.env[20];
+PARAM c21 = program.env[21];
+PARAM c22 = program.env[22];
+PARAM c43 = program.env[43];
+PARAM c44 = program.env[44];
+PARAM c45 = program.env[45];
+PARAM mvp[4] = { state.matrix.mvp };
+
+DP4   result.position.x, mvp[0], vertex.position;
+DP4   result.position.y, mvp[1], vertex.position;
+DP4   result.position.z, mvp[2], vertex.position;
+DP4   result.position.w, mvp[3], vertex.position;
+
+
+# R0 = normalize3(v[1])  ------------------------- Tangent
+
+DP3   R0.w,   dpdu, dpdu ;
+RSQ   R0.w,   R0.w       ;
+MUL   R0.xyz, dpdu, -R0.w ;
+
+# calc normal -- R2 = cross(R0,v[2])  ------------ Normal
+
+MUL   R2, R0.zxyw, dpdv.yzxw      ;
+MAD   R2, R0.yzxw, dpdv.zxyw, -R2 ;
+
+
+# R2 = normalize(R2) (as done for R0 above)
+
+DP3   R2.w,   R2, R2   ;
+RSQ   R2.w,   R2.w     ;
+MUL   R2.xyz, R2, R2.w ;
+
+
+# calc binormal -- R1 = cross(R0,R2)  ------------ Binormal
+
+MUL   R1, R0.zxyw, R2.yzxw      ;
+MAD   R1, R0.yzxw, R2.zxyw, -R1 ;
+
+
+# no need to normalize since R2 and R0 are normalized and orthogonal
+
+# We need the "texel matrix" to 
+# be (C)(MV)(S)(B), where C is the cubemap rotation,
+# MV is the modelview matrix and S is the matrix
+# that transforms vectors from texture space to
+# object space, and B is a simple uniform scaling
+# matrix.  Specifically it is:
+#
+#      | b  0  0 |
+#  B = | 0  b  0 |
+#      | 0  0  1 |
+#
+#      | Tx Bx Nx |   | R0.x R1.x R2.x |
+#  S = | Ty By Ny | = | R0.y R1.y R2.y |
+#      | Tz Bz Nz |   | R0.z R1.z R2.z |
+#
+#
+#  and (C)(MV) is pre-computed 
+# 
+#            | c[20].x  c[20].y  c[20].z |
+#  (C)(MV) = | c[21].x  c[21].y  c[21].z |
+#            | c[22].x  c[22].y  c[22].z |
+#
+# 
+# so (S)(B) is
+#
+#           | R3.x  R4.x  R5.x |     | b*R0.x  b*R1.x  R2.x |
+# (S)(B) =  | R3.y  R4.y  R5.y |  =  | b*R0.y  b*R1.y  R2.y |
+#           | R3.z  R4.z  R5.z |     | b*R0.z  b*R1.z  R2.z |
+#
+# so (C)(MV)(S)(B) is
+#
+#                 | DP3( c[20], R3)   DP3( c[20], R4)   DP3( c[20], R5) |
+# (C)(MV)(S)(B) = | DP3( c[21], R3)   DP3( c[21], R4)   DP3( c[21], R5) |
+#                 | DP3( c[22], R3)   DP3( c[22], R4)   DP3( c[22], R5) |
+# 
+#                 | o[TEX1].x   o[TEX1].y   o[TEX1].z |
+#               = | o[TEX2].x   o[TEX2].y   o[TEX2].z |
+#                 | o[TEX3].x   o[TEX3].y   o[TEX3].z |
+#
+
+# calculate (S)(B) -- c[5].w = b (bump scale term)
+
+MUL R3, R0, c5.w;
+MUL R4, R1, c5.w;
+
+
+# compute (C)(MV)(S)(B) and put it in the correct texture coordinates
+# c[20-23] == modelview_cubemap matrix (object-space -> cubemap-space transform)
+
+DP3   result.texcoord[1].x, c20, R3;
+DP3   result.texcoord[1].y, c20, R4;
+DP3   result.texcoord[1].z, c20, R2;
+
+DP3   result.texcoord[2].x, c21, R3;
+DP3   result.texcoord[2].y, c21, R4;
+DP3   result.texcoord[2].z, c21, R2;
+	  
+DP3   result.texcoord[3].x, c22, R3;
+DP3   result.texcoord[3].y, c22, R4;
+DP3   result.texcoord[3].z, c22, R2;
+	  
+
+# calculate cubemap-space eye vector
+
+DP4   result.texcoord[1].w, vertex.position, c43;
+DP4   result.texcoord[2].w, vertex.position, c44;
+DP4   result.texcoord[3].w, vertex.position, c45;
+
+
+# col0 = white
+MOV   result.color, c4.x;
+
+	  
+# pass texture0 coordinates through
+MOV   result.texcoord[0], texcoord  ;
+
+END
+  

@@ -1,0 +1,42 @@
+//-----------------------------------------------------------------------------
+// Copyright NVIDIA Corporation 2004
+// TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED 
+// *AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS 
+// OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF 
+// MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL 
+// NVIDIA OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR 
+// CONSEQUENTIAL DAMAGES WHATSOEVER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR 
+// LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS 
+// INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR 
+// INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGES.
+// 
+// File: TexAtlasHiLite.ps
+// Desc: pixel shader to high-light which part of an atlas a texture comes from.
+//       It first checks if the incoming u, v coordinates are inside a constant
+//       defined rectangle: 
+//       The rectangle is defined by minU, minV and maxU, maxV stored in c0, c1,
+//       respectively.  The UV are inside this box iff UV-minUV > 0 and 
+//       maxUV-UV > 0.  Or equivalently, iff minUV-UV < 0 && UV-maxUV < 0.
+//       So if max(0, minU-U) + max(0, minV-V) + max(0, U-maxU) + max(0, V-maxV) 
+//       is greater than 0 then UV are outside the rectangle.  
+//       After that we cast this sum to either 0 or 1 (by doing lots of x4 everywhere)
+//       and invert it, so that r0 == 1 iff uvs are inside the rectangle.  We then 
+//       modulate the texture color if inside the rectangle.
+//-----------------------------------------------------------------------------
+
+ps_1_1
+
+tex        t0			   // read the atlas texture
+texcoord   t1              // read which part to hilite
+
+add_x4_sat r0, -t1,  c0  
+add_x4_sat r1,  t1,  c1
+add_x4     r0,  r0,  r1
+dp3_x4     r0,  r0,  c2    // if u and v are inside then r0 == 0
+
+mul_x4_sat r0, r0, r0      // multiply by large number to force everything to either 0 or 1
+mul_x4_sat r0, r0, r0      
+dp3        r0, 1-r0, c3 
+mad_sat    r0, r0, c3.aaaa, t0			
+

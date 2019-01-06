@@ -1,0 +1,105 @@
+// ----------------------------------------------------------------------------
+// File:
+//      ClippedEndsShadesFP.cg
+//
+// Contents:
+//      This version of the shades shader corrects one visual artefact of the
+//      simple implementations: If looking along the slats at a flat angle it
+//      seems as if the slats extend into the space of the frame (see the
+//      whitepaper for a screenshot of this effect).
+//      This shader uses a texture (oAlphaTexture) to clip the ends of the
+//      slats.
+//
+// Author: Frank Jargstorff (fjargstorff@nvidia.com)
+//
+// Note:
+//      Copyright (c) 2004 by NVIDIA Corp. All rights reserved.
+// 
+// ----------------------------------------------------------------------------
+
+
+        // VertexToFragment
+        //
+        // Description:
+        //      Data from the vertex shader.
+        //          For a complete description see ShadesVP.cg
+        //
+struct VertexToFragment
+{
+    float4 vPosition   : POSITION;
+    float3 vTopColor   : COLOR;
+    float4 vUeUlSlU    : TEXCOORD0;
+    float4 vNeShVeV    : TEXCOORD1;
+    float4 vNhNl       : TEXCOORD2;
+};
+
+
+        // main
+        //
+        // Description:
+        //      Procedural shades.
+        //          Assuming the shader is applied to a quad the algorithm 
+        //      determines if the top of a slat or on of the sides is hit by
+        //      the eye-ray. If neither is true a totally transpartent color is
+        //      returned. Otherwise the shader returns the top color as passed
+        //      from the vertex shader in the top-of-the-slat case; otherwise
+        //      the shader evaluates a lighting term for the side of the slat 
+        //      and returns that.
+        //
+        // Parameters:
+        //      oInput - the input data struct from the vertex program.
+        //      cAmbientColor - the ambient color intensity.
+        //      cDiffuseColor - the diffuse color intensity.
+        //      cSpecularColor - the specular color intensity.
+        //      nShininess     - the slat's shininess factor.
+        //      nSpacing - spacing of the slats in u-direction.
+        //      nHeight - height of the slats
+        //      nOffset - offset in u-direction of the slat's top against
+        //                its bottom. This enables to "tilt" slats.
+        //      nScaleTexture - not used by this shader.
+        //      oAlphaTexture - not used by this shader.
+        //      oTexture - not used by this shader.
+        //
+        // Returns:
+        //      The fragment's final color.
+        //
+        half4 
+main(in VertexToFragment oInput,
+     uniform float4 cAmbientColor,
+     uniform float4 cDiffuseColor,
+     uniform float4 cSpecularColor,
+     uniform float  nShininess,
+     uniform float  nSpacing,
+     uniform float  nHeight, 
+     uniform float  nOffset, 
+     uniform float2 vScaleTexture,
+     uniform sampler1D oAlphaTexture,
+     uniform sampler2D oTexture
+    ): COLOR
+{
+    float u = frac(oInput.vUeUlSlU.w);
+    float p = nHeight * oInput.vUeUlSlU.x;
+    
+    float dVdU = vScaleTexture.y/vScaleTexture.x;
+    float t;
+    if (oInput.vUeUlSlU.x >= 0)
+        t = oInput.vNeShVeV.w - u * dVdU * oInput.vNeShVeV.z/oInput.vUeUlSlU.x;
+    else
+        t = oInput.vNeShVeV.w + (nSpacing - u) * dVdU * oInput.vNeShVeV.z/oInput.vUeUlSlU.x;
+
+    half4 vDiffuse  = half4((cDiffuseColor * oInput.vUeUlSlU.z).rgb, 0);
+    half4 vSpecular = half4((cSpecularColor * pow(abs(oInput.vNeShVeV.y), nShininess)).rgb, 0);
+    
+    half4 vSideColor = step((u - nOffset) * oInput.vNeShVeV.x, p) 
+            * (cAmbientColor + vDiffuse + step(0, oInput.vUeUlSlU.z) * vSpecular);
+                
+    vSideColor += step(p, (u - nSpacing - nOffset) * oInput.vNeShVeV.x) 
+            * (cAmbientColor - vDiffuse + step(0, -oInput.vUeUlSlU.z) * vSpecular);
+
+    vSideColor *= step(0,t);
+    vSideColor *= step(t,1);
+                                // if (u < nSpacing) return side color, 
+                                // otherwise return top color
+    return step(u, nSpacing) * vSideColor + (1-step(u, nSpacing)) * half4(oInput.vTopColor, 1);
+}
+ 

@@ -1,0 +1,46 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_TwoSidedPolys\
+File:  TwoSided.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "TwoSidedConstants.h"
+
+ps.1.1
+
+/*
+// Use this section to display the light amounts for diffuse and transmitted light
+// Reflected light is showin in green, and transmitted light in blue
+def c0, 0, 1, 0, 0		// RGBA
+def c1, 0, 0, 1, 0
+mul r0, c0, v0
+mad r0, c1, v1, r0
+//*/
+
+///*
+// Shader that multiplies reflected and transmitted light amout by the
+//   texture for each type of light.
+// If using the above section, comment out this section
+tex t0              // diffuse light texture
+tex t1              // back illuminination texture for translucent effect
+
+// v0 is point light illumination + ambient for diffuse reflected light 
+// v1 is point light illumination + ambient for transmitted light through the thin object
+mul r0, t0, v0        // diffuse reflected illumination
+mad r0, t1, v1, r0    // add light from transmitted translucent effect
+//*/
+
+

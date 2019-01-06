@@ -1,0 +1,41 @@
+!!ARBvp1.0
+
+# Program to set up DSDT bump mapping
+ATTRIB v0 = vertex.attrib[0];
+ATTRIB v1 = vertex.attrib[1];
+ATTRIB v5 = vertex.attrib[5];
+ATTRIB v8 = vertex.attrib[8];
+
+PARAM mvp[4] = { state.matrix.mvp };
+PARAM mit[4] = { state.matrix.modelview.invtrans };
+PARAM mat[4] = { state.matrix.program[0] };
+PARAM c95 = program.env[95];
+TEMP R1;
+
+# position
+DP4   result.position.x, mvp[0], v0 ;
+DP4   result.position.y, mvp[1], v0 ;
+DP4   result.position.z, mvp[2], v0 ;
+DP4   result.position.w, mvp[3], v0 ;
+
+# R1 = normalize eye-space normal
+DP3   R1.x,   mit[0], v5 ;
+DP3   R1.y,   mit[1], v5 ;
+DP3   R1.z,   mit[2], v5 ;
+
+DP3   R1.w,   R1, R1     ;
+RSQ   R1.w,   R1.w       ;
+MUL   R1.xyz, R1, R1.w   ;
+
+MOV   R1.w,   c95.x    ; # w = 1
+
+# dump into tex coord for unit 2
+DP4   result.texcoord[3].x, mat[0], R1  ;
+DP4   result.texcoord[3].y, mat[1], R1  ;
+
+MOV   result.texcoord[0], v8      ;
+MOV   result.texcoord[1], v8     ;
+
+MOV   result.color.primary, v1         ;
+
+END

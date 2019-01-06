@@ -1,0 +1,135 @@
+!!ARBvp1.0
+
+# v[0] == position
+# v[2] == tangent
+# v[3] == binormal
+# v[4] == normal
+# v[8] == (s,t)
+
+# c[ 0.. 3] == MODELVIEW_PROJECTION
+# c[ 4.. 7] == MODELVIEW
+# c[ 8..11] == MODELVIEW INVERSE_TRANSPOSE
+# c[12..15] == MODELVIEW INVERSE
+
+
+# c[93]     == [0 0 1 1]
+# c[94]     == light position (in eye space)
+# c[95].xyz == texture scale
+# c[95].w   == bump scale
+
+TEMP R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11;
+
+ATTRIB v0 = vertex.attrib[0];
+ATTRIB v2 = vertex.attrib[2];
+ATTRIB v3 = vertex.attrib[3];
+ATTRIB v4 = vertex.attrib[4];
+ATTRIB v5 = vertex.attrib[5];
+ATTRIB v8 = vertex.attrib[8];
+
+PARAM mvp[4] = { state.matrix.mvp };
+PARAM m[4] = { state.matrix.modelview };
+PARAM mit[4] = { state.matrix.modelview.invtrans };
+PARAM mi[4] = { state.matrix.modelview.inverse };
+
+PARAM c93 = program.env[93];
+PARAM c94 = program.env[94];
+PARAM c95 = program.env[95];
+
+DP4 result.position.x, mvp[0], v0;
+DP4 result.position.y, mvp[1], v0;
+DP4 result.position.z, mvp[2], v0;
+DP4 result.position.w, mvp[3], v0;
+
+# compute light vector 
+#
+
+# R11 = eye space vertex position
+DP4 R11.x, m[0], v0;
+DP4 R11.y, m[1], v0;
+DP4 R11.z, m[2], v0;
+
+# R1 = eye space light position - eye space vertex position
+ADD R1, c94, -R11;
+
+# R1 = light vector = normalize(R1)
+DP3 R1.w, R1, R1;
+RSQ R1.w, R1.w;
+MUL R1.xyz, R1, R1.w;
+
+
+
+# R2 = compute eye space normal
+DP3 R2.x, mit[0], v4;
+DP3 R2.y, mit[1], v4;
+DP3 R2.z, mit[2], v4;
+
+
+# color = L dot N
+DP3 R11.w, R1, R2;
+MUL result.color.primary, R11.w, v5;
+
+
+#                            | Tx Bx Nx | | b  0  0 |     | b * v[2].x    b * v[3].x   v[4].x |
+# | R3 R4 v[4] | = (S)(B) =  | Ty By Ny | | 0  b  0 |  =  | b * v[2].y    b * v[3].y   v[4].y |
+#                            | Tz Bz Nz | | 0  0  1 |     | b * v[2].z    b * v[3].z   v[4].z |
+
+MUL R3, c95.w, v2;
+MUL R4, c95.w, v3;
+
+
+#
+#  Compute matrix (H) that rotates L into [0 0 1]
+#           such that H^1 rotates [0 1 0] into a y' where (y' dot L) = 0
+#
+#      | R5|   | R | <- U cross L
+#  H = | R6| = | U | <- normalize(L cross [0 0 1])
+#      | R1|   | L | <- light vector
+
+# R6 == U == L cross [0 0 1]
+MUL   R6, R1.zxyw, c93.yzxw;
+MAD   R6, R1.yzxw, c93.zxyw, -R6;
+
+# normalize U (or R6)
+DP3   R6.w, R6, R6;
+
+	  # check for special case of L == [0 0 1]:
+	  # if R6.w == 0, then set R6 = [0 1 0 1]
+	       SGE R2.w, c93.x, R6.w;
+	       MUL R7, R2.w, c93.xzxz;
+	  	   ADD R2.w, c93.z, -R2.w;
+	  	   MAD R6, R6, R2.w, R7;
+
+
+RSQ   R6.w, R6.w;
+MUL   R6.xyz, R6, R6.w;
+
+
+# R5 == R == U cross L
+MUL   R5, R6.zxyw, R1.yzxw;
+MAD   R5, R6.yzxw, R1.zxyw, -R5;
+
+#         | R7 |
+# compute | R8 | = H * M^-T
+#         | R9 |
+
+# Note that we actually use the MODELVIEW INVERSE because we need it column-major
+DP3  R7.x,  R5, mi[0];        DP3  R7.y,  R5, mi[1];       DP3  R7.z,  R5, mi[2];
+DP3  R8.x,  R6, mi[0];        DP3  R8.y,  R6, mi[1];       DP3  R8.z,  R6, mi[2];
+DP3  R9.x,  R1, mi[0];        DP3  R9.y,  R1, mi[1];       DP3  R9.z,  R1, mi[2];
+
+
+# compute texel matrix  (H * M^-T) * (S * B)
+DP3  result.texcoord[1].x, R7, R3;       DP3 result.texcoord[1].y, R7, R4;       DP3 result.texcoord[1].z, R7, v4;
+DP3  result.texcoord[2].x, R8, R3;       DP3 result.texcoord[2].y, R8, R4;       DP3 result.texcoord[2].z, R8, v4;
+DP3  result.texcoord[3].x, R9, R3;       DP3 result.texcoord[3].y, R9, R4;       DP3 result.texcoord[3].z, R9, v4;
+
+# rotate eye space eye vector into light space (via H) 
+DP3  result.texcoord[1].w, R5, -R11;
+DP3  result.texcoord[2].w, R6, -R11;
+DP3  result.texcoord[3].w, R1, -R11;
+
+# pass thru texture coordinates for normal map
+MUL result.texcoord[0].xy, v8, c95; 
+MOV result.texcoord[0].w,  c93.z;
+
+END

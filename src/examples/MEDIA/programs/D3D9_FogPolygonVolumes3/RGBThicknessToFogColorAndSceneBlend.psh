@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_FogPolygonVolumes3\
+File:  RGBThicknessToFogColorAndSceneBlend.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "Constants.h"
+
+ps.2.0
+def c0, 0.0, 0.5, 1.0, 2.0
+
+dcl			t0.xy
+dcl_2d		s0			// rendering of the ordinary scene
+dcl_2d		s1			// RGB-encoded volume thickness (floating point texture)
+dcl_2d		s2			// Color ramp texture that maps volume thickness to a color
+
+// Sample the RGB-encoded volume object thickness
+texld  r0, t0, s1
+// Decode the RGB-encoded thickness to a floating point value
+// DP4 is used because the alpha channel contains an amount which is treated as
+//  a negative component at the same scale as the green channel
+dp4_sat r0, r0, CPN_RGB_TEXADDR_WEIGHTS
+
+// Use thickness as texture coordinate to fetch from the color ramp texture
+texld   r0, r0, s2
+
+// Sample the render target rendering of the ordinary scene
+texld   r1, t0, s0
+
+// blend the fog color into the rendering of the ordinary scene
+// Use:  src + (1-src) * dest
+//       r0  + (1-r0) * r1
+// to compute the same blend as D3DBLEND_INVSRCCOLOR framebuffer blending
+lrp     r2, r1, c0.zzzz, r0
+mov oC0, r2

@@ -1,0 +1,155 @@
+// ----------------------------------------------------------------------------
+// File:
+//      TexturedShades.cg
+//
+// Contents:
+//      This version of the shades shader renders an anti-aliased version 
+//      of the slats. 
+//      The shader does this by integrating all lighting results covered by
+//      the current pixel (i.e. the top/side lighting contributions) and sets
+//      the alpha value according to coveragae (i.e. if the slat covers half of
+//      the pixels area and the other 50% and gap, alpha is set to 0.5).
+//
+// Author: Frank Jargstorff (fjargstorff@nvidia.com)
+//
+// Note:
+//      Copyright (c) 2004 by NVIDIA Corp. All rights reserved.
+// 
+// ----------------------------------------------------------------------------
+
+
+//
+// Constants
+//
+
+        // N_AA_BIAS
+        //
+        // Description:
+        //      Anti-aliasing bias.
+        //          Allows to increase (>1) or decreas (<1) the amount
+        //      of anti-aliasing being applied. The number reflects the 
+        //      amount of area the shader integrates in terms pixels.
+        //      The area integrated is stretched along the u-direction.
+        //      An aa-bias of 2 means that instead of one pixel, the coverage
+        //      of two pixels is calculated resulting in a blurrier image.
+        //      
+#define N_AA_BIAS 1
+
+        // VertexToFragment
+        //
+        // Description:
+        //      Data from the vertex shader.
+        //          For a complete description see ShadesVP.cg
+        //
+struct VertexToFragment
+{
+    float4 vPosition   : POSITION;
+    float3 vTopColor   : COLOR;
+    float4 vUeUlSlU    : TEXCOORD0;
+    float4 vNeShVeV    : TEXCOORD1;
+    float4 vNhNl       : TEXCOORD2;
+};
+
+            // Integral
+            //
+            // Description:
+            //      Integrates the color values inside a cell from the 
+            //      right edge of the left slat to the right edge of the right slat.
+            //      
+            // Parameters:
+            //      u      - integrate the interval [0,u].
+            //      nProjectedEdge - the lower bottom of the left edge projected
+            //          into the quad plane. In the whitepaper this value is named e'.
+            //      nSpacing - spacing between the slats
+            //      vTop   - color of the top  of the slat.
+            //      vSide  - color of the side of the slat.
+            //
+            // Returns:
+            //      The integrated intensity.
+            //
+            float4 
+Integral(float u, float nProjectedEdge, float nSpacing, half4 vTop, half4 vSide)
+{
+    float nP = min(nProjectedEdge, nSpacing);
+    float4 vColor = vSide * min(u, nP);
+    vColor += vTop * max(0, u - nSpacing);
+    vColor.a = clamp(u - nP, 0, nSpacing - nP);
+    
+    return vColor;
+}
+
+
+        // main
+        //
+        // Description:
+        //      Procedural shades.
+        //          Assuming the shader is applied to a quad the algorithm 
+        //      determines if the top of a slat or on of the sides is hit by
+        //      the eye-ray. If neither is true a totally transpartent color is
+        //      returned. Otherwise the shader returns the top color as passed
+        //      from the vertex shader in the top-of-the-slat case; otherwise
+        //      the shader evaluates a lighting term for the side of the slat 
+        //      and returns that.
+        //
+        // Parameters:
+        //      oInput - the input data struct from the vertex program.
+        //      cAmbientColor - the ambient color intensity.
+        //      cDiffuseColor - the diffuse color intensity.
+        //      cSpecularColor - the specular color intensity.
+        //      nShininess     - the slat's shininess factor.
+        //      nSpacing - spacing of the slats in u-direction.
+        //      nHeight - height of the slats
+        //      nOffset - Not used in this shader.
+        //      nScaleTexture - not used by this shader.
+        //      oAlphaTexture - not used by this shader.
+        //      oTexture - not used by this shader.
+        //
+        // Returns:
+        //      The fragment's final color.
+        //
+        half4
+main(in VertexToFragment oInput,
+     uniform float4 cAmbientColor,
+     uniform float4 cDiffuseColor,
+     uniform float4 cSpecularColor,
+     uniform float  nShininess,
+     uniform float  nSpacing,
+     uniform float  nHeight, 
+     uniform float  nOffset, 
+     uniform float2 vScaleTexture,
+     uniform sampler1D oAlphaTexture,
+     uniform sampler2D oTexture
+    ): COLOR
+{
+    float2 vGradientU = float2(ddx(oInput.vUeUlSlU.w), ddy(oInput.vUeUlSlU.w));
+    float nPixelRadius = length(vGradientU);
+    
+    if (oInput.vUeUlSlU.x < 0)
+    {
+        oInput.vUeUlSlU = -oInput.vUeUlSlU;
+        oInput.vUeUlSlU.w += nSpacing;
+    }
+    
+    float u = oInput.vUeUlSlU.w;
+    float2 FloorInterval = floor( float2(u - 0.5*N_AA_BIAS*nPixelRadius, u + 0.5*N_AA_BIAS*nPixelRadius) );
+    float2 FractInterval = frac(  float2(u - 0.5*N_AA_BIAS*nPixelRadius, u + 0.5*N_AA_BIAS*nPixelRadius) );
+
+    u = frac(u);
+    float p = nHeight * oInput.vUeUlSlU.x / oInput.vNeShVeV.x;
+    
+    half4 vDiffuse  = half4((cDiffuseColor * oInput.vUeUlSlU.z).rgb, 0);
+    half4 vSpecular = half4((cSpecularColor * pow(abs(oInput.vNeShVeV.y), nShininess)).rgb, 0);
+    
+    float4 vSideColor = cAmbientColor + vDiffuse + step(0, oInput.vUeUlSlU.z) * vSpecular;
+                     
+    float4 vColor = ( (FloorInterval.y - FloorInterval.x) * Integral(1, p, nSpacing, half4(oInput.vTopColor, 1), vSideColor)
+                    + Integral(FractInterval.y, p, nSpacing, half4(oInput.vTopColor, 1), vSideColor)    
+                    - Integral(FractInterval.x, p, nSpacing, half4(oInput.vTopColor, 1), vSideColor) 
+                    ) / (N_AA_BIAS*nPixelRadius);
+                   
+    vColor.a = 1 - vColor.a;
+    
+    return vColor;
+}
+
+ 

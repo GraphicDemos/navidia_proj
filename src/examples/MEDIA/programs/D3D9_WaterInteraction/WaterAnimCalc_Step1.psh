@@ -1,0 +1,112 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  WaterAnimCalc_Step1.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Step one in the nearest-neighbor force calculation for height-based water
+simulation.
+
+This step takes the center point and three neighboring points, and computes
+the texel difference as the "force" acting to pull on the center texel.
+
+The amount to which the computed force is applied to the texel is controlled
+in a separate shader.
+
+This shader also copies the input t0 green, blue, and alpha to the output,
+ so only the red is new.
+
+For the water simulation:
+position    is duplicated in blue and alpha, so that .rgb and .a ops can be
+			used simultaneously.
+velocity    is held in the green color
+force       is held in the red color
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+ps.1.1
+
+// Define a few masks and biasing values for moving data around
+def c3, 0.5, 0.0, 0.0, 0.0
+def c4, 0.0, 1.0, 1.0, 1.0
+def c5, 1.0, 0.0, 0.0, 0.0
+def c6, 0.0, 0.0, 1.0, 0.0
+def c7, 0.5, 0.5, 0.5, 0.5	// Constant to determine equilibrium position
+							// A gentle force pulls the blue and alpha to this
+							//   value.	
+
+//  Height must be in blue and alpha components
+//  Red = force
+//  green = velocity
+// Get colors from all 4 texture stages
+// A vertex shader sets up texture coordinates so that the sampled 
+//  texels are the following for the pixel being rendered:
+//
+//  t0 = texel at coordinate we are rendering to, and for which
+//		   we are computing the force.
+//  t1 = 1st neighbor to the t0 texel
+//  t2 = 2nd neighbor
+//  t3 = 3rd neighbor
+
+tex t0
+tex t1
+tex t2
+tex t3
+
+sub    r0.rgb,   t1,   t0			// Diff between 1st neighbor and center texel
+ + sub r0.a,     t2.b, t0.b			// Diff between 2nd neighbor and center texel
+									//  Use blue replicate to move blue into alpha
+									//  as the alpha might be dirty from a previous
+									//  alpha blend
+									
+									// c7 - t0
+sub     r1.rgb,  c7,     t0			// Force to pull t0 center to the c7 equilibrium value
+ + sub  r1.a,    t3.b,   t0.b		// Diff between 3rd neighbor and center texel to .a
+									//  Use blue replicate to move blue into alpha
+									//  as the alpha might be dirty from a previous
+									//  alpha blend
+
+// Multiply r1.rgb by PCN_EQ_REST_FAC, and add it to the r0.rgb
+// Also add the .a components with no scaling factor -- all neighbor differences
+//  scale the same.  
+// Reason for multiplying by PCN_EQ_REST_FAC is to vary the strength of the 
+//  force pulling the center position to the value defined in c7
+
+mad     r1.rgb,  r1,  PCR_EQ_REST_FAC,    r0		// scale the equilibrium restore force
+ + add  r1.a,    r1.a,  r0.a						// Add 3rd neighbor diff to 2nd neighbor diff
+
+// Add the force components in alpha to the force components in blue
+
+add  r1, r1, r1.a				// r1 = r1.rgba + r1.aaaa
+								// Blue now holds the correct total 'force' before
+								//  biasing to the unsigned range.
+
+// Replicate blue to rgba with a dp3
+// This is to move the total force into the red component so we can
+//   store it in the texture render target.
+
+dp3  r1.rgba,  r1, c6
+
+// Mask force to red only, and add 0.5 red to bias the signed 
+//  force value up to center about 0.5.  This is so we can store
+//  the force value in the unsigned bits of the texture target
+
+mad  r1.rgba,  r1, c5,  c3
+
+// Mask off red of t0 source and put the r1 force result into red.
+// This carries forward the t0 position (blue,alpha) and velocity (green)
+//   to the next stage
+// The output contains ( 0, t0.g, t0.b, t0.a )  + ( r1.r, 0, 0, 0 )
+
+mad  r0.rgba,  t0, c4,  r1

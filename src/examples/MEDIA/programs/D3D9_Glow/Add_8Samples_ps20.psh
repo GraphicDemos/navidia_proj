@@ -1,0 +1,63 @@
+/*********************************************************************NVMH4****
+Path:  SDK\MEDIA\programs\D3D9_Glow
+File:  Add_8Samples_20.psh
+
+Copyright NVIDIA Corporation 2002
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+
+Comments:
+
+
+
+
+
+******************************************************************************/
+
+
+#include "Constants.h"
+
+ps.2.0
+
+dcl t0.xyzw		// texture coords
+dcl t1.xyzw
+dcl t2.xyzw
+dcl t3.xyzw
+dcl t4.xyzw
+dcl t5.xyzw
+dcl t6.xyzw
+dcl t7.xyzw
+
+dcl_2d	s0		// texture samplers
+
+texld r0, t0, s0
+texld r1, t1, s0
+mul   r0, r0, NCP_WEIGHT_0
+mad   r0, r1, NCP_WEIGHT_1, r0
+
+texld r1, t2, s0
+texld r2, t3, s0
+mad   r0, r1, NCP_WEIGHT_2, r0
+mad   r0, r2, NCP_WEIGHT_3, r0
+
+texld r1, t4, s0
+texld r2, t5, s0
+mad   r0, r1, NCP_WEIGHT_4, r0
+mad   r0, r2, NCP_WEIGHT_5, r0
+
+texld r1, t6, s0
+texld r2, t7, s0
+mad   r0, r1, NCP_WEIGHT_6, r0
+mad   r0, r2, NCP_WEIGHT_7, r0
+
+mov oC0, r0
+

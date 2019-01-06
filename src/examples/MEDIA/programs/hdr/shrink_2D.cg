@@ -1,0 +1,10 @@
+// downsample float image by half
+
+#include "hdr.cg"
+
+half4 main(fragin In,
+	       uniform sampler2D sceneTex
+           ) : COLOR
+{
+    return tex2D(sceneTex, In.tex0.xy);
+}

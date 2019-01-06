@@ -1,0 +1,83 @@
+// Uniform variables for texturing
+uniform samplerRECT tex0;
+uniform samplerRECT tex1;
+uniform samplerRECT tex2;
+uniform samplerRECT tex3;
+
+// variables for use with interframe related operations (frame 0, 1, 2, 3)
+uniform samplerRECT sceneMap0;
+uniform samplerRECT sceneMap1;
+uniform samplerRECT sceneMap2;
+uniform samplerRECT sceneMap3;
+
+uniform samplerRECT HBlurSampler;
+uniform samplerRECT FinalBlurSampler;
+
+// Common to both vertex and fragment programs
+uniform half     Time;
+uniform half     Speed;
+uniform half     Scanlines;
+uniform int      Samples;
+uniform half     Tiles;
+uniform half     EdgeWidth;
+uniform half2    Offsets;
+uniform int		 UseYUV;
+
+uniform half     Displacement;
+uniform half     CurrentAngle;
+uniform half     Radius;
+
+// Uniforms for the maximum Texture and Window Size
+uniform half2    winsize;
+uniform half2    texsize;
+
+// Uniforms for the Blur Filters
+uniform half2    BlurCenter;
+uniform half     BlurWidth;
+uniform half     BlurStart;
+
+// Operations Adobe blending and post processing operations
+uniform half     ClearDepth;
+uniform half     SceneIntensity;
+uniform half4    GlowColor;
+uniform half     GlowIntensity;
+uniform half     HighlightThreshold;
+uniform half     HighlightIntensity;
+uniform half     DownsampleScale;
+uniform half     BloomBlurWidth;
+
+// Variables useful for Painting brush size, opacity, for painting
+uniform half4    brushcolor;
+uniform half     opacity;
+uniform half     brushsizestart;
+uniform half     brushsizeend;
+uniform half     brushpressure;
+uniform half     effectstrength;
+uniform half     fadeout;
+uniform half     fadetime;
+uniform half     fadein;
+uniform half     fadeintime;
+
+// Uniforms for display ProcAmp controls
+uniform half     exposure;
+uniform half     gamma;
+uniform half     defog;
+uniform half4    fogColor;
+
+// PostProcessing effects (sephia)
+uniform half     Glowness;
+uniform half     desaturate;
+uniform half     toning;
+uniform half3    darkColor;
+uniform half3    grayTransfer;
+
+// Temporary variables for use between vertex and fragment programs
+varying half     temp0;
+varying half     temp1;
+varying half     temp2;
+varying half     temp3;
+varying half4    vvec0;
+varying half4    vvec1;
+varying half4    vvec2;
+varying half4    vvec3;
+

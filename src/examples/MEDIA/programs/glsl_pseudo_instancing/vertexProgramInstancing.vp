@@ -1,0 +1,97 @@
+!!ARBvp1.0
+
+
+#PARAM worldMatrix[3] = { program.local[8..10] };    #World matrix comes from vertex.texcoord[1..3] when instancing
+PARAM viewMatrix[3] = { program.local[4..6] };
+PARAM projectionMatrix[4] = { state.matrix.projection };
+PARAM lightPositionView[1] = { program.local[11] };
+
+PARAM lightingCoefficients = {0.8, 0.2, 0, 0};
+PARAM zero = {0, 0, 0, 0};
+PARAM one = {1, 1, 1, 1};
+
+
+TEMP positionWorld;     # Vertex position in world space
+TEMP positionView;      # Vertex position in view space
+TEMP normalWorld;       # Normal in world space
+TEMP normalView;        # Normal in view space
+TEMP lightVectorView;   # Light vector in view space
+TEMP diffuse;           # Per-vertex diffuse color
+
+
+
+
+
+# Transform the position into world space
+DP4 positionWorld.x, vertex.position, vertex.texcoord[1];
+DP4 positionWorld.y, vertex.position, vertex.texcoord[2];
+DP4 positionWorld.z, vertex.position, vertex.texcoord[3];
+MOV positionWorld.w, one;
+
+# Transform the position into view space
+DP4 positionView.x, positionWorld, viewMatrix[0];
+DP4 positionView.y, positionWorld, viewMatrix[1];
+DP4 positionView.z, positionWorld, viewMatrix[2];
+MOV positionView.w, one;
+
+# Transform the position into screen space
+DP4 result.position.x, positionView, projectionMatrix[0];
+DP4 result.position.y, positionView, projectionMatrix[1];
+DP4 result.position.z, positionView, projectionMatrix[2];
+DP4 result.position.w, positionView, projectionMatrix[3];
+
+
+
+
+
+
+# Transform normal into world space
+# I'm not using inverse transpose to transform the normal. This won't work with
+# non-uniform scaling or other goofiness in instance transforms. It's not worth
+# passing the inverse transpose down because it takes too many vertex attributes.
+DP3 normalWorld.x, vertex.normal, vertex.texcoord[1];
+DP3 normalWorld.y, vertex.normal, vertex.texcoord[2];
+DP3 normalWorld.z, vertex.normal, vertex.texcoord[3];
+
+# Normalize the normal
+DP3 normalWorld.w, normalWorld, normalWorld;
+RSQ normalWorld.w, normalWorld.w;
+MUL normalWorld.xyz, normalWorld, normalWorld.w;
+
+# Transform normal into view space
+DP3 normalView.x, normalWorld, viewMatrix[0];
+DP3 normalView.y, normalWorld, viewMatrix[1];
+DP3 normalView.z, normalWorld, viewMatrix[2];
+
+
+
+
+
+#
+# Do some simple hoopti per-vertex lighting model to avoid getting fragment limited.
+# This makes the benefit of pseudo-instancing more visible.
+#
+
+# Compute Light vector in view space
+SUB lightVectorView, lightPositionView[0], positionView;
+
+# Normalize the view space light vector
+DP3 lightVectorView.w, lightVectorView, lightVectorView;
+RSQ lightVectorView.w, lightVectorView.w;
+MUL lightVectorView.xyz, lightVectorView, lightVectorView.w;
+
+# Diffuse with a little ambient thrown in.
+DP3 diffuse, normalView, lightVectorView;
+MAX diffuse, diffuse, zero;
+MAD diffuse, diffuse, lightingCoefficients.x, lightingCoefficients.y;
+MUL result.color, diffuse, vertex.color;
+
+
+
+
+
+# Output the texture coordinate
+MOV result.texcoord, vertex.texcoord;
+
+
+END

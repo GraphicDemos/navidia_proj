@@ -1,0 +1,10 @@
+#include "hdr.cg"
+
+half3 main(fragin In,
+           uniform samplerRECT tex0 : TEXUNIT0,
+           uniform samplerRECT tex1 : TEXUNIT1,
+           uniform float exposure) : COLOR
+{
+//    return texRECT_hilo(tex0, tex1, In.tex0.xy) * exposure;
+    return texRECT_RGBE(tex0, In.tex0.xy) * exposure;
+}

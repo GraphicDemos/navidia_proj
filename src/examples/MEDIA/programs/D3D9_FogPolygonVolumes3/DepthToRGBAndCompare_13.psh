@@ -1,0 +1,150 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_FogPolygonVolumes3\
+File:  DepthToRGBAndCompare_13.nvp
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Reads t3 and does depth comparison between t3 color (RGB encoded depth) and
+and the color computed from t0 and t1 (RGB encoded depth of the pixel being
+rendered).
+
+In this way a shading decision can be made based on whether the current pixel's
+depth is less than or greater than the depth stored in t3.
+
+Minor detail - in ps.1.1, x + 0.0 != x in some cases (signed values?) - ie.
+there is no representable 0.0, so what exactly does CMP use for a value of 0.0?
+
+This shader relies on saturation of values to [-1,1] range and will not 
+work properly if addition does not saturate to those bounds.
+
+-Greg J. 8/27/2002
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "Constants.h"
+
+// 1/256 = 0.0039062
+// 1/255 = 0.0039215
+#define ONE_VALUE  0.0039215
+
+ps.1.3
+
+// RGB decision weighting
+// This vector is dp3 with the -1,0,1 per-channel
+//  difference value to yield a final value whos
+//  sign reflects whether the actual single value
+//  encoded as RGB depth in t3 is greater or less
+//  than the actual single value encoded as RGB 
+//  in t2  (which is made from t0, t1)
+
+def c7, 1.0, 0.66, 0.31, -0.66
+
+// c6 is a small bias value which is subtracted
+//  from the -1,0,1 per-channel difference value.
+//  This makes a 0 difference value go slightly
+//  negative, for use in the CMP operation which
+//  selects based on a value >= 0.0
+
+def c6, -0.01, -0.01, -0.01, -0.01
+
+tex t0		// red+green ramp texture
+tex t1		// blue ramp texture
+tex t3		// depth of solid objs
+
+// Add R + G + B to make depth value
+
+add t2, t0, t1
+
+
+// Difference the pixel depth to the solid object depth
+//  supplied in texture t3.
+// If the current pixel depth is greater than the value
+//  in t3, the final outcome will be a negative value in
+//  r1.
+// Difference t2 - t3
+// t2 is RGB encoded value for this pixel being rendered.
+// t3 is some RGB encoded value from a previously created texture
+//
+// This is like depth buffering, where t3 is the existing
+//  depth buffer, and we want to know if the t2 depth is
+//  greater or less than t3.
+//
+// Use *4 to increase the contrast.  The goal is to saturate
+//  each R,G,B channel of the signed number the values
+//  -1, 0, or +1.  
+//
+// r1 will hold the final saturated per-channel difference
+
+// r1 = diff * 4
+add_x4 r1, -t3, t2
+
+// diff * 32
+add_x4 r1, r1, r1
+
+// diff * 256
+add_x4 r1, r1, r1
+
+// DP3 the saturated difference with the c7 weights.
+// The outcome weights red, green, and blue so that
+//  a positive red difference in t2-t3 will always
+//  make a positive value in the result. 
+//
+//  color	t2-t3 value:       final r1 value
+//  -------------------------------------------
+//  red     t2.r-t3.r  >  0    positive					1.0, 0.69, 0.65, 0.34, 0.03
+//  red     t2.r-t3.r  =  0    depends on green & blue	-.66, -.31, 0, .66, .31, .35, etc.
+//  red     t2.r-t3.r  <  0    negative
+//  green   t2.g-t3.g  >  0    positive
+//  green   t2.g-t3.g  =  0    depends on blue
+//  green   t2.g-t3.g  <  0    negative
+//  blue    t2.b-t3.b  >  0    positive
+//  blue    t2.b-t3.b  =  0    0
+//  blue    t2.b-t3.b  <  0    negative
+
+//	   r1.r		r1.g	r1.b	r1 = (dp3 r1, c7)
+//	-------------------------------------
+//		1		0		0		1
+//		1		1		0		1
+//		1		1		1		1
+//		0		0		0		0
+//		1		-1		0		0.34
+//		1		0		-1		0.69
+//		0		1		0		0.66
+//		0		1		-1		0.35
+//		0		0		1		0.31
+//		0		0		-1		-0.31
+//		-1		1		0		-0.34
+// etc.
+
+// Result is from -1 to 1
+// The sign of this value reflects whether the 
+//  value which t2 represents is greater than or less than
+//  the value which t3 represents
+
+dp3_x4 r1, r1, c7
+
+// We will make a decision based on r1 > 0, but the 
+//  only decision operation available is CMP which 
+//  performs >= 0.
+// So subtract a small value from r1
+
+add r1, r1, c6			// D3D9 does not allow -c6
+
+// Compare r1 decision value to zero.
+// If r1 is positive, select t3, otherwise
+//  select t2
+//
+// CMP requires 2 instruction slots on ps.1.3
+//
+// if( r1.rgba >= 0 )  r0.rgba = t3.rgba   else   r0.rgba = t2.rgba
+
+cmp r0, r1, t3, t2

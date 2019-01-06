@@ -1,0 +1,43 @@
+#include "uniforms.cg"
+
+const float  nsamples = 7;
+const float2 direction = { 1, 1 };
+
+///////////////////////////////////////////////////////////
+/////////////////////////////////// data structures ///////
+///////////////////////////////////////////////////////////
+
+struct VS_OUTPUT_BLUR
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[8]: TEXCOORD0;
+};
+
+struct VS_OUTPUT
+{
+   	float4 Position   : POSITION;
+    float2 TexCoord0  : TEXCOORD0;
+    float2 TexCoord1  : TEXCOORD1;
+};
+
+struct VS_OUTPUT_DOWNSAMPLE
+{
+    float4 Position   : POSITION;
+    float2 TexCoord[4]: TEXCOORD0;
+};
+
+// generate texture coordinates for blur
+VS_OUTPUT_BLUR main(	float4 Position : POSITION,
+						float2 TexCoord : TEXCOORD0)
+{
+  VS_OUTPUT_BLUR OUT;
+  OUT.Position = Position;
+  float2 texelSize = BloomBlurWidth / winsize;
+  float2 s = (TexCoord/texsize) - texelSize*(N_SAMPLES-1)*0.5*float2(N_DIRX, N_DIRY);
+
+  for(int i=0; i<N_SAMPLES; i++) {
+      OUT.TexCoord[i] = s + texelSize*i*float2(N_DIRX, N_DIRY);
+  }
+
+  return OUT;
+}

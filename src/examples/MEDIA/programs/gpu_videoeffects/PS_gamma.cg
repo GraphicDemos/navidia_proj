@@ -1,0 +1,22 @@
+// display with simple tone mapping, does exposure and gamma correction
+#include "common.cg"
+#include "yuyv.cg"
+
+half4 main(vf30 In,
+           uniform samplerRECT tex0,
+           uniform half exposure,
+           uniform half gamma
+           ) : COLOR
+{
+  half4 c;  
+  
+  if (UseYUV) {
+	  c = yuyv_texture_sampler(tex0, In.TEX0.xy);
+  } else {
+      c = texRECT(tex, In.TEX0.xy);
+  }
+  
+  c = c * exposure;
+  c.rgb = pow(c.rgb, gamma);
+  return c;
+}

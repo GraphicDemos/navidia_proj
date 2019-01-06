@@ -1,0 +1,22 @@
+// shader vertex program
+
+void main(in float4 pos   : POSITION,
+          in float4 texcoord : TEXCOORD0,
+//          in float4 particleData : TEXCOORD0,
+          in float4 color : COLOR0,
+          
+          out float4 hpos : POSITION,
+          out float4 tex0 : TEXCOORD0,
+          out float4 color0 : COLOR0,
+          out float psize : PSIZE,
+
+          uniform float time,
+          uniform float4x4 modelView,
+          uniform float4x4 modelViewProj
+          )
+{
+    tex0 = texcoord;
+    color0 = color;
+        
+    hpos = mul(modelViewProj, pos);
+}

@@ -1,0 +1,51 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+const half3 EdgeColor = { 0.7, 0.7, 0.7 };
+const half3 ClearColor = { 0.0, 0.0, 0.0 };
+
+half4 tilesPS(in samplerRECT texture,
+			  in half2 orig_coord)
+{
+	half size = 1.0 / Tiles;
+	half2 texcoord = orig_coord / texsize;
+
+    half2 Pbase = texcoord.xy - fmod(texcoord.xy,size.xx);
+    half2 PCenter = Pbase + (size/2.0).xx;
+    half2 st = (texcoord.xy - Pbase)/size;
+    half4 c1 = (half4)0;
+    half4 c2 = (half4)0;
+    half4 invOff = half4((1-EdgeColor),1);
+    if (st.x > st.y) { c1 = invOff; }
+		
+    half thresholdB =  1.0 - EdgeWidth;
+    if (st.x > thresholdB) { c2 = c1; }
+    if (st.y > thresholdB) { c2 = c1; }
+
+    half4 cBottom = c2;
+    c1 = (half4)0;
+    c2 = (half4)0;
+    if (st.x > st.y) { c1 = invOff; }
+    if (st.x < EdgeWidth) { c2 = c1; }
+    if (st.y < EdgeWidth) { c2 = c1; }
+
+    half4 cTop = c2;
+
+//	half4 tileColor = texRECT(texture, PCenter * texsize);
+    half4 tileColor = yuyv_texture_sampler( texture, PCenter * texsize);
+    half4 result = tileColor + cTop - cBottom;
+
+    return result;
+}
+
+
+half4 main(vf30 In,
+           uniform samplerRECT tex
+		) : COLOR
+{
+	half4 color;
+    
+    color = tilesPS(tex, In.TEX0.xy);
+
+	return color;
+}

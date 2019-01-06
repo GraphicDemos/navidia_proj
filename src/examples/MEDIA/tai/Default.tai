@@ -1,0 +1,41 @@
+# Default.tai
+# AtlasCreationTool.exe -halftexel -o Default
+#
+# <filename>		<atlas filename>, <atlas idx>, <atlas type>, <woffset>, <hoffset>, <depth offset>, <width>, <height>
+#
+# Texture <filename> can be found in texture atlas <atlas filename>, i.e., 
+# Default<idx>.dds of <atlas type> type with texture coordinates boundary given by:
+#   A = ( <woffset>, <hoffset> )
+#   B = ( <woffset> + <width>, <hoffset> + <height> )
+#
+# where coordinates (0,0) and (1,1) of the original texture map correspond
+# to coordinates A and B, respectively, in the texture atlas.
+# If the atlas is a volume texture then <depth offset> is the w-coordinate
+# to use the access the appropriate slice in the volume atlas.
+
+
+MEDIA\textures\2d\0anna.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.000122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\grass.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.125122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\graydirt.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.250122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\img2.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.375122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\lena.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.500122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\mandrill.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.625122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\nvidia_cloth.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.750122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\nvlogo_whitebg.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.875122, 0.000488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\radial.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.000122, 0.500488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\rock.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.125122, 0.500488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\snow.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.250122, 0.500488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\spots_embm.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.375122, 0.500488, 0.000000, 0.124756, 0.499023
+MEDIA\textures\2d\1d_SPIRAL.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.500122, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\1d_SPIRAL_.png		DMEDIA\textures\2d\efault0.dds, 0, 2D, 0.562622, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\1d_TUBE.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.625122, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\img1.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.687622, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\opengl.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.750122, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\texture.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.812622, 0.500488, 0.000000, 0.062256, 0.249023
+MEDIA\textures\2d\SmallLeaf_BP.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.875122, 0.500488, 0.000000, 0.031006, 0.249023
+MEDIA\textures\2d\1d_debug.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.906372, 0.500488, 0.000000, 0.031006, 0.124023
+MEDIA\textures\2d\checker.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.937622, 0.500488, 0.000000, 0.031006, 0.124023
+MEDIA\textures\2d\decal_image.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.968872, 0.500488, 0.000000, 0.031006, 0.124023
+MEDIA\textures\2d\spotlight_image.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.906372, 0.625488, 0.000000, 0.031006, 0.124023
+MEDIA\textures\2d\shine.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.937622, 0.625488, 0.000000, 0.015381, 0.061523
+MEDIA\textures\2d\LowRes.png		MEDIA\textures\2d\Default0.dds, 0, 2D, 0.953247, 0.625488, 0.000000, 0.007568, 0.030273

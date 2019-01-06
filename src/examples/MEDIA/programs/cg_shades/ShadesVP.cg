@@ -1,0 +1,151 @@
+// ----------------------------------------------------------------------------
+// File:
+//      ShadesVP.cg
+//
+// Contents:
+//      The vertex program used for all the examples in the cg_shades demo.
+//
+// Author: Frank Jargstorff (fjargstorff@nvidia.com)
+//
+// Note:
+//      Copyright (c) 2004 by NVIDIA Corp. All rights reserved.
+// 
+// ----------------------------------------------------------------------------
+
+        // VertexInput
+        //
+        // Description:
+        //      The vertex input struct.
+        //          All the vertex program needs as input data
+        //      are the position and a 2d vertex coordinate indicating
+        //      the position on the quad to which the "shades" shader is
+        //      applied.
+        //
+struct  VertexInput
+{
+    float4 vPosition    : POSITION;
+    float2 vTexCoord    : TEXCOORD0;
+};
+
+        // VertexToFragment
+        //
+        // Description:
+        //      The fragment program input struct.
+        //          As explained in more detail the lighting performed
+        //      in the shade shader is a combination of per-vertex and 
+        //      per pixel lighting. 
+        //      vTopColor - basically is a standard per-vertex Blinn lighting.
+        //      vUeUlSlU  - packs the following scalar products
+        //                  * <U,E> where U is the vector pointing in the direction
+        //                          of the positive u-texture-coordinate and E is
+        //                          the vector pointing to the eye-point.
+        //                  * <U,L> where L is the vector pointing to the light 
+        //                          source.
+        //                  * <S,L> where S is the "slat normal" of the "right"
+        //                          side of the slat (assuming you're looking in
+        //                          V direction, where V is the vector pointing in the
+        //                          direction the v-texture-coordinate increases.
+        //                  and U, the u-texture coordinate into a single linear
+        //                  interpolant.
+        //      vNeShVeV  - using a similar nomenclature as the previous parameter this
+        //                  one packs the following scalar products:
+        //                  * <N,E> where N is the quad's surface normal and the eye-vector.
+        //                  * <S,H> the slat normal and the half-vector between the eye-vector
+        //                          and the light-vector.
+        //                  * <V,E> where V is the vector pointing in the direction
+        //                          of the positive v-texture-coordinate and the eye-vector.
+        //                  and V, the v-texture coordinate into a single linear
+        //                  interpolant.
+        //      vNhNl     - packs two scalar products:
+        //                  * <N,H> between surface normal and half vector
+        //                  * <N,L> between surface normal and light vector.
+        //                  into one linear interpolant.
+        //                  
+struct VertexToFragment
+{
+    float4 vPosition   : POSITION;
+    float3 vTopColor   : COLOR;
+    float4 vUeUlSlU    : TEXCOORD0;
+    float4 vNeShVeV    : TEXCOORD1;
+    float4 vNhNl       : TEXCOORD2;
+};
+
+        // main
+        //
+        // Description:
+        //      The vertex shader main method.
+        //          The vertex shader for all the different "shade shader" 
+        //      variations is the same. It sets up all the linear interpolants
+        //      as described above for the VertexToFragment struct.
+        //      Not all of this data is used by each fragment program but this 
+        //      approach simplifies the code complexity of the main C++ program
+        //      quite a bit.
+        //
+        // Parameters:
+        //      vN, vU, vN        - these are three unit vectors forming an orthonormal
+        //                          basis similar to the texture-coordinate systems used
+        //                          for per-pixel bump mapping. One of the assumptions made
+        //                          in the demo is that the surface the shade shader is 
+        //                          applied to is planar and thus we don't need this
+        //                          information on a per-vertex basis but can pass it as
+        //                          uniform parameters to the vertex shader.
+        //      sSlatNormal       - if looking in vV-direction than the slat normal is the
+        //                          surface normal of the right side of a slat.
+        //      vLightPosition    - the light position (in world coordinates).
+        //      cDiffuseLight     - the diffuse light intensity.
+        //      cAmbientLight     - the ambient light intensity.
+        //      cDiffuseMaterial  - the diffuse material color of the slats.
+        //      cSpecularMaterial - the specular material color of the slats.
+        //      cShininess        - the slats's shininess.
+        //      
+        // Returns:
+        //      The VertexToFragment struct.
+        //
+        void 
+main(in  VertexInput      oInput,
+     out VertexToFragment oOutput,
+          
+     uniform float3   vN,
+     uniform float3   vU,
+     uniform float3   vV,
+     uniform float3   vSlatNormal,
+     uniform float4   vLightPosition,
+     uniform float3   cDiffuseLight,
+     uniform float3   cAmbientLight,
+     uniform float3   cDiffuseMaterial,
+     uniform float3   cSpecularMaterial,
+     uniform float    nShininess, 
+     uniform float4x4 mModelView,
+     uniform float4x4 mInverseModelView)
+{
+                                // transform light into object space
+    vLightPosition      = mul(mInverseModelView, vLightPosition);       
+                                // get light direction vector
+    float3 vLight       = normalize(vLightPosition - oInput.vPosition).xyz; 
+                                // tranform eye into object space
+    float3 vEyePosition = mul(mInverseModelView, float4(0, 0, 0, 1)).xyz;   
+                                // get eye direction vector
+    float3 vEye         = normalize(vEyePosition - oInput.vPosition.xyz);
+                                // half vector
+    float3 vH = normalize(vEye + vLight);     
+    
+    oOutput.vUeUlSlU.x = dot(vU, vEye);
+    oOutput.vUeUlSlU.y = dot(vU, vLight);
+    oOutput.vUeUlSlU.z = dot(vSlatNormal, vLight);
+    oOutput.vUeUlSlU.w = oInput.vTexCoord.x;
+
+    oOutput.vNeShVeV.x = dot(vN, vEye);
+    oOutput.vNeShVeV.y = dot(vSlatNormal, vH);
+    oOutput.vNeShVeV.z = dot(vV, vEye);
+    oOutput.vNeShVeV.w = oInput.vTexCoord.y;
+    
+    oOutput.vNhNl.x    = dot(vN, vH);
+    oOutput.vNhNl.y    = dot(vN, vLight);
+    
+    oOutput.vTopColor  = cDiffuseLight * cDiffuseMaterial * max(oOutput.vNhNl.y, 0);
+    oOutput.vTopColor += cAmbientLight * cDiffuseMaterial;
+    oOutput.vTopColor += step(0, dot(vN, vLight)) * cDiffuseLight * cSpecularMaterial
+                                                  * pow(max(dot(vN, vH), 0), nShininess);
+     
+    oOutput.vPosition  = mul(mModelView, oInput.vPosition);
+}

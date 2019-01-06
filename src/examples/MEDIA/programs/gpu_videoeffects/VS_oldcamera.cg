@@ -1,0 +1,140 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+struct a2v
+{
+    float4 Position     : POSITION;
+    float4 TexCoord0    : TEXCOORD0;
+};
+
+
+//! vertex shader output/pixel shader input
+struct VS_OUTPUT
+{
+	half4 Position        : POSITION;
+	half4 SceneCoord      : TEXCOORD0;
+
+	half4 Dust0And1Coords : TEXCOORD1;
+	half4 Dust2And3Coords : TEXCOORD2;
+
+	half4 TvCoords        : TEXCOORD3;
+	half4 NoiseCoords     : TEXCOORD4;
+
+	half4 Line0VertCoords : TEXCOORD5;
+	half4 Line1VertCoords : TEXCOORD6;
+	half4 Line2VertCoords : TEXCOORD7;
+
+	half4 OverExposure    : DIFFUSE;
+};
+
+
+VS_OUTPUT main(	a2v IN )
+{
+	VS_OUTPUT OUT;
+	
+	// some pseudo-random numbers
+	half rnd0 = fmod(Time, 7.000);
+	half rnd1 = fmod(Time, 3.300);
+	half rnd2 = fmod(Time, 0.910);
+	half rnd3 = fmod(Time, 0.110);
+	half rnd4 = fmod(Time, 0.070);
+	half rnd5 = fmod(Time, 0.013);
+
+	half2 inversewinsize = half2(1.0, 1.0) / winsize;
+
+	OUT.Position = half4(IN.Position.xyz, 1);
+
+	// compute vert. frame jitter
+	half frameJitterY =  40 * MaxFrameJitter * rnd2 * rnd0 * rnd3;
+	if (frameJitterY < (6 - FrameJitter) * 10)
+		frameJitterY = 0;
+ 	frameJitterY *=inversewinsize.y;
+
+	// add jitter to the original coords.
+	OUT.SceneCoord =  half4(IN.TexCoord0.xyz, 1) + half4(0, frameJitterY, 0, 0);
+
+	// compute over exposure amount
+	OUT.OverExposure = OUT.OverExposure * rnd3;
+	
+	// pass original screen coords (border rendering)
+	OUT.TvCoords = half4(IN.TexCoord0.xyz, 1);
+
+	// compute noise coords.
+	half2 NoiseCoordsTmp = (winsize / (GrainThickness * half2(128.0, 128.0))) * IN.TexCoord0.xy;
+	NoiseCoordsTmp += half2(10 * rnd3 * rnd1 - rnd0, rnd4 + rnd1 * rnd2);
+	OUT.NoiseCoords = NoiseCoordsTmp.xyxy;
+
+	// dust section (turns on or off particular dust texture)
+	if (DustAmount > 0)
+	{
+		OUT.Dust0And1Coords.xy = 2.0 * IN.Position.xy + 20 * half2(rnd1 * rnd4, fmod(Time,0.03) );
+	}
+	else
+	{
+		OUT.Dust0And1Coords.xy = 0;
+	}
+
+	if (DustAmount > 1)
+	{
+		OUT.Dust0And1Coords.zw = 2.3 * IN.Position.yx - 210 * half2(rnd4 * 0.45, rnd5 * 2);
+	}
+	else
+	{
+		OUT.Dust0And1Coords.zw = 0;
+	}
+
+	if (DustAmount > 2)
+	{
+		OUT.Dust2And3Coords.xy = 1.4 * IN.Position.xy + half2(70, +10) * half2(rnd2 * rnd4, rnd2);
+	}
+	else
+	{
+		OUT.Dust2And3Coords.xy = 0;
+	}
+
+	if (DustAmount > 3)
+	{
+		OUT.Dust2And3Coords.zw = 1.7 * IN.Position.yx + half2(-10, 130) * half2(rnd2 * rnd4, rnd1 * rnd4);
+	}
+	else
+	{
+		OUT.Dust2And3Coords.zw = 0;
+	}
+	
+	// vert lines section
+	OUT.Line0VertCoords = 0.5 * IN.Position.xxxx * winsize.xxxx * 0.3;
+	OUT.Line1VertCoords = OUT.Line0VertCoords;
+	OUT.Line2VertCoords = OUT.Line0VertCoords;
+
+	// first line
+	if (ScratchesAmount > 0)
+	{
+		OUT.Line0VertCoords.x += 0.15 - ((rnd1 - rnd3 + rnd2) * 0.1) * winsize.x;
+	}
+	else
+	{
+		OUT.Line0VertCoords.x = -1;
+	}
+
+	// second line
+	if (ScratchesAmount > 1)
+	{
+		OUT.Line1VertCoords.x += 0.55 + ((rnd0 - rnd2 + rnd4) * 0.1) * winsize.x;
+	}
+	else
+	{
+		OUT.Line1VertCoords.x = -1;
+	}
+
+	// third line
+	if (ScratchesAmount > 2)
+	{
+		OUT.Line2VertCoords.x += 0.31 + ((rnd1 - rnd2 + rnd4) * 0.2) * winsize.x;
+	}
+	else
+	{
+		OUT.Line2VertCoords.x = -1;
+	}
+
+	return OUT;
+}

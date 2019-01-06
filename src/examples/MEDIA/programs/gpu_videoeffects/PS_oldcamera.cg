@@ -1,0 +1,76 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+const half4 BorderColor = { 1.0, 1.0, 1.0, 1.0 };
+const half4 FilmColor	= { 1.0, 0.7559052, 0.58474624, 1.0 };
+
+//! vertex shader output/pixel shader input
+struct VS_OUTPUT
+{
+	half4 Position        : POSITION;
+	half4 SceneCoord      : TEXCOORD0;
+
+	half4 Dust0And1Coords : TEXCOORD1;
+	half4 Dust2And3Coords : TEXCOORD2;
+
+	half4 TvCoords        : TEXCOORD3;
+	half4 NoiseCoords     : TEXCOORD4;
+
+	half4 Line0VertCoords : TEXCOORD5;
+	half4 Line1VertCoords : TEXCOORD6;
+	half4 Line2VertCoords : TEXCOORD7;
+
+	half4 OverExposure    : DIFFUSE;
+};
+
+//! pixel shader
+half4 PS_TV(in samplerRECT texture,
+			in VS_OUTPUT IN) : COLOR
+{   
+	// sample scene
+//	half4 img = texRECT(SceneSamp, IN.SceneCoord.xy);
+	half4 img = yuyv_texture_sampler(texture, IN.SceneCoord.xy);
+
+	// compute sepia (or other color) image
+	half4 img2 = dot(img, half4(0.30, 0.59, 0.11, 0.3)) * FilmColor;
+
+	// sample dust textures (as tex1)
+	half4 dust0 = tex2D(tex1, IN.Dust0And1Coords.xy);
+	half4 dust1 = tex2D(tex1, IN.Dust0And1Coords.wz);
+	half4 dust2 = tex2D(tex1, IN.Dust2And3Coords.xy);
+	half4 dust3 = tex2D(tex1, IN.Dust2And3Coords.wz);
+
+	// sample line textures (as tex2)
+	half4 line0 = tex2D(tex2, IN.Line0VertCoords.xy);
+	half4 line1 = tex2D(tex2, IN.Line1VertCoords.xy);
+	half4 line2 = tex2D(tex2, IN.Line2VertCoords.xy);
+
+	// sample border texture (as tex3), with CLAMP
+	half4 tv = tex2D(tex3, IN.TvCoords.xy);
+
+	// sample noise values (as tex3), with WRAP
+	half4 noiseVal = tex2D(tex3, IN.NoiseCoords.xy);
+	noiseVal = lerp(half4(1.0, 1.0, 1.0, 1.0), noiseVal, GrainAmount);
+
+	// "accumulate" dust
+	half finalDust = dust0.x * dust1.y * dust2.z * dust3.w;
+
+	// "accumulate" lines
+	half finalLines = line0.x * line1.x * line2.x;
+	finalLines = lerp(half4(1.0, 1.0, 1.0, 1.0), finalLines, ScratchesLevel);
+	
+	// final composition
+	return tv * (IN.OverExposure + finalDust * finalLines * img2) * noiseVal.wwww;
+}
+//----------------------------------------------------------------------------
+
+
+half4 main(VS_OUTPUT IN,
+			uniform samplerRECT tex)
+{
+	half4 color;
+    
+	color = PS_TV(tex, IN);
+
+	return color;
+}

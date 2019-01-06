@@ -1,0 +1,46 @@
+#include "uniforms.cg"
+
+struct VS_INPUT
+{
+    half4 Position : POSITION;
+    half4 TexCoord : TEXCOORD0;
+};
+
+//! vertex shader output/pixel shader input
+struct VS_OUTPUT
+{
+	half4 Position  : POSITION;
+	half4 TexCoordA : TEXCOORD0;
+	half4 ScanFlash : TEXCOORD1;
+	half4 TexCoordB : TEXCOORD2;
+	half4 TexCoordC : TEXCOORD3;
+	half4 TexCoordD : TEXCOORD4;
+	half4 TexCoordE : TEXCOORD5;
+	half4 TexCoordF : TEXCOORD6;
+};
+
+VS_OUTPUT main(VS_INPUT IN)
+{
+  VS_OUTPUT OUT;
+  
+  OUT.Position = half4(IN.Position.xyz, 1);
+  
+  half tx = IN.TexCoord.x + (1+sin(Time/2))*0.002;
+  half ty = IN.TexCoord.y + (1+sin(frac(Time*2)))*0.002;
+  half4 baseTC = half4(tx, ty, IN.TexCoord.z, 1); 
+  OUT.TexCoordA = baseTC;
+  OUT.TexCoordB = (baseTC+Time) * 11;
+  OUT.TexCoordC = (baseTC-Time) * 11;
+  OUT.TexCoordD = (-baseTC+Time) * 11;
+  OUT.TexCoordE = (baseTC+Time) * 2;
+  OUT.TexCoordF = (baseTC+Time) * 5;
+
+  half scan = ty * Scanlines + Time * Speed;
+  // Flash
+  half flash = 1.0;
+  if(frac(Time/10)<0.1) flash = 3.0*(0.5+0.5*sin(Time*4.0));
+  OUT.ScanFlash = half4(scan, flash, 0, 1);
+
+  return OUT;
+}
+

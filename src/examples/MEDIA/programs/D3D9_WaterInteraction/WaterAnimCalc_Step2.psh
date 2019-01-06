@@ -1,0 +1,109 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  WaterAnimCalc_Step2.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+2nd step of the water animation calculation.  After this shader, the time
+step for the water anim is complete, though an additional pass for blurring
+is often necessary to dampen out high frequency oscillations.  The additional
+pass can also dampen the system to prevent it from building up the color
+values to saturation.
+
+This shader samples the previous partial force result, adds force from the 
+4th pixel neighbor, applies force to velocity, applies velocity to position
+and outputs the new velocity and position.
+
+See in-line comments for more info.
+Don't hesitate to write with questions about the water animation!
+
+-Greg J.
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+ps.1.1
+
+// t0 = center height in blue and alpha, 
+//       velocity in green
+//       partial force in red
+// t1 = 4th neighbor point height in blue and alpha
+//       red and green are irrelevant
+// c[PCN_MULTFACTOR_1] = RGBA = 0, force apply factor, 0,     0
+// c[PCN_MULTFACTOR_2] = RGBA = 0, 0,  velocity_apply factor, 0
+
+// Define some masks for the various components R,G,B,A
+def c5, 0.0, 0.5, 0.0, 0.0
+def c6, 0.0, 1.0, 0.0, 0.0
+def c7, 1.0, 0.0, 0.0, 0.0
+
+tex t0			// see above for what these should be
+tex t1
+
+// In alpha, subtract center position from 4th neighbor position
+// In rgb, bias the previous force back down to [-.5, .5] range, and also
+//   bias prev velocity down to [-.5, .5] range.  Other r0 fields will be
+//   masked out.
+
+mov r0.rgb, t0_bias
++  sub     r0.a,    t1.b, t0.b		// force from last neighbor
+									// Use .b to replicate blue to alpha
+// Add 4th neighbor differece to previous force
+// Use t1 as temporary storage
+
+add   t1.rgba,    r0, r0.a		// r0.red + r0.aaaa
+
+// t1.r is now the total force for all 4 neighbors
+// Move total force into green (into all components).  
+//   This is so we can apply the force value to the
+//   velocity value held in the green input component.
+
+dp3  t1.rgba,  t1, c7
+
+// Multiply total force by scale factor and add to
+//   velocity (held in t0.green, biased)
+// In this op we care only about the resulting green.
+
+mad  r1.rgb,  t1, PCR_MULTFACTOR_1,  t0_bias
++ mov t0.a, t0.b			// replicate blue to alpha in case alpha is
+							// dirty from a previous alpha blend
+
+// Replicate velocity to blue and alpha
+// This is so we can apply velocity to the previous position
+// Position is duplicated in blue and alpha so we can co-issue
+//   instructions in the step 1 shader.
+
+dp3  t1.rgba,  r1, c6
+
+// Multiply velocity by scale factor and add to t0 position (blue, alpha)
+
+mad  r0, t1, PCR_MULTFACTOR_2,  t0
+
+// We need to output the velocity for use in the next time step.
+// Velocity is held in t1 and is signed, so we need to mask out
+//   the unwanted color values and bias it back up to the unsigned
+//   [0,1] range for storage as a texture color.
+// Need to update velocity to what we have in t1, writing only to 
+//  green of r0
+
+mad t1, t1, c6, c5		// mask and bias back to unsigned range
+						// r1  *  (0,1,0,0) + (0,.5,0,0)
+
+// Mask off r,g of r0 and add in velocity result
+//   from the previous instruction
+// r0 * (0,0,mask,mask) + (0,velocity,0,0)
+//
+// c[PCN_POSITIONMASK] could be (0,0,1,1) or (0,0,.98,.98) etc  to
+//  slightly damped position each step
+
+mad r0, r0, PCR_POSITIONMASK, t1

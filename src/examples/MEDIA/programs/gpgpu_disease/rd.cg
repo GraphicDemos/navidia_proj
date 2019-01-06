@@ -1,0 +1,85 @@
+//------------------------------------------------------------------------------
+// File : ReactionDiffusion.cg
+//------------------------------------------------------------------------------
+// Copyright 2002 Mark J. Harris and
+//						The University of North Carolina at Chapel Hill
+//------------------------------------------------------------------------------
+// Permission to use, copy, modify, distribute and sell this software and its 
+// documentation for any purpose is hereby granted without fee, provided that 
+// the above copyright notice appear in all copies and that both that copyright 
+// notice and this permission notice appear in supporting documentation. 
+// Binaries may be compiled with this software without any royalties or 
+// restrictions. 
+//
+// The author(s) and The University of North Carolina at Chapel Hill make no 
+// representations about the suitability of this software for any purpose. 
+// It is provided "as is" without express or implied warranty.
+
+float4 rd(float2      coords : WPOS,
+  uniform samplerRECT concentration,
+  uniform float4      windowDims,
+  uniform float4      rdParams) : COLOR
+{
+  // Setup the texture coordinate pairs and sample the center and its 4 nearest
+  // neighbors.  Note that since the texture rectangles do not support texture 
+  // repeat wrapping, we have to detect the edge fragments and do wrapping on 
+  // our own.  The conditional expressions below take care of this.  The 
+  // neighbor samples are simply averaged to compute (part of) the Laplacian, 
+  // and then divided scaled by the diffusion coefficient
+
+  float2 uv = coords.xy;
+  
+  float2 centerSample = f2texRECT(concentration, uv);
+  
+  uv.x = (fixed)(coords.x > windowDims.x - 1.0f) ? 0.5f  : coords.x + 1.0f;
+  float2 diffusion = f2texRECT(concentration, uv);
+  uv.x = (fixed)(coords.x <= 1.0f) ? windowDims.x - 0.5f : coords.x - 1.0f;
+  diffusion += f2texRECT(concentration, uv);
+  uv = coords.xy;
+  uv.y = (fixed)(coords.y <= 1.0f) ? windowDims.y - 0.5f : coords.y - 1.0f;
+  diffusion += f2texRECT(concentration, uv);
+  uv.y = (fixed)(coords.y > windowDims.y - 1.0f) ? 0.5f  : coords.y + 1.0f;
+  diffusion += f2texRECT(concentration, uv);
+
+  // Scale the sum by 1/4 to get the average, 
+  // then multiply by the diffusion coeffs.
+  diffusion *= 0.25f * rdParams.xy;
+    
+  // The reaction operates only on the center sample.  Different computations 
+  // are performed on the x and y channels because they represent different 
+  // chemical concentrations, and are governed by two different PDEs.
+  float2 reaction = centerSample.xx * centerSample.yy * centerSample.yy;
+  reaction.x *= -1.0f;
+  
+  reaction.x += (1.0f - rdParams.x) * centerSample.x + 
+                rdParams.w * (1.0f - centerSample.x);
+  reaction.y += windowDims.z * centerSample.y;
+
+  // Now add the diffusion to the reaction to get the result.
+  return float4(diffusion + reaction, 0, 0);
+} 
+
+half4 genNormalMap(half2 coords : WPOS,           
+           uniform samplerRECT height) : COLOR
+{
+  half top    = h1texRECT(height, coords.xy + half2( 0, 1));
+  half bottom = h1texRECT(height, coords.xy + half2( 0,-1));
+  half right  = h1texRECT(height, coords.xy + half2( 1, 0));
+  half left   = h1texRECT(height, coords.xy + half2(-1, 0));
+
+  // compute the normal map on the fly...
+  half3 tangentSpaceNormal;
+  tangentSpaceNormal.x = right - left;
+  tangentSpaceNormal.y = top - bottom;
+  tangentSpaceNormal.z = 1.0h;
+  // normalize, and scale and bias into [0, 1] since we can't copy to signed rgb
+  tangentSpaceNormal = 0.5 * normalize(tangentSpaceNormal) + 0.5;
+
+  return half4(tangentSpaceNormal.xyz, 1);  
+} 
+
+half4 textureRECT(half2 coords : TEX0, 
+          uniform samplerRECT tex) : COLOR
+{
+  return texRECT(tex, coords);
+} 

@@ -1,0 +1,102 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  Create_Dot3x2EMBMMap_SrcAlpha_Scale.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Neighbor differencing for creation of a displacement map used in a variation
+  on the DX6-style EMBM technique.  The created map is similar to a normal
+  map, but has 1.0 in the blue channel.  This map may be used by another 
+  pixel shader to render perturbed reflections of an environment map.
+  The perturbation follows the EMBM math (see the DX8 docs) however the
+  texm3x2tex instruction is used instead of texbeml.  Using two dot-products
+  allows the 2x2 EMBM rotation matrix to be set per-vertex in the vertex
+  texture coordinates.  This allows the matrix to vary across the scene, 
+  unlike the standard DX6-style EMBM where the matrix is specified as a 
+  constant render state parameter for all polygons.  This variation of the 
+  matrix, in turn, allows for more realistic "reflections" and fine control
+  over how the reflection displacements vary with distance.
+ 
+The use of texm3x2tex also allows the displacement map to use biased-scaled
+  values, as in a normal map, instead of the twos-complement numbers required
+  by the texbeml.  This saves effort in computing the displacement map.
+  
+Scale factors for s and t axis components are set in program code.
+
+** This version sources height from .a channel of textures, which allows other
+   data to be kept in the texture .rgb
+
+Requires:
+c PCR_RED_MASK		= (scale, 0, 0, 0)
+c PCR_GREEN_MASK	= (0, scaleg, 0, 0 )
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+ps.1.1
+
+// Define c[PCN_RED_MASK] as RGBA = (scale, 0, 0, 0)
+//  Where scale [0,1] is applied to reduce the magnitude
+//  of the s axis component of the normal.
+// Define c[PCN_GREEN_MASK] similarly to affect the 
+//  t axis component
+// blue mask for r axis component (blue = up out of texture)
+
+def c2, 0.5, 0.5, 0.0, 0.0
+def c1, 1.0, 1.0, 0.0, 0.0
+def c3, 0.0, 0.0, 1.0, 0.0
+
+// Get colors from all 4 texture stages
+// These are the neighbor samples used to calculate slopes
+//   for the surface displacements
+// t0 = -s,  0
+// t1 = +s,  0
+// t2 =  0, +t
+// t3 =  0, -t
+
+tex t0
+tex t1
+tex t2
+tex t3
+
+// Source height from texture alpha!  This is to allow for packing
+//  other data into the .rgb fields.
+
+sub_x4  r0.a, t0, t1					// (t0 - t1)*4  : 4 for higher scale
+
+mul     t0.rgb, r0.a, PCR_RED_MASK		// t0 = s result in red only
+										//  .a to smear across all .rgba
++ sub_x4  r1.a, t3, t2					// r1 = t result in alpha
+
+mad     r0, r1.a, PCR_GREEN_MASK, t0	// r0 = red,green for s and t result
+										// r1.a smears alpha across all .rgba
+										//  the blue and alpha now contain junk
+
+//  the red and green masks may scale down the displacements.
+//  they are subsequently scaled up below.  This looses precision, so
+//  this should be re-coded to use mask values of 1.0 and scale 
+//  the result after.
+
+// increase scale
+// bases displacement about center 0.5 0.5
+
+add_x2	r0, r0, r0
+add     r0, r0, c2          // bias red,green to 0.5
+add     r0, r0, c3			// add blue = 1.0
+							// relies on saturation of shader values to 1.0
+							// 
+							// This will be used in the texm3x2 dot products
+							//  so that the interpolated .z of the vertex texture
+							//  coordinate can establish the base coordinate to 
+							//  which the du & dv offsets ( in red and green color )
+							//  displacements are added.

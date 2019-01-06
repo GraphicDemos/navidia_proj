@@ -1,0 +1,55 @@
+!!ARBvp1.0
+
+#  program to do dot product
+ATTRIB v0 = vertex.attrib[0];
+ATTRIB v1 = vertex.attrib[1];
+ATTRIB v3 = vertex.attrib[3];
+ATTRIB v4 = vertex.attrib[4];
+ATTRIB v5 = vertex.attrib[5];
+ATTRIB v8 = vertex.attrib[8];
+
+PARAM mvp[4] = { state.matrix.mvp };
+PARAM mit[4] = { state.matrix.modelview.invtrans };
+PARAM mat[4] = { state.matrix.program[0] };
+PARAM c94 = program.env[94];
+PARAM c95 = program.env[95];
+TEMP R1, R3, R4, R5;
+
+# position
+DP4   result.position.x, mvp[0], v0 ;
+DP4   result.position.y, mvp[1], v0 ;
+DP4   result.position.z, mvp[2], v0 ;
+DP4   result.position.w, mvp[3], v0 ;
+
+# R1 = normalize eye-space normal
+DP3   R1.x,   mit[0], v5 ;
+DP3   R1.y,   mit[1], v5 ;
+DP3   R1.z,   mit[2], v5 ;
+
+DP3   R1.w,   R1, R1     ;
+RSQ   R1.w,   R1.w       ;
+MUL   R1.xyz, R1, R1.w   ;
+
+MOV   R1.w,   c95.x    ; # w = 1
+
+MOV   result.texcoord[0], v8      ;
+MOV   result.texcoord[1], v8     ;
+
+# compute 2x2 matrix based on the tangent-space
+# basis of this vertex
+
+MUL   R3, v3, c94.x     ;
+MUL   R4, v4, c94.x     ;
+MOV   R5, v5              ;
+
+# set up tex units 2 and 3
+DP3   result.texcoord[2].x, mit[0],  R3 ;
+DP3   result.texcoord[2].y, mit[0],  R4 ;
+DP4   result.texcoord[2].z, mat[0], R1 ;
+DP3   result.texcoord[3].x, mit[1],  R3 ;
+DP3   result.texcoord[3].y, mit[1],  R4 ;
+DP4   result.texcoord[3].z, mat[1],  R1 ;
+
+MOV   result.color, v1;
+
+END

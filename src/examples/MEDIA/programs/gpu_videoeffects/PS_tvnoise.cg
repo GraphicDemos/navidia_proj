@@ -1,0 +1,55 @@
+#include "uniforms.cg"
+#include "yuyv.cg"
+
+//! vertex shader output/pixel shader input
+struct VS_OUTPUT
+{
+	half4 Position  : POSITION;
+	half4 TexCoordA : TEXCOORD0;
+	half4 ScanFlash : TEXCOORD1;
+	half4 TexCoordB : TEXCOORD2;
+	half4 TexCoordC : TEXCOORD3;
+	half4 TexCoordD : TEXCOORD4;
+	half4 TexCoordE : TEXCOORD5;
+	half4 TexCoordF : TEXCOORD6;
+};
+
+half4 sine_function(half position)
+{
+	return 0.5*sin(position.x*2*3.141592653589793238) + 0.5f;
+}
+
+half4 noisy_function(half3 position)
+{
+	return (noise(position * 50.5) * .5) + .5f;
+}
+
+half4 tv_noise_ps(	in samplerRECT texture, VS_OUTPUT IN )
+{
+	half4  img     = yuyv_texture_sampler(texture, IN.TexCoordA.xy);
+											
+	half scanlines = sine_function(IN.ScanFlash.x).x;
+	img *= scanlines;
+	img *= IN.ScanFlash.y;
+							      
+	half4 noise = half4(noisy_function(IN.TexCoordB).x,
+						noisy_function(IN.TexCoordC).x,
+						noisy_function(IN.TexCoordD).x,1);
+	half4 noise2 = noisy_function(IN.TexCoordE);
+	half4 noise3 = noisy_function(IN.TexCoordF);
+
+	img *= 3.0 * noise*noise2*noise3 + 0.8;
+	return (img);
+}
+
+half4 main(VS_OUTPUT IN,
+           uniform samplerRECT tex
+		) : COLOR
+{
+	half4 color;
+
+	color = tv_noise_ps(tex, IN);
+//	color = 3 * pow(noisy_function(half3(Time,Time,Time)), 3);
+			
+	return color;
+}

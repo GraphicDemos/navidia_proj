@@ -1,0 +1,3 @@
+# animation file for dmapdemo
+keyframes ..\\..\\..\\..\\media\\models\\dynamic_amb_occ\\Bigguy\\bigguy_%02d.obj 58
+add ..\\..\\..\\..\\media\\models\\dynamic_amb_occ\\Bigguy\\ground.obj

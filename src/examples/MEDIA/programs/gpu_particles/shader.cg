@@ -1,0 +1,6 @@
+float4 main(in float3 texcoord0  : TEXCOORD0,
+            in float4 color : COLOR0,
+            uniform sampler2D cloth_tex) : COLOR
+{
+    return tex2D(cloth_tex, texcoord0.xy) * color;
+}

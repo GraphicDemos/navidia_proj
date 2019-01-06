@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_FogPolygonVolumes3\
+File:  SubtractRGBAndGetFogColor_20.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+A pixel shader 2.0 shader which reduces the number of passes required 
+for the volume fog effect.  This combines the "SubtractRGBEncodedDepth.nvp"
+and "RGBToDepthTexAddr.nvp" shaders into a single operation.
+
+The inputs are:
+ - the positive depth texture
+ - the negative depth texture
+ - the color ramp that maps thickness to color
+ 
+The negative depth texture is subtracted from the positive, the result is
+decoded to a floating point texture coordinate, and the coordinate used to
+access the color ramp texture which gives the color of the fog.
+
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "Constants.h"
+
+ps.2.0
+
+dcl		t0.xyzw
+dcl		t1.xyzw
+dcl_2d		s0			// positive RGBEncoded depth sum
+dcl_2d		s1			// negative RGBEncoded depth sum
+dcl_2d		s2			// output color ramp
+
+
+texld	r0, t0, s0		// back face positive depth sum
+texld	r1, t0, s1		// front face negative depth sum
+
+// Subtract (back - front)
+// Result is RGB-encoded thickness of the object
+
+add	r0, r0, -r1
+
+// Decode RGB-encoded thickness to floating point value
+//  using appropriate weights for each R, G, B, and A channel
+// Result is the thickness through the object in floating point
+// DP4 is used because alpha contains an amount which is treated
+//  as a negative component at the scale of the green channel.
+
+dp4_sat r0, r0, CPN_RGB_TEXADDR_WEIGHTS
+
+
+// Access color map which converts thicness value to the
+// color of the fog.
+
+texld	r0, r0, s2
+
+
+mov oC0, r0
+

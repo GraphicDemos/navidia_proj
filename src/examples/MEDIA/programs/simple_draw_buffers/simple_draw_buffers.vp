@@ -1,0 +1,32 @@
+!!ARBvp1.0
+PARAM modelview[4] = { state.matrix.modelview };
+PARAM mvp[4] = { state.matrix.mvp };
+
+# inputs
+ATTRIB pos = vertex.position;
+ATTRIB normal = vertex.normal;
+
+# outputs
+OUTPUT pos_out = result.texcoord[1];
+OUTPUT normal_out = result.texcoord[2];
+
+# transform normal to eye space
+DP3 normal_out.x, modelview[0], normal;
+DP3 normal_out.y, modelview[1], normal;
+DP3 normal_out.z, modelview[2], normal;
+
+# transform position to eye space
+DP4 pos_out.x, modelview[0], pos;
+DP4 pos_out.y, modelview[1], pos;
+DP4 pos_out.z, modelview[2], pos;
+DP4 pos_out.w, modelview[3], pos;
+
+# transform vertex to clip space
+DP4 result.position.x, mvp[0], pos;
+DP4 result.position.y, mvp[1], pos;
+DP4 result.position.z, mvp[2], pos;
+DP4 result.position.w, mvp[3], pos;
+
+MOV result.color, vertex.color;
+MOV result.texcoord[0], vertex.texcoord;
+END

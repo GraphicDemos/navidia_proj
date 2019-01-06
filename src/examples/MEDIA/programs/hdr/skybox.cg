@@ -1,0 +1,9 @@
+#include "hdr.cg"
+
+half4 main(fragin In,
+           uniform samplerCUBE envMap) : COLOR
+{
+//    half3 c = texCUBE_RGBE(envMap, In.tex0);
+    half3 c = texCUBE(envMap, In.tex0);
+    return half4(c, 1.0);
+}

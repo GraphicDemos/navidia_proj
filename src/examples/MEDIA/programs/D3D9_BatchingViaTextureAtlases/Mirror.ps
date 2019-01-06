@@ -1,0 +1,56 @@
+//-----------------------------------------------------------------------------
+// Copyright NVIDIA Corporation 2004
+// TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED 
+// *AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS 
+// OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF 
+// MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL 
+// NVIDIA OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR 
+// CONSEQUENTIAL DAMAGES WHATSOEVER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR 
+// LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS 
+// INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR 
+// INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE 
+// POSSIBILITY OF SUCH DAMAGES.
+// 
+// File: Clamp.ps
+// Desc: pixel shader to make texture coordinates clamp to a 
+//       sub-rectangle of an atlas.
+//-----------------------------------------------------------------------------
+
+ps_2_x
+
+dcl_2d s0
+dcl_2d s1
+
+dcl t0.xyzw
+dcl t1.xyzw
+
+// c0 contains: left, top, width, height
+// c1 contains: 1/width, 1/height, 0.5, 1
+// c2 contains: kMinU, kMinV, kMaxU, kMaxV
+// c3 contains: 0.5, 0.25, 0, 16
+sub r0.xy, t1, c0
+mul r0.xy, r0, c1           // bring coordinates into normalized local texture coord [0..1]
+
+// if the integer part is even (0, 2, 4...) use frc() of the coord
+// if the integer part is odd  (1, 3, 5...) we need to use 1-frc() to get the mirror-part 
+frc r1.xy, r0                   // get fractional part
+add r1.zw, -r1.xyxy, r0.xyxy    // get integer part
+
+mul r1.zw, r1, c1.zzzz      // div int part by 2
+frc r1.zw, r1               // if input was odd r1.zw = .5, else r1.zw = 0
+max r1.zw, r1, -r1          // take abs value
+
+add r2.xy, c1.ww, -r1.xy            // compute 1 - frc()
+cmp r0.xy, -r1.zw, r1.xy, r2.xy     // if -r1 >= 0 use frc() 
+                            
+mad r0.xy, r0, c0.zw, c0.xy         // transform coords back to texture atlas coords
+
+// clamp to inside texture (to avoid bi-linear filter pulling in foreign texels)
+max r0.xy, r0.xy, c2.xy
+min r0.xy, r0.xy, c2.zw
+
+dsx       r1, t1                // use the original coords for mip-map calculation
+dsy       r2, t1
+texldd_pp r0, r0, s1, r1, r2
+
+mov_pp    oC0, r0

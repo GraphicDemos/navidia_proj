@@ -1,0 +1,99 @@
+/*--------------------------------------------------------------------- NVMH5 -|----------------------
+Path:  Sdk\Media\programs\D3D9_WaterInteraction\
+File:  EqualWeightCombine_PostMult_AR.psh
+
+Copyright NVIDIA Corporation 2003
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS* AND NVIDIA AND
+AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
+BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS
+SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+Simple pixel shader that samples all 4 texture stages, averages these
+samples and outputs the result.  Offset each texture stage's iterated
+coordinates by various amounts to sample a texel's neighbors & blur.
+
+*** This shader also replicates blue into alpha for use in the CA_Water2
+    water animation steps.  
+
+-------------------------------------------------------------------------------|--------------------*/
+
+#include "WaterInteractionConstants.h"
+
+// Declare pixel shader version
+ps.1.1
+
+//RGBA
+def c6, 0.0, 0.0, 1.0, 0.0
+
+// Define constant for biasing back from [-0.5,0.5] 
+//  to [0,1]
+
+def c7, 0.5, 0.5, 0.5, 0.5
+
+
+// Get colors from all 4 texture stages
+
+tex t0		// 1st texel
+tex t1		// 2nd texel
+tex t2		// etc.
+tex t3
+
+
+// We could to this:
+//
+// mul r0, c[PCN_MULTFACTOR], t0
+// mad r1, c[PCN_MULTFACTOR], t1, r0
+// mad r0, c[PCN_MULTFACTOR], t2, r1
+// mad r0, c[PCN_MULTFACTOR], t3, r0
+//
+// But that would loose low bits of precision, so instead
+//  we bias to 9 bit signed components and operate on those,
+//  shifting the end result back to the [0,1] unsigned range
+// This is so that when averaging values of say,
+//  1.0 and 1.0 the result will still be 1.0 
+//  instead of saturating at 1.0 and being divided
+//  down to 0.5 for the average.
+// The use of bias means that a value of 0.5 (127)
+//  stored in the texture actualy represents the
+//  value zero when doing the pixel math,
+
+// Average the first two, then the second two
+
+add_d2  r0, t0_bias, t1_bias
+add_d2  r1, t2_bias, t3_bias
+
+// Average the averages.
+// Result is still in [-.5, .5] range
+
+add_d2  r1, r0, r1
+
+
+// Bring back to the [0,1] range
+
+add     r0, r1, c7
+
+
+// It would be nice to preserve the un-filtered 
+//  velocity, but we don't have a sample over the
+//  center texel and we're writing to a new color
+//  buffer, so no luck there.
+
+//////////////////////////////////////////
+// Replicate blue into alpha so that both 
+//   contain the same position.
+
+// replicate blue to all channels of r1
+
+dp3		r1.rgba, r0, c6
+
+
+// Update alpha of destination
+
+mov		r0.a, r1.a
+
+

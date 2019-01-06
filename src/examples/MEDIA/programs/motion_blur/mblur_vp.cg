@@ -1,0 +1,63 @@
+// Motion blur vertex shader
+// sgg 10/2002
+
+struct a2v {
+  float4 coord   : POSITION;
+//  float4 prevCoord;
+  float3 normal  : NORMAL;
+  float2 texture : TEXCOORD0;
+};
+
+struct v2f {
+  float4 hpos     : POSITION;
+  float3 velocity : TEXCOORD0;
+  float3 col0     : COLOR0;
+};
+
+v2f main(a2v In,
+         uniform float4x4 modelView,
+         uniform float4x4 prevModelView,
+         uniform float4x4 modelViewProj,
+         uniform float4x4 prevModelViewProj,
+         uniform float3   halfWindowSize,
+         uniform float    blurScale = 1.0
+         )
+{
+  v2f Out;
+
+  // transform previous and current position to eye space
+  float4 P = mul(modelView, In.coord);
+//  float4 Pprev = mul(prevModelView, In.prevCoord);
+  float4 Pprev = mul(prevModelView, In.coord);
+
+  // transform normal to eye space
+  float3 N = mul((float3x3) modelView, In.normal);
+
+  // calculate eye space motion vector
+  float3 motionVector = P.xyz - Pprev.xyz;
+
+  // calculate window space motion vector
+  P = mul(modelViewProj, In.coord);
+//  Pprev = mul(prevModelViewProj, In.prevCoord);
+  Pprev = mul(prevModelViewProj, In.coord);
+
+  Pprev = lerp(P, Pprev, blurScale);
+
+  // choose previous or current position based on dot product between motion vector and normal
+  float flag = dot(motionVector, N) > 0;
+  float4 Pstretch = flag ? P : Pprev;
+  Out.hpos = Pstretch;
+
+  // do divide by W -> NDC coordinates
+  P.xyz = P.xyz / P.w;
+  Pprev.xyz = Pprev.xyz / Pprev.w;
+  Pstretch.xyz = Pstretch.xyz / Pstretch.w;
+
+  // calculate window space velocity
+  float3 dP = (P.xyz - Pprev.xyz) * halfWindowSize.xyz;
+
+  Out.velocity = dP;
+  Out.col0.xy = 0.5 + (dP.xy * 0.005);
+
+  return Out;
+}

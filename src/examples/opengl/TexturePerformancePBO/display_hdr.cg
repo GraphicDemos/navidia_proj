@@ -1,0 +1,16 @@
+// display with simple tone mapping, does exposure and gamma correction
+#include "common.cg"
+
+half4 main(vf30 In,
+           uniform samplerRECT tex,
+           uniform half exposure,
+           uniform half gamma
+           ) : COLOR
+{
+  half4 c;  
+  c = texRECT(tex, In.TEX0.xy);
+  
+  c = c * exposure;
+  c.rgb = pow(c.rgb, gamma);
+  return c;
+}

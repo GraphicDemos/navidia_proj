@@ -799,4 +799,76 @@ target_include_directories(DeferredShading PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/
 target_link_libraries(DeferredShading nv_dxut nv_nvb nv_math nv_nvbloader ${D3DXLIBS})
 install(TARGETS DeferredShading RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
+# ================================================= DepthOfField =================================================
+file(GLOB DepthOfField_Src
+     "DepthOfField.cpp"
+	 "DepthOfField.h"
+	 "DepthOfFieldApp.h"
+	 "DepthOfFieldApp.cpp" 
+	 "resource.h"
+	 "resource.rc"
+)
 
+ add_custom_command(OUTPUT  DepthOfField.cso  
+					   COMMAND ${FXC} /T "fx_2_0" /Gec /Od /Zi /Fo ../MEDIA/programs/DepthOfField.cso ../MEDIA/programs/DepthOfField.fx
+					   COMMENT "Effect-compile"
+                        VERBATIM
+					   ) 
+					   
+add_custom_target(DepthOfField_effect_target DEPENDS DepthOfField.cso)							   
+add_executable(DepthOfField WIN32 ${DepthOfField_Src})															
+add_dependencies(DepthOfField  nv_dxut DepthOfField_effect_target)
+set_target_properties(DepthOfField PROPERTIES PROJECT_LABEL "DepthOfField")						
+set_target_properties(DepthOfField PROPERTIES OUTPUT_NAME "DepthOfField")
+set_target_properties(DepthOfField PROPERTIES FOLDER "examples/DirectX")
+target_include_directories(DepthOfField PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/../../DXUT  ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvb ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_math ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvbloader)
+target_link_libraries(DepthOfField nv_dxut nv_nvb nv_math nv_nvbloader ${D3DXLIBS})
+install(TARGETS DepthOfField RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+
+# ================================================= MeshMenderSimpleExample =================================================
+file(GLOB MeshMenderSimpleExample_Src
+     "MeshMenderSimpleExampleApp.cpp"
+	 "MeshMenderSimpleExampleApp.h"
+	 "resource.h"
+	 "resource.rc"
+)
+
+ add_custom_command(OUTPUT  MeshMender_perPixelLighting.cso  
+					   COMMAND ${FXC} /T "fx_2_0" /Gec /Od /Zi /Fo ../MEDIA/programs/MeshMender_perPixelLighting.cso ../MEDIA/programs/MeshMender_perPixelLighting.fx
+					   COMMENT "Effect-compile"
+                        VERBATIM
+					   ) 
+					   
+add_custom_target(MeshMenderSimple_effect_target DEPENDS MeshMender_perPixelLighting.cso)							   
+add_executable(MeshMenderSimple WIN32 ${MeshMenderSimpleExample_Src})															
+add_dependencies(MeshMenderSimple  nv_dxut MeshMenderSimple_effect_target)
+set_target_properties(MeshMenderSimple PROPERTIES PROJECT_LABEL "MeshMenderSimple")						
+set_target_properties(MeshMenderSimple PROPERTIES OUTPUT_NAME "MeshMenderSimple")
+set_target_properties(MeshMenderSimple PROPERTIES FOLDER "examples/DirectX")
+target_include_directories(MeshMenderSimple PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/../../DXUT  ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvb ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_math ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvbloader)
+target_link_libraries(MeshMenderSimple nv_dxut nv_nvb nv_math nv_nvbloader ${D3DXLIBS})
+install(TARGETS MeshMenderSimple RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# ================================================= StereoAPI =================================================
+file(GLOB StereoAPI_Src
+     "StereoAPIApp.cpp"
+	 "StereoAPIApp.h"
+	 "resource.h"
+	 "resource.rc"
+)
+
+ add_custom_command(OUTPUT  Stereo.cso  
+					   COMMAND ${FXC} /T "fx_2_0" /Gec /Od /Zi /Fo ../MEDIA/programs/Stereo.cso ../MEDIA/programs/Stereo.fx
+					   COMMENT "Effect-compile"
+                        VERBATIM
+					   ) 
+					   
+add_custom_target(StereoAPI_effect_target DEPENDS Stereo.cso)							   
+add_executable(StereoAPI WIN32 ${StereoAPI_Src})															
+add_dependencies(StereoAPI  nv_dxut StereoAPI_effect_target)
+set_target_properties(StereoAPI PROPERTIES PROJECT_LABEL "StereoAPI")						
+set_target_properties(StereoAPI PROPERTIES OUTPUT_NAME "StereoAPI")
+set_target_properties(StereoAPI PROPERTIES FOLDER "examples/DirectX")
+target_include_directories(StereoAPI PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/../../DXUT  ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvb ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_math ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvbloader)
+target_link_libraries(StereoAPI nv_dxut nv_nvb nv_math nv_nvbloader ${D3DXLIBS})
+install(TARGETS StereoAPI RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

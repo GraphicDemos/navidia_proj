@@ -1,5 +1,4 @@
 
-
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 ##Globe include and link
 
@@ -7,6 +6,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../3rth
 					${CMAKE_CURRENT_SOURCE_DIR}/../../
 					${CMAKE_CURRENT_SOURCE_DIR}/../
 					${CMAKE_CURRENT_SOURCE_DIR}
+					${NV_SOURCE_DIR}/extern/
 				)
 
 add_compile_options(-D _XKEYCHECK_H)						
@@ -26,6 +26,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/../../png ${CMAKE_CURRENT_SOURCE_DIR}/../../nvparse)
 target_link_libraries(AntiAliasingWithPostProcessing nv_png nvparse)
 #install
 install(TARGETS AntiAliasingWithPostProcessing RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
 # ================================================= ambient_occlusion =================================================
 add_executable(ambient_occlusion "ambient_occlusion.cpp" "../shared/pbuffer.h" 
 								"../shared/pbuffer.cpp" 
@@ -45,6 +46,7 @@ target_include_directories(ambient_occlusion PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 target_link_libraries(ambient_occlusion nv_manip nv_math  nvIO ${GLUT_glut_LIBRARY})
 #install
 install(TARGETS ambient_occlusion RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
 
 # ================================================= bump_mapping =================================================
 add_executable(bump_mapping 			"bump_mapping.cpp" 
@@ -133,14 +135,21 @@ target_link_libraries(cg_shades nv_dds ${GLEW_LIBRARY} paramgl ${CG_LIBRARY} ${C
 #install
 install(TARGETS cg_shades RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 # ================================================= cg_CShinySprites =================================================
-#add_executable(cg_CShinySprites "cg_CShinySprites.cpp" "cg_CShinySprites.h" "cg_ShinySprites.cpp" "resource.h" "resource.rc")
-#add_dependencies(cg_CShinySprites  nv_dds )
-#set_target_properties(cg_CShinySprites PROPERTIES PROJECT_LABEL "cg_CShinySprites")						
-#set_target_properties(cg_CShinySprites PROPERTIES OUTPUT_NAME "cg_CShinySprites")
-#set_target_properties(cg_CShinySprites PROPERTIES FOLDER "examples/opengl")
-#target_include_directories(cg_CShinySprites PRIVATE  ${CG_INCLUDE_DIR} ${GLEW_INCLUDE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../paramgl ${CMAKE_CURRENT_SOURCE_DIR}/../png ${CMAKE_CURRENT_SOURCE_DIR}/../nv_dds ${CMAKE_CURRENT_SOURCE_DIR}/../nvparse/include )
-#target_link_libraries(cg_CShinySprites nv_dds ${GLEW_LIBRARY} paramgl ${CG_LIBRARY} ${CG_GL_LIBRARY})
-#install(TARGETS cg_CShinySprites RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+add_executable(cg_CShinySprites "cg_CShinySprites.cpp" "cg_CShinySprites.h" 
+				"cg_ShinySprites.cpp" 
+				"../shared/array_texture.cpp"
+				"../shared/data_path.cpp"
+				"../shared/read_text_file.cpp"
+				"../shared/pbuffer.cpp")
+add_dependencies(cg_CShinySprites  nv_dds nv_png nvparse)
+set_target_properties(cg_CShinySprites PROPERTIES PROJECT_LABEL "cg_CShinySprites")						
+set_target_properties(cg_CShinySprites PROPERTIES OUTPUT_NAME "cg_CShinySprites")
+set_target_properties(cg_CShinySprites PROPERTIES FOLDER "examples/opengl")
+target_include_directories(cg_CShinySprites PRIVATE  ${CG_INCLUDE_DIR} ${GLEW_INCLUDE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../../paramgl 
+${CMAKE_CURRENT_SOURCE_DIR}/../../png ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_dds ${CMAKE_CURRENT_SOURCE_DIR}/../../nvparse/include 
+	${CMAKE_CURRENT_SOURCE_DIR}/../../nv_GenericTools)
+target_link_libraries(cg_CShinySprites nv_dds ${GLEW_LIBRARY} paramgl nv_png nvparse ${CG_LIBRARY} ${CG_GL_LIBRARY})
+install(TARGETS cg_CShinySprites RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 # ================================================= cullfragment2 =================================================
 add_executable(cullfragment2 "cullfragment2.cpp" 
 							"../shared/data_path.h" "../shared/data_path.cpp" 
@@ -836,6 +845,37 @@ target_include_directories(volume_intersect PRIVATE ${GLUT_INCLUDE_DIR})
 #add_dependencies( volume_intersect   )
 target_link_libraries(volume_intersect  opengl32  ${GLUT_glut_LIBRARY})
 install(TARGETS volume_intersect RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# ================================================= metalpaint =================================================
+file(GLOB metalpaint_SRC 
+	metalpaint.cpp
+	nvbHelper.h
+	../shared/data_path.cpp
+	../shared/read_text_file.cpp
+	../shared/noise.cpp
+	)
+add_executable(metalpaint ${metalpaint_SRC} )
+set_target_properties(metalpaint PROPERTIES PROJECT_LABEL "metalpaint")						
+set_target_properties(metalpaint PROPERTIES OUTPUT_NAME "metalpaint")
+set_target_properties(metalpaint PROPERTIES FOLDER "examples/opengl")
+target_include_directories(metalpaint PRIVATE ${GLUT_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_dds   ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvb ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_math ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvbloader ${CMAKE_CURRENT_SOURCE_DIR}/../shared)
+add_dependencies( metalpaint  nv_dds  nv_math nv_nvb nv_nvbloader )
+target_link_libraries(metalpaint  opengl32 nv_dds  nv_math nv_nvb nv_nvbloader ${GLUT_glut_LIBRARY})
+install(TARGETS metalpaint RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# ================================================= thinfilm =================================================
+file(GLOB thinfilm_SRC 
+	thinfilm.cpp
+	nvbHelper.h
+	../shared/data_path.cpp
+	../shared/read_text_file.cpp
+	)
+add_executable(thinfilm ${thinfilm_SRC} )
+set_target_properties(thinfilm PROPERTIES PROJECT_LABEL "thinfilm")						
+set_target_properties(thinfilm PROPERTIES OUTPUT_NAME "thinfilm")
+set_target_properties(thinfilm PROPERTIES FOLDER "examples/opengl")
+target_include_directories(thinfilm PRIVATE ${GLUT_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_dds   ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvb ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_math ${CMAKE_CURRENT_SOURCE_DIR}/../../nv_nvbloader ${CMAKE_CURRENT_SOURCE_DIR}/../shared)
+add_dependencies( thinfilm  nv_dds  nv_math nv_nvb nv_nvbloader )
+target_link_libraries(thinfilm  opengl32 nv_dds  nv_math nv_nvb nv_nvbloader ${GLUT_glut_LIBRARY})
+install(TARGETS thinfilm RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 
 

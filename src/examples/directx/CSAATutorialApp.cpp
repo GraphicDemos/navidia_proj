@@ -336,7 +336,7 @@ HRESULT CALLBACK OnResetDevice( IDirect3DDevice9* pd3dDevice,
 
     pd3dDevice->SetRenderState(D3DRS_ZENABLE, TRUE);
 
-	if (AppInit(pd3dDevice, (wchar_t*)GetFilePath::GetFilePath(L"MEDIA\\programs\\csstutorial.cso", true).c_str()) == false)
+	if (AppInit(pd3dDevice, (wchar_t*)GetFilePath::GetFilePath(L"..\\MEDIA\\programs\\csstutorial.cso", true).c_str()) == false)
 		return S_FALSE;
 
 

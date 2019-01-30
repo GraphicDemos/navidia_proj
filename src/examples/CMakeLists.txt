@@ -1,3 +1,4 @@
  
-SUBDIRS(opengl) 
-SUBDIRS(directx)
+#SUBDIRS(opengl) 
+#SUBDIRS(directx)
+SUBDIRS(gems1)

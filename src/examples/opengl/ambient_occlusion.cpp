@@ -113,7 +113,7 @@ int win_w = 512, win_h = 512;
 NvIOModel *model = 0;
 
 int main(int argc, char* argv[])
-b{
+{
 	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB | GLUT_ACCUM);
     glutInitWindowSize(win_w, win_h);

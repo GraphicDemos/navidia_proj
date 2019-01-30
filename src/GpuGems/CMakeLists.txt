@@ -1,3 +1,0 @@
- 
-SUBDIRS(opengl) 
-SUBDIRS(directx)

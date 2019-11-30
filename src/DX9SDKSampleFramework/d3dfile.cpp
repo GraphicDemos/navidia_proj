@@ -637,7 +637,7 @@ HRESULT CD3DFile::LoadFrame( LPDIRECT3DDEVICE9 pd3dDevice,
         D3DXMATRIX* pmatMatrix;
 
 #ifdef NV_USEDX90C
-		hr = pFileData->Lock( &cbSize, (LPCVOID*)&pmatMatrix );
+		hr = pFileData->Lock((SIZE_T*)&cbSize, (LPCVOID*)&pmatMatrix );
 		if( FAILED(hr) )
 			return( hr );
 
@@ -661,7 +661,7 @@ HRESULT CD3DFile::LoadFrame( LPDIRECT3DDEVICE9 pd3dDevice,
         CHAR  strAnsiName[512] = "";
         TCHAR strName[512];
         DWORD dwNameLength = 512;
-        if( FAILED( hr = pFileData->GetName( strAnsiName, &dwNameLength ) ) )
+        if( FAILED( hr = pFileData->GetName( strAnsiName, (SIZE_T*)&dwNameLength ) ) )
             return hr;
         DXUtil_ConvertAnsiStringToGenericCb( strName, strAnsiName, sizeof(strName) );
 
@@ -724,7 +724,7 @@ HRESULT CD3DFile::LoadMesh( LPDIRECT3DDEVICE9 pd3dDevice,
     TCHAR strName[512];
     DWORD dwNameLength = 512;
     HRESULT hr;
-    if( FAILED( hr = pFileData->GetName( strAnsiName, &dwNameLength ) ) )
+    if( FAILED( hr = pFileData->GetName( strAnsiName, (SIZE_T*)&dwNameLength ) ) )
         return hr;
     DXUtil_ConvertAnsiStringToGenericCb( strName, strAnsiName, sizeof(strName) );
 

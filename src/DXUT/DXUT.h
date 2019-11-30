@@ -17,7 +17,7 @@
 #endif // DIRECTX_SDK_FROM_WINDOW
 
 #if ( _DXSDK_PRODUCT_MAJOR < 9 || _DXSDK_BUILD_MAJOR < 1949 )
-#error The installed DXSDK is out of date.
+//#error The installed DXSDK is out of date.
 #endif
 
 #ifndef STRICT

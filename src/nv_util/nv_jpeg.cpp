@@ -14,7 +14,7 @@ Comments:
 ******************************************************************************/
 
 #include  "nv_util.h"
-#include <jpeg/jpeglib.h>
+#include <jpeglib.h>
 
 namespace jpeg
 {

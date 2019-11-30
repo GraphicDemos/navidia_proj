@@ -34,7 +34,7 @@
 #if NV_OS_DARWIN
 #include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+#include <GL/freeglut.h>
 #endif
 
 

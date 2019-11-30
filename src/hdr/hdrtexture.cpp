@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glut.h>
+#include <GL/freeglut.h>
 #include <glh/glh_extensions.h>
 #include <shared/data_path.h>
 #include <shared/rgbe.h>

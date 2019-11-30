@@ -15,40 +15,41 @@ IF (WIN32)
 
 	FIND_LIBRARY(D3D9_LIBRARY d3d9.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/64"
 		DOC "The directory where d3d9.lib resides")
 	
 	FIND_LIBRARY(D3DX9_LIBRARY d3dx9.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x64"
 		DOC "The directory where d3dx9.lib resides")
 
 	FIND_LIBRARY(D3D10_LIBRARY d3d10.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x64"
 		DOC "The directory where d3d10.lib resides")
 
 	FIND_LIBRARY(D3DX10_LIBRARY d3dx10.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x64"
 		DOC "The directory where d3dx10.lib resides")
 	
 	FIND_LIBRARY(D3DERROR_LIBRARY DxErr.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x64"
 		DOC "The directory where DxErr.lib resides")
 		
 	FIND_LIBRARY(D3DXGUID_LIBRARY dxguid.lib
 		PATHS
-			"$ENV{DXSDK_DIR}/Lib/x86"
-			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x86"
+			"$ENV{DXSDK_DIR}/Lib/x64"
+			"$ENV{PROGRAMFILES}/Microsoft DirectX SDK/Lib/x64"
 		DOC "The directory where dxguid.lib resides")	
-		
+	
+
 	SET(DX10_LIBRARIES ${D3D10_LIBRARY} ${D3DX10_LIBRARY} ${D3DERROR_LIBRARY} ${D3DX9_LIBRARY} ${D3D9_LIBRARY})
 
 ENDIF (WIN32)

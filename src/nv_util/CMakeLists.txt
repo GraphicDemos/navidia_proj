@@ -23,10 +23,10 @@ ENDIF(NV_UTIL_SHARED)
 
 
 target_include_directories( nv_util PRIVATE   ${ZLIB_INCLUDE_DIR} ../nv_math/ ${CMAKE_CURRENT_SOURCE_DIR}/../3rth/
-						${NV_SOURCE_DIR}/extern/libtga/include ${NV_SOURCE_DIR}/extern/)
+						${NV_SOURCE_DIR}/extern/libtga/include ${NV_SOURCE_DIR}/extern/ ${JPEG_INCLUDE_PATH})
 add_dependencies( nv_util nv_math libtga)
 
-TARGET_LINK_LIBRARIES(nv_util ${LIBS} nv_math ${ZLIB_LIBRARY_RELEASE} libtga ${NV_SOURCE_DIR}/extern/jpeg/jpeg.lib)
+TARGET_LINK_LIBRARIES(nv_util ${LIBS} nv_math ${ZLIB_LIBRARY_RELEASE} libtga ${JPEG_LIBRARY})
 
 INSTALL(TARGETS nv_util
 	RUNTIME DESTINATION bin

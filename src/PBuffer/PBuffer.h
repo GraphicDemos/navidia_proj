@@ -23,7 +23,7 @@
 
 #include <gl/glew.h>
 #include <gl/wglew.h>
-#include <gl/glut.h>
+#include <gl/freeglut.h>
 
 // Function linkage
 #if NV_PBUFFER_DLL
